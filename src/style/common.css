@@ -1,0 +1,92 @@
+
+/* tabs */
+.tabs {
+    clear: both;
+    padding: 3px 10px;
+    border-right: 2px solid green;
+    border-bottom: 2px solid green;
+    height: 100%;
+}
+
+.tabs ul li a {
+    color: #000000;
+    font-weight: 500;
+}
+
+.tabs li {
+    float: left;
+    width: 120px;
+    text-align: center;
+    background: #c6e6ba;
+    border-right: 2px solid #000;
+/*    height: 20px;*/
+}
+
+.tab {
+    clear: both;
+    padding-top: 5px;
+}
+
+/* form */
+form input[type=text], form select {
+    border: 1px solid green;
+}
+
+form input[type=text] {
+    background-color: #ffffe1;
+}
+
+.form_label {
+    padding-right: 5px;
+}
+
+.form_field {
+    padding-right: 15px;
+}
+
+.shortcut_key {
+    text-decoration: #000000 underline;
+    border-bottom: 1px solid #000000;
+}
+
+form tr {
+    padding: 5px 5px;
+}
+
+.action_buttons {
+    margin: 16px 0 6px 0;
+    text-align: center;
+}
+
+.action_buttons a {
+    text-decoration: none;
+}
+
+/* table */
+.dg_table {
+    margin-left: 20px;
+}
+
+.dg_table table {
+    width: 100%;
+    border-bottom: 1px solid #e3e9e5;
+}
+
+.dg_table th {
+    border-right: 2px groove #2e563e;
+    background-color: #2c834f;
+    padding-right: 5px;
+    /*background: #2c834f url("../images/th_border_right.jpg") no-repeat right;*/
+    text-align: center;
+}
+.dg_table th img {
+    float: right;
+    /*vertical-align: middle;*/
+    padding-top: 4px;
+}
+
+.dg_table td {
+    background-color: #fbf9d0;
+    border-right: 1px solid #cccccc;
+    padding-left: 3px;
+}

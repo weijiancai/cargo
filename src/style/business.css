@@ -1,0 +1,18 @@
+/* 运单号 */
+.ydh {
+
+}
+.ydh select {
+    width: 65px;
+}
+.ydh input {
+    margin-left: -5px;
+    height: 17px;
+    padding-left: 5px;
+}
+.ydh .first {
+    width: 40px;
+}
+.ydh .second {
+    width: 120px;
+}

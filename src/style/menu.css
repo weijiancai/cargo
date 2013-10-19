@@ -1,0 +1,80 @@
+/* 主导航 */
+#main_nav_bar {
+    width: 100%;
+    clear: both;
+    padding: 5px 0 0;
+    height: 32px;
+
+    /*background: #2b824e url(../images/main_nav.jpg) repeat;*/
+    background: #2b824e;
+    color: #ffffff;
+}
+#main_nav_bar ul {
+    line-height: 20px;
+}
+
+#main_nav_bar li {
+    float: left;
+    margin-left: 35px;
+}
+
+#main_nav_bar a {
+    font-size: 13px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* 子导航 */
+#sub_nav_bar {
+    clear: both;
+    background: #2b824e;
+    height: 120px;
+    border: 2px solid #2b824e;
+}
+
+.div_sub_nav {
+    background: #e8f3e6;
+    /*margin: 0 2px 2px;*/
+    height: 100px;
+}
+
+#sub_nav_bar > div {
+    padding: 6px 8px 14px 5px;
+}
+
+#sub_nav_bar ol {
+    border: 1px solid #b2dea5;
+    margin-left: 5px;
+    height: 100px;
+}
+
+#sub_nav_bar ol ul {
+    height: 80px;
+}
+
+#sub_nav_bar ol ul li {
+    margin: 3px 6px;
+}
+
+#sub_nav_bar ol ul li span {
+    margin-left: 2px;
+}
+
+#sub_nav_bar ol h5 {
+    clear: both;
+    background: #2c824e;
+    text-align: center;
+}
+
+.nav_single {
+    width: 80px;
+}
+
+.single {
+    text-align: center;
+
+}
+.single li {
+    padding: 12px 0 0 0;
+    vertical-align: middle;
+}

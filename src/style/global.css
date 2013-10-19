@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 12px;
+    line-height: 1.8em;
+    color: #000;
+    font-family: Verdana, "宋体, serif";
+}
+
+body {
+    width: 1000px;
+	height: 766px;
+    margin: 0 auto;
+    /*border: 1px solid #ff0000;*/
+}
+
+img {
+    border: 0;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+legend {
+    color: blue;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+fieldset {
+    margin: 0 10px;
+    padding:5px;
+    border: 1px solid green;
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+}
+
+#main {
+    width: 100%;
+    clear: both;
+}
+#main_left {
+    width: 45px;
+    height: 600px;
+    display: inline-block;
+    background-image: url("../images/sjlbq.jpg");
+}
+#main_right {
+    width: 930px;
+    float: right;
+    height: 600px;
+    background-color: #f2fbf0;
+}
+
+.round {
+    padding:5px;
+    border: 1px solid green;
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+}
+
+.readonly {
+    color: #aaaaaa;
+    /*background-color: #cccccc;*/
+}
+.readonly input, .readonly select {
+    color: #aaaaaa;
+    background-color: #efefef;
+}
+
+
+input[disabled],input:disabled{
+    border:1px solid #DDD;
+    background-color:#F5F5F5;
+    color:#ACA899;
+}
+/* IE6 Using Javascript to add CSS class "disabled" */
+* html input.disabled{
+    border:1px solid #DDD;
+    background-color:#F5F5F5;
+    color:#ACA899;
+}
