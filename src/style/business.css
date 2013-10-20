@@ -16,3 +16,33 @@
 .ydh .second {
     width: 120px;
 }
+.ydh .readonly {
+    color: #aaaaaa;
+    background-color: #efefef;
+}
+
+/* 航班号*/
+.hbh input {
+    height: 17px;
+    padding-left: 5px;
+}
+.hbh .first {
+    width: 50px;
+}
+.hbh .second {
+    width: 175px;
+    margin-left: -5px;
+}
+.hbh .readonly {
+    color: #aaaaaa;
+    background-color: #efefef;
+}
+
+/* 起点站, 目的站 */
+.qdz input, .mdz input {
+    width: 60px;
+}
+.qdz .readonly, .mdz .readonly {
+    color: #aaaaaa;
+    background-color: #efefef;
+}

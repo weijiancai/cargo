@@ -28,12 +28,13 @@
 }
 
 /* form */
-form input[type=text], form select {
+form input, form select {
     border: 1px solid green;
+    background-color: #f2fbf0;
 }
 
-form input[type=text] {
-    background-color: #ffffe1;
+form input[type='text'] {
+    padding-left: 4px;
 }
 
 .form_label {
@@ -42,6 +43,12 @@ form input[type=text] {
 
 .form_field {
     padding-right: 15px;
+}
+form .import_input {
+    background-color: #ffffe1;
+}
+.form_date {
+
 }
 
 .shortcut_key {

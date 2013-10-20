@@ -52,6 +52,10 @@ fieldset {
     border-radius:5px;            /* W3C syntax */
 }
 
+label {
+    margin-right: 5px;
+}
+
 #main {
     width: 100%;
     clear: both;
@@ -75,6 +79,7 @@ fieldset {
     -moz-border-radius: 5px;      /* Gecko browsers */
     -webkit-border-radius: 5px;   /* Webkit browsers */
     border-radius:5px;            /* W3C syntax */
+    margin: 1px 0;
 }
 
 .readonly {
@@ -87,14 +92,32 @@ fieldset {
 }
 
 
-input[disabled],input:disabled{
-    border:1px solid #DDD;
-    background-color:#F5F5F5;
-    color:#ACA899;
+.width_50 {
+    width: 50px;
 }
-/* IE6 Using Javascript to add CSS class "disabled" */
-* html input.disabled{
-    border:1px solid #DDD;
-    background-color:#F5F5F5;
-    color:#ACA899;
+.width_60 {
+    width: 60px;
+}
+.width_90 {
+    width: 90px;
+}
+.width_100 {
+    width: 100px;
+}
+.width_120 {
+    width: 120px;
+}
+.width_150 {
+    width: 150px;
+}
+.width_400 {
+    width: 400px;
+}
+
+.pad_left_15 {
+    padding-left: 15px;
+}
+
+.green_border {
+    border: 1px solid green;
 }
