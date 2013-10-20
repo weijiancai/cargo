@@ -91,7 +91,13 @@ label {
     background-color: #efefef;
 }
 
+.row {
+    margin: 3px 2px;
+}
 
+.width_30 {
+    width: 30px;
+}
 .width_50 {
     width: 50px;
 }
@@ -110,12 +116,22 @@ label {
 .width_150 {
     width: 150px;
 }
+.width_230 {
+    width: 230px;
+}
 .width_400 {
     width: 400px;
+}
+.width_550 {
+    width: 550px;
 }
 
 .pad_left_15 {
     padding-left: 15px;
+}
+
+.margin_right_20 {
+    margin-right: 20px;
 }
 
 .green_border {

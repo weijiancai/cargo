@@ -41,8 +41,11 @@ form input[type='text'] {
     padding-right: 5px;
 }
 
-.form_field {
+table .form_field {
     padding-right: 15px;
+}
+.form_field {
+    margin-right: 15px;
 }
 form .import_input {
     background-color: #ffffe1;
@@ -71,7 +74,9 @@ form tr {
 
 /* table */
 .dg_table {
-    margin-left: 20px;
+    padding-left: 20px;
+    border-top: 1px solid green;
+    border-left: 1px solid green;
 }
 
 .dg_table table {
@@ -90,6 +95,7 @@ form tr {
     float: right;
     /*vertical-align: middle;*/
     padding-top: 4px;
+    padding-right: 2px;
 }
 
 .dg_table td {

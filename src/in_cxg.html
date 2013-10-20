@@ -255,7 +255,7 @@
                 </ul>
 
                 <div class="tab" title="基本信息查询">
-                    <div style="border-top: 1px solid green; border-left: 1px solid green;height: 360px;margin-bottom: 5px;">
+                    <div style="height: 360px;margin-bottom: 5px;">
                         <div class="dg_table">
                             <table>
                                 <thead>
@@ -648,8 +648,183 @@
                 <legend>无标签货物登记</legend>
 
                 <div class="round">
+                    <form>
+                        <select class="margin_right_20 width_90">
+                            <option>国内</option>
+                        </select>
+                        <span class="hbh">
+                            <label>航班号</label>
+                            <input type="text" class="first import_input" value="CZ"/>
+                            <input type="text" class="second" value="3403/2012-05-22"/>
+                        </span>
+                        <select class="width_90">
+                            <option>PEK-CTU</option>
+                        </select>
+                        <a href="#" class="margin_right_20"><img src="images/btn_query.jpg"/></a>
 
+                        <label>打印份数*</label>
+                        <input type="text" class="width_30"/>
+                        <a href="#"><img src="images/btn_print.jpg"/></a>
+                    </form>
                 </div>
+
+                <div class="dg_table" style="height: 150px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 20px;background: none;border: none;"></th>
+                                <th>ID<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>运单号码<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>不正常件数<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>不正常重量<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>包装<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>仓库名称<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>库位名称<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>是否结案<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="images/tr_head.jpg"/></td>
+                                <td>1541</td>
+                                <td>AWBA00012061434031</td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td></td>
+                                <td>国内进港测试</td>
+                                <td>一般</td>
+                                <td>N</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <form class="round">
+                    <div class="row">
+                        <label>虚拟单号</label>
+                        <input type="text" class="width_150 readonly" value="AWBA00012061434031" disabled/>
+                        <input type="text" class="readonly form_field" style="margin-left: -4px;width: 15px;" value="1" disabled/>
+
+                        <label>始发站</label>
+                        <input type="text" class="width_60 import_input form_field" value="PEK"/>
+
+                        <label>目的站</label>
+                        <input type="text" class="width_60 import_input form_field" value="CTU"/>
+
+                        <label>不正常件数*</label>
+                        <input type="text" class="width_30 readonly form_field" value="1" disabled/>
+
+                        <label>不正常重量</label>
+                        <input type="text" class="width_50 readonly" value="10" disabled/>
+                    </div>
+
+                    <div class="row">
+                        <label>包装</label>
+                        <input type="text" class="width_60 readonly form_field" value="" disabled/>
+
+                        <label class="readonly">仓库</label>
+                        <input type="text" class="width_150 readonly form_field" value="国内进港测试" disabled/>
+
+                        <label class="readonly">库位</label>
+                        <input type="text" class="width_120 readonly form_field" value="一般" disabled/>
+
+                        <label>特货代码</label>
+                        <input type="text" class="width_60 import_input form_field" value="10" disabled/>
+
+                        <label>是否结案</label>
+                        <select class="width_60">
+                            <option>是</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <label>结案结果</label>
+                        <select class="width_60 margin_right_20">
+                            <option>无</option>
+                        </select>
+
+                        <label>处理意见</label>
+                        <input type="text" class="width_550 readonly" value="经确认无标签货物为784-62362366运单货物"/>
+                    </div>
+
+                    <div class="row">
+                        <label>登记人</label>
+                        <input type="text" class="width_90 readonly form_field" value="2DOM" disabled/>
+
+                        <label>登记营业点</label>
+                        <input type="text" class="width_90 readonly form_field" value="2DOM" disabled/>
+
+                        <label>登记时间</label>
+                        <input type="text" class="width_150 readonly form_field" value="2012-6-14 10:56:27" disabled/>
+                    </div>
+
+                    <div style="text-align: center">
+                        <a href=""><img src="images/btn_add_long.jpg"/></a>
+                        <a href=""><img src="images/btn_cancel.jpg"/></a>
+                        <a href=""><img src="images/btn_save.jpg"/></a>
+                        <a href=""><img src="images/btn_del_long.jpg"/></a>
+                        <a href=""><img src="images/btn_fsbw.jpg"/></a>
+                        <a href=""><img src="images/btn_hwmxcx.jpg"/></a>
+                    </div>
+                </form>
+
+                <fieldset style="margin: 0;">
+                    <legend>库存信息</legend>
+
+                    <div class="dg_table" style="height: 100px;">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th style="width: 20px;background: none;border: none;"></th>
+                                <th>运单号<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>件数<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>重量<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>包装<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>仓库<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>库位<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><img src="images/tr_head.jpg"/></td>
+                                <td>AWBA00012061434031</td>
+                                <td>1</td>
+                                <td>10</td>
+                                <td>2DOM</td>
+                                <td>01</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+
+                <fieldset style="margin: 0;padding: 0">
+                    <legend>无标签货物认领</legend>
+
+                    <form class="row">
+                        <span class="ydh form_field">
+                            <label>运单号</label>
+                            <select>
+                                <option>AWBA</option>
+                                <option>AWBA</option>
+                            </select>
+                            <input type="text" class="first" value="784"/>
+                            <input type="text" class="second" value="62362366"/>
+                        </span>
+
+                        <label>件数*</label>
+                        <input type="text" class="width_50 form_field" value="1"/>
+
+                        <label>重量*</label>
+                        <input type="text" class="width_50" value="10"/>
+                        <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                            <option>KG</option>
+                        </select>
+
+                        <a href="#"><img src="images/btn_rl.jpg"></a>
+                        <a href="#"><img src="images/btn_ydtmdy.jpg"></a>
+                    </form>
+                </fieldset>
             </fieldset>
         </div>
         <div class="tab" title="不正常日志"></div>
