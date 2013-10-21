@@ -323,13 +323,254 @@
                 </fieldset>
             </form>
         </div>
-        <div class="tab" title="文件中转"></div>
+
+        <!-- 文件中转 -->
+        <div class="tab" title="文件中转">
+            <form>
+                <div class="round">
+                    <label>交接单号</label>
+                    <input type="text" class="width_150 readonly form_field" value="20120614DOM200001"/>
+
+                    <select class="width_90" style="font-size: 14px; color: blue;font-weight: bold;">
+                        <option>文件操作</option>
+                    </select>
+                    <img src="images/btn_kpi.jpg"/>
+                    <img src="images/btn_pltd.jpg"/>
+                </div>
+
+                <div style="border-left: 1px solid green;border-right: 1px solid green;border-bottom: 1px solid green;">
+                    <div class="round">
+                        <span class="ydh">
+                            <label>运单号</label>
+                            <select>
+                                <option>AWBA</option>
+                                <option>AWBA</option>
+                            </select>
+                            <input type="text" class="first" value="784"/>
+                            <input type="text" class="second" value="62362366"/>
+                        </span>
+
+                        <label>退运中转</label>
+                        <select class="width_60">
+                            <option>是</option>
+                        </select>
+
+                        <label>配上航班号</label>
+                        <span class="hbh">
+                            <input type="text" class="first import_input">
+                            <input type="text" class="second"/>
+                        </span>
+
+                        <label>备注</label>
+                        <input type="text" class="width_100"/>
+                    </div>
+
+                    <div class="dg_table" style="height: 240px;margin: 1px;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 20px;background: none;border: none;"></th>
+                                    <th>选择<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                    <th>运单号码<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                    <th>文件交接状态<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                    <th>文件交接人<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                    <th>文件交接时间<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                    <th>文件接收人<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                    <th>文件接收时间<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                    <th>配上航班号<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="images/tr_head.jpg"/></td>
+                                    <td style="text-align: center;vertical-align: middle;"><input type="checkbox"/></td>
+                                    <td>784-62362366</td>
+                                    <td>未交接</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="round" style="margin: 1px;">
+                        <table>
+                            <tr>
+                                <td class="form_label" style="vertical-align: middle;">
+                                    <span class="ydh">
+                                        <label>运单号</label>
+                                        <select>
+                                            <option>AWBA</option>
+                                            <option>AWBA</option>
+                                        </select>
+                                        <input type="text" class="first" value="784"/>
+                                        <input type="text" class="second" value="62362366"/>
+                                    </span>
+
+                                    <label>起始站*</label>
+                                    <input type="text" class="width_30 import_input"/>
+                                </td>
+
+                                <td class="form_field">
+                                    <ul class="air_line">
+                                        <li><input type="text" class="width_30 import_input"/></li>
+                                        <li class="line">-------></li>
+                                    </ul>
+                                </td>
+                                <td class="form_label" style="vertical-align: middle">
+                                    <input type="text" class="width_30 import_input"/>
+                                </td>
+                                <td class="form_field">
+                                    <ul class="air_line">
+                                        <li><input type="text" class="width_30 import_input"/></li>
+                                        <li class="line">-------></li>
+                                    </ul>
+                                </td>
+
+                                <td class="form_label" style="vertical-align: middle">
+                                    <input type="text" class="width_30 import_input"/>
+                                </td>
+                                <td class="form_field">
+                                    <ul class="air_line">
+                                        <li><input type="text" class="width_30 import_input"/></li>
+                                        <li class="line">-------></li>
+                                    </ul>
+                                </td>
+
+                                <td class="form_label" style="vertical-align: middle">
+                                    <input type="text" class="width_30 import_input"/>
+                                </td>
+                                <td class="form_field">
+                                    <ul class="air_line">
+                                        <li><input type="text" class="width_30 import_input"/></li>
+                                        <li class="line">-------></li>
+                                    </ul>
+                                </td>
+
+                                <td class="form_label" style="vertical-align: middle">
+                                    <input type="text" class="width_30 import_input"/>
+                                    <label>目的站*</label>
+                                    <input type="text" class="width_30 readonly" disabled/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="9">
+                                    <label>总件数*</label>
+                                    <input type="text" class="width_30 import_input"/>
+
+                                    <label>总重量*</label>
+                                    <input type="text" class="width_50" value="10"/>
+                                    <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                                        <option>KG</option>
+                                    </select>
+
+                                    <label>计量重量*</label>
+                                    <input type="text" class="width_50" value="10"/>
+                                    <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                                        <option>KG</option>
+                                    </select>
+
+                                    <input type="checkbox"/><label>海关监管</label>
+                                    <input type="checkbox"/><label>COMAT</label>
+
+                                    <label>冷藏</label>
+                                    <select>
+                                        <option></option>
+                                    </select>
+
+                                    <label>收货代理人</label>
+                                    <input type="text" class="width_30 import_input"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="9">
+                                    <label>收货人*</label>
+                                    <input type="text" class="width_60"/>
+
+                                    <label>收货联系电话</label>
+                                    <input type="text" class="width_100"/>
+
+                                    <label>托运人*</label>
+                                    <input type="text" class="width_60 import_input"/>
+                                    <select class="width_100">
+                                        <option></option>
+                                    </select>
+
+                                    <label>发货代理人*</label>
+                                    <input type="text" class="width_60 import_input"/>
+
+                                    <input type="checkbox"/>
+                                    <label>到付</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="9">
+                                    <label>到付费用</label>
+                                    <input type="text" class="width_60 readonly" disabled/>
+
+                                    <label>币种</label>
+                                    <input type="text" class="width_50"/>
+
+                                    <label>汇率</label>
+                                    <input type="text" class="width_60"/>
+
+                                    <label>品 名*</label>
+                                    <input type="text" class="width_60 import_input"/>
+                                    <input type="text" class="width_90" style="margin-left: -4px;"/>
+
+                                    <input type="checkbox" disabled/>
+                                    <label class="readonly">转关</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="7">
+                                    <label>产品代码</label>
+                                    <input type="text" class="width_60 import_input"/>
+
+                                    <label>承运人产品ID</label>
+                                    <input type="text" class="width_30 import_input"/>
+
+                                    <label>特货代码</label>
+                                    <input type="text" class="width_50"/>
+
+                                    <label>转关号</label>
+                                    <input type="text" class="width_90 readonly" disabled/>
+                                </td>
+                                <td colspan="2">
+                                    <img src="images/btn_save.jpg">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <fieldset style="margin: 0;padding: 0;text-align: center;">
+                    <legend>操作区</legend>
+
+                    <div>
+                        <a href="#"><img src="images/btn_ps.jpg"></a>
+                        <a href="#"><img src="images/btn_lx.jpg"></a>
+                        <a href="#"><img src="images/btn_qx.jpg"></a>
+                        <a href="#"><img src="images/btn_wjjj.jpg"></a>
+                        <a href="#"><img src="images/btn_qxjj.jpg"></a>
+                        <a href="#"><img src="images/btn_wjjs.jpg"></a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
         <div class="tab" title="货物中转"></div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $('#main_right').tabs(0);
+    $('#main_right').tabs(1);
     $('#query_tabs').tabs();
 </script>
 </body>

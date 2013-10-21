@@ -46,3 +46,23 @@
     color: #aaaaaa;
     background-color: #efefef;
 }
+
+.air_line {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    margin-bottom: -15px;
+}
+.air_line li {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    text-align: left;
+    float: none;
+}
+.air_line .line {
+    margin-top: -10px;
+    height: 6px;
+}
