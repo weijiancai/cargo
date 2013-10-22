@@ -28,5 +28,14 @@
             var select = "> .tab[title='" + title + "']";
             tabs.find(select).show();
         });
+    };
+
+    /**
+     * 数据表格
+     * @param showFix 显示固定
+     * @param showSort 显示排序
+     */
+    $.fn.dgtable = function() {
+
     }
 })(jQuery);

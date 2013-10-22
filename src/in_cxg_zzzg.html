@@ -565,12 +565,73 @@
                 </fieldset>
             </form>
         </div>
-        <div class="tab" title="货物中转"></div>
+
+        <!-- 货物中转 -->
+        <div class="tab" title="货物中转">
+            <fieldset>
+                <legend>待选货物</legend>
+
+                <div class="dg_table" style="width: 80%">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 20px;background: none;border: none;"></th>
+                                <th>选择<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                <th>ULD信息<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="images/tr_head.jpg"/></td>
+                                <td style="text-align: center;vertical-align: middle;"><input type="checkbox"/></td>
+                                <td>BLK</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3" class="pad_left_15">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 20px;background: none;border: none;"></th>
+                                            <th>交接单号<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>交接类型<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>转出营业点<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>转入营业点<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>承运人<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>航班号<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>航班日期<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>制单人<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                            <th>制单日期<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><img src="images/tr_head.jpg"/></td>
+                                            <td>20120614DOM200001</td>
+                                            <td>库区内中转</td>
+                                            <td>国内进港营业部</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>2DOM</td>
+                                            <td>2012年06月14日</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="width: 20%"></div>
+            </fieldset>
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $('#main_right').tabs(1);
+    $('#main_right').tabs(2);
     $('#query_tabs').tabs();
 </script>
 </body>
