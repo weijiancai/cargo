@@ -55,6 +55,16 @@ function getInputNode(field, colCount) {
         return getFormInputTd(field, 'ydh');
     } else if(DS_DATE_RANGE == field.displayStyle) {
         return getFormInputTd(field, 'date_range');
+    } else if(DS_SFZ_MDT == field.displayStyle) {
+        return getFormInputTd(field, 'sfz_mdz');
+    } else if(DS_THDM == field.displayStyle) {
+        return getFormInputTd(field, 'thdm');
+    } else if(DS_LABEL == field.displayStyle) {
+        return '';
+    } else if(DS_RADIO == field.displayStyle) {
+        return getFormInputTd(field, 'radio');
+    } else if(DS_CHECK_BOX == field.displayStyle) {
+        return getFormInputTd(field, 'check_box');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -85,6 +95,10 @@ function getGap(width) {
     return '<span style="width:' + width + 'px;display:block;"></span>';
 }
 
+function getGapInLine(width) {
+    return '<span style="width:' + width + 'px;display:inline-block;"></span>';
+}
+
 function getGapTd(width) {
     return '<td>' + getGap(width) + '</td>';
 }
@@ -111,7 +125,7 @@ function getFormInputTd(field, type, colspan, rowspan) {
 
 
 function getLabel(field) {
-    if(DS_BUTTON == field.displayStyle) return '';
+    if(DS_BUTTON == field.displayStyle || DS_FIELD == field.displayStyle || DS_RADIO == field.displayStyle || DS_CHECK_BOX == field.displayStyle) return '';
     return '<label for="' + field.name+ '">' + field.displayName+ '</label>';
 }
 
@@ -170,6 +184,14 @@ function getFormInput(field, type) {
         return getYdh(field);
     } else if('date_range' == type) {
         return getDateRange(field);
+    } else if('sfz_mdz' == type) {
+        return getSfzMdz(field);
+    } else if('thdm' == type) {
+        return getThdm(field);
+    } else if('radio' == type) {
+        return '<input type="radio" style="margin-right: 5px;"/>' + field.displayName;
+    } else if('check_box' == type) {
+        return '<input type="checkbox" style="margin-right: 5px;"/>' + field.displayName;
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -220,3 +242,11 @@ function getDateRange(field) {
     '</div></span>';
 }
 
+function getSfzMdz(field) {
+    return '<input type="text" class="' + field.styleClass + '" style="width: ' + (field.width/2 - 5) + 'px"/> ' +
+        '<input type="text" class="' + field.styleClass + '" style="width: ' + (field.width/2 - 5) + 'px"/>';
+}
+
+function getThdm(field) {
+    return '<select style="width: ' + (field.width - 70)+ 'px"><option></option></select><input type="text" class="' + field.styleClass +'" style="margin-left:5px;width: 60px"/>'
+}
