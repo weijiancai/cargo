@@ -61,7 +61,7 @@ label {
     clear: both;
 }
 #main_left {
-    width: 44px;
+    width: 45px;
     height: 600px;
     display: inline-block;
     background-image: url("../images/sjlbq.jpg");
@@ -90,12 +90,8 @@ label {
     color: #aaaaaa;
     background-color: #efefef;
 }
-.width_20 {
-    width: 30px;
-}
-.width_30 {
-    width: 30px;
-}
+
+
 .width_50 {
     width: 50px;
 }
@@ -113,12 +109,6 @@ label {
 }
 .width_150 {
     width: 150px;
-}
-.width_250 {
-    width: 250px;
-}
-.width_300 {
-    width: 300px;
 }
 .width_400 {
     width: 400px;

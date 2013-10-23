@@ -20,14 +20,7 @@
     color: #aaaaaa;
     background-color: #efefef;
 }
-.pltdydh .first {
-	margin-left:-5px;
-    width: 40px;
-}
-.pltdydh .second {
-    width: 100px;
-    margin-left: -5px;
-}
+
 /* 航班号*/
 .hbh input {
     height: 17px;
@@ -40,14 +33,6 @@
     width: 175px;
     margin-left: -5px;
 }
-.pltdhbh .first {
-    width: 50px;
-}
-.pltdhbh .second {
-    width: 100px;
-    margin-left: -5px;
-}
-
 .hbh .readonly {
     color: #aaaaaa;
     background-color: #efefef;
@@ -60,29 +45,4 @@
 .qdz .readonly, .mdz .readonly {
     color: #aaaaaa;
     background-color: #efefef;
-}
-
-/*收费岗 结算客户*/
-.jskh .first {
-    width: 50px;
-    margin-left: -5px;
-}
-.jskh .second {
-    width: 80px;
-    margin-left: -5px;
-}
-.field{
-	margin:0 1px;
-}
-.lsh .first {
-    width: 120px;
-    margin-left: -5px;
-}
-.lsh .second {
-    width: 65px;
-    margin-left: -5px;
-}
-/*收费岗 运单号*/
-.lsh{
-	padding-top:8px;
 }

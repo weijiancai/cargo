@@ -3,8 +3,8 @@
 .tabs {
     clear: both;
     padding: 3px 10px;
-    border-right: 2px solid green;
-    border-bottom: 2px solid green;
+    /*border-right: 2px solid green;
+    border-bottom: 2px solid green;*/
     height: 100%;
 }
 
@@ -28,7 +28,7 @@
 }
 
 /* form */
-form input, form select {
+form input, form select, form textarea {
     border: 1px solid green;
     background-color: #f2fbf0;
 }
@@ -41,8 +41,11 @@ form input[type='text'] {
     padding-right: 5px;
 }
 
-.form_field {
+table .form_field {
     padding-right: 15px;
+}
+.form_field {
+    margin-right: 15px;
 }
 form .import_input {
     background-color: #ffffe1;
@@ -70,11 +73,13 @@ form tr {
 
 /* table */
 .dg_table {
-    margin-left: 20px;
+    padding-left: 20px;
+    border-top: 1px solid green;
+    border-left: 1px solid green;
 }
 
 .dg_table table {
-    width: 100%;
+    /*width: 100%;*/
     border-bottom: 1px solid #e3e9e5;
 }
 
@@ -89,10 +94,13 @@ form tr {
     float: right;
     /*vertical-align: middle;*/
     padding-top: 4px;
+    padding-right: 2px;
 }
 
 .dg_table td {
-    background-color: #fbf9d0;
     border-right: 1px solid #cccccc;
     padding-left: 3px;
+}
+.dg_table .selectRow {
+    background-color: #fbf9d0;
 }
