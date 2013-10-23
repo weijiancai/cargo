@@ -10,6 +10,9 @@
     <link href="style/business.css" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
@@ -568,64 +571,31 @@
 
         <!-- 货物中转 -->
         <div class="tab" title="货物中转">
-            <fieldset>
-                <legend>待选货物</legend>
+            <form>
+                <fieldset style="height: 270px">
+                    <legend>待选货物</legend>
 
-                <div class="dg_table" style="width: 80%">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="width: 20px;background: none;border: none;"></th>
-                                <th>选择<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                <th>ULD信息<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="images/tr_head.jpg"/></td>
-                                <td style="text-align: center;vertical-align: middle;"><input type="checkbox"/></td>
-                                <td>BLK</td>
-                            </tr>
+                    <div id="table_dxhw" class="left" style="width: 80%;height: 250px;border-right: 1px solid green;border-bottom: 1px solid green;"></div>
+                    <div class="right margin_right_20">
+                        <select class="width_120" style="font-size: 14px; color: blue;font-weight: bold;margin: 5px 0 80px 0">
+                            <option>文件操作</option>
+                        </select><br/>
+                        <button type="button" class="width_120 margin_bottom_10" accesskey="T">货物交接（T）</button><br/>
+                        <button type="button" class="width_120 margin_bottom_10" accesskey="C">取消交接（C）</button><br/>
+                        <button type="button" class="width_120 margin_bottom_10">全选</button><br/>
+                    </div>
+                    <div id="table_dxhw_sub" style="display: none;"></div>
+                </fieldset>
 
-                            <tr>
-                                <td colspan="3" class="pad_left_15">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th style="width: 20px;background: none;border: none;"></th>
-                                            <th>交接单号<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>交接类型<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>转出营业点<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>转入营业点<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>承运人<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>航班号<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>航班日期<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>制单人<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                            <th>制单日期<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td><img src="images/tr_head.jpg"/></td>
-                                            <td>20120614DOM200001</td>
-                                            <td>库区内中转</td>
-                                            <td>国内进港营业部</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>2DOM</td>
-                                            <td>2012年06月14日</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div style="width: 20%"></div>
-            </fieldset>
+                <fieldset style="height: 200px;">
+                    <legend>交接货物</legend>
+                    <!--<textarea style="height: 200px;width: 98%;margin: 5px;"></textarea>-->
+                    <div id="table_jjhw"></div>
+                    <div id="table_jjhw_sub" style="display: none;"></div>
+                </fieldset>
+
+                <div id="form_jjhw" style="margin: 15px 0 0 300px;"></div>
+            </form>
         </div>
     </div>
 </div>
@@ -633,6 +603,75 @@
 <script type="text/javascript">
     $('#main_right').tabs(2);
     $('#query_tabs').tabs();
+    // 待选货物表格
+    $('#table_dxhw').dgtable({
+        sortable: true,
+        selectable: true,
+        expandRow: 0,
+        selectRow: 0,
+        headers: [
+            {name: 'uld', displayName: 'ULD信息', width: 100}
+        ],
+        data: [
+            {uld: 'BLK'}
+        ]
+    }, {
+        id: 'table_dxhw_sub',
+        sortable: true,
+        selectable: true,
+        headers: [
+            {name: 'ydh', displayName: '运单号'},
+            {name: 'js', displayName: '件数'},
+            {name: 'zl', displayName: '重量'},
+            {name: 'bxbm', displayName: '板箱编码'},
+            {name: 'bxgshkgs', displayName: '板箱归属航空公司'},
+            {name: 'bxlx', displayName: '板箱类型'}
+        ],
+        data: [
+            {ydh: '000-12051534032', js: 2, zl: 123, bxbm: '', bxgshkgs: '', bxlx: ''}
+        ]
+    });
+    // 交接货物表格
+    $('#table_jjhw').dgtable({
+        sortable: true,
+        selectable: true,
+        expandRow: 0,
+        selectRow: 0,
+        height: 180,
+        headers: [
+            {name: 'uld', displayName: 'ULD信息', width: 100}
+        ],
+        data: [
+            {uld: 'BLK'}
+        ]
+    }, {
+        id: 'table_jjhw_sub',
+        sortable: true,
+        selectable: true,
+        headers: [
+            {name: 'ydh', displayName: '运单号'},
+            {name: 'hwjjzt', displayName: '货物交接状态'},
+            {name: 'js', displayName: '件数'},
+            {name: 'zl', displayName: '重量'},
+            {name: 'bxlx', displayName: '板箱类型'},
+            {name: 'bxbm', displayName: '板箱编码'},
+            {name: 'bxgshkgs', displayName: '板箱归属航空公司'}
+        ],
+        data: [
+            {ydh: '784-622362366', hwjjzt: '交接中', js: 1, zl: 10, bxlx: '', bxbm: '', bxgshkgs: ''}
+        ]
+    });
+    // 交接货物表单
+    $('#form_jjhw').dataForm({
+        colCount: 5,
+        fields: [
+            {name: 'ck', displayName: '仓库', width: 90, styleClass: 'import_input'},
+            {name: 'kw', displayName: '库位', width: 90, styleClass: 'import_input'},
+            {name: '', displayName: '全选', width: 60, displayStyle: DS_BUTTON},
+            {name: '', displayName: '货物接收（R）', width: 100, displayStyle: DS_BUTTON},
+            {name: '', displayName: '打印（Q）', width: 80, displayStyle: DS_BUTTON}
+        ]
+    });
 </script>
 </body>
 </html>
