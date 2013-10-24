@@ -19,31 +19,59 @@ var MENU_IN = [
             {
                 name: '文件操作',
                 items: [
-                    {id: '', name: '航班文件', icon: '', isSingle: true, href: ''}
+                    {id: '', name: '航班文件', icon: 'images/hbwj.jpg', isSingle: true, href: ''},
+                    [
+                        {id: '', name: '中转转港', icon: 'images/zzzg.jpg', isSingle: false, href: ''},
+                        {id: '', name: '冷藏登记', icon: 'images/lcdj.jpg', isSingle: false, href: ''},
+                        {id: '', name: '联程货物统计', icon: 'images/lchwtj.jpg', isSingle: false, href: ''}
+                    ],
+                    [
+                        {id: '', name: '进港运单高级管理', icon: 'images/jgydgjgl.jpg', isSingle: false, href: ''},
+                        {id: '', name: '中转换单', icon: 'images/zzhd.jpg', isSingle: false, href: ''},
+                        {id: '', name: '海关账册', icon: 'images/hgzc.jpg', isSingle: false, href: ''}
+                    ]
                 ]
             },
             {
                 name: '货物操作',
+                width: 80,
                 items: [
-                    {id: '', name: '航班文件', icon: '', isSingle: true, href: ''}
+                    {id: '', name: '清库查询', icon: 'images/qkcx.jpg', isSingle: true, href: ''}
                 ]
             },
             {
                 name: '提单办单',
                 items: [
-                    {id: '', name: '航班文件', icon: '', isSingle: true, href: ''}
+                    {id: '', name: '提货通知', icon: 'images/thtz.jpg', isSingle: true, href: ''},
+                    [
+                        {id: '', name: '提货办单', icon: 'images/thbd.jpg', isSingle: false, href: ''},
+                        {id: '', name: '介绍信', icon: 'images/jsx.jpg', isSingle: false, href: ''},
+                        {id: '', name: '不正常交付记录', icon: 'images/bzcjfjl.jpg', isSingle: false, href: ''}
+                    ]
                 ]
             },
             {
                 name: '提货出库',
+                width: 80,
                 items: [
-                    {id: '', name: '航班文件', icon: '', isSingle: true, href: ''}
+                    {id: '', name: '提货出库', icon: 'images/thck.jpg', isSingle: true, href: ''}
                 ]
             },
             {
                 name: '相关操作',
                 items: [
-                    {id: '', name: '航班文件', icon: '', isSingle: true, href: ''}
+                    {id: '', name: '运单状态', icon: 'images/ydzt.jpg', isSingle: true, href: 'in_cxg_ydzt.html'},
+                    {id: '', name: '运单日志', icon: 'images/ydrz.jpg', isSingle: true, href: ''},
+                    [
+                        {id: '', name: '不正常', icon: 'images/bzc.jpg', isSingle: false, href: ''},
+                        {id: '', name: '仓库管理', icon: 'images/ckgl.jpg', isSingle: false, href: ''},
+                        {id: '', name: '运单归档查询', icon: 'images/ydgdcx.jpg', isSingle: false, href: ''}
+                    ],
+                    [
+                        {id: '', name: '航班查询', icon: 'images/hbcx.jpg', isSingle: false, href: ''},
+                        {id: '', name: '卸机比对', icon: 'images/xjbd.jpg', isSingle: false, href: ''},
+                        {id: '', name: '航班状态', icon: 'images/hbzt.jpg', isSingle: false, href: ''}
+                    ]
                 ]
             }
         ]

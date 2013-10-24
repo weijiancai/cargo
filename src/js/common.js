@@ -120,6 +120,8 @@
         option = $.extend(defaults, option);
         // 增加数据菜单
         $(this).prepend(new DataMenu(option.menus).toString());
+        // 设置第一个子菜单padding-bottom
+//        $('#sub_nav_gnjg').find('> div > ol:eq(0) ul').css('padding-bottom', '2px');
         // 显示子菜单
         $('#' + option.showItemId).show();
     }

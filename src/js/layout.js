@@ -289,34 +289,38 @@ function getMenus(menus) {
 
     // 生成子菜单
     for(i = 0; i < menus.length; i++) {
-        str += '<div id="' + menus[i].id + '" class="div_sub_nav">';
+        str += '<div id="' + menus[i].id + '" class="div_sub_nav"><div>';
         var groups = menus[i].groups;
         if(groups && groups.length > 0) {
             for(var j = 0; j < groups.length; j++) {
-                str += '<div><ol class="left"><li>';
+                var styleStr = '';
+                if(groups[j].width) {
+                    styleStr += 'width:' + groups[j].width + 'px;';
+                }
+
                 var items = groups[j].items;
+                str += '<ol class="left" style="' + styleStr + '"><li>';
                 for(var k = 0; k < items.length; k++) {
-                    if(items[k].isSingle) {
-                        str += '<ul class="left single"><li><img src="' + items[k].icon + '"/><br/><span>' + items[k].name + '</span></li></ul>';
-                    } else {
-                        if(k % 3 == 0) {
-                            if(k == 0) {
-                                str += '<ul class="left">';
-                            } else {
-                                str += '</ul>';
-                                if(k < items.length) {
-                                    str += '<ul class="left">';
-                                }
-                            }
+                    if($.isArray(items[k])) {
+                        str += '<ul class="left">';
+                        for(var m = 0; m < items[k].length; m++) {
+                            str += '<li><a href="' + items[k].href + '"><img src="' + items[k][m].icon+ '"/><span>' + items[k][m].name + '</span></a></li>';
                         }
-                        str += '<li><img src="images/zzzg.jpg"/><span>中转转港</span></li>';
+                        str += '</ul>';
+                    } else {
+                        if(items.length == 1) {
+                            str += '<ul class="left single" style="padding-left: 7px;"><li><a href="' + items[k].href + '"><img src="' + items[k].icon + '"/><br/><span>' + items[k].name + '</span></a></li></ul>';
+                        } else {
+                            str += '<ul class="left single"><li><a href="' + items[k].href + '"><img src="' + items[k].icon + '"/><br/><span>' + items[k].name + '</span></a></li></ul>';
+                        }
+
                     }
                 }
-                str += '</li><li><h5>' + groups[j].name + '</h5></li></ol></div>';
+                str += '</li><li><h5>' + groups[j].name + '</h5></li></ol>';
             }
         }
 
-        str += '</div>';
+        str += '</div></div>';
     }
 
     return str + '</div>';
