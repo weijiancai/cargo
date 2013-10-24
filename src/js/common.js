@@ -106,4 +106,22 @@
         return this;
     }
 
+    /**
+     * 数据菜单
+     *
+     * @param option
+     */
+    $.fn.dataMenu = function(option) {
+        var defaults = {
+            menus: null,        // 菜单数组
+            showItemId: null   // 显示子菜单ID
+        };
+
+        option = $.extend(defaults, option);
+        // 增加数据菜单
+        $(this).prepend(new DataMenu(option.menus).toString());
+        // 显示子菜单
+        $('#' + option.showItemId).show();
+    }
+
 })(jQuery);

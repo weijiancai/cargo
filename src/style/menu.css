@@ -36,6 +36,7 @@
     background: #e8f3e6;
     /*margin: 0 2px 2px;*/
     height: 100px;
+    display: none;
 }
 
 #sub_nav_bar > div {

@@ -311,3 +311,60 @@ function FormField(field, form) {
     this.styleClass = field['styleClass'];
     this.form = form;
 }
+
+/**
+ * 数据菜单
+ *
+ * @param option
+ * @constructor
+ */
+function DataMenu(option) {
+    this.menus = [];
+    for(var i = 0; i < option.length; i++) {
+        this.menus[i] = new Menu(option[i]);
+    }
+}
+
+DataMenu.prototype = {
+    toString: function() {
+        // 生成主菜单
+        return getMenus(this.menus);
+    }
+};
+
+/**
+ * 菜单
+ *
+ * @param option
+ * @constructor
+ */
+function Menu(option) {
+    this.id = option['id']; // 子菜单ID
+    this.name = option['name'];
+    this.groups = option['groups'];
+}
+/**
+ * 菜单项组
+ *
+ * @param option
+ * @constructor
+ */
+function MenuItemGroup(option) {
+    this.name = option['name'];
+    this.items = option['items'];
+    this.height = option['height'];
+    this.width = option['width'];
+}
+/**
+ * 菜单项
+ *
+ * @param option
+ * @constructor
+ */
+function MenuItem(option) {
+    this.id = option['id'];
+    this.name = option['name'];
+    this.icon = option['icon'];
+    this.href = option['href'];
+    this.isSingle = option['isSingle'];
+}

@@ -16,6 +16,7 @@ var DS_LABEL = 9; // 只显示Label
 var DS_FIELD = 10; // 只显示Field
 var DS_RADIO = 11; // 单选按钮
 var DS_CHECK_BOX = 12; // 复选框
+var DS_YD_DATE_RANGE = 13; // 运单时间段查询
 
 // 数据类型
 var DT_STRING = 0;
