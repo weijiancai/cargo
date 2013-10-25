@@ -143,49 +143,62 @@ function DataForm(option) {
 DataForm.prototype = {
     init: function() {
         var formGrid = this.gridPane;
-
-        var idxRow = 0;
-        var idxCol = 0;
         var fieldList = this.fieldList;
-        var field;
-        this.hiddenList = []; // 初始化
-        for(var i = 0; i < fieldList.length; i++) {
-            field = fieldList[i];
-            if(!field.isDisplay) { // 不显示
-                this.hiddenList.push(field);
-                continue;
+
+        if($.isArray(fieldList[0].name)) { // flow 布局
+            var flowFields = this.getFlowFields();
+            for(var i = 0; i < flowFields.length; i++) {
+                var node = '<td style="width: 100%;">';
+                for(var j = 0; j < flowFields[i].length; j++) {
+                    var inputNode = getInputNode(flowFields[i][j], 0).substr(4);
+                    node += getLabel(flowFields[i][j]) + getGapInLine(this.labelGap) + inputNode.substring(0, inputNode.length - 5) + getGapInLine(this.fieldGap);
+                }
+                node += '</td>';
+                formGrid.add(node, i, 0);
             }
+        } else { // grid布局
+            var idxRow = 0;
+            var idxCol = 0;
+            var field;
+            this.hiddenList = []; // 初始化
+            for(i = 0; i < fieldList.length; i++) {
+                field = fieldList[i];
+                if(!field.isDisplay) { // 不显示
+                    this.hiddenList.push(field);
+                    continue;
+                }
 
-            if(field.isSingleLine) {
-                idxRow++;
-                formGrid.add(getLabelTd(field), idxRow, 0);
-                formGrid.add(getGapTd(this.labelGap), idxRow, 1);
-                formGrid.add(getInputNode(field, this.colCount), idxRow, 2);
-                idxCol = 0;
-                idxRow++;
-                this.height += field.height;
+                if(field.isSingleLine) {
+                    idxRow++;
+                    formGrid.add(getLabelTd(field), idxRow, 0);
+                    formGrid.add(getGapTd(this.labelGap), idxRow, 1);
+                    formGrid.add(getInputNode(field, this.colCount), idxRow, 2);
+                    idxCol = 0;
+                    idxRow++;
+                    this.height += field.height;
 
-                continue;
-            }
+                    continue;
+                }
 
-            formGrid.add(getLabelTd(field), idxRow, idxCol++);
-            formGrid.add(getGapTd(this.labelGap), idxRow, idxCol++);
-            formGrid.add(getInputNode(field, this.colCount), idxRow, idxCol++);
+                formGrid.add(getLabelTd(field), idxRow, idxCol++);
+                formGrid.add(getGapTd(this.labelGap), idxRow, idxCol++);
+                formGrid.add(getInputNode(field, this.colCount), idxRow, idxCol++);
 
-            if(this.colCount == 1) {
-                idxCol = 0;
-                idxRow++;
-            } else {
-                if(idxCol == this.colCount * 4 - 1) {
+                if(this.colCount == 1) {
                     idxCol = 0;
                     idxRow++;
                 } else {
-                    formGrid.add(getGapTd(this.fieldGap), idxRow, idxCol++);
+                    if(idxCol == this.colCount * 4 - 1) {
+                        idxCol = 0;
+                        idxRow++;
+                    } else {
+                        formGrid.add(getGapTd(this.fieldGap), idxRow, idxCol++);
+                    }
                 }
             }
-        }
 
-        this.height += (idxRow + 1) * 25;
+            this.height += (idxRow + 1) * 25;
+        }
     },
     toString: function() {
         // 初始化
@@ -217,6 +230,56 @@ DataForm.prototype = {
 
         return formStr + '</form>';
     },
+    getFlowFields: function() {
+        var flowFields = [];
+        var fieldList = this.fieldList;
+        for(var i = 0; i < fieldList.length; i++) {
+            var ids = fieldList[i].id || [];
+            var names = fieldList[i].name || [];
+            var colNames = fieldList[i].colName || [];
+            var displayNames = fieldList[i].displayName || [];
+            var isSingleLines = fieldList[i].isSingleLine || [];
+            var isDisplays = fieldList[i].isDisplay || [];
+            var widths = fieldList[i].width || [];
+            var heights = fieldList[i].height || [];
+            var displayStyles = fieldList[i].displayStyle || [];
+            var isValids = fieldList[i].isValid || [];
+            var sortNums = fieldList[i].sortNum || [];
+            var dataTypes = fieldList[i].dataType || [];
+            var dictLists = fieldList[i].dictList || [];
+            var queryModes = fieldList[i].queryMode || [];
+            var readonlys = fieldList[i].readonly || [];
+            var requireds = fieldList[i].required || [];
+            var styleClasses = fieldList[i].styleClass || [];
+
+            var fields = [];
+            for(var j = 0; j < names.length; j++) {
+                fields[j] = {
+                    id: ids[j],
+                    name: names[j],
+                    colName: colNames[j],
+                    displayName: displayNames[j],
+                    isSingleLine: isSingleLines[j],
+                    isDisplay: isDisplays[j],
+                    width: widths[j],
+                    height: heights[j],
+                    displayStyle: displayStyles[j],
+                    isValid: isValids[j],
+                    sortNum: sortNums[j],
+                    dataType: dataTypes[j],
+                    dictList: dictLists[j],
+                    queryMode: queryModes[j],
+                    readonly: readonlys[j],
+                    required: requireds[j],
+                    styleClass: styleClasses[j]
+                };
+            }
+
+            flowFields[i] = fields;
+        }
+
+        return flowFields;
+    },
     getValue: function(name, value) {
         if(this.fieldMap[name]) {
             if(DT_DATE == this.fieldMap[name]['dataType']) {
@@ -238,7 +301,6 @@ function FormField(field, form) {
     this.width = field['width'];
     this.height = field['height'];
     this.displayStyle = field['displayStyle'];
-    this.inputDate = field['inputDate'];
     this.isValid = field['valid'];
     this.sortNum = field['sortNum'];
     this.dataType = field['dataType'];
@@ -248,4 +310,61 @@ function FormField(field, form) {
     this.required = field['required'];
     this.styleClass = field['styleClass'];
     this.form = form;
+}
+
+/**
+ * 数据菜单
+ *
+ * @param option
+ * @constructor
+ */
+function DataMenu(option) {
+    this.menus = [];
+    for(var i = 0; i < option.length; i++) {
+        this.menus[i] = new Menu(option[i]);
+    }
+}
+
+DataMenu.prototype = {
+    toString: function() {
+        // 生成主菜单
+        return getMenus(this.menus);
+    }
+};
+
+/**
+ * 菜单
+ *
+ * @param option
+ * @constructor
+ */
+function Menu(option) {
+    this.id = option['id']; // 子菜单ID
+    this.name = option['name'];
+    this.groups = option['groups'];
+}
+/**
+ * 菜单项组
+ *
+ * @param option
+ * @constructor
+ */
+function MenuItemGroup(option) {
+    this.name = option['name'];
+    this.items = option['items'];
+    this.height = option['height'];
+    this.width = option['width'];
+}
+/**
+ * 菜单项
+ *
+ * @param option
+ * @constructor
+ */
+function MenuItem(option) {
+    this.id = option['id'];
+    this.name = option['name'];
+    this.icon = option['icon'];
+    this.href = option['href'];
+    this.isSingle = option['isSingle'];
 }

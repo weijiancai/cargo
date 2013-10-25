@@ -36,6 +36,7 @@
     background: #e8f3e6;
     /*margin: 0 2px 2px;*/
     height: 100px;
+    display: none;
 }
 
 #sub_nav_bar > div {
@@ -77,4 +78,9 @@
 .single li {
     padding: 12px 0 0 0;
     vertical-align: middle;
+}
+
+#sub_nav_bar a {
+    color: #000000;
+    text-decoration: none;
 }

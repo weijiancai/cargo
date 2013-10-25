@@ -55,6 +55,18 @@ function getInputNode(field, colCount) {
         return getFormInputTd(field, 'ydh');
     } else if(DS_DATE_RANGE == field.displayStyle) {
         return getFormInputTd(field, 'date_range');
+    } else if(DS_SFZ_MDT == field.displayStyle) {
+        return getFormInputTd(field, 'sfz_mdz');
+    } else if(DS_THDM == field.displayStyle) {
+        return getFormInputTd(field, 'thdm');
+    } else if(DS_LABEL == field.displayStyle) {
+        return '';
+    } else if(DS_RADIO == field.displayStyle) {
+        return getFormInputTd(field, 'radio');
+    } else if(DS_CHECK_BOX == field.displayStyle) {
+        return getFormInputTd(field, 'check_box');
+    } else if(DS_YD_DATE_RANGE == field.displayStyle) {
+        return getFormInputTd(field, 'yd_date_range');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -85,6 +97,10 @@ function getGap(width) {
     return '<span style="width:' + width + 'px;display:block;"></span>';
 }
 
+function getGapInLine(width) {
+    return '<span style="width:' + width + 'px;display:inline-block;"></span>';
+}
+
 function getGapTd(width) {
     return '<td>' + getGap(width) + '</td>';
 }
@@ -111,7 +127,7 @@ function getFormInputTd(field, type, colspan, rowspan) {
 
 
 function getLabel(field) {
-    if(DS_BUTTON == field.displayStyle) return '';
+    if(DS_BUTTON == field.displayStyle || DS_FIELD == field.displayStyle || DS_RADIO == field.displayStyle || DS_CHECK_BOX == field.displayStyle || DS_YD_DATE_RANGE == field.displayStyle) return '';
     return '<label for="' + field.name+ '">' + field.displayName+ '</label>';
 }
 
@@ -170,6 +186,16 @@ function getFormInput(field, type) {
         return getYdh(field);
     } else if('date_range' == type) {
         return getDateRange(field);
+    } else if('sfz_mdz' == type) {
+        return getSfzMdz(field);
+    } else if('thdm' == type) {
+        return getThdm(field);
+    } else if('radio' == type) {
+        return '<input type="radio" style="margin-right: 5px;"/>' + field.displayName;
+    } else if('check_box' == type) {
+        return '<input type="checkbox" style="margin-right: 5px;"/>' + field.displayName;
+    } else if('yd_date_range' == type) {
+        return getYdDateRange(field);
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -220,3 +246,82 @@ function getDateRange(field) {
     '</div></span>';
 }
 
+function getSfzMdz(field) {
+    return '<input type="text" class="' + field.styleClass + '" style="width: ' + (field.width/2 - 5) + 'px"/> ' +
+        '<input type="text" class="' + field.styleClass + '" style="width: ' + (field.width/2 - 5) + 'px"/>';
+}
+
+function getThdm(field) {
+    return '<select style="width: ' + (field.width - 70)+ 'px"><option></option></select><input type="text" class="' + field.styleClass +'" style="margin-left:5px;width: 60px"/>'
+}
+
+function getYdDateRange(field) {
+    return '<fieldset style="display: inline-block;width: ' + field.width + 'px">' +
+        '<legend>' + field.displayName + '</legend>' +
+    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">录单<span style="width:15px;display:inline-block;"></span>' +
+    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">收运<span style="width:15px;display:inline-block;"></span>' +
+    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">退仓<span style="width:15px;display:inline-block;"></span>' +
+    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">办单<span style="width:15px;display:inline-block;"></span>' +
+    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">提货<span style="width:15px;display:inline-block;"></span>' +
+    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">文件到达<span style="width:15px;display:inline-block;"></span>' +
+    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">航班承诺<span style="width:15px;display:inline-block;"></span><br/>' +
+    '<label style="margin-left: 30px;">从</label>' +
+    '<div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">' +
+    '<span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>' +
+    '<img src="images/select.jpg">' +
+    '</div>' +
+    '&nbsp;到&nbsp;' +
+    '<div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">' +
+    '<span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>' +
+    '<img src="images/select.jpg">' +
+    '</div>' +
+    '</fieldset>';
+}
+
+
+function getMenus(menus) {
+    // 生成主菜单
+    var str = '<div id="main_nav_bar"><ul>';
+    for(var i = 0; i < menus.length; i++) {
+        str += '<li><a href="#" name="' + menus[i].id + '">' + menus[i].name + '</a></li>';
+    }
+    str += '</ul></div><div id="sub_nav_bar">';
+
+    // 生成子菜单
+    for(i = 0; i < menus.length; i++) {
+        str += '<div id="' + menus[i].id + '" class="div_sub_nav"><div>';
+        var groups = menus[i].groups;
+        if(groups && groups.length > 0) {
+            for(var j = 0; j < groups.length; j++) {
+                var styleStr = '';
+                if(groups[j].width) {
+                    styleStr += 'width:' + groups[j].width + 'px;';
+                }
+
+                var items = groups[j].items;
+                str += '<ol class="left" style="' + styleStr + '"><li>';
+                for(var k = 0; k < items.length; k++) {
+                    if($.isArray(items[k])) {
+                        str += '<ul class="left">';
+                        for(var m = 0; m < items[k].length; m++) {
+                            str += '<li><a href="' + items[k].href + '"><img src="' + items[k][m].icon+ '"/><span>' + items[k][m].name + '</span></a></li>';
+                        }
+                        str += '</ul>';
+                    } else {
+                        if(items.length == 1) {
+                            str += '<ul class="left single" style="padding-left: 7px;"><li><a href="' + items[k].href + '"><img src="' + items[k].icon + '"/><br/><span>' + items[k].name + '</span></a></li></ul>';
+                        } else {
+                            str += '<ul class="left single"><li><a href="' + items[k].href + '"><img src="' + items[k].icon + '"/><br/><span>' + items[k].name + '</span></a></li></ul>';
+                        }
+
+                    }
+                }
+                str += '</li><li><h5>' + groups[j].name + '</h5></li></ol>';
+            }
+        }
+
+        str += '</div></div>';
+    }
+
+    return str + '</div>';
+}

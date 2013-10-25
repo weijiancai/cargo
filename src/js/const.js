@@ -10,6 +10,13 @@ var DS_COMBO_BOX = 3;
 var DS_BUTTON = 4; // 按钮
 var DS_YDH = 5; // 运单号
 var DS_DATE_RANGE = 6; // 日期范围
+var DS_SFZ_MDT = 7; // 始发站/目的站
+var DS_THDM = 8; // 特货代码
+var DS_LABEL = 9; // 只显示Label
+var DS_FIELD = 10; // 只显示Field
+var DS_RADIO = 11; // 单选按钮
+var DS_CHECK_BOX = 12; // 复选框
+var DS_YD_DATE_RANGE = 13; // 运单时间段查询
 
 // 数据类型
 var DT_STRING = 0;
@@ -63,4 +70,16 @@ var DICT_BOOLEAN = [
 // 归档方式
 var DICT_GDFS = [
     {name: '全部', value: '1'}, {name: '自动归档', value: '2'}, {name: '手工归档', value: '3'}
+];
+// 国内/国际
+var DICT_GN_GJ = [
+    {name: '全部', value: '1'}
+];
+// 进港/出港/中转
+var DICT_JG_CG_ZZ = [
+    {name: '全部', value: '1'}
+];
+// 海关监管
+var DICT_HGJG = [
+    {name: '全部', value: '1'}
 ];
