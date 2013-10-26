@@ -31,6 +31,7 @@ GridPane.prototype = {
 };
 
 function getInputNode(field, colCount) {
+    field.defaultValue = field.defaultValue ? field.defaultValue : '';
     if(DS_TEXT_AREA == field.displayStyle) {
         if(field.isSingleLine) {
             return getFormInputTd(field, 'textarea', colCount * 4 - 3);
@@ -60,13 +61,21 @@ function getInputNode(field, colCount) {
     } else if(DS_THDM == field.displayStyle) {
         return getFormInputTd(field, 'thdm');
     } else if(DS_LABEL == field.displayStyle) {
-        return '';
+        return '<td><span style="display: inline-block;width: ' + field.width + 'px;">' + field.defaultValue + '</span></td>';
     } else if(DS_RADIO == field.displayStyle) {
         return getFormInputTd(field, 'radio');
     } else if(DS_CHECK_BOX == field.displayStyle) {
         return getFormInputTd(field, 'check_box');
     } else if(DS_YD_DATE_RANGE == field.displayStyle) {
         return getFormInputTd(field, 'yd_date_range');
+    } else if(DS_HBH_QUERY == field.displayStyle) {
+        return getFormInputTd(field, 'hbh_query');
+    } else if(DS_IMG == field.displayStyle) {
+        return getFormInputTd(field, 'img');
+    } else if(DS_SELECT_OPERATOR == field.displayStyle) {
+        return getFormInputTd(field, 'select_operator');
+    } else if(DS_QSZ == field.displayStyle) {
+        return getFormInputTd(field, 'qsz');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -127,7 +136,8 @@ function getFormInputTd(field, type, colspan, rowspan) {
 
 
 function getLabel(field) {
-    if(DS_BUTTON == field.displayStyle || DS_FIELD == field.displayStyle || DS_RADIO == field.displayStyle || DS_CHECK_BOX == field.displayStyle || DS_YD_DATE_RANGE == field.displayStyle) return '';
+    if(DS_BUTTON == field.displayStyle || DS_FIELD == field.displayStyle || DS_RADIO == field.displayStyle || DS_CHECK_BOX == field.displayStyle
+        || DS_YD_DATE_RANGE == field.displayStyle || DS_IMG == field.displayStyle || DS_SELECT_OPERATOR == field.displayStyle) return '';
     return '<label for="' + field.name+ '">' + field.displayName+ '</label>';
 }
 
@@ -196,6 +206,14 @@ function getFormInput(field, type) {
         return '<input type="checkbox" style="margin-right: 5px;"/>' + field.displayName;
     } else if('yd_date_range' == type) {
         return getYdDateRange(field);
+    } else if('hbh_query' == type) {
+        return getHbhQuery(field);
+    } else if('img' == type) {
+        return '<img src="' + field.displayName+ '"/>';
+    } else if('select_operator' == type) {
+        return '<select id="' + field.id + '" class="selectOperator" type="' + type + '" name="' + inputName + '" style="' + styleStr + '"' + attr + ' class="' + styleClass + '">' + options + '</select>';
+    } else if('qsz' == type) {
+        return getQsz(field);
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -276,6 +294,22 @@ function getYdDateRange(field) {
     '<img src="images/select.jpg">' +
     '</div>' +
     '</fieldset>';
+}
+
+function getHbhQuery(field) {
+    return '<span class="hbh"><input type="text" value="CZ" class="first import_input"><input type="text" value="3403/2012-05-22" class="second"></span>' +
+        '<select class="width_90"><option>PEK-CTU</option></select><button type="button" style="width: 60px;margin-left: 5px;">查询</button>';
+}
+
+function getQsz(field) {
+    function getTd() {
+        return '<td class="form_label" style="vertical-align: middle"><input type="text" class="width_30 import_input"/></td>';
+    }
+    function getAirLineTd() {
+        return '<td class="form_field"><ul class="air_line"><li><input type="text" class="width_30 import_input"></li><li class="line">-------&gt;</li></ul></td>';
+    }
+
+    return '<table style="display:inline-block;"><tr>' + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + '</tr></table>';
 }
 
 

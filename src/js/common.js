@@ -2,10 +2,16 @@
     /**
      * tabs
      */
-    $.fn.tabs = function(idx) {
-        if(!idx) {
-            idx = 0;
-        }
+    $.fn.tabs = function(option) {
+        var defaults = {
+            selected: 0,     // 选中属性，默认0
+            tabNames: []    // tab名称数组
+        };
+
+        option = $.extend(defaults, option);
+        // 增加数据表单
+        $(this).prepend(new DataTabs(option).toString()).addClass('tabs');
+        var idx = option.selected;
         var tabs = $(this);
         // 获得当前显示的tab
         var cur_display_tab = tabs.find('> .tab:visible');
@@ -96,7 +102,9 @@
             colWidth: 180,  // 列宽，默认180
             labelGap: 5,    // label右边距，默认5
             fieldGap: 15,   // field右边距，默认15
-            legend: null    // fieldset legend
+            legend: null,    // fieldset legend
+            fields: null,      // 表单字段信息
+            rows: null         // 表单行信息
         };
 
         option = $.extend(defaults, option);
@@ -104,7 +112,7 @@
         $(this).append(new DataForm(option).toString());
 
         return this;
-    }
+    };
 
     /**
      * 数据菜单

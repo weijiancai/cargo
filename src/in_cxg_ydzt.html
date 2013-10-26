@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title></title>
+    <title>查询岗 -- 运单状态</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -11,165 +11,18 @@
 
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
     <script type="text/javascript" src="js/layout.js"></script>
     <script type="text/javascript" src="js/dataObject.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
-<!-- 主导航 -->
-<div id="main_nav_bar">
-    <ul>
-        <li><a href="">安全管理</a></li>
-        <li><a href="">基础数据</a></li>
-        <li><a href="">系统管理</a></li>
-        <li><a href="">国内进港</a></li>
-        <li><a href="">货包机</a></li>
-        <li><a href="">集控器材</a></li>
-        <li><a href="">收费与账单</a></li>
-        <li><a href="">KPI管理</a></li>
-        <li><a href="">报文交换</a></li>
-        <li><a href="">实时统计</a></li>
-        <li><a href="">公用工具</a></li>
-    </ul>
-</div>
-
-<!-- 子导航 -->
-<div id="sub_nav_bar">
-    <!-- 国内进港导航 -->
-    <div id="sub_nav_gnjg" class="div_sub_nav">
-        <div>
-            <!-- 文件操作 -->
-            <ol class="left">
-                <li>
-                    <!-- 航班文件 -->
-                    <ul class="left single">
-                        <li>
-                            <img src="images/hbwj.jpg"/><br/>
-                            <span>航班文件</span>
-                        </li>
-                    </ul>
-
-                    <ul class="left">
-                        <li><img src="images/zzzg.jpg"/><span>中转转港</span></li>
-                        <li><img src="images/lcdj.jpg"/><span>冷藏登记</span></li>
-                        <li><img src="images/lchwtj.jpg"/><span>联程货物统计</span></li>
-                    </ul>
-
-                    <ul class="left" style="padding-bottom: 2px;">
-                        <li><img src="images/jgydgjgl.jpg"/><span>进港运单高级管理</span></li>
-                        <li><img src="images/zzhd.jpg"/><span>中转换单</span></li>
-                        <li><img src="images/hgzc.jpg"/><span>海关账册</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <h5>文件操作</h5>
-                </li>
-            </ol>
-            <!-- 货物操作 -->
-            <ol class="left nav_single">
-                <li>
-                    <ul class="single">
-                        <li>
-                            <img src="images/qkcx.jpg"/><br/>
-                            <span>清库查询</span>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h5>货物操作</h5>
-                </li>
-            </ol>
-            <!-- 提单办单 -->
-            <ol class="left">
-                <li class="left">
-                    <ul class="single">
-                        <li>
-                            <img src="images/thtz.jpg"/><br/>
-                            <span>提货通知</span>
-                        </li>
-                    </ul>
-                </li>
-                <li class="left">
-                    <ul>
-                        <li><img src="images/thbd.jpg"/><span>提货办单</span></li>
-                        <li><img src="images/jsx.jpg"/><span>介绍信</span></li>
-                        <li><img src="images/bzcjfjl.jpg"/><span>不正常交付记录</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <h5>提单办单</h5>
-                </li>
-            </ol>
-            <!-- 提货出库 -->
-            <ol class="left nav_single">
-                <li>
-                    <ul class="single">
-                        <li>
-                            <img src="images/thck.jpg"/><br/>
-                            <span>提货出库</span>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h5>提货出库</h5>
-                </li>
-            </ol>
-            <!-- 相关操作 -->
-            <ol class="left">
-                <!-- 运单状态 -->
-                <li class="left">
-                    <ul class="single">
-                        <li>
-                            <img src="images/ydzt.jpg"/><br/>
-                            <span>运单状态</span>
-                        </li>
-                    </ul>
-                </li>
-                <!-- 运单日志 -->
-                <li class="left">
-                    <ul class="single">
-                        <li>
-                            <img src="images/ydrz.jpg"/><br/>
-                            <span>运单日志</span>
-                        </li>
-                    </ul>
-                </li>
-                <li class="left">
-                    <ul>
-                        <li><img src="images/bzc.jpg"/><span>不正常</span></li>
-                        <li><img src="images/ckgl.jpg"/><span>仓库管理</span></li>
-                        <li><img src="images/ydgdcx.jpg"/><span>运单归档查询</span></li>
-                    </ul>
-                </li>
-                <li class="left">
-                    <ul>
-                        <li><img src="images/hbcx.jpg"/><span>航班查询</span></li>
-                        <li><img src="images/xjbd.jpg"/><span>卸机比对</span></li>
-                        <li><img src="images/hbzt.jpg"/><span>航班状态</span></li>
-                    </ul>
-                </li>
-                <li>
-                    <h5>相关操作</h5>
-                </li>
-            </ol>
-        </div>
-    </div>
-</div>
-
+<!-- 内容 -->
 <div id="main">
-    <div id="main_left">
-        &nbsp;
-        <!--<img style="width: 50px;height: 500px;" src="images/sjlbq.jpg"/>-->
-    </div>
+    <div id="main_left"></div>
 
     <!-- Tabs -->
-    <div id="main_right" class="tabs">
-        <ul>
-            <li><a href="#">运单查询</a></li>
-            <li><a href="#">运单明细查询</a></li>
-            <li><a href="#">运单日志查询</a></li>
-        </ul>
-
+    <div id="main_right">
         <!-- 运单查询 -->
         <div class="tab" title="运单查询">
             <div id="form_ydcx"></div>
@@ -190,8 +43,10 @@
 </div>
 
 <script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
     // tabs
-    $('#main_right').tabs();
+    $('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});
     // 表单
     $('#form_ydcx').dataForm({
         colCount: 1,
