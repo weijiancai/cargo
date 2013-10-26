@@ -55,10 +55,28 @@ fieldset {
 label {
     margin-right: 5px;
 }
+button {
+    border-radius: 4px;
+    border: 1px solid #d0d0d0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    line-height: normal;
+    margin-right: 0.1em;
+    overflow: visible;
+    padding: 5px 0;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    background: url("../images/button_background.jpg") repeat-x;
+    font-size: 13px;
+    font-weight: bold;
+}
 
 #main {
     width: 100%;
     clear: both;
+    background-color: #f2fbf0;
 }
 #main_left {
     width: 45px;
@@ -70,7 +88,10 @@ label {
     width: 930px;
     float: right;
     height: 600px;
+    padding-right: 5px;
     background-color: #f2fbf0;
+    border-right: 2px solid green;
+    border-bottom: 2px solid green;
 }
 
 .round {
@@ -91,7 +112,19 @@ label {
     background-color: #efefef;
 }
 
+.clear {
+    margin: 0;
+    padding: 0;
+    clear: both;
+}
 
+.row {
+    margin: 3px 2px;
+}
+
+.width_30 {
+    width: 30px;
+}
 .width_50 {
     width: 50px;
 }
@@ -110,12 +143,25 @@ label {
 .width_150 {
     width: 150px;
 }
+.width_230 {
+    width: 230px;
+}
 .width_400 {
     width: 400px;
+}
+.width_550 {
+    width: 550px;
 }
 
 .pad_left_15 {
     padding-left: 15px;
+}
+
+.margin_right_20 {
+    margin-right: 20px;
+}
+.margin_bottom_10 {
+    margin-bottom: 10px;
 }
 
 .green_border {

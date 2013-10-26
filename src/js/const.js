@@ -21,6 +21,8 @@ var DS_HBH_QUERY = 14; // 航班号查询
 var DS_IMG = 15; // 图片
 var DS_SELECT_OPERATOR = 16; // 选择操作下拉框
 var DS_QSZ = 17; // 起始站
+var DS_LSH = 18; //流水号
+var DS_ZL = 19; // 重量
 
 // 数据类型
 var DT_STRING = 0;
