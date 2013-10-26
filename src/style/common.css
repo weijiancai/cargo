@@ -105,3 +105,17 @@ form tr {
 .dg_table .selectRow {
     background-color: #fbf9d0;
 }
+
+/* 选择操作下拉框 */
+.selectOperator {
+    font-size: 15px;
+    color: blue;
+    font-weight: bold;
+    border: 1px solid green;
+    line-height: 22px;
+}
+.selectOperator option {
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 2px;
+    font-size: 13px;
+}

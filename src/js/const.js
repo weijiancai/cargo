@@ -17,6 +17,9 @@ var DS_FIELD = 10; // 只显示Field
 var DS_RADIO = 11; // 单选按钮
 var DS_CHECK_BOX = 12; // 复选框
 var DS_YD_DATE_RANGE = 13; // 运单时间段查询
+var DS_HBH_QUERY = 14; // 航班号查询
+var DS_IMG = 15; // 图片
+var DS_SELECT_OPERATOR = 16; // 选择操作下拉框
 
 // 数据类型
 var DT_STRING = 0;
@@ -83,3 +86,7 @@ var DICT_JG_CG_ZZ = [
 var DICT_HGJG = [
     {name: '全部', value: '1'}
 ];
+// 航班操作
+var DICT_HBCZ = [
+    {name: '航班操作', value: '0'}, {name: '航班到达', value: '1'}, {name: '理单结束', value: '2'}, {name: '理货结束', value: '3'},{name: '航班结束', value: '4'}
+]

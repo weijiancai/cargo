@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>柜台岗 -- 航班文件</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+
+<div id="main">
+    <div id="main_left">
+        &nbsp;
+        <!--<img style="width: 50px;height: 500px;" src="images/sjlbq.jpg"/>-->
+    </div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div id="form_hbcx" style="margin: 0;padding: 0;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // 表单
+    $('#form_hbcx').dataForm({
+        colCount: 1,
+        fieldGap: 0,
+        legend: '查询区',
+        fields: [
+            {
+                name: ['hbh','','','','',''],
+                displayName: ['航班号','images/btn_kpi.jpg','images/737.jpg','航班操作','不正常','打印'],
+                width: [80,80,80,90,80,80],
+                displayStyle: [DS_HBH_QUERY, DS_IMG, DS_IMG, DS_SELECT_OPERATOR, DS_SELECT_OPERATOR, DS_SELECT_OPERATOR],
+                dictList: [[], [], [], DICT_HBCZ, DICT_BOOLEAN, DICT_BOOLEAN]
+            }
+            /*{name: 'gdrid', displayName: '归档人ID', width: 90},
+            {name: 'gdryyd', displayName: '归档人营业点', width: 90, styleClass: 'import_input'},
+            {name: '', displayName: '', width: 100},
+            {name: 'gdrq', displayName: '归档日期', width: 200, displayStyle: DS_DATE_RANGE},
+            {name: 'gdfs', displayName: '归档方式', width: 90, displayStyle: DS_COMBO_BOX, dictList: DICT_GDFS},
+            {name: 'sfzc', displayName: '是否正常', width: 90, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN}*/
+        ]
+    });
+</script>
+</body>
+</html>
