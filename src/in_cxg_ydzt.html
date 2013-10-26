@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title></title>
+    <title>查询岗 -- 运单状态</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -19,19 +19,10 @@
 <body>
 <!-- 内容 -->
 <div id="main">
-    <div id="main_left">
-        &nbsp;
-        <!--<img style="width: 50px;height: 500px;" src="images/sjlbq.jpg"/>-->
-    </div>
+    <div id="main_left"></div>
 
     <!-- Tabs -->
-    <div id="main_right" class="tabs">
-        <ul>
-            <li><a href="#">运单查询</a></li>
-            <li><a href="#">运单明细查询</a></li>
-            <li><a href="#">运单日志查询</a></li>
-        </ul>
-
+    <div id="main_right">
         <!-- 运单查询 -->
         <div class="tab" title="运单查询">
             <div id="form_ydcx"></div>
@@ -55,7 +46,7 @@
     // 菜单
     $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
     // tabs
-    $('#main_right').tabs();
+    $('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});
     // 表单
     $('#form_ydcx').dataForm({
         colCount: 1,

@@ -122,16 +122,19 @@ function DataForm(option) {
     this.fieldList = [];
     this.gridPane = new GridPane();
     this.fields = option['fields'];
+    this.rows = option['rows'];
     this.actionBar = option['actionBar'];
     this.width = 100 * this.colCount + this.colWidth * this.colCount + this.labelGap * this.colCount + (this.fieldGap - 1) * this.colCount;
     this.height = 0;
     this.fieldMap = {};
     this.hiddenList = []; // 隐藏域列表
 
-    for(var i = 0; i < this.fields.length; i++) {
-        var formField = this.fields[i];
-        this.fieldList.push(new FormField(formField, this));
-        this.fieldMap[formField['name']] = formField;
+    if(this.fields) {
+        for(var i = 0; i < this.fields.length; i++) {
+            var formField = this.fields[i];
+            this.fieldList.push(new FormField(formField, this));
+            this.fieldMap[formField['name']] = formField;
+        }
     }
 
     // 按SortNum排序
@@ -145,8 +148,13 @@ DataForm.prototype = {
         var formGrid = this.gridPane;
         var fieldList = this.fieldList;
 
-        if($.isArray(fieldList[0].name)) { // flow 布局
-            var flowFields = this.getFlowFields();
+        if((this.fields && $.isArray(fieldList[0].name)) || this.rows) { // flow 布局
+            var flowFields;
+            if(this.rows) {
+                flowFields = this.rows;
+            } else {
+                flowFields = this.getFlowFields();
+            }
             for(var i = 0; i < flowFields.length; i++) {
                 var node = '<td style="width: 100%;">';
                 for(var j = 0; j < flowFields[i].length; j++) {
@@ -309,6 +317,7 @@ function FormField(field, form) {
     this.readonly = field['readonly'];
     this.required = field['required'];
     this.styleClass = field['styleClass'];
+    this.defaultValue = field['defaultValue'];
     this.form = form;
 }
 
@@ -368,3 +377,25 @@ function MenuItem(option) {
     this.href = option['href'];
     this.isSingle = option['isSingle'];
 }
+
+/**
+ * tabs
+ * @param option
+ * @constructor
+ */
+function DataTabs(option) {
+    this.selected = option['selected'];
+    this.tabNames = option['tabNames'];
+}
+DataTabs.prototype = {
+    toString: function() {
+        // 生成tabs
+        var str = '<ul>';
+
+        for(var i = 0; i < this.tabNames.length; i++) {
+            str += '<li><a href="#">' + this.tabNames[i] + '</a></li>';
+        }
+
+        return str + '</ul>';
+    }
+};

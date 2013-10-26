@@ -31,6 +31,7 @@ GridPane.prototype = {
 };
 
 function getInputNode(field, colCount) {
+    field.defaultValue = field.defaultValue ? field.defaultValue : '';
     if(DS_TEXT_AREA == field.displayStyle) {
         if(field.isSingleLine) {
             return getFormInputTd(field, 'textarea', colCount * 4 - 3);
@@ -60,7 +61,7 @@ function getInputNode(field, colCount) {
     } else if(DS_THDM == field.displayStyle) {
         return getFormInputTd(field, 'thdm');
     } else if(DS_LABEL == field.displayStyle) {
-        return '';
+        return '<td><span style="display: inline-block;width: ' + field.width + 'px;">' + field.defaultValue + '</span></td>';
     } else if(DS_RADIO == field.displayStyle) {
         return getFormInputTd(field, 'radio');
     } else if(DS_CHECK_BOX == field.displayStyle) {
@@ -73,6 +74,8 @@ function getInputNode(field, colCount) {
         return getFormInputTd(field, 'img');
     } else if(DS_SELECT_OPERATOR == field.displayStyle) {
         return getFormInputTd(field, 'select_operator');
+    } else if(DS_QSZ == field.displayStyle) {
+        return getFormInputTd(field, 'qsz');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -209,6 +212,8 @@ function getFormInput(field, type) {
         return '<img src="' + field.displayName+ '"/>';
     } else if('select_operator' == type) {
         return '<select id="' + field.id + '" class="selectOperator" type="' + type + '" name="' + inputName + '" style="' + styleStr + '"' + attr + ' class="' + styleClass + '">' + options + '</select>';
+    } else if('qsz' == type) {
+        return getQsz(field);
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -294,6 +299,17 @@ function getYdDateRange(field) {
 function getHbhQuery(field) {
     return '<span class="hbh"><input type="text" value="CZ" class="first import_input"><input type="text" value="3403/2012-05-22" class="second"></span>' +
         '<select class="width_90"><option>PEK-CTU</option></select><button type="button" style="width: 60px;margin-left: 5px;">查询</button>';
+}
+
+function getQsz(field) {
+    function getTd() {
+        return '<td class="form_label" style="vertical-align: middle"><input type="text" class="width_30 import_input"/></td>';
+    }
+    function getAirLineTd() {
+        return '<td class="form_field"><ul class="air_line"><li><input type="text" class="width_30 import_input"></li><li class="line">-------&gt;</li></ul></td>';
+    }
+
+    return '<table style="display:inline-block;"><tr>' + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + '</tr></table>';
 }
 
 

@@ -19,41 +19,108 @@
 <body>
 
 <div id="main">
-    <div id="main_left">
-        &nbsp;
-        <!--<img style="width: 50px;height: 500px;" src="images/sjlbq.jpg"/>-->
-    </div>
+    <div id="main_left"></div>
 
     <!-- Tabs -->
     <div id="main_right">
         <div id="form_hbcx" style="margin: 0;padding: 0;"></div>
+        <div id="tabs_yd">
+            <div class="tab" title="运单">
+                <div id="table_yd"></div>
+                <div id="form_yd" class="round"></div>
+                <div id="form_ydbjq"></div>
+            </div>
+            <div class="tab" title="舱单"></div>
+            <div class="tab" title="FFM报"></div>
+            <div class="tab" title="理货"></div>
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
     // 菜单
     $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // tabs
+    $('#tabs_yd').tabs({tabNames: ['运单', '舱单', 'FFM报', '理货']});
     // 表单
     $('#form_hbcx').dataForm({
         colCount: 1,
         fieldGap: 0,
+        labelGap: 0,
         legend: '查询区',
-        fields: [
-            {
-                name: ['hbh','','','','',''],
-                displayName: ['航班号','images/btn_kpi.jpg','images/737.jpg','航班操作','不正常','打印'],
-                width: [80,80,80,90,80,80],
-                displayStyle: [DS_HBH_QUERY, DS_IMG, DS_IMG, DS_SELECT_OPERATOR, DS_SELECT_OPERATOR, DS_SELECT_OPERATOR],
-                dictList: [[], [], [], DICT_HBCZ, DICT_BOOLEAN, DICT_BOOLEAN]
-            }
-            /*{name: 'gdrid', displayName: '归档人ID', width: 90},
-            {name: 'gdryyd', displayName: '归档人营业点', width: 90, styleClass: 'import_input'},
-            {name: '', displayName: '', width: 100},
-            {name: 'gdrq', displayName: '归档日期', width: 200, displayStyle: DS_DATE_RANGE},
-            {name: 'gdfs', displayName: '归档方式', width: 90, displayStyle: DS_COMBO_BOX, dictList: DICT_GDFS},
-            {name: 'sfzc', displayName: '是否正常', width: 90, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN}*/
+        rows: [
+            [
+                {name: 'hbh', displayName: '航班号', displayStyle: DS_HBH_QUERY},
+                {displayName: 'images/btn_kpi.jpg', displayStyle: DS_IMG},
+                {displayName: 'images/737.jpg', displayStyle: DS_IMG},
+                {displayName: '航班操作', displayStyle: DS_SELECT_OPERATOR, dictList: DICT_HBCZ},
+                {displayName: '不正常', displayStyle: DS_SELECT_OPERATOR, dictList: DICT_BZC},
+                {displayName: '打印', displayStyle: DS_SELECT_OPERATOR, dictList: DICT_PRINT}
+            ]
         ]
     });
+    $('#form_yd').dataForm({
+        colCount: 1,
+        fieldGap: 0,
+        labelGap: 0,
+        rows: [
+            [
+                {name: 'zdwjddzs', displayName: '主单文件到达总数：', displayStyle: DS_LABEL, width: 200, defaultValue: '1'},
+                {name: 'yjwjddzs', displayName: '邮件文件到达总数：', displayStyle: DS_LABEL, width: 200, defaultValue: '0'},
+                {name: '', displayName: '导出（E）', displayStyle: DS_BUTTON, width: 100}
+            ],
+           [
+                {name: 'wjzs', displayName: '文件总数：', displayStyle: DS_LABEL, width: 40, defaultValue: '1'},
+                {name: 'wjzzl', displayName: '文件总重量：', displayStyle: DS_LABEL, width: 70, defaultValue: '10'},
+                {name: 'cdzks', displayName: '舱单总件数：', displayStyle: DS_LABEL, width: 70, defaultValue: '1'},
+                {name: 'cdzzl', displayName: '舱单总重量：', displayStyle: DS_LABEL, width: 70, defaultValue: '10'},
+                {name: 'lhzjs', displayName: '理货总件数：', displayStyle: DS_LABEL, width: 70, defaultValue: '1'},
+                {name: 'lhzzl', displayName: '理货总重量：', displayStyle: DS_LABEL, width: 70, defaultValue: '10'}
+            ]
+        ]
+    });
+    $('#form_ydbjq').dataForm({
+        colCount: 1,
+        fieldGap: 0,
+        labelGap: 0,
+        legend: '运单编辑区',
+        styleClass: 'clean',
+        rows: [
+            [
+                {name: 'ydh', displayName: '运单号', displayStyle: DS_YDH, width: 200},
+                {name: 'qsz', displayName: '起始站*', displayStyle: DS_QSZ},
+            ],
+            [
+                {name: 'wjzs', displayName: '文件总数：', displayStyle: DS_LABEL, width: 40, defaultValue: '1'},
+                {name: 'wjzzl', displayName: '文件总重量：', displayStyle: DS_LABEL, width: 70, defaultValue: '10'},
+                {name: 'cdzks', displayName: '舱单总件数：', displayStyle: DS_LABEL, width: 70, defaultValue: '1'},
+                {name: 'cdzzl', displayName: '舱单总重量：', displayStyle: DS_LABEL, width: 70, defaultValue: '10'},
+                {name: 'lhzjs', displayName: '理货总件数：', displayStyle: DS_LABEL, width: 70, defaultValue: '1'},
+                {name: 'lhzzl', displayName: '理货总重量：', displayStyle: DS_LABEL, width: 70, defaultValue: '10'}
+            ]
+        ]
+    });
+    // 表格
+    $('#table_yd').dgtable({
+        sortable: true,
+        selectRow: 0,
+        height: 120,
+        headers: [
+            {name: 'ydh', displayName: '运单号'},
+            {name: 'yddd', displayName: '运单到达'},
+            {name: 'clfs', displayName: '处理方式'},
+            {name: 'js', displayName: '件数'},
+            {name: 'zl', displayName: '重量'},
+            {name: 'cdjs', displayName: '舱单件数'},
+            {name: 'cdzl', displayName: '舱单重量'},
+            {name: 'lhjs', displayName: '理货件数'},
+            {name: 'lhzl', displayName: '理货重量'},
+            {name: 'shr', displayName: '收货人'}
+        ],
+        data: [
+            {ydh: '784-62622366', yddd: 'Y', clfs: '提货（1）', js: '1', zl: '10', cdjs: '1', cdzl: 10, lhjs: 1, lhzl: 10, shr: '中外运'}
+        ]
+    })
 </script>
 </body>
 </html>
