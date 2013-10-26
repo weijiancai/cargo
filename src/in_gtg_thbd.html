@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>柜台岗 -- 提货办单</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div class="tab" title="提货办单操作">
+            <form>
+                <fieldset style="padding-top: 0;">
+                    <legend>提货办单查询区</legend>
+
+                    <div class="width_550" style="display: inline-block">
+                        <div class="row">
+                            <input type="radio"/>
+                            <span class="ydh">
+                                <label>流水号</label>
+                                <select disabled>
+                                    <option>20120626</option>
+                                </select>
+                                <input type="text" class="first readonly" value="" disabled/>
+                                <input type="text" class="second readonly" value="" disabled/>
+                            </span>
+                            <button type="button" class="width_60">查询</button>
+                        </div>
+                        <div class="row">
+                            <input type="radio"/>
+                        <span class="ydh">
+                            <label>运单号</label>
+                            <select>
+                                <option>AWBA</option>
+                                <option>AWBA</option>
+                            </select>
+                            <input type="text" class="first" value="784"/>
+                            <input type="text" class="second" value="62362366"/>
+                        </span>
+                            <button type="button" class="width_60">挑单</button>
+                            <button type="button" class="width_90">批量导入</button>
+                        </div>
+
+                    </div>
+
+                    <fieldset style="display: inline-block;width: 320px">
+                        <legend>海关回执信息</legend>
+
+                        <div class="row">
+                            <label>海关回执</label>
+                            <select class="width_90">
+                                <option>放行</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label>海关核销号</label>
+                            <input type="text" class="width_100">
+                            <button type="button" class="width_90">保存</button>
+                        </div>
+                    </fieldset>
+                </fieldset>
+
+                <fieldset>
+                    <legend>提货办单列表</legend>
+
+                    <div id="table_thbd"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>提货办单操作区</legend>
+
+                    <div class="row">
+                        <label>提货代理人</label>
+                        <input type="text" class="width_50 import_input" value="1">
+                        <input type="text" class="width_90" value="中外运" style="margin: 0 100px 0 -4px;">
+
+                        <label>收货人证件号码</label>
+                        <input type="text" class="width_230" value="2341">
+                    </div>
+                    <div class="row">
+                        <label>办单经办人</label>
+                        <input type="text" class="width_120" value="中外运" style="margin-right: 50px;">
+
+                        <label>电话</label>
+                        <input type="text" class="width_120" value="13901119999" style="margin-right: 50px;">
+
+                        <label>证件号码</label>
+                        <input type="text" class="width_120" value="2341">
+                    </div>
+
+                    <div class="row">
+                        <label>计费方式*</label>
+                        <select disabled class="width_90">
+                            <option>月结</option>
+                        </select>
+
+                        <label class="margin_left_10">备注</label>
+                        <input type="text" class="width_400 form_field" value="">
+
+                        <label>流水号</label>
+                        <input type="text" class="width_150" value="20120521DOM200004">
+                    </div>
+
+                    <div class="row">
+                        <button type="button" class="width_90" style="margin-right: 5px;">全清</button>
+                        <button type="button" class="width_90" style="margin-right: 5px;">清除</button>
+                        <button type="button" class="width_90" style="margin-right: 5px;">保存（S）</button>
+                        <button type="button" class="width_90 margin_right_20">撤销（C）</button>
+                        <button type="button" class="width_90 margin_right_20">确认取消（R）</button>
+                        <button type="button" class="width_90 margin_right_20">打印计费单（库位）</button>
+                        <button type="button" class="width_90 margin_right_20">打印提货凭证</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="tab" title="已提货办单查询"></div>
+        <div class="tab" title="未提货办单查询"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // tabs
+    $('#main_right').tabs({tabNames: ['提货办单操作', '已提货办单查询', '未提货办单查询']});
+    // table
+    $('#table_thbd').dgtable({
+        sortable: true,
+        height: 150,
+        headers: [
+            {name: 'li', displayName: '历'},
+            {name: 'ydh', displayName: '运单号'},
+            {name: 'shr', displayName: '收货人'},
+            {name: 'hb', displayName: '航班'},
+            {name: 'pm', displayName: '品名'},
+            {name: 'czffl', displayName: '处置费费率'},
+            {name: 'js', displayName: '件数'},
+            {name: 'zl', displayName: '重量'},
+            {name: 'kth', displayName: '可提货'},
+            {name: 'jfzl', displayName: '计费重量'},
+            {name: 'hjfy', displayName: '合计费用'}
+        ],
+        data: [
+            {li: '历史',ydh: '112-80280200', shr: '荣光', hb: 'MU2805/12-02-02', pm: '其他', czffl: '0.33', js: '10', zl: '100', kth: 100, jfzl: 100, hjfy: 73}
+        ]
+    });
+</script>
+</body>
+</html>

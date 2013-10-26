@@ -76,6 +76,10 @@ function getInputNode(field, colCount) {
         return getFormInputTd(field, 'select_operator');
     } else if(DS_QSZ == field.displayStyle) {
         return getFormInputTd(field, 'qsz');
+    } else if(DS_LSH == field.displayStyle) {
+        return getFormInputTd(field, 'lsh');
+    } else if(DS_ZL == field.displayStyle) {
+        return getFormInputTd(field, 'zl');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -176,7 +180,7 @@ function getFormInput(field, type) {
     var attr = '';
     var styleClass = '';
     if(field.readonly) {
-        attr += ' readonly="readonly"';
+        attr += ' disabled="disabled"';
     }
     if(field.required && 'hidden' != type) {
         attr += ' missingMessage="必填" invalidMessage="请输入"';
@@ -214,6 +218,10 @@ function getFormInput(field, type) {
         return '<select id="' + field.id + '" class="selectOperator" type="' + type + '" name="' + inputName + '" style="' + styleStr + '"' + attr + ' class="' + styleClass + '">' + options + '</select>';
     } else if('qsz' == type) {
         return getQsz(field);
+    } else if('lsh' == type) {
+        return getLsh(field);
+    } else if('zl' == type) {
+        return getZl(field);
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -235,7 +243,7 @@ function getFormInput(field, type) {
         type = 'text';
     }
 
-    return '<input id="' + field.id + '" type="' + type + '" name="' + inputName + '" style="' + styleStr + '"' + attr + ' class="' + styleClass + '" queryMode="' + field.queryMode + '"/>';
+    return '<input id="' + field.id + '" type="' + type + '" name="' + inputName + '" style="' + styleStr + '"' + attr + ' class="' + styleClass + '" value="' + field.defaultValue + '"/>';
 }
 
 function getYdh(field) {
@@ -247,6 +255,19 @@ function getYdh(field) {
         '<select style="width: 65px;"><option>AWBA</option><option>AWBA</option></select>' +
         '<input style="width: 40px;" type="text" class="first" value="784"/>' +
         '<input type="text" class="second" value="62362366" style="width: ' + width + 'px"/>' +
+        '</span>';
+}
+
+function getLsh(field) {
+    var width = 120;
+    if(field.width && (field.width - 105) > 120) {
+        width = field.width - 105;
+    }
+    var readonly = field.readonly ? field.readonly : false;
+    return '<span class="lsh">' +
+        '<select style="width: 65px;" disabled="' + readonly + '"><option>AWBA</option><option>AWBA</option></select>' +
+        '<input style="width: 40px;" type="text" class="first" value="784" disabled="' + readonly + '"/>' +
+        '<input type="text" class="second" value="62362366" style="width: ' + width + 'px;" disabled="' + readonly + '"/>' +
         '</span>';
 }
 
@@ -310,6 +331,10 @@ function getQsz(field) {
     }
 
     return '<table style="display:inline-block;"><tr>' + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + getAirLineTd() + getTd() + '</tr></table>';
+}
+
+function getZl(field) {
+    return '<input type="text" class="width_50" value="10"/><select class="width_60" style="border: 1px dotted green;margin-left: -4px"><option>KG</option></select>';
 }
 
 
