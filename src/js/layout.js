@@ -127,6 +127,8 @@ function getFormInputTd(field, type, colspan, rowspan) {
     if(colspan) {
         spanStr += ' colspan="' + colspan + '"';
         field.width = '100%';
+    } else if(field.colspan) {
+        spanStr += ' colspan="' + field.colspan + '"';
     }
     if(rowspan) {
         spanStr += ' rowspan="' + rowspan + '"';

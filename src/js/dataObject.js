@@ -196,7 +196,13 @@ DataForm.prototype = {
                     idxCol = 0;
                     idxRow++;
                 } else {
-                    if(idxCol == this.colCount * 4 - 1) {
+                    /*if (field.colspan) {
+                        idxCol += field.colspan * 4 - 6;
+                    } else {
+                        idxCol++;
+                    }*/
+
+                    if (idxCol == this.colCount * 4 - 1) {
                         idxCol = 0;
                         idxRow++;
                     } else {
@@ -318,6 +324,7 @@ function FormField(field, form) {
     this.required = field['required'];
     this.styleClass = field['styleClass'];
     this.defaultValue = field['defaultValue'];
+    this.colspan = field['colspan'];
     this.form = form;
 }
 

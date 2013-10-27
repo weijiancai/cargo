@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>柜台岗 -- 收费与账单 -- 发票查询</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div id="form_fpcx"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_sfyzd'});
+    // tabs
+//    $('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});
+    // 表单
+    $('#form_fpcx').dataForm({
+        colCount: 4,
+        legend: '发票查询管理',
+        fields: [
+            {name: 'ydh', displayName: '运单号', displayStyle: DS_YDH},
+            {name: 'fpqshm', displayName: '发票起始号码', width: 100},
+            {name: 'fpjshm', displayName: '发票结束号码', width: 100, colspan: 2},
+            {name: 'ydh', displayName: '流水号', displayStyle: DS_LSH}
+        ]
+    });
+</script>
+</body>
+</html>
