@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>柜台岗 -- 国内进港 -- 进港运单高级管理</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <form>
+            <fieldset>
+                <legend>查询条件</legend>
+
+                <div class="row">
+                    <span class="ydh form_field" style="margin-right: 50px;">
+                        <label>运单号</label>
+                        <select>
+                            <option>AWBA</option>
+                        </select>
+                        <input type="text" class="first" value="784"/>
+                        <input type="text" class="second" value="741741111"/>
+                    </span>
+
+                    <button type="button" class="width_90">查询（Q）</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend>运单基础信息</legend>
+
+                <table>
+                    <tr>
+                        <td class="form_label" style="vertical-align: middle;">
+                        <span class="ydh">
+                            <label>运单号</label>
+                            <select disabled>
+                                <option>AWBA</option>
+                            </select>
+                            <input type="text" class="first readonly" value="784" disabled/>
+                            <input type="text" class="second readonly" value="741741111" disabled/>
+                        </span>
+
+                            <label>起始站*</label>
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>目的站*</label>
+                            <input type="text" class="width_30 readonly" disabled/>
+
+                            <label>总件数*</label>
+                            <input type="text" class="width_30 import_input"/>
+
+                            <label>总重量*</label>
+                            <input type="text" class="width_50" value="10"/>
+                            <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                                <option>KG</option>
+                            </select>
+
+                            <label>计量重量*</label>
+                            <input type="text" class="width_50" value="10"/>
+                            <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                                <option>KG</option>
+                            </select>
+
+                            <label>特货代码</label>
+                            <input type="text" class="width_50"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>品 名*</label>
+                            <input type="text" class="width_60 import_input" value="0100"/>
+                            <input type="text" class="width_90" style="margin-left: -4px;" value="苹果"/>
+
+                            <label>代理人*</label>
+                            <input type="text" class="width_60 import_input" value="BEAR"/>
+
+                            <label>收货人*</label>
+                            <input type="text" class="width_120" value="趴趴贝尔有限公司"/>
+
+                            <label>收货人身份证</label>
+                            <input type="text" class="width_120 readonly" disabled value="18818881823929339"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>联系电话</label>
+                            <input type="text" class="width_100 form_field"/>
+
+                            <label>冷藏</label>
+                            <select class="margin_right_20 width_100">
+                                <option>不冷藏</option>
+                            </select>
+
+                            <input type="checkbox"/><label class="margin_right_20">海关监管</label>
+
+                            <label>海关转关号</label>
+                            <input type="text" class="width_150"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <input type="checkbox"/>
+                            <label>到付</label>
+
+                            <label>币种</label>
+                            <input type="text" class="width_50 readonly" disabled/>
+
+                            <label>汇率</label>
+                            <input type="text" class="width_60 readonly" disabled/>
+
+                            <label>到期费用</label>
+                            <input type="text" class="width_90 readonly" disabled/>
+
+                            <input type="checkbox"/>
+                            <label class="margin_right_20">是否中转</label>
+
+                            <input type="checkbox" checked/>
+                            <label>优先处理</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="7">
+                            <label>产品代码</label>
+                            <input type="text" class="width_60 import_input"/>
+
+                            <label>备注</label>
+                            <input type="text" class="width_230"/>
+                        </td>
+                        <td colspan="2">
+                            <button type="button" class="width_90">保存</button>
+                            <button type="button" class="width_90">删除</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset>
+                <legend>运单到达信息</legend>
+
+                <div class="row">
+                    <input type="checkbox" checked/>
+                    <label>文件到达</label>
+
+                    <span class="hbh form_field">
+                        <label>航班号</label>
+                        <input type="text" class="first" value="CZ"/>
+                        <input type="text" class="second" value="3403/2012-05-22"/>
+                    </span>
+
+                    <select class="width_100">
+                        <option>PEK-CTU</option>
+                    </select>
+
+                    <button type="button" class="width_100" style="margin-left: 100px">保存</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <fieldset>
+            <legend>理货信息</legend>
+
+            <div id="table_lhxx" class="left" style="width: 410px;"></div>
+
+            <div class="left">
+                <div class="row">
+                    <label>理单件数</label>
+                    <input type="text" value="1" class="width_50">
+
+                    <label>理单重量</label>
+                    <input type="text" value="13" class="width_50">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>舱单信息</legend>
+
+            <div id="table_cdxx" class="left"></div>
+
+            <div class="left">
+                <div class="row">
+                    <label>舱单件数</label>
+                    <input type="text" value="1" class="width_50">
+
+                    <label>舱单重量</label>
+                    <input type="text" value="13" class="width_50">
+                </div>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>仓库信息</legend>
+
+            <div id="table_ckxx" class="left" style="width: 410px;"></div>
+        </fieldset>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // 表格
+    $('#table_jsgl').dgtable({
+        sortable: true,
+        selectable: true,
+        selectRow: 0,
+        height: 350,
+        headers: [
+            {name: 'sflsh', displayName: '收费流水号'},
+            {name: 'fphm', displayName: '发票号码'},
+            {name: 'bjyydw', displayName: '包机运营单位'},
+            {name: 'hbh', displayName: '航班号'},
+            {name: 'zfy', displayName: '总费用'},
+            {name: 'jsfs', displayName: '结算方式'}
+        ],
+        data: [
+            {sflsh: '20120614DOM200001', fphm: '00234234', bjyydw: '中国邮政航空公司', hbh: '8Y9040/2012-06-23', zfy: '240000', jsfs: 'CS'}
+        ]
+    });
+    $('#table_lhxx').dgtable({
+        sortable: true,
+        selectRow: 0,
+        width: 450,
+        headers: [
+            {name: 'lhjs', displayName: '理货件数'},
+            {name: 'lhzl', displayName: '理货重量'},
+            {name: 'bxbm', displayName: '板箱编码'},
+            {name: 'hbxx', displayName: '航班信息'}
+        ],
+        data: [
+            {lhjs: '1', lhzl: '13', bxbm: '', hbxx: 'CZ737/2012-06-21'}
+        ]
+    });
+    $('#table_cdxx').dgtable({
+        sortable: true,
+        selectRow: 0,
+        headers: [
+            {name: 'cdjs', displayName: '舱单件数'},
+            {name: 'cdzl', displayName: '舱单重量'},
+            {name: 'bxbm', displayName: '板箱编码'},
+            {name: 'hbxx', displayName: '航班信息'}
+        ],
+        data: [
+            {cdjs: '1', cdzl: '13', bxbm: '', hbxx: 'CZ737/2012-06-21'}
+        ]
+    });
+    $('#table_ckxx').dgtable({
+        sortable: true,
+        selectRow: 0,
+        headers: [
+            {name: 'ck', displayName: '仓库'},
+            {name: 'kw', displayName: '库位'},
+            {name: 'bxbm', displayName: '板箱编码'},
+            {name: 'js', displayName: '件数'},
+            {name: 'zl', displayName: '重量'},
+            {name: 'zbq', displayName: '组标签'}
+
+        ],
+        data: [
+            {ck: '2DOM', kw: '01', bxbm: '', js: '1',zl:'13',zbq: ''}
+        ]
+    })
+</script>
+</body>
+</html>
