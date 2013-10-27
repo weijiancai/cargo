@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>柜台岗 -- 结算 -- 包机批量结算</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <form>
+            <fieldset>
+                <legend>计算管理</legend>
+
+                <div class="row">
+                    <span class="ydh form_field">
+                        <label>流水号</label>
+                        <select disabled>
+                            <option>20120626</option>
+                        </select>
+                        <input type="text" class="first readonly" value="" disabled/>
+                        <input type="text" class="second readonly" value="" disabled/>
+                    </span>
+
+                    <label>包机运营单位</label>
+                    <input type="text" class="width_100 import_input"/>
+                </div>
+
+                <div class="row">
+                    <label>结算方式</label>
+                    <select class="form_field width_100">
+                        <option>所有</option>
+                    </select>
+
+                    <label>是否结算</label>
+                    <select class="width_100 form_field">
+                        <option>全部</option>
+                    </select>
+
+                    <span>结算日期</span>
+                    <span class="form_date">
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <input type="checkbox" checked="checked" style="border: none;"/>
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                        &nbsp;-&nbsp;
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <input type="checkbox" checked="checked" style="border: none;"/>
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                    </span>
+                </div>
+
+                <div class="row">
+                    <label style="margin-left: 160px;">登记营业点</label>
+                    <input type="text" class="width_100 import_input form_field"/>
+
+                    <span>计费日期</span>
+                    <span class="form_date">
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <input type="checkbox" checked="checked" style="border: none;"/>
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                        &nbsp;-&nbsp;
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <input type="checkbox" checked="checked" style="border: none;"/>
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                    </span>
+                </div>
+
+                <div class="right" style="padding-right: 100px;">
+                    <button type="button" class="width_90">查询（Q）</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <div id="table_jsgl"></div>
+
+        <div class="round action_buttons">
+            <button type="button" class="width_90">全选（A）</button>
+            <button type="button" class="width_90">全不选（N）</button>
+            <button type="button" class="width_90">结算（J）</button>
+            <button type="button" class="width_120">结算取消（C）</button>
+            <button type="button" class="width_90">导出（E）</button>
+
+            <label class="margin_left_10">合计费用:</label>
+            <span class="margin_right_20">2400000</span>
+
+            <button type="button" class="width_120">打印发票（P）</button>
+            <button type="button" class="width_120">设置起始号（S）</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // 表格
+    $('#table_jsgl').dgtable({
+        sortable: true,
+        selectable: true,
+        selectRow: 0,
+        height: 350,
+        headers: [
+            {name: 'sflsh', displayName: '收费流水号'},
+            {name: 'fphm', displayName: '发票号码'},
+            {name: 'bjyydw', displayName: '包机运营单位'},
+            {name: 'hbh', displayName: '航班号'},
+            {name: 'zfy', displayName: '总费用'},
+            {name: 'jsfs', displayName: '结算方式'}
+        ],
+        data: [
+            {sflsh: '20120614DOM200001', fphm: '00234234', bjyydw: '中国邮政航空公司', hbh: '8Y9040/2012-06-23', zfy: '240000', jsfs: 'CS'}
+        ]
+    })
+</script>
+</body>
+</html>
