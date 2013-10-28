@@ -89,13 +89,82 @@
 
         <!-- 表格 -->
         <div class="tab" title="表格">
-            <div id="form_table"></div>
+            <fieldset>
+                <legend>table表单</legend>
+                <table class="gridPane">
+                    <tbody>
+                    <tr>
+                        <td><label for="undefined">ID</label></td>
+                        <td><span style="width:5px;display:block;"></span></td>
+                        <td><input type="text" value="table_jjhw" class="" style="" name="undefined" id="tableId"></td>
+                        <td><span style="width:15px;display:block;"></span></td>
+                        <td><label for="undefined">可排序</label></td>
+                        <td><span style="width:5px;display:block;"></span></td>
+                        <td><select class="" style="width:60px;" name="undefined" type="select" id="sortable">
+                            <option value="T">是</option>
+                            <option value="F">否</option>
+                        </select></td>
+                        <td><span style="width:15px;display:block;"></span></td>
+                        <td><label for="undefined">可选择</label></td>
+                        <td><span style="width:5px;display:block;"></span></td>
+                        <td><select class="" style="width:60px;" name="undefined" type="select" id="selectable">
+                            <option value="T">是</option>
+                            <option value="F">否</option>
+                        </select></td>
+                        <td><span style="width:15px;display:block;"></span></td>
+                        <td><label for="undefined">展开行</label></td>
+                        <td><span style="width:5px;display:block;"></span></td>
+                        <td><input type="text" value="" class="" style="width:60px;" name="undefined" id="expandRow">
+                        </td>
+                        <td><span style="width:15px;display:block;"></span></td>
+                        <td><label for="undefined">选中行</label></td>
+                        <td><span style="width:5px;display:block;"></span></td>
+                        <td><input type="text" value="" class="" style="width:60px;" name="undefined" id="selectRow">
+                        </td>
+                        <td><span style="width:15px;display:block;"></span></td>
+                        <td><label for="undefined">高</label></td>
+                        <td><span style="width:5px;display:block;"></span></td>
+                        <td><input type="text" value="" class="" style="width:60px;" name="undefined" id="height"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="undefined">表头</label></td>
+                        <td><span style="width:5px;display:block;"></span></td>
+                        <td><input type="text" value="" class="" style="" name="undefined" id="headers"></td>
+                        <td><span style="width:15px;display:block;"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <fieldset>
+                    <legend>表头</legend>
+
+                    <div id="table_headers" class="left width_550 round" style="height: 100px;"></div>
+                    <div class="left">
+                        <table>
+                            <tr>
+                                <td><span>名称</span></td>
+                                <td><input id="TableName" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td><span>显示名</span></td>
+                                <td><input id="TableDisplayName" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button id="btn_table_header_add" type="button" class="btn_preview width_60">添加</button>
+                                    <button id="btn_table_preview" type="button" class="btn_preview width_60">预览</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </fieldset>
+            </fieldset>
             <!-- 表头表格 -->
             <!--<div id="table_headers" class="round"></div>-->
 
-            <div class="right action_buttons">
+            <!--<div class="right action_buttons">
                 <button id="btn_table_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
-            </div>
+            </div>-->
 
             <div id="tabs_preview_table">
                 <div id="tab_table_preview" class="tab preview" title="预览" style=""></div>
@@ -152,8 +221,7 @@
                 {id: 'selectable', displayName: '可选择', width: 60, defaultValue: '', displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
                 {id: 'expandRow', displayName: '展开行', width: 60, defaultValue: ''},
                 {id: 'selectRow', displayName: '选中行', width: 60, defaultValue: ''},
-                {id: 'height', displayName: '高', width: 60, defaultValue: ''},
-                {id: 'headers', displayName: '表头', isSingleLine: true, defaultValue: ''}
+                {id: 'height', displayName: '高', width: 60, defaultValue: ''}
             ]
         });
         // 表格
@@ -161,6 +229,9 @@
             headers: [
                 {name: 'headerName', displayName: '名称'},
                 {name: 'headerDisplayName', displayName: '显示名'}
+            ],
+            data: [
+                {headerName: 'aa', headerDisplayName: 'bb'}
             ]
         });
         // tabs预览
@@ -168,6 +239,11 @@
             var tabId = $('#tabId').val();
             var tabNames = $('#tabNames').val();
             genJsTabs(tabId, tabNames);
+        });
+        // table 添加表头
+        $('#btn_table_header_add').click(function() {
+            var str = '<tr><td><img src="images/tr_head.jpg"></td><td style="text-align:left;">'+ $('#TableName').val() +'</td><td style="text-align:left;">'+ $('#TableDisplayName').val() +'</td></tr>';
+            $('#table_headers').find('tbody').append(str);
         });
     </script>
 </body>
