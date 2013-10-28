@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title></title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/960_24_col.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/design.js"></script>
+
+    <style type="text/css">
+        body {
+            background-color: #f2fbf0;
+            border: 1px solid green;
+        }
+        textarea {
+            width: 95%;
+            /*height: 590px;*/
+            border: 1px solid green;
+        }
+        .tab {
+            text-align: center;
+            padding: 5px;
+        }
+        .preview {
+            padding: 5px;
+            border: 1px solid green;
+        }
+        #tabs_preview_tabs .tab, #tabs_preview_tabs textarea {
+            height: 550px;
+        }
+        #tabs_preview_table .tab, #tabs_preview_table textarea {
+            height: 490px;
+        }
+        #show_window {
+            display: none;
+            background-color: #f3fbf2;
+            border: 2px solid #000000;
+            width: 650px;
+            height: 300px;
+            position: absolute;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabs_design" class="container_24">
+        <!-- 菜单 -->
+        <!--<div class="tab" title="菜单">
+            <div id="form_menu"></div>
+            <div id="tabs_preview_menu">
+
+            </div>
+        </div>-->
+        <!-- Tabs -->
+        <div class="tab" title="Tabs">
+            <div id="form_tab"></div>
+            <div class="right action_buttons">
+                <button id="btn_tabs_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
+            </div>
+
+            <div id="tabs_preview_tabs">
+                <div id="tab_tabs_preview" class="tab preview" title="预览" style=""></div>
+
+                <div class="tab" title="脚本代码">
+                    <textarea id="tab_tabs_js" style=""></textarea>
+                </div>
+
+                <div class="tab" title="HTML代码">
+                    <textarea id="tab_tabs_html"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表单 -->
+        <div class="tab" title="表单">
+            <div id="form_form"></div>
+            <div class="right action_buttons">
+                <button id="btn_form_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
+            </div>
+
+            <div id="tabs_preview_form">
+                <div id="tab_form_preview" class="tab preview" title="预览" style=""></div>
+
+                <div class="tab" title="脚本代码">
+                    <textarea id="tab_form_js" style=""></textarea>
+                </div>
+
+                <div class="tab" title="HTML代码">
+                    <textarea id="tab_form_html"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表格 -->
+        <div class="tab" title="表格">
+            <div id="form_table"></div>
+
+            <div class="right action_buttons">
+                <button id="btn_table_add_header" type="button" class="btn_preview width_90 margin_right_20">添加表头</button>
+                <button id="btn_table_add_data" type="button" class="btn_preview width_90 margin_right_20">添加数据</button>
+                <button id="btn_table_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
+            </div>
+
+            <div id="tabs_preview_table">
+                <div id="tab_table_preview" class="tab preview" title="预览" style="height: 490px;"></div>
+
+                <div class="tab" title="脚本代码">
+                    <textarea id="tab_table_js" style=""></textarea>
+                </div>
+
+                <div class="tab" title="HTML代码">
+                    <textarea id="tab_table_html"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹出窗口 -->
+    <div id="show_window">
+        <div id="form_window"></div>
+        <input id="form_type" type="hidden"/>
+        <div class="action_buttons">
+            <button id="btn_window_ok" type="button" class="btn_preview width_90 margin_right_20">确定</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // tabs
+        $('#tabs_design').tabs({tabNames: ['Tabs','表单','表格']});
+        /*$('#tabs_preview_menu').tabs({tabNames: ['预览','脚本代码','HTML代码']});*/
+        $('#tabs_preview_tabs').tabs({tabNames: ['预览','脚本代码','HTML代码']});
+        $('#tabs_preview_form').tabs({tabNames: ['预览','脚本代码','HTML代码']});
+        $('#tabs_preview_table').tabs({tabNames: ['预览','脚本代码','HTML代码']});
+        // 弹出窗口
+        var offset = $('#tabs_design').offset();
+        $('#show_window').css('top', offset.top + 130).css('left', offset.left + 100);
+        // 表单
+        /*$('#form_menu').dataForm({
+            colCount: 1,
+            fields: [
+                {id: 'main_menu', displayName: '主菜单', isSingleLine: true, width: 850, defaultValue: ''},
+                {id: 'sub_menu_group', displayName: '子菜单分组', isSingleLine: true, displayStyle: DS_TEXT_AREA, width:850, height: 80},
+                {id: 'sub_menus', displayName: '子菜单', isSingleLine: true, displayStyle: DS_TEXT_AREA, width:850, height: 150}
+            ]
+        })*/
+        $('#form_tab').dataForm({
+            colCount: 1,
+            legend: 'tabs表单',
+            fields: [
+                {id: 'tabId', displayName: 'TabId', isSingleLine: true, width:150,defaultValue: 'tabs_yd'},
+                {id: 'tabNames', displayName: 'TabNames', isSingleLine: true, width: 550, defaultValue: '运单,舱单,FFM报,理货'}
+            ]
+        });
+        $('#form_form').dataForm({
+            colCount: 1,
+            legend: 'form表单',
+            fields: [
+                {id: 'tabId', displayName: 'TabId', isSingleLine: true, width:150,defaultValue: 'tabs_yd'},
+                {id: 'tabNames', displayName: 'TabNames', isSingleLine: true, width: 850, defaultValue: '运单,舱单,FFM报,理货'}
+            ]
+        });
+        $('#form_table').dataForm({
+            colCount: 6,
+            legend: 'table表单',
+            fields: [
+                {id: 'tableId', displayName: 'ID',defaultValue: 'table_jjhw'},
+                {id: 'sortable', displayName: '可排序', width: 60, defaultValue: '', displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                {id: 'selectable', displayName: '可选择', width: 60, defaultValue: '', displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                {id: 'expandRow', displayName: '展开行', width: 60, defaultValue: ''},
+                {id: 'selectRow', displayName: '选中行', width: 60, defaultValue: ''},
+                {id: 'height', displayName: '高', width: 60, defaultValue: ''},
+                {id: 'headers', displayName: '表头', isSingleLine: true, defaultValue: '', displayStyle: DS_TEXT_AREA, height:40, width:550},
+                {id: 'table_datas', displayName: '表数据', isSingleLine: true, defaultValue: '', displayStyle: DS_TEXT_AREA, height:40, width:550}
+            ]
+        });
+
+        // tabs预览
+        $('#btn_tabs_preview').click(function() {
+            var tabId = $('#tabId').val();
+            var tabNames = $('#tabNames').val();
+            previewTabs(tabId, tabNames);
+        });
+        // table预览
+        $('#btn_table_preview').click(function() {
+            previewTable();
+        });
+
+        // table 添加表头
+        $('#btn_table_add_header').click(function() {
+            $('#form_type').val('add_table_header');
+            $('#form_window').html('').dataForm({
+                colCount: 1,
+                legend: '添加表格表头',
+                fields: [
+                    {id: 'headerName', displayName: '名称', width:150},
+                    {id: 'headerDisplayName', displayName: '显示名', width: 150}
+                ]
+            });
+            $('#show_window').show();
+        });
+        // 显示窗口，确定按钮
+        $('#btn_window_ok').click(function() {
+            $('#show_window').hide();
+            var formType = $('#form_type').val();
+            if('add_table_header' == formType) {
+                var headers = $('#headers').val();
+                if(headers.length > 0) {
+                    headers += ',';
+                }
+                headers += '{name:"' + $('#headerName').val() + '",displayName:"' + $('#headerDisplayName').val() + '"}';
+                $('#headers').val(headers);
+            }
+        });
+    </script>
+</body>
+</html>

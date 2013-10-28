@@ -37,7 +37,7 @@ DataTable.prototype = {
         }*/
         var str = '<table id="' + this.id + '" class="" style="' + styleStr +'"><thead><tr><th style="width: 20px;background: none;border: none;"></th>';
         if(this.selectable) {
-            str += '<th style="width:70px;">选择<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>';
+            str += '<th style="width:70px;">选择<img src="images/th_fix.jpg"/></th>';
         }
 
         for(var i = 0; i < this.fieldList.length; i++) {
@@ -310,7 +310,7 @@ function FormField(field, form) {
     this.name = field['name'];
     this.colName = field['colName'];
     this.displayName = field['displayName'];
-    this.isSingleLine = field['singleLine'];
+    this.isSingleLine = field['isSingleLine'];
     this.isDisplay = field['display'] || true;
     this.width = field['width'];
     this.height = field['height'];

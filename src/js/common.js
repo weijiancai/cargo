@@ -110,7 +110,7 @@
 
         option = $.extend(defaults, option);
         // 增加数据表单
-        $(this).append(new DataForm(option).toString());
+        $(this).prepend(new DataForm(option).toString());
 
         return this;
     };

@@ -126,7 +126,9 @@ function getFormInputTd(field, type, colspan, rowspan) {
     var spanStr = "";
     if(colspan) {
         spanStr += ' colspan="' + colspan + '"';
-        field.width = '100%';
+        if('textarea' == type) {
+            field.width = '100%';
+        }
     } else if(field.colspan) {
         spanStr += ' colspan="' + field.colspan + '"';
     }

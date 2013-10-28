@@ -1,7 +1,7 @@
 /**
- * 生成JS Tabs
+ * 预览 Tabs
  */
-function genJsTabs(tabId, tabNames) {
+function previewTabs(tabId, tabNames) {
     var option = {};
     option.tabNames = tabNames.split(',');
 
@@ -22,5 +22,30 @@ function genJsTabs(tabId, tabNames) {
     // 添加到html界面
     $('#tab_tabs_html').html($('#tab_tabs_preview').html());
 
-    return $('#' + tabId).tabs(option);
+    $('#' + tabId).tabs(option);
+}
+
+function previewTable() {
+    var option = {};
+    option.id = $('#tableId').val();
+    option.sortable = $('#sortable').val() == 'T';
+    option.selectable = $('#selectable').val() == 'T';
+    option.expandRow = $('#expandRow').val() == '' ? -1 : $('#expandRow').val();
+    option.selectRow = $('#selectRow').val() == '' ? -1 : $('#selectRow').val();
+    option.height = $('#height').val();
+    option.headers = eval('[' + $('#headers').val() + ']');
+    option.data = eval('[' + $('#table_datas').val() + ']');
+
+    // 添加到预览界面
+    $('#tab_table_preview').html('').append('<div id="' + option.id + '"></div>');
+    $('#' + option.id).dgtable(option);
+    // 添加到js界面
+    var jsStr = "$('#" + option.id + "').dgtable({id: '" + option.id + "', sortable:'" + option.sortable + "',});";
+    $('#tab_tabs_js').html(jsStr);
+    // 添加到html界面
+    $('#tab_table_html').html($('#tab_table_preview').html());
+}
+
+function addAttr(attrName, attrValue) {
+    return attrName + ":'" + attrValue + "'"
 }
