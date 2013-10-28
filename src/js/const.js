@@ -69,6 +69,19 @@ var CK_URL = {
 };
 
 /**********************************  数据字典   ******************************************************/
+// 显示风格
+var DICT_DISPLAY_STYLE = [
+    {name: 'DS_TEXT', value: '0'}, {name: 'DS_TEXT_AREA', value: '1'}, {name: 'DS_PASSWORD', value: '2'}, {name: 'DS_COMBO_BOX', value: '3'},
+    {name: 'DS_BUTTON', value: '4'}, {name: 'DS_YDH', value: '5'}, {name: 'DS_DATE_RANGE', value: '6'}, {name: 'DS_SFZ_MDT', value: '7'},
+    {name: 'DS_THDM', value: '8'}, {name: 'DS_LABEL', value: '9'}, {name: 'DS_FIELD', value: '10'}, {name: 'DS_RADIO', value: '11'},
+    {name: 'DS_CHECK_BOX', value: '12'}, {name: 'DS_YD_DATE_RANGE', value: '13'}, {name: 'DS_HBH_QUERY', value: '14'}, {name: 'DS_IMG', value: '15'},
+    {name: 'DS_SELECT_OPERATOR', value: '16'}, {name: 'DS_QSZ', value: '17'}, {name: 'DS_LSH', value: '18'}, {name: 'DS_ZL', value: '19'}
+];
+// 数据字典
+var DICT_DICT = [
+    {name: '是/否', value: 'DICT_BOOLEAN'}, {name: '归档方式', value: 'DICT_GDFS'}, {name: '国内/国际', value: 'DICT_GN_GJ'}, {name: '进港/出港/中转', value: 'DICT_JG_CG_ZZ'},
+    {name: '海关监管', value: 'DICT_HGJG'}, {name: '航班操作', value: 'DICT_HBCZ'}, {name: '不正常', value: 'DICT_BZC'}, {name: '打印', value: 'DICT_PRINT'}
+];
 // 是/否
 var DICT_BOOLEAN = [
     {name: '是', value: 'T'}, {name: '否', value: 'F'}

@@ -39,15 +39,18 @@
         #tabs_preview_tabs .tab, #tabs_preview_tabs textarea {
             height: 550px;
         }
+        #tabs_preview_form .tab, #tabs_preview_form textarea {
+            height: 450px;
+        }
         #tabs_preview_table .tab, #tabs_preview_table textarea {
-            height: 490px;
+            height: 450px;
         }
         #show_window {
             display: none;
             background-color: #f3fbf2;
             border: 2px solid #000000;
-            width: 650px;
-            height: 300px;
+            width: 900px;
+            height: 400px;
             position: absolute;
             padding: 10px;
         }
@@ -86,6 +89,8 @@
         <div class="tab" title="表单">
             <div id="form_form"></div>
             <div class="right action_buttons">
+                <button id="btn_form_add_field" type="button" class="btn_preview width_100 margin_right_20">添加表单字段</button>
+                <button id="btn_form_add_rows" type="button" class="btn_preview width_90 margin_right_20">添加表单行</button>
                 <button id="btn_form_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
             </div>
 
@@ -113,7 +118,7 @@
             </div>
 
             <div id="tabs_preview_table">
-                <div id="tab_table_preview" class="tab preview" title="预览" style="height: 490px;"></div>
+                <div id="tab_table_preview" class="tab preview" title="预览"></div>
 
                 <div class="tab" title="脚本代码">
                     <textarea id="tab_table_js" style=""></textarea>
@@ -144,7 +149,7 @@
         $('#tabs_preview_table').tabs({tabNames: ['预览','脚本代码','HTML代码']});
         // 弹出窗口
         var offset = $('#tabs_design').offset();
-        $('#show_window').css('top', offset.top + 130).css('left', offset.left + 100);
+        $('#show_window').css('top', offset.top + 130).css('left', offset.left + 20);
         // 表单
         /*$('#form_menu').dataForm({
             colCount: 1,
@@ -163,11 +168,17 @@
             ]
         });
         $('#form_form').dataForm({
-            colCount: 1,
+            colCount: 6,
             legend: 'form表单',
             fields: [
-                {id: 'tabId', displayName: 'TabId', isSingleLine: true, width:150,defaultValue: 'tabs_yd'},
-                {id: 'tabNames', displayName: 'TabNames', isSingleLine: true, width: 850, defaultValue: '运单,舱单,FFM报,理货'}
+                {id: 'formId', displayName: 'FormId',defaultValue: 'form_yd',width: 100},
+                {id: 'colCount', displayName: '列数', defaultValue: '3',width: 50},
+                {id: 'colWidth', displayName: '列宽', defaultValue: '180',width: 50},
+                {id: 'labelGap', displayName: 'labelGap', defaultValue: '5',width: 50},
+                {id: 'fieldGap', displayName: 'fieldGap', defaultValue: '15',width: 50},
+                {id: 'legend', displayName: 'legend', defaultValue: '表单头信息',width: 150},
+                {id: 'fields', displayName: '表单字段', isSingleLine: true, height: 60, displayStyle: DS_TEXT_AREA},
+                {id: 'rows', displayName: '表单行', isSingleLine: true, height: 60, displayStyle: DS_TEXT_AREA}
             ]
         });
         $('#form_table').dataForm({
@@ -180,7 +191,7 @@
                 {id: 'expandRow', displayName: '展开行', width: 60, defaultValue: ''},
                 {id: 'selectRow', displayName: '选中行', width: 60, defaultValue: ''},
                 {id: 'height', displayName: '高', width: 60, defaultValue: ''},
-                {id: 'headers', displayName: '表头', isSingleLine: true, defaultValue: '', displayStyle: DS_TEXT_AREA, height:40, width:550},
+                {id: 'headers', displayName: '表头', isSingleLine: true, defaultValue: '', displayStyle: DS_TEXT_AREA, height:80, width:550},
                 {id: 'table_datas', displayName: '表数据', isSingleLine: true, defaultValue: '', displayStyle: DS_TEXT_AREA, height:40, width:550}
             ]
         });
@@ -209,6 +220,41 @@
             });
             $('#show_window').show();
         });
+        // table 添加数据
+        $('#btn_table_add_data').click(function() {
+            $('#form_type').val('add_table_data');
+            var headers = eval('[' + $('#headers').val() + ']');
+            var str = '{';
+            for(var i = 0; i < headers.length; i++) {
+                str += headers[i].name + ":'" + headers[i].displayName + "'";
+                if(i < headers.length) {
+                    str += ',';
+                }
+            }
+            $('#table_datas').val(str + '}');
+        });
+
+        // form 添加字段
+        $('#btn_form_add_field').click(function() {
+            $('#form_type').val('add_form_field');
+            $('#form_window').html('').dataForm({
+                colCount: 5,
+                legend: '添加表单字段',
+                fields: [
+                    {id: 'fieldId', displayName: 'ID', width:100},
+                    {id: 'fieldName', displayName: '名称', width: 100},
+                    {id: 'fieldDisplayName', displayName: '显示名', width: 100},
+                    {id: 'isSingleLine', displayName: '独行', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                    {id: 'fieldWidth', displayName: '宽', width: 100},
+                    {id: 'displayStyle', displayName: '显示风格', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_DISPLAY_STYLE},
+                    {id: 'dictList', displayName: '数据字典', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_DICT},
+                    {id: 'readonly', displayName: '只读', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                    {id: 'defaultValue', displayName: '默认值', width: 100}
+                ]
+            });
+            $('#show_window').show();
+        });
+
         // 显示窗口，确定按钮
         $('#btn_window_ok').click(function() {
             $('#show_window').hide();
@@ -220,6 +266,21 @@
                 }
                 headers += '{name:"' + $('#headerName').val() + '",displayName:"' + $('#headerDisplayName').val() + '"}';
                 $('#headers').val(headers);
+            } else if('add_form_field' == formType) {
+                var fields = $('#fields').val();
+                if(fields.length > 0) {
+                    fields += ',';
+                }
+                fields += addAttr('id', $('#fieldId').val(), true) + ',';
+                fields += addAttr('name', $('#fieldName').val(), true) + ',';
+                fields += addAttr('displayName', $('#fieldDisplayName').val(), true) + ',';
+                fields += addAttr('isSingleLine', $('#isSingleLine').val(), false) + ',';
+                fields += addAttr('width', $('#fieldWidth').val(), false) + ',';
+                fields += addAttr('displayStyle', $('#displayStyle').val(), true) + ',';
+                fields += addAttr('dictList', $('#dictList').val(), false) + ',';
+                fields += addAttr('readonly', $('#readonly').val(), false) + ',';
+                fields += addAttr('defaultValue', $('#defaultValue').val(), true) + ',';
+                $('#fields').val(fields);
             }
         });
     </script>

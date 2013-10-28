@@ -40,12 +40,27 @@ function previewTable() {
     $('#tab_table_preview').html('').append('<div id="' + option.id + '"></div>');
     $('#' + option.id).dgtable(option);
     // 添加到js界面
-    var jsStr = "$('#" + option.id + "').dgtable({id: '" + option.id + "', sortable:'" + option.sortable + "',});";
-    $('#tab_tabs_js').html(jsStr);
+    var jsStr = "$('#" + option.id + "').dgtable({" +
+        addAttr('id', option.id, true) + "," +
+        addAttr('sortable', option.sortable, false) + "," +
+        addAttr('selectable', option.selectable, false) + "," +
+        addAttr('expandRow', option.expandRow, false) + "," +
+        addAttr('selectRow', option.selectRow, false) + "," +
+        addAttr('height', option.height, false) + "," +
+        addAttr('headers', '[' + $('#headers').val() + ']', false) + "," +
+        addAttr('data', '[' + $('#table_datas').val() + ']', false) + "," +
+        "});";
+    $('#tab_table_js').html(jsStr);
     // 添加到html界面
     $('#tab_table_html').html($('#tab_table_preview').html());
 }
 
-function addAttr(attrName, attrValue) {
-    return attrName + ":'" + attrValue + "'"
+function addAttr(attrName, attrValue, isStr) {
+    if(attrValue == '') return '';
+    if(isStr) {
+        return attrName + ":'" + attrValue + "'";
+    } else {
+        return attrName + ":" + attrValue;
+    }
+
 }
