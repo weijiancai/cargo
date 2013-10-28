@@ -13,8 +13,6 @@
         $(this).prepend(new DataTabs(option).toString()).addClass('tabs');
         var idx = option.selected;
         var tabs = $(this);
-        // 获得当前显示的tab
-        var cur_display_tab = tabs.find('> .tab:visible');
         // 默认选中第一个，改变背景色为#ecf8ea
         tabs.find('ul > li:eq(' + idx + ')').css("backgroundColor", "#ecf8ea");
         // 所有tab不显示
@@ -26,6 +24,8 @@
         $(this).find('> ul > li').click(function() {
             tabs.find('> ul > li').css('backgroundColor', '#C6E6BA');
             $(this).css("backgroundColor", "#ecf8ea");
+            // 获得当前显示的tab
+            var cur_display_tab = tabs.find('> .tab:visible');
             // 当前tab不显示
             cur_display_tab.hide().css("backgroundColor", "#ecf8ea");
 
@@ -104,7 +104,8 @@
             fieldGap: 15,   // field右边距，默认15
             legend: null,    // fieldset legend
             fields: null,      // 表单字段信息
-            rows: null         // 表单行信息
+            rows: null,         // 表单行信息
+            onChange: null  // 当数据改变时，回调函数
         };
 
         option = $.extend(defaults, option);

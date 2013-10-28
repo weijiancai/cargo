@@ -28,7 +28,7 @@
 }
 
 /* form */
-form input, form select, form textarea {
+input, select, textarea {
     border: 1px solid green;
     background-color: #f2fbf0;
 }
@@ -47,7 +47,7 @@ table .form_field {
 .form_field {
     margin-right: 15px;
 }
-form .import_input {
+.import_input {
     background-color: #ffffe1;
 }
 .form_date {
