@@ -1,0 +1,71 @@
+body {
+    background-color:#DFE8F7;
+    overflow: hidden; height: 100%;
+}
+
+.queryForm {
+}
+
+.queryForm fieldset {
+    border:1px #aaaaaa solid;
+    /*background: none repeat scroll 0 0 rgb(238, 238, 255);*/
+    margin: 5px 0;
+}
+
+.queryForm fieldset legend {
+    color: #15428B;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+}
+
+.queryForm .actionBar {
+    margin-top: 8px;
+}
+
+.editForm {
+
+}
+
+.editForm .actionBar {
+    margin-top: 25px;
+}
+
+.gridPane {
+    width: 100%;
+}
+
+.actionBar {
+
+}
+
+.actionBar a {
+    margin-left: 20px;
+}
+
+.addFormWin, .modifyFormWin, .lookFormWin, .north, .center, .easyui-layout, .window-body, .easyui-accordion, #MasterDiv, .window .window-body, .datagrid {
+    background-color:#DFE8F7;
+}
+
+.addFormWin, .modifyFormWin {
+    min-height: 200px;
+}
+
+.span_required {
+    color: red;
+    font-weight: 600;
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+.equal {
+    /*background-image: url("easyui/themes/icons/account.gif");*/
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 1px 4px;
+    color: red;
+    text-decoration: none;
+}

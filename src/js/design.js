@@ -16,13 +16,12 @@ function previewTabs(tabId, tabNames) {
     }
     // 添加到预览界面
     $('#tab_tabs_preview').html('').append(str + '</div>');
+    $('#' + tabId).tabs(option);
     // 添加到js界面
     var jsStr = "$('#" + tabId + "').tabs({tabNames: [" + namesStr + "]});";
     $('#tab_tabs_js').html(jsStr);
     // 添加到html界面
     $('#tab_tabs_html').html($('#tab_tabs_preview').html());
-
-    $('#' + tabId).tabs(option);
 }
 
 function previewTable() {
@@ -63,4 +62,25 @@ function addAttr(attrName, attrValue, isStr) {
         return attrName + ":" + attrValue;
     }
 
+}
+
+function previewForm() {
+    var option = {};
+    option.id = $('#formId').val();
+    option.legend = $('#legend').val();
+    option.colCount = $('#colCount').val() == '' ? 3 : $('#colCount').val();
+    option.colWidth = $('#colWidth').val() == '' ? 180 : $('#colWidth').val();
+    option.labelGap = $('#labelGap').val() == '' ? 180 : $('#labelGap').val();
+    option.fieldGap = $('#fieldGap').val() == '' ? 180 : $('#fieldGap').val();
+    option.fields = eval($('#fields').val());
+    option.rows = eval('[' + $('#rows').val() + ']');
+
+    // 添加到预览界面
+    $('#tab_form_preview').html('').append('<div id="' + option.id + '"></div>');
+    $('#' + option.id).dataForm(option);
+    // 添加到js界面
+    var jsStr = "$('#" + option.id + "').dataForm(" + $.toJsonStr(option) + ");";
+    $('#tab_form_js').html(jsStr);
+    // 添加到html界面
+    $('#tab_form_html').html($('#tab_form_preview').html());
 }

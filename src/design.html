@@ -12,6 +12,7 @@
 
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/dataConst.js"></script>
     <script type="text/javascript" src="js/menus.js"></script>
     <script type="text/javascript" src="js/layout.js"></script>
     <script type="text/javascript" src="js/dataObject.js"></script>
@@ -49,10 +50,11 @@
             display: none;
             background-color: #f3fbf2;
             border: 2px solid #000000;
-            width: 900px;
+            width: 1100px;
             height: 400px;
             position: absolute;
             padding: 10px;
+            overflow: auto;
         }
     </style>
 </head>
@@ -89,8 +91,10 @@
         <div class="tab" title="表单">
             <div id="form_form"></div>
             <div class="right action_buttons">
-                <button id="btn_form_add_field" type="button" class="btn_preview width_100 margin_right_20">添加表单字段</button>
-                <button id="btn_form_add_rows" type="button" class="btn_preview width_90 margin_right_20">添加表单行</button>
+                <button id="btn_form_select_field" type="button" class="btn_preview width_100 margin_right_20">选择表单字段</button>
+                <button id="btn_form_select_rows" type="button" class="btn_preview width_100 margin_right_20">选择表单行</button>
+                <!--<button id="btn_form_add_field" type="button" class="btn_preview width_100 margin_right_20">添加表单字段</button>
+                <button id="btn_form_add_rows" type="button" class="btn_preview width_90 margin_right_20">添加表单行</button>-->
                 <button id="btn_form_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
             </div>
 
@@ -149,7 +153,7 @@
         $('#tabs_preview_table').tabs({tabNames: ['预览','脚本代码','HTML代码']});
         // 弹出窗口
         var offset = $('#tabs_design').offset();
-        $('#show_window').css('top', offset.top + 130).css('left', offset.left + 20);
+        $('#show_window').css('top', offset.top + 130).css('left', offset.left - 100);
         // 表单
         /*$('#form_menu').dataForm({
             colCount: 1,
@@ -201,6 +205,10 @@
             var tabId = $('#tabId').val();
             var tabNames = $('#tabNames').val();
             previewTabs(tabId, tabNames);
+        });
+        // from预览
+        $('#btn_form_preview').click(function() {
+            previewForm();
         });
         // table预览
         $('#btn_table_preview').click(function() {
@@ -254,6 +262,48 @@
             });
             $('#show_window').show();
         });
+        // form 选择字段
+        $('#btn_form_select_field').click(function() {
+            $('#form_type').val('select_form_field');
+            initFormWin();
+            $('#show_window').show();
+        });
+        // form 选择行
+        $('#btn_form_select_rows').click(function() {
+            $('#form_type').val('select_form_rows');
+            initFormWin();
+            $('#show_window').show();
+        });
+
+        function initFormWin() {
+            var datas = [];
+            for(var i = 0; i < FORM_FIELD.length; i++) {
+                var data = $.extend({}, FORM_FIELD[i]);
+                data.preview = getInputNode(data);
+                data.sortNum = '<input id="' + data.name + '_sortNum" type="text" style="width: 40px;"/>';
+                datas.push(data);
+            }
+
+            $('#form_window').html('').dgtable({
+                selectable: true,
+                headers: [
+                    {name: 'id', displayName: 'ID'},
+                    {name: 'name', displayName: '名称'},
+                    {name: 'displayName', displayName: '显示名'},
+                    {name: 'isSingleLine', displayName: '独行'},
+                    {name: 'width', displayName: '宽'},
+                    {name: 'displayStyle', displayName: '显示风格'},
+                    {name: 'dictList', displayName: '数据字典', width: 70},
+                    {name: 'readonly', displayName: '只读'},
+                    {name: 'defaultValue', displayName: '默认值'},
+                    {name: 'sortNum', displayName: '排序号'},
+                    {name: 'preview', displayName: '预览'}
+                ],
+                data: datas
+            });
+
+            $('#form_window').find('table').css('width', '1500px');
+        }
 
         // 显示窗口，确定按钮
         $('#btn_window_ok').click(function() {
@@ -281,8 +331,32 @@
                 fields += addAttr('readonly', $('#readonly').val(), false) + ',';
                 fields += addAttr('defaultValue', $('#defaultValue').val(), true) + ',';
                 $('#fields').val(fields);
+            } else if('select_form_field' == formType) {
+                $('#fields').val($.toJsonStr(getSelectedFormFields()));
+            } else if('select_form_rows' == formType) {
+                var rows = $('#rows').val();
+                if(rows.length > 0) {
+                    rows += ',';
+                }
+                $('#rows').val(rows + $.toJsonStr(getSelectedFormFields()));
             }
         });
+
+        function getSelectedFormFields() {
+            var array = [];
+            $('#form_window').find('.tr_checkbox').each(function(i) {
+                if($(this).get(0).checked) {
+                    var data = FORM_FIELD[i];
+                    data.sortNum = $('#' + data.name + "_sortNum").val();
+                    array.push(data);
+                }
+            });
+            // 按SortNum排序
+            array.sort(function(a, b) {
+                return a.sortNum - b.sortNum;
+            });
+            return array;
+        }
     </script>
 </body>
 </html>
