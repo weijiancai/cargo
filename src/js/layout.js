@@ -30,7 +30,12 @@ GridPane.prototype = {
     }
 };
 
-function getInputNode(field, colCount) {
+function getInputNode(field) {
+    var inputNode = getInputNodeTd(field, 1).substr(4);
+    return inputNode.substring(0, inputNode.length - 5);
+}
+
+function getInputNodeTd(field, colCount) {
     field.defaultValue = field.defaultValue ? field.defaultValue : '';
     if(DS_TEXT_AREA == field.displayStyle) {
         if(field.isSingleLine) {
@@ -126,7 +131,9 @@ function getFormInputTd(field, type, colspan, rowspan) {
     var spanStr = "";
     if(colspan) {
         spanStr += ' colspan="' + colspan + '"';
-        field.width = '100%';
+        if('textarea' == type) {
+            field.width = '100%';
+        }
     } else if(field.colspan) {
         spanStr += ' colspan="' + field.colspan + '"';
     }

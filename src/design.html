@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title></title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/960_24_col.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/dataConst.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/design.js"></script>
+
+    <style type="text/css">
+        body {
+            background-color: #f2fbf0;
+            border: 1px solid green;
+        }
+        textarea {
+            width: 95%;
+            /*height: 590px;*/
+            border: 1px solid green;
+        }
+        .tab {
+            text-align: center;
+            padding: 5px;
+        }
+        .preview {
+            padding: 5px;
+            border: 1px solid green;
+        }
+        #tabs_preview_tabs .tab, #tabs_preview_tabs textarea {
+            height: 550px;
+        }
+        #tabs_preview_form .tab, #tabs_preview_form textarea {
+            height: 450px;
+        }
+        #tabs_preview_table .tab, #tabs_preview_table textarea {
+            height: 450px;
+        }
+        #show_window {
+            display: none;
+            background-color: #f3fbf2;
+            border: 2px solid #000000;
+            width: 1100px;
+            height: 400px;
+            position: absolute;
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabs_design" class="container_24">
+        <!-- 菜单 -->
+        <!--<div class="tab" title="菜单">
+            <div id="form_menu"></div>
+            <div id="tabs_preview_menu">
+
+            </div>
+        </div>-->
+        <!-- Tabs -->
+        <div class="tab" title="Tabs">
+            <div id="form_tab"></div>
+            <div class="right action_buttons">
+                <button id="btn_tabs_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
+            </div>
+
+            <div id="tabs_preview_tabs">
+                <div id="tab_tabs_preview" class="tab preview" title="预览" style=""></div>
+
+                <div class="tab" title="脚本代码">
+                    <textarea id="tab_tabs_js" style=""></textarea>
+                </div>
+
+                <div class="tab" title="HTML代码">
+                    <textarea id="tab_tabs_html"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表单 -->
+        <div class="tab" title="表单">
+            <div id="form_form"></div>
+            <div class="right action_buttons">
+                <button id="btn_form_select_field" type="button" class="btn_preview width_100 margin_right_20">选择表单字段</button>
+                <button id="btn_form_select_rows" type="button" class="btn_preview width_100 margin_right_20">选择表单行</button>
+                <!--<button id="btn_form_add_field" type="button" class="btn_preview width_100 margin_right_20">添加表单字段</button>
+                <button id="btn_form_add_rows" type="button" class="btn_preview width_90 margin_right_20">添加表单行</button>-->
+                <button id="btn_form_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
+            </div>
+
+            <div id="tabs_preview_form">
+                <div id="tab_form_preview" class="tab preview" title="预览" style=""></div>
+
+                <div class="tab" title="脚本代码">
+                    <textarea id="tab_form_js" style=""></textarea>
+                </div>
+
+                <div class="tab" title="HTML代码">
+                    <textarea id="tab_form_html"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表格 -->
+        <div class="tab" title="表格">
+            <div id="form_table"></div>
+
+            <div class="right action_buttons">
+                <button id="btn_table_add_header" type="button" class="btn_preview width_90 margin_right_20">添加表头</button>
+                <button id="btn_table_add_data" type="button" class="btn_preview width_90 margin_right_20">添加数据</button>
+                <button id="btn_table_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
+            </div>
+
+            <div id="tabs_preview_table">
+                <div id="tab_table_preview" class="tab preview" title="预览"></div>
+
+                <div class="tab" title="脚本代码">
+                    <textarea id="tab_table_js" style=""></textarea>
+                </div>
+
+                <div class="tab" title="HTML代码">
+                    <textarea id="tab_table_html"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹出窗口 -->
+    <div id="show_window">
+        <div id="form_window"></div>
+        <input id="form_type" type="hidden"/>
+        <div class="action_buttons">
+            <button id="btn_window_ok" type="button" class="btn_preview width_90 margin_right_20">确定</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // tabs
+        $('#tabs_design').tabs({tabNames: ['Tabs','表单','表格']});
+        /*$('#tabs_preview_menu').tabs({tabNames: ['预览','脚本代码','HTML代码']});*/
+        $('#tabs_preview_tabs').tabs({tabNames: ['预览','脚本代码','HTML代码']});
+        $('#tabs_preview_form').tabs({tabNames: ['预览','脚本代码','HTML代码']});
+        $('#tabs_preview_table').tabs({tabNames: ['预览','脚本代码','HTML代码']});
+        // 弹出窗口
+        var offset = $('#tabs_design').offset();
+        $('#show_window').css('top', offset.top + 130).css('left', offset.left - 100);
+        // 表单
+        /*$('#form_menu').dataForm({
+            colCount: 1,
+            fields: [
+                {id: 'main_menu', displayName: '主菜单', isSingleLine: true, width: 850, defaultValue: ''},
+                {id: 'sub_menu_group', displayName: '子菜单分组', isSingleLine: true, displayStyle: DS_TEXT_AREA, width:850, height: 80},
+                {id: 'sub_menus', displayName: '子菜单', isSingleLine: true, displayStyle: DS_TEXT_AREA, width:850, height: 150}
+            ]
+        })*/
+        $('#form_tab').dataForm({
+            colCount: 1,
+            legend: 'tabs表单',
+            fields: [
+                {id: 'tabId', displayName: 'TabId', isSingleLine: true, width:150,defaultValue: 'tabs_yd'},
+                {id: 'tabNames', displayName: 'TabNames', isSingleLine: true, width: 550, defaultValue: '运单,舱单,FFM报,理货'}
+            ]
+        });
+        $('#form_form').dataForm({
+            colCount: 6,
+            legend: 'form表单',
+            fields: [
+                {id: 'formId', displayName: 'FormId',defaultValue: 'form_yd',width: 100},
+                {id: 'colCount', displayName: '列数', defaultValue: '3',width: 50},
+                {id: 'colWidth', displayName: '列宽', defaultValue: '180',width: 50},
+                {id: 'labelGap', displayName: 'labelGap', defaultValue: '5',width: 50},
+                {id: 'fieldGap', displayName: 'fieldGap', defaultValue: '15',width: 50},
+                {id: 'legend', displayName: 'legend', defaultValue: '表单头信息',width: 150},
+                {id: 'fields', displayName: '表单字段', isSingleLine: true, height: 60, displayStyle: DS_TEXT_AREA},
+                {id: 'rows', displayName: '表单行', isSingleLine: true, height: 60, displayStyle: DS_TEXT_AREA}
+            ]
+        });
+        $('#form_table').dataForm({
+            colCount: 6,
+            legend: 'table表单',
+            fields: [
+                {id: 'tableId', displayName: 'ID',defaultValue: 'table_jjhw'},
+                {id: 'sortable', displayName: '可排序', width: 60, defaultValue: '', displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                {id: 'selectable', displayName: '可选择', width: 60, defaultValue: '', displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                {id: 'expandRow', displayName: '展开行', width: 60, defaultValue: ''},
+                {id: 'selectRow', displayName: '选中行', width: 60, defaultValue: ''},
+                {id: 'height', displayName: '高', width: 60, defaultValue: ''},
+                {id: 'headers', displayName: '表头', isSingleLine: true, defaultValue: '', displayStyle: DS_TEXT_AREA, height:80, width:550},
+                {id: 'table_datas', displayName: '表数据', isSingleLine: true, defaultValue: '', displayStyle: DS_TEXT_AREA, height:40, width:550}
+            ]
+        });
+
+        // tabs预览
+        $('#btn_tabs_preview').click(function() {
+            var tabId = $('#tabId').val();
+            var tabNames = $('#tabNames').val();
+            previewTabs(tabId, tabNames);
+        });
+        // from预览
+        $('#btn_form_preview').click(function() {
+            previewForm();
+        });
+        // table预览
+        $('#btn_table_preview').click(function() {
+            previewTable();
+        });
+
+        // table 添加表头
+        $('#btn_table_add_header').click(function() {
+            $('#form_type').val('add_table_header');
+            $('#form_window').html('').dataForm({
+                colCount: 1,
+                legend: '添加表格表头',
+                fields: [
+                    {id: 'headerName', displayName: '名称', width:150},
+                    {id: 'headerDisplayName', displayName: '显示名', width: 150}
+                ]
+            });
+            $('#show_window').show();
+        });
+        // table 添加数据
+        $('#btn_table_add_data').click(function() {
+            $('#form_type').val('add_table_data');
+            var headers = eval('[' + $('#headers').val() + ']');
+            var str = '{';
+            for(var i = 0; i < headers.length; i++) {
+                str += headers[i].name + ":'" + headers[i].displayName + "'";
+                if(i < headers.length) {
+                    str += ',';
+                }
+            }
+            $('#table_datas').val(str + '}');
+        });
+
+        // form 添加字段
+        $('#btn_form_add_field').click(function() {
+            $('#form_type').val('add_form_field');
+            $('#form_window').html('').dataForm({
+                colCount: 5,
+                legend: '添加表单字段',
+                fields: [
+                    {id: 'fieldId', displayName: 'ID', width:100},
+                    {id: 'fieldName', displayName: '名称', width: 100},
+                    {id: 'fieldDisplayName', displayName: '显示名', width: 100},
+                    {id: 'isSingleLine', displayName: '独行', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                    {id: 'fieldWidth', displayName: '宽', width: 100},
+                    {id: 'displayStyle', displayName: '显示风格', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_DISPLAY_STYLE},
+                    {id: 'dictList', displayName: '数据字典', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_DICT},
+                    {id: 'readonly', displayName: '只读', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
+                    {id: 'defaultValue', displayName: '默认值', width: 100}
+                ]
+            });
+            $('#show_window').show();
+        });
+        // form 选择字段
+        $('#btn_form_select_field').click(function() {
+            $('#form_type').val('select_form_field');
+            initFormWin();
+            $('#show_window').show();
+        });
+        // form 选择行
+        $('#btn_form_select_rows').click(function() {
+            $('#form_type').val('select_form_rows');
+            initFormWin();
+            $('#show_window').show();
+        });
+
+        function initFormWin() {
+            var datas = [];
+            for(var i = 0; i < FORM_FIELD.length; i++) {
+                var data = $.extend({}, FORM_FIELD[i]);
+                data.preview = getInputNode(data);
+                data.sortNum = '<input id="' + data.name + '_sortNum" type="text" style="width: 40px;"/>';
+                datas.push(data);
+            }
+
+            $('#form_window').html('').dgtable({
+                selectable: true,
+                headers: [
+                    {name: 'id', displayName: 'ID'},
+                    {name: 'name', displayName: '名称'},
+                    {name: 'displayName', displayName: '显示名'},
+                    {name: 'isSingleLine', displayName: '独行'},
+                    {name: 'width', displayName: '宽'},
+                    {name: 'displayStyle', displayName: '显示风格'},
+                    {name: 'dictList', displayName: '数据字典', width: 70},
+                    {name: 'readonly', displayName: '只读'},
+                    {name: 'defaultValue', displayName: '默认值'},
+                    {name: 'sortNum', displayName: '排序号'},
+                    {name: 'preview', displayName: '预览'}
+                ],
+                data: datas
+            });
+
+            $('#form_window').find('table').css('width', '1500px');
+        }
+
+        // 显示窗口，确定按钮
+        $('#btn_window_ok').click(function() {
+            $('#show_window').hide();
+            var formType = $('#form_type').val();
+            if('add_table_header' == formType) {
+                var headers = $('#headers').val();
+                if(headers.length > 0) {
+                    headers += ',';
+                }
+                headers += '{name:"' + $('#headerName').val() + '",displayName:"' + $('#headerDisplayName').val() + '"}';
+                $('#headers').val(headers);
+            } else if('add_form_field' == formType) {
+                var fields = $('#fields').val();
+                if(fields.length > 0) {
+                    fields += ',';
+                }
+                fields += addAttr('id', $('#fieldId').val(), true) + ',';
+                fields += addAttr('name', $('#fieldName').val(), true) + ',';
+                fields += addAttr('displayName', $('#fieldDisplayName').val(), true) + ',';
+                fields += addAttr('isSingleLine', $('#isSingleLine').val(), false) + ',';
+                fields += addAttr('width', $('#fieldWidth').val(), false) + ',';
+                fields += addAttr('displayStyle', $('#displayStyle').val(), true) + ',';
+                fields += addAttr('dictList', $('#dictList').val(), false) + ',';
+                fields += addAttr('readonly', $('#readonly').val(), false) + ',';
+                fields += addAttr('defaultValue', $('#defaultValue').val(), true) + ',';
+                $('#fields').val(fields);
+            } else if('select_form_field' == formType) {
+                $('#fields').val($.toJsonStr(getSelectedFormFields()));
+            } else if('select_form_rows' == formType) {
+                var rows = $('#rows').val();
+                if(rows.length > 0) {
+                    rows += ',';
+                }
+                $('#rows').val(rows + $.toJsonStr(getSelectedFormFields()));
+            }
+        });
+
+        function getSelectedFormFields() {
+            var array = [];
+            $('#form_window').find('.tr_checkbox').each(function(i) {
+                if($(this).get(0).checked) {
+                    var data = FORM_FIELD[i];
+                    data.sortNum = $('#' + data.name + "_sortNum").val();
+                    array.push(data);
+                }
+            });
+            // 按SortNum排序
+            array.sort(function(a, b) {
+                return a.sortNum - b.sortNum;
+            });
+            return array;
+        }
+    </script>
+</body>
+</html>

@@ -68,6 +68,19 @@
         if(option.selectRow >= 0) {
             $table.find('> table > tbody > tr:eq(' + option.selectRow + ') > td').addClass('selectRow');
         }
+        // 选中某一行
+        $table.find('.tr_checkbox').click(function() {
+            for(var i = 0; i < $(this).length; i++) {
+                var checkbox = $(this).get(i);
+                var tr = $(checkbox).parent().parent();
+                if(checkbox.checked) {
+                    tr.addClass('selectRow');
+                }else {
+                    tr.removeClass('selectRow');
+                }
+            }
+
+        });
 
         /**
          * 展开某一行
@@ -110,7 +123,7 @@
 
         option = $.extend(defaults, option);
         // 增加数据表单
-        $(this).append(new DataForm(option).toString());
+        $(this).prepend(new DataForm(option).toString());
 
         return this;
     };
@@ -133,6 +146,56 @@
 //        $('#sub_nav_gnjg').find('> div > ol:eq(0) ul').css('padding-bottom', '2px');
         // 显示子菜单
         $('#' + option.showItemId).show();
-    }
+    };
 
+
+    $.toJsonStr = function(object) {
+        var type = typeof object;
+        if ('object' == type) {
+            if (Array == object.constructor) type = 'array';
+            else if (RegExp == object.constructor) type = 'regexp';
+            else type = 'object';
+        }
+        switch (type) {
+            case 'undefined':
+            case 'unknown':
+                return '';
+                break;
+            case 'function':
+            case 'boolean':
+            case 'regexp':
+                return object.toString();
+                break;
+            case 'number':
+                return isFinite(object) ? object.toString() : 'null';
+                break;
+            case 'string':
+                return '"' +
+                    object.replace(/(\\|\")/g, "\\$1").replace(/\n|\r|\t/g,
+                        function() {
+                            var a = arguments[0];
+                            return (a == '\n') ? '\\n': (a == '\r') ? '\\r': (a == '\t') ? '\\t': ""
+                        }) + '"';
+                break;
+            case 'object':
+                if (object === null) return 'null';
+                var results = [];
+                for (var property in object) {
+                    var value = $.toJsonStr(object[property]);
+                    if (value !== undefined) results.push($.toJsonStr(property) + ':' + value);
+                }
+                return '{' + results.join(',') + '}';
+                break;
+            case 'array':
+                results = [];
+                for (var i = 0; i < object.length; i++) {
+                    value = $.toJsonStr(object[i]);
+                    if (value !== undefined) results.push(value);
+                }
+                return '[' + results.join(',') + ']';
+                break;
+        }
+
+        return '';
+    };
 })(jQuery);

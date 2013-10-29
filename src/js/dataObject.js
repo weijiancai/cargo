@@ -37,7 +37,7 @@ DataTable.prototype = {
         }*/
         var str = '<table id="' + this.id + '" class="" style="' + styleStr +'"><thead><tr><th style="width: 20px;background: none;border: none;"></th>';
         if(this.selectable) {
-            str += '<th style="width:70px;">选择<img src="images/th_fix.jpg"/><img src="images/sort_asc.jpg"/></th>';
+            str += '<th style="width:70px;">选择<img src="images/th_fix.jpg"/></th>';
         }
 
         for(var i = 0; i < this.fieldList.length; i++) {
@@ -67,7 +67,7 @@ DataTable.prototype = {
             for(i = 0; i < this.data.length; i++) {
                 str += '<tr><td><img src="images/tr_head.jpg"/></td>';
                 if(this.selectable) {
-                    str += '<td style="text-align: center;vertical-align: middle;"><input type="checkbox"/></td>';
+                    str += '<td style="text-align: center;vertical-align: middle;"><input type="checkbox" class="tr_checkbox"/></td>';
                 }
                 style = '';
 
@@ -79,7 +79,7 @@ DataTable.prototype = {
                         align = 'left';
                     }
                     style = 'text-align:' + align + ';';
-                    str += '<td style="' + style + '">' + this.data[i][name] + '</td>'
+                    str += '<td style="' + style + '">' + (this.data[i][name] || '') + '</td>'
                 }
                 str += '</tr>';
             }
@@ -148,7 +148,7 @@ DataForm.prototype = {
         var formGrid = this.gridPane;
         var fieldList = this.fieldList;
 
-        if((this.fields && $.isArray(fieldList[0].name)) || this.rows) { // flow 布局
+        if((this.fields && this.fields.length > 0 && $.isArray(fieldList[0].name)) || (this.rows && this.rows.length > 0)) { // flow 布局
             var flowFields;
             if(this.rows) {
                 flowFields = this.rows;
@@ -158,8 +158,7 @@ DataForm.prototype = {
             for(var i = 0; i < flowFields.length; i++) {
                 var node = '<td style="width: 100%;">';
                 for(var j = 0; j < flowFields[i].length; j++) {
-                    var inputNode = getInputNode(flowFields[i][j], 0).substr(4);
-                    node += getLabel(flowFields[i][j]) + getGapInLine(this.labelGap) + inputNode.substring(0, inputNode.length - 5) + getGapInLine(this.fieldGap);
+                    node += getLabel(flowFields[i][j]) + getGapInLine(this.labelGap) + getInputNode(flowFields[i][j], 0) + getGapInLine(this.fieldGap);
                 }
                 node += '</td>';
                 formGrid.add(node, i, 0);
@@ -180,7 +179,7 @@ DataForm.prototype = {
                     idxRow++;
                     formGrid.add(getLabelTd(field), idxRow, 0);
                     formGrid.add(getGapTd(this.labelGap), idxRow, 1);
-                    formGrid.add(getInputNode(field, this.colCount), idxRow, 2);
+                    formGrid.add(getInputNodeTd(field, this.colCount), idxRow, 2);
                     idxCol = 0;
                     idxRow++;
                     this.height += field.height;
@@ -190,7 +189,7 @@ DataForm.prototype = {
 
                 formGrid.add(getLabelTd(field), idxRow, idxCol++);
                 formGrid.add(getGapTd(this.labelGap), idxRow, idxCol++);
-                formGrid.add(getInputNode(field, this.colCount), idxRow, idxCol++);
+                formGrid.add(getInputNodeTd(field, this.colCount), idxRow, idxCol++);
 
                 if(this.colCount == 1) {
                     idxCol = 0;
@@ -306,11 +305,11 @@ DataForm.prototype = {
 };
 
 function FormField(field, form) {
-    this.id = field['id'];
+    this.id = field['id'] || '';
     this.name = field['name'];
     this.colName = field['colName'];
     this.displayName = field['displayName'];
-    this.isSingleLine = field['singleLine'];
+    this.isSingleLine = field['isSingleLine'];
     this.isDisplay = field['display'] || true;
     this.width = field['width'];
     this.height = field['height'];

@@ -76,6 +76,7 @@ form tr {
     padding-left: 20px;
     border-top: 1px solid green;
     border-left: 1px solid green;
+    overflow: auto;
 }
 
 .dg_table table {
