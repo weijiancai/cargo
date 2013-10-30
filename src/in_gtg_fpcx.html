@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>柜台岗 -- 收费与账单 -- 发票查询</title>
+    <title>国内 -- 柜台岗 -- 收费与账单 -- 发票查询</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -23,7 +23,28 @@
 
     <!-- Tabs -->
     <div id="main_right">
-        <div id="form_fpcx"></div>
+        <div id="div_form_fpcxgl"></div>
+        <div id="div_table_fpcx"></div>
+
+        <div class="round">
+            <div class="row" style="margin-left: 100px;">
+                <label>总票数：</label>
+                <span class="width_230">1</span>
+
+                <label>总金额：</label>
+                <span class="width_230">240000</span>
+            </div>
+
+            <div class="action_buttons">
+                <button type="button" class="width_90">全选（A）</button>
+                <button type="button" class="width_100">全不选（N）</button>
+                <button type="button" class="width_150">导出XML数据（E）</button>
+                <button type="button" class="width_100">导出Excel</button>
+                <button type="button" class="width_1000">作废发票（C）</button>
+                <button type="button" class="width_120">作废取消（R）</button>
+                <button type="button" class="width_120">释放发票号（S）</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -33,16 +54,31 @@
     // tabs
 //    $('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});
     // 表单
-    $('#form_fpcx').dataForm({
-        colCount: 4,
-        legend: '发票查询管理',
-        fields: [
-            {name: 'ydh', displayName: '运单号', displayStyle: DS_YDH},
-            {name: 'fpqshm', displayName: '发票起始号码', width: 100},
-            {name: 'fpjshm', displayName: '发票结束号码', width: 100, colspan: 2},
-            {name: 'ydh', displayName: '流水号', displayStyle: DS_LSH}
-        ]
-    });
+    $('#div_form_fpcxgl').dataForm({id: "form_fpcxgl", legend: "发票查询管理", colCount: "4", colWidth: "180", labelGap: "5", fieldGap: "15", fields: [
+        {name: "ydh", displayName: "运单号", width: 235, displayStyle: 5, sortNum: "10"},
+        {name: "fpqshm", displayName: "发票起始号码", width: 120, sortNum: "20"},
+        {name: "fpjshm", displayName: "发票结束号码", width: 120, sortNum: "30"},
+        {name: "empty_field", displayName: "空白", displayStyle: 10, sortNum: "40"},
+        {name: "lsh", displayName: "流水号", displayStyle: 18, sortNum: "50"},
+        {name: "djyyd", displayName: "登记营业点", displayStyle: 0, styleClass: "import_input", defaultValue: "DOM2", sortNum: "60", width: 120},
+        {name: "fkfmc", displayName: "付款方名称", displayStyle: 0, styleClass: "import_input", sortNum: "70", width: 120},
+        {name: "empty_field", displayName: "空白", displayStyle: 10, sortNum: "80"},
+        {name: "kpsj", displayName: "开票时间", displayStyle: 20, sortNum: "90"},
+        {name: "sfzf", displayName: "是否作废", displayStyle: 3, width: 120, dictList: [
+            {name: "全部", value: ""},
+            {name: "是", value: "T"},
+            {name: "否", value: "F"}
+        ], sortNum: "100"},
+        {name: "dyr", displayName: "打印人", displayStyle: 0, styleClass: "import_input", sortNum: "110", width: 120},
+        {name: "btn_cx", displayName: "查询（Q）", width: 100, displayStyle: 4, sortNum: "120"}
+    ], rows: []});
+    // 表格
+    $('#div_table_fpcx').dgtable({id:"table_fpcx",sortable:false,selectable:false,expandRow:-1,selectRow:"1",height:"350",headers:[{name:"fphm",displayName:"发票号码",width:100,sortNum:""},
+        {name:"zf",displayName:"作废",width:80,sortNum:""},
+        {name:"lshm",displayName:"流水号码",width:100,sortNum:""},
+        {name:"zje",displayName:"总金额",width:60,sortNum:""},
+        {name:"fkfmc",displayName:"付款方名称",width:150,sortNum:""},
+        {name:"kpsj",displayName:"开票时间",width:150,sortNum:""}],data:[{fphm:"00234234",zf:"Y",lshm:"20120614DOM200001",zje:"240000",fkfmc:"中国邮政",kpsj:"2012年06月14日 09:29"}]});
 </script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 
 /* tabs */
 .tabs {
-    clear: both;
     padding: 3px 0;
     /*border-right: 2px solid green;
     border-bottom: 2px solid green;*/
@@ -101,6 +100,7 @@ form tr {
 
 .dg_table td {
     border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
     padding-left: 3px;
 }
 .dg_table .selectRow {

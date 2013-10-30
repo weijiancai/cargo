@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>柜台岗 -- 国内进港 -- 进港运单高级管理</title>
+    <title>国内 -- 柜台岗 -- 国内进港 -- 进港运单高级管理</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -24,7 +24,7 @@
     <!-- Tabs -->
     <div id="main_right">
         <form>
-            <fieldset>
+            <fieldset style="padding: 0 10px;">
                 <legend>查询条件</legend>
 
                 <div class="row">
@@ -37,13 +37,13 @@
                         <input type="text" class="second" value="741741111"/>
                     </span>
 
-                    <button type="button" class="width_90">查询（Q）</button>
+                    <button type="button" class="width_90" style="padding: 2px;">查询（Q）</button>
                 </div>
             </fieldset>
         </form>
 
         <form>
-            <fieldset>
+            <fieldset style="padding: 0 10px;">
                 <legend>运单基础信息</legend>
 
                 <table>
@@ -184,16 +184,15 @@
                     </tr>
 
                     <tr>
-                        <td colspan="7">
+                        <td colspan="9">
                             <label>产品代码</label>
                             <input type="text" class="width_60 import_input"/>
 
                             <label>备注</label>
-                            <input type="text" class="width_230"/>
-                        </td>
-                        <td colspan="2">
-                            <button type="button" class="width_90">保存</button>
-                            <button type="button" class="width_90">删除</button>
+                            <input type="text" class="width_230" style="margin-right: 200px"/>
+
+                            <button type="button" class="width_90" style="padding: 2px;">保存</button>
+                            <button type="button" class="width_90" style="padding: 2px;">删除</button>
                         </td>
                     </tr>
                 </table>
@@ -202,65 +201,106 @@
         </form>
 
         <form>
-            <fieldset>
+            <fieldset style="padding: 0 10px;">
                 <legend>运单到达信息</legend>
 
                 <div class="row">
                     <input type="checkbox" checked/>
                     <label>文件到达</label>
 
-                    <span class="hbh form_field">
+                    <span class="ydh form_field">
                         <label>航班号</label>
                         <input type="text" class="first" value="CZ"/>
                         <input type="text" class="second" value="3403/2012-05-22"/>
+                        <select class="width_100">
+                            <option>PEK-CTU</option>
+                        </select>
                     </span>
 
-                    <select class="width_100">
-                        <option>PEK-CTU</option>
-                    </select>
-
-                    <button type="button" class="width_100" style="margin-left: 100px">保存</button>
+                    <button type="button" class="width_100" style="margin-left: 100px;padding: 2px;">保存</button>
                 </div>
             </fieldset>
         </form>
 
-        <fieldset>
+        <fieldset style="padding: 0 10px;">
             <legend>理货信息</legend>
 
-            <div id="table_lhxx" class="left" style="width: 410px;"></div>
+            <div id="table_lhxx" class="left"></div>
 
-            <div class="left">
-                <div class="row">
+            <div class="left pad_left_15">
+                <div>
                     <label>理单件数</label>
                     <input type="text" value="1" class="width_50">
 
                     <label>理单重量</label>
                     <input type="text" value="13" class="width_50">
                 </div>
+                <div>
+                    <label class="margin_right_20">ULD号</label>
+                    <input type="text" value="" class="width_30 import_input">
+                    <input type="text" value="" class="width_60" style="margin-left: -5px;">
+                    <input type="text" value="" class="width_30 import_input" style="margin-left: -5px;">
+                </div>
+                <div>
+                    <span class="ydh form_field">
+                        <label class="readonly">航班号</label>
+                        <input type="text" class="first readonly" value="CZ" disabled/>
+                        <input type="text" class="second readonly" value="3403/2012-05-22" disabled/>
+                        <select class="width_100 readonly" disabled>
+                            <option>PEK-CTU</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="row">
+                    <button type="button" class="width_90" style="padding: 2px;">新增</button>
+                    <button type="button" class="width_90" style="padding: 2px;">保存</button>
+                    <button type="button" class="width_90" style="padding: 2px;">删除</button>
+                </div>
             </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset style="padding: 0 10px;">
             <legend>舱单信息</legend>
 
             <div id="table_cdxx" class="left"></div>
 
-            <div class="left">
-                <div class="row">
+            <div class="left pad_left_15">
+                <div>
                     <label>舱单件数</label>
                     <input type="text" value="1" class="width_50">
 
                     <label>舱单重量</label>
                     <input type="text" value="13" class="width_50">
                 </div>
+                <div>
+                    <label class="margin_right_20">ULD号</label>
+                    <input type="text" value="" class="width_30 import_input">
+                    <input type="text" value="" class="width_60" style="margin-left: -5px;">
+                    <input type="text" value="" class="width_30 import_input" style="margin-left: -5px;">
+                </div>
+                <div>
+                    <span class="ydh form_field">
+                        <label class="readonly">航班号</label>
+                        <input type="text" class="first readonly" value="CZ" disabled/>
+                        <input type="text" class="second readonly" value="3403/2012-05-22" disabled/>
+                        <select class="width_100 readonly" disabled>
+                            <option>PEK-CTU</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="row">
+                    <button type="button" class="width_90" style="padding: 2px;">新增</button>
+                    <button type="button" class="width_90" style="padding: 2px;">保存</button>
+                    <button type="button" class="width_90" style="padding: 2px;">删除</button>
+                </div>
             </div>
 
         </fieldset>
 
-        <fieldset>
+        <fieldset style="padding: 0 10px;">
             <legend>仓库信息</legend>
 
-            <div id="table_ckxx" class="left" style="width: 410px;"></div>
+            <div id="table_ckxx" class="left"></div>
         </fieldset>
     </div>
 </div>
@@ -290,6 +330,7 @@
         sortable: true,
         selectRow: 0,
         width: 450,
+        height: 80,
         headers: [
             {name: 'lhjs', displayName: '理货件数'},
             {name: 'lhzl', displayName: '理货重量'},
@@ -303,6 +344,8 @@
     $('#table_cdxx').dgtable({
         sortable: true,
         selectRow: 0,
+        width: 450,
+        height: 80,
         headers: [
             {name: 'cdjs', displayName: '舱单件数'},
             {name: 'cdzl', displayName: '舱单重量'},
@@ -316,6 +359,7 @@
     $('#table_ckxx').dgtable({
         sortable: true,
         selectRow: 0,
+        width: 450,
         headers: [
             {name: 'ck', displayName: '仓库'},
             {name: 'kw', displayName: '库位'},

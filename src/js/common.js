@@ -48,6 +48,7 @@
                 selectable: false, // 可选择（是否显示选择复选框）
                 expandRow: -1,     // 展开某一行（如果有子表的时候，-1表示不展开）
                 selectRow: -1,     // 选中某一行
+                width: null,       // 表格宽度
                 height: null,      // 表格高度
                 headers: [],       // 表头
                 data:[]            // 表数据
@@ -61,6 +62,10 @@
         var $table = $(this).addClass('dg_table').append(new DataTable(option).toString());
         if(option.height) {
             $table.css('height', option.height + 'px');
+        }
+        if(option.width) {
+            $table.css('width', option.width + 'px');
+            $table.find('table').css('width', option.width + 'px');
         }
         if(option.expandRow != -1) {
             expandRow(option.expandRow);
@@ -145,11 +150,27 @@
         // 设置第一个子菜单padding-bottom
 //        $('#sub_nav_gnjg').find('> div > ol:eq(0) ul').css('padding-bottom', '2px');
         // 显示子菜单
-        $('#' + option.showItemId).show();
+        if(option.showItemId) {
+            $('#' + option.showItemId).show();
+            var $a = $('#main_nav_bar').find('a[name="' + option.showItemId + '"]');
+            $a.css('color', '#000000').parent().addClass('sub_nav_selected');
+        }
+        $('#main_nav_bar').find('a').click(function() {
+            var $lis = $('#main_nav_bar').find('li').removeClass('sub_nav_selected');
+            $lis.find('a').css('color', '#ffffff');
+            // 所有子菜单不显示
+            $('#sub_nav_bar').find('> .div_sub_nav').hide();
+            $(this).each(function() {
+                $(this).css('color', '#000000');
+                $(this).parent().addClass('sub_nav_selected');
+                // 显示当前子菜单
+                $('#' + this.name).show();
+            });
+        });
     };
 
 
-    $.toJsonStr = function(object) {
+    $.toJsonStr = function(object, isValue) {
         var type = typeof object;
         if ('object' == type) {
             if (Array == object.constructor) type = 'array';
@@ -170,18 +191,23 @@
                 return isFinite(object) ? object.toString() : 'null';
                 break;
             case 'string':
-                return '"' +
-                    object.replace(/(\\|\")/g, "\\$1").replace(/\n|\r|\t/g,
-                        function() {
-                            var a = arguments[0];
-                            return (a == '\n') ? '\\n': (a == '\r') ? '\\r': (a == '\t') ? '\\t': ""
-                        }) + '"';
+                var str = object.replace(/(\\|\")/g, "\\$1").replace(/\n|\r|\t/g,
+                    function() {
+                        var a = arguments[0];
+                        return (a == '\n') ? '\\n': (a == '\r') ? '\\r': (a == '\t') ? '\\t': ""
+                    });
+                if(isValue) {
+                    return '"' + str + '"';
+                } else {
+                    return str;
+                }
+
                 break;
             case 'object':
                 if (object === null) return 'null';
                 var results = [];
                 for (var property in object) {
-                    var value = $.toJsonStr(object[property]);
+                    var value = $.toJsonStr(object[property], true);
                     if (value !== undefined) results.push($.toJsonStr(property) + ':' + value);
                 }
                 return '{' + results.join(',') + '}';
@@ -192,10 +218,14 @@
                     value = $.toJsonStr(object[i]);
                     if (value !== undefined) results.push(value);
                 }
-                return '[' + results.join(',') + ']';
+                return '[' + results.join(',\r\n') + ']';
                 break;
         }
 
         return '';
+    };
+
+    $.startWith = function(str, prefix) {
+        return str && str.length > 0 && prefix && (str.substring(0, prefix.length) === prefix);
     };
 })(jQuery);

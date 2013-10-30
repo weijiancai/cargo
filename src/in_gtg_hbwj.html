@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>柜台岗 -- 航班文件</title>
+    <title>国内 -- 柜台岗 -- 国内进港 -- 航班文件</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -205,7 +205,51 @@
             </div>
             <div class="tab" title="舱单"></div>
             <div class="tab" title="FFM报"></div>
-            <div class="tab" title="理货"></div>
+            <div class="tab" title="理货">
+                <div id="tabs_lh">
+                    <div class="tab" title="散货理货">
+                        <div id="div_table_shlh" class="round"></div>
+                        <div class="round">
+                            <label>舱单总件数：</label>
+                            <span class="width_100">20</span>
+
+                            <label>舱单总重量：</label>
+                            <span class="width_100">200</span>
+
+                            <label>理货总件数：</label>
+                            <span class="width_100">0</span>
+
+                            <label>理货总重量：</label>
+                            <span class="width_100">0</span>
+                        </div>
+
+                        <div class="round">
+                            <h5 style="color: blue;">理货编辑区</h5>
+                            <div class="round">
+                                <h5 class="left margin_right_20" style="color: blue;">单票理货</h5>
+                                <div id="div_form_dplh"></div>
+                            </div>
+
+                            <div class="round">
+                                <h5 class="left margin_right_20" style="color: blue;">库位信息</h5>
+                                <div id="div_form_kwxx"></div>
+                            </div>
+
+                            <div>
+                                <button type="button" class="width_60">全选</button>
+                                <button type="button" class="width_60">理货</button>
+                                <button type="button" class="width_90">超重记录</button>
+                                <button type="button" class="width_90">理货取消</button>
+                                <button type="button" class="width_100">无标签货物</button>
+                                <button type="button" class="width_90">破损货物</button>
+                                <button type="button" class="width_150" style="margin-right: 100px;">发送H2000舱单报</button>
+                                <button type="button" class="width_90">理货报告</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab" title="板箱理货"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -214,7 +258,8 @@
     // 菜单
     $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
     // tabs
-    $('#tabs_yd').tabs({tabNames: ['运单', '舱单', 'FFM报', '理货']});
+    $('#tabs_yd').tabs({tabNames: ['运单', '舱单', 'FFM报', '理货'], selected: 3});
+    $('#tabs_lh').tabs({tabNames: ['散货理货','板箱理货']});
     // 表单
     $('#form_hbcx').dataForm({
         colCount: 1,
@@ -272,6 +317,31 @@
             ]
         ]
     });
+    $('#div_form_dplh').dataForm({id: "form_dplh", legend: "", colCount: "3", colWidth: "180", labelGap: "5", fieldGap: "15", rows: [
+        [
+            {name: "ydh", displayName: "运单号", width: 265, displayStyle: 5, sortNum: "1", defaultValue: "", id: "ydh"},
+            {name: "js", displayName: "件数*", width: 40, styleClass: "readonly", sortNum: "2", defaultValue: "", id: "js"},
+            {name: "zl", displayName: "重量*", width: 40, styleClass: "readonly", sortNum: "3", defaultValue: "", id: "zl"},
+            {name: "lhjs", displayName: "理货件数*", width: 40, styleClass: "", defaultValue: "10", sortNum: "4", id: "lhjs"},
+            {name: "lhzl", displayName: "理货重量*", width: 40, styleClass: "", defaultValue: "100", sortNum: "5", id: "lhzl"}
+        ],
+        [
+            {name: "thdm", displayName: "特货代码", width: 120, displayStyle: 8, styleClass: "import_input", sortNum: "1", defaultValue: "", id: "thdm"},
+            {name: "bz", displayName: "包装*", width: 230, styleClass: "import_input", defaultValue: "", sortNum: "2", id: "bz"},
+            {name: "ccs", displayName: "叉车数*", width: 60, styleClass: "", defaultValue: "", sortNum: "3", id: "ccs"}
+        ]
+    ]});
+    $('#div_form_kwxx').dataForm({id: "form_kwxx", legend: "", colCount: "3", colWidth: "180", labelGap: "5", fieldGap: "15", rows: [
+        [
+            {name: "hwrk", displayName: "货物入库", width: 60, styleClass: "", displayStyle: 12, sortNum: "1", defaultValue: "", id: "hwrk"},
+            {name: "ck", displayName: "仓库", width: 90, styleClass: "import_input", sortNum: "2", defaultValue: "", id: "ck"},
+            {name: "kw", displayName: "库位", width: 90, styleClass: "import_input", sortNum: "3", defaultValue: "", id: "kw"}
+        ],
+        [
+            {name: "empty_field", displayName: "空白", displayStyle: 10, sortNum: "1", width: 65, defaultValue: ""},
+            {name: "tbh", displayName: "托板号", width: 60, styleClass: "", displayStyle: 21, sortNum: "2", defaultValue: "", id: "tbh"}
+        ]
+    ]});
     // 表格
     $('#table_yd').dgtable({
         sortable: true,
@@ -292,7 +362,20 @@
         data: [
             {ydh: '784-62622366', yddd: 'Y', clfs: '提货（1）', js: '1', zl: '10', cdjs: '1', cdzl: 10, lhjs: 1, lhzl: 10, shr: '中外运'}
         ]
-    })
+    });
+    $('#div_table_shlh').dgtable({id: "table_shlh", sortable: true, selectable: true, expandRow: -1, selectRow: "0", height: 220, headers: [
+        {name: "ydh", displayName: "运单号", width: 150, sortNum: ""},
+        {name: "cdjs", displayName: "舱单件数", width: 150, sortNum: ""},
+        {name: "cdzl", displayName: "舱单重量", width: 150, sortNum: ""},
+        {name: "lhjs", displayName: "理货件数", width: 150, sortNum: ""},
+        {name: "lhzl", displayName: "理货重量", width: 150, sortNum: ""},
+        {name: "bz", displayName: "包装", width: 150, sortNum: ""},
+        {name: "thdm", displayName: "特货代码", width: 150, sortNum: ""}
+    ], data: [
+        {ydh: "78461461411", cdjs: "10", cdzl: "100", lhjs: "0", lhzl: "0", bz: "", thdm: "GEN"},
+        {ydh: "78461461411", cdjs: "10", cdzl: "100", lhjs: "0", lhzl: "0", bz: "", thdm: "GEN"}
+    ]});
+
 </script>
 </body>
 </html>

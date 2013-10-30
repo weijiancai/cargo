@@ -85,6 +85,10 @@ function getInputNodeTd(field, colCount) {
         return getFormInputTd(field, 'lsh');
     } else if(DS_ZL == field.displayStyle) {
         return getFormInputTd(field, 'zl');
+    } else if(DS_DATE_RANGE_NO_CB == field.displayStyle) {
+        return getFormInputTd(field, 'date_range_no_cb');
+    } else if(DS_TBH == field.displayStyle) {
+        return getFormInputTd(field, 'tbh');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -128,6 +132,16 @@ function getLabelTd(field) {
 }
 
 function getFormInputTd(field, type, colspan, rowspan) {
+    if(field.displayName == '空白') {
+        if(field.width) {
+            return '<td><span style="display:inline-block;width: ' + field.width + 'px"></span></td>'
+        } else {
+            return '<td></td>';
+        }
+    }
+    if(!field.id || field.id == '') {
+        field.id = field.name;
+    }
     var spanStr = "";
     if(colspan) {
         spanStr += ' colspan="' + colspan + '"';
@@ -208,7 +222,7 @@ function getFormInput(field, type) {
     } else if('ydh' == type) {
         return getYdh(field);
     } else if('date_range' == type) {
-        return getDateRange(field);
+        return getDateRange(field, true);
     } else if('sfz_mdz' == type) {
         return getSfzMdz(field);
     } else if('thdm' == type) {
@@ -231,6 +245,10 @@ function getFormInput(field, type) {
         return getLsh(field);
     } else if('zl' == type) {
         return getZl(field);
+    } else if('date_range_no_cb' == type) {
+        return getDateRange(field, false);
+    } else if('tbh' == type) {
+        return getTbh(field)
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -261,7 +279,7 @@ function getYdh(field) {
         width = field.width - 105;
     }
     return '<span class="ydh">' +
-        '<select style="width: 65px;"><option>AWBA</option><option>AWBA</option></select>' +
+        '<select id="' + field.id + '" style="width: 65px;"><option>AWBA</option><option>AWBA</option></select>' +
         '<input style="width: 40px;" type="text" class="first" value="784"/>' +
         '<input type="text" class="second" value="62362366" style="width: ' + width + 'px"/>' +
         '</span>';
@@ -274,39 +292,44 @@ function getLsh(field) {
     }
     var readonly = field.readonly ? field.readonly : false;
     return '<span class="lsh">' +
-        '<select style="width: 65px;" disabled="' + readonly + '"><option>AWBA</option><option>AWBA</option></select>' +
+        '<select id="' + field.id + '" style="width: 65px;" disabled="' + readonly + '"><option>AWBA</option><option>AWBA</option></select>' +
         '<input style="width: 40px;" type="text" class="first" value="784" disabled="' + readonly + '"/>' +
         '<input type="text" class="second" value="62362366" style="width: ' + width + 'px;" disabled="' + readonly + '"/>' +
         '</span>';
 }
 
-function getDateRange(field) {
-    return '<span class="form_date"><div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">' +
-        '<input type="checkbox" checked="checked" style="border: none;vertical-align: middle"/>' +
-    '<span style="font-size: 12px;vertical-align: middle;width: 65px;">2012年 6月14日</span>' +
-    '<img src="images/select.jpg">' +
-    '</div>' +
-    '&nbsp;-&nbsp;' +
-    '<div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">' +
-    '<input type="checkbox" checked="checked" style="border: none;;vertical-align: middle"/>' +
-    '<span style="font-size: 12px;vertical-align: middle">2012年 6月14日</span>' +
-    '<img src="images/select.jpg">' +
-    '</div></span>';
+function getDateRange(field, hasCheckbox) {
+    var str =  '<span class="form_date"><div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">';
+    if(hasCheckbox) {
+        str += '<input id="' + field.id + '" type="checkbox" checked="checked" style="border: none;vertical-align: middle"/>'
+    }
+    str += '<span style="font-size: 12px;vertical-align: middle;width: 65px;">2012年 6月14日</span>' +
+        '<img src="images/select.jpg">' +
+        '</div>' +
+        '&nbsp;-&nbsp;' +
+        '<div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">';
+    if(hasCheckbox) {
+        str += '<input type="checkbox" checked="checked" style="border: none;;vertical-align: middle"/>';
+    }
+    str += '<span style="font-size: 12px;vertical-align: middle">2012年 6月14日</span>' +
+        '<img src="images/select.jpg">' +
+        '</div></span>';
+    return str;
 }
 
 function getSfzMdz(field) {
-    return '<input type="text" class="' + field.styleClass + '" style="width: ' + (field.width/2 - 5) + 'px"/> ' +
+    return '<input id="' + field.id +'" type="text" class="' + field.styleClass + '" style="width: ' + (field.width/2 - 5) + 'px"/> ' +
         '<input type="text" class="' + field.styleClass + '" style="width: ' + (field.width/2 - 5) + 'px"/>';
 }
 
 function getThdm(field) {
-    return '<select style="width: ' + (field.width - 70)+ 'px"><option></option></select><input type="text" class="' + field.styleClass +'" style="margin-left:5px;width: 60px"/>'
+    return '<select id="' + field.id + '" style="width: ' + (field.width - 70)+ 'px"><option></option></select><input type="text" class="' + field.styleClass +'" style="margin-left:5px;width: 60px"/>'
 }
 
 function getYdDateRange(field) {
     return '<fieldset style="display: inline-block;width: ' + field.width + 'px">' +
         '<legend>' + field.displayName + '</legend>' +
-    '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">录单<span style="width:15px;display:inline-block;"></span>' +
+    '<span style="width:5px;display:inline-block;"></span><input id="' + field.id + '" style="margin-right: 5px;" type="radio">录单<span style="width:15px;display:inline-block;"></span>' +
     '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">收运<span style="width:15px;display:inline-block;"></span>' +
     '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">退仓<span style="width:15px;display:inline-block;"></span>' +
     '<span style="width:5px;display:inline-block;"></span><input style="margin-right: 5px;" type="radio">办单<span style="width:15px;display:inline-block;"></span>' +
@@ -327,7 +350,7 @@ function getYdDateRange(field) {
 }
 
 function getHbhQuery(field) {
-    return '<span class="hbh"><input type="text" value="CZ" class="first import_input"><input type="text" value="3403/2012-05-22" class="second"></span>' +
+    return '<span class="hbh"><input id="' + field.id + '"  type="text" value="CZ" class="first import_input"><input type="text" value="3403/2012-05-22" class="second"></span>' +
         '<select class="width_90"><option>PEK-CTU</option></select><button type="button" style="width: 60px;margin-left: 5px;">查询</button>';
 }
 
@@ -343,17 +366,21 @@ function getQsz(field) {
 }
 
 function getZl(field) {
-    return '<input type="text" class="width_50" value="10"/><select class="width_60" style="border: 1px dotted green;margin-left: -4px"><option>KG</option></select>';
+    return '<input id="' + field.id + '" type="text" class="width_50" value="10"/><select class="width_60" style="border: 1px dotted green;margin-left: -4px"><option>KG</option></select>';
+}
+
+function getTbh(field) {
+    return '<span><input id="' + field.id +'" type="text" value="" class="width_30 import_input"><input type="text" value="" class="width_60" style="margin-left: -5px;"><input type="text" value="" class="width_30 import_input" style="margin-left: -5px;"></div>'
 }
 
 
 function getMenus(menus) {
     // 生成主菜单
-    var str = '<div id="main_nav_bar"><ul>';
+    var str = '<div id="main_nav_bar" class="container_24"><ul>';
     for(var i = 0; i < menus.length; i++) {
         str += '<li><a href="#" name="' + menus[i].id + '">' + menus[i].name + '</a></li>';
     }
-    str += '</ul></div><div id="sub_nav_bar">';
+    str += '</ul></div><div id="sub_nav_bar" class="container_24">';
 
     // 生成子菜单
     for(i = 0; i < menus.length; i++) {
@@ -372,7 +399,7 @@ function getMenus(menus) {
                     if($.isArray(items[k])) {
                         str += '<ul class="left">';
                         for(var m = 0; m < items[k].length; m++) {
-                            str += '<li><a href="' + items[k].href + '"><img src="' + items[k][m].icon+ '"/><span>' + items[k][m].name + '</span></a></li>';
+                            str += '<li><a href="' + items[k][m].href + '"><img src="' + items[k][m].icon+ '"/><span>' + items[k][m].name + '</span></a></li>';
                         }
                         str += '</ul>';
                     } else {

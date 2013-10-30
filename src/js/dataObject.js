@@ -13,6 +13,7 @@ function DataTable(option) {
     this.sortable = option['sortable'];
     this.selectable = option['selectable'];
     this.height = option['height'];
+    this.width = option['width'];
     this.data = option['data'];
 
     this.fieldList = [];
@@ -33,7 +34,7 @@ DataTable.prototype = {
     toString: function() {
         var styleStr = '';
         /*if(this.height) {
-            styleStr += 'height:' + this.height + 'px'
+            styleStr += 'height:' + this.height + 'px;';
         }*/
         var str = '<table id="' + this.id + '" class="" style="' + styleStr +'"><thead><tr><th style="width: 20px;background: none;border: none;"></th>';
         if(this.selectable) {
