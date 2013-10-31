@@ -89,6 +89,8 @@ function getInputNodeTd(field, colCount) {
         return getFormInputTd(field, 'date_range_no_cb');
     } else if(DS_TBH == field.displayStyle) {
         return getFormInputTd(field, 'tbh');
+    } else if(DS_HBH == field.displayStyle) {
+        return getFormInputTd(field, 'hbh');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -234,7 +236,7 @@ function getFormInput(field, type) {
     } else if('yd_date_range' == type) {
         return getYdDateRange(field);
     } else if('hbh_query' == type) {
-        return getHbhQuery(field);
+        return getHbh(field, true);
     } else if('img' == type) {
         return '<img src="' + field.displayName+ '"/>';
     } else if('select_operator' == type) {
@@ -249,6 +251,8 @@ function getFormInput(field, type) {
         return getDateRange(field, false);
     } else if('tbh' == type) {
         return getTbh(field)
+    } else if('hbh' == type) {
+        return getHbh(field, false);
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -349,9 +353,13 @@ function getYdDateRange(field) {
     '</fieldset>';
 }
 
-function getHbhQuery(field) {
-    return '<span class="hbh"><input id="' + field.id + '"  type="text" value="CZ" class="first import_input"><input type="text" value="3403/2012-05-22" class="second"></span>' +
-        '<select class="width_90"><option>PEK-CTU</option></select><button type="button" style="width: 60px;margin-left: 5px;">查询</button>';
+function getHbh(field, isQuery) {
+    var str = '<span class="hbh"><input id="' + field.id + '"  type="text" value="CZ" class="first import_input"><input type="text" value="3403/2012-05-22" class="second"></span>' +
+        '<select class="width_90"><option>PEK-CTU</option></select>';
+    if(isQuery) {
+        return str + '<button type="button" style="width: 60px;margin-left: 5px;">查询</button>';
+    }
+    return str;
 }
 
 function getQsz(field) {

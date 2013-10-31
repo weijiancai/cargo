@@ -60,6 +60,12 @@ var FORM_FIELD = [
     {name: 'hwrk', displayName: '货物入库', width: 60, styleClass: '', displayStyle: DS_CHECK_BOX},
     {name: 'tbh', displayName: '托板号', width: 60, styleClass: '', displayStyle: DS_TBH},
 
+    {name: 'hbh', displayName: '航班号', displayStyle: DS_HBH},
+    {name: 'img_btn_kpi', displayName: 'images/btn_kpi.jpg', displayStyle: DS_IMG},
+    {name: 'img_737', displayName: 'images/737.jpg', displayStyle: DS_IMG},
+    {name: 'hbcz', displayName: '航班操作', displayStyle: DS_SELECT_OPERATOR, dictList: DICT_HBCZ},
+    {name: 'bzc', displayName: '不正常', displayStyle: DS_SELECT_OPERATOR, dictList: DICT_BZC},
+    {name: 'dy', displayName: '打印', displayStyle: DS_SELECT_OPERATOR, dictList: DICT_PRINT}
 ];
 
 var TABLE_HEADER = [

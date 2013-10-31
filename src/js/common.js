@@ -169,6 +169,40 @@
         });
     };
 
+    $.fn.dataFieldset = function(option) {
+        var defaults = {
+            legend: null,      // 标题
+            expand: false      // 是否展开，默认不展开
+        };
+
+        option = $.extend(defaults, option);
+        var $this = $(this);
+        var fieldset = '<fieldset><legend><img src=""/>' + option.legend + '</legend><div></div></fieldset>';
+        // 添加fieldset
+        var innerHtml = $this[0].innerHTML;
+        $this.html(fieldset).find('> fieldset > div').append(innerHtml);
+        setExpand(option.expand);
+        $this.find('> fieldset > legend').click(function() {
+            if($(this).parent().hasClass('fieldset_expand')) {
+                setExpand(false);
+            } else {
+                setExpand(true);
+            }
+        });
+
+        function setExpand(isExpand) {
+            if(isExpand) {
+                $this.find('> fieldset').removeClass('fieldset_collspan').addClass('fieldset_expand')
+                    .find('> legend > img').attr('src', 'images/minus.jpg');
+                $this.find('> fieldset > div').show();
+            } else {
+                $this.find('> fieldset').removeClass('fieldset_expand').addClass('fieldset_collspan')
+                    .find('> legend > img').attr('src', 'images/plus.jpg');
+                $this.find('> fieldset > div').hide();
+            }
+        }
+    };
+
 
     $.toJsonStr = function(object, isValue) {
         var type = typeof object;

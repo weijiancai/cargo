@@ -7,12 +7,12 @@
     height: 100%;
 }
 
-.tabs ul li a {
+.tabs > ul li a {
     color: #000000;
     font-weight: 500;
 }
 
-.tabs li {
+.tabs > ul li {
     float: left;
     width: 120px;
     text-align: center;
@@ -120,3 +120,25 @@ form tr {
     padding-bottom: 2px;
     font-size: 13px;
 }
+
+/* fieldset */
+fieldset .fieldset_expand {
+    border: 1px solid green;
+}
+/*fieldset .fieldset_expand legend {
+    padding-left: 22px;
+    background: url("../images/plus.jpg") no-repeat;
+}*/
+fieldset .fieldset_collspan {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+/*
+fieldset .fieldset_expand legend {
+    padding-left: 22px;
+    background: url("../images/sort_asc.jpg") no-repeat;
+}*/

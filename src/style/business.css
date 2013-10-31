@@ -66,3 +66,18 @@
     margin-top: -10px;
     height: 6px;
 }
+
+#fieldset_wbz ol label {
+    margin-left: 2px;
+}
+/* 破损货物详细信息 */
+#pshw_detail {
+    height: 240px;
+}
+#pshw_detail ul {
+    float: left;
+    width: 290px;
+    height: 200px;
+    min-height: 200px;
+    overflow: auto;
+}
