@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title></title>
+    <title>国内 -- 查询岗 -- 国内进港 -- 不正常</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -425,59 +425,38 @@
                 </fieldset>
             </form>
 
-            <fieldset>
+            <fieldset id="pshw_detail">
                 <legend>详细信息</legend>
 
-                <div>
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>外包装</span>
-                    <h5 style="width: 200px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
+                <ul>
+                    <li id="fieldset_wbz">
+                        <ol>
+                            <li><input type="checkbox"/><label>纸箱Careboard cart</label></li>
+                            <li><input type="checkbox"/><label>木箱Wooden cart</label></li>
+                            <li><input type="checkbox"/><label>金属箱Metal box</label></li>
+                            <li><input type="checkbox"/><label>木桶Wooden barrel</label></li>
+                            <li><input type="checkbox"/><label>金属桶Metal barrel</label></li>
+                            <li><input type="checkbox"/><label>打包/捆扎货Bale/Bundle</label></li>
+                            <li><input type="checkbox"/><label>手提箱Suitcase</label></li>
+                            <li><input type="checkbox"/><label>夹板箱Plywood box</label></li>
+                            <li><input type="checkbox"/><label>裸装Unpacked</label></li>
+                        </ol>
+                    </li>
+                    <li id="fieldset_nbz"></li>
+                    <li id="fieldset_bzpsqk"></li>
+                </ul>
 
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>货物破损情况</span>
-                    <h5 style="width: 200px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
+                <ul>
+                    <li id="fieldset_hwpsqk"></li>
+                    <li id="fieldset_pslx"></li>
+                    <li id="fieldset_bqbz"></li>
+                </ul>
 
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>发现破损</span>
-                    <h5 style="width: 200px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                </div>
-
-                <div>
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>内包装</span>
-                    <h5 style="width: 200px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>破损类型</span>
-                    <h5 style="width: 224px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>错误原因</span>
-                    <h5 style="width: 200px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                </div>
-
-                <div>
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>包装破损情况</span>
-                    <h5 style="width: 164px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>标签/标注</span>
-                    <h5 style="width: 220px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-
-                    <h5 style="width: 10px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                    <img src="images/plus.jpg"/>
-                    <span>弥补措施/处理措施</span>
-                    <h5 style="width: 150px;background: url('images/green_line.jpg') repeat;display: inline-block">&nbsp;</h5>
-                </div>
+                <ul>
+                    <li id="fieldset_fxps"></li>
+                    <li id="fieldset_cwyy"></li>
+                    <li id="fieldset_mbcsclcs"></li>
+                </ul>
             </fieldset>
 
             <fieldset>
@@ -699,8 +678,18 @@
 <script type="text/javascript">
     // 菜单
     $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
-    $('#main_right').tabs(3);
+    $('#main_right').tabs();
     $('#query_tabs').tabs();
+    // fieldset
+    $('#fieldset_wbz').dataFieldset({legend: '外包装'});
+    $('#fieldset_nbz').dataFieldset({legend: '内包装'});
+    $('#fieldset_bzpsqk').dataFieldset({legend: '包装破损情况'});
+    $('#fieldset_hwpsqk').dataFieldset({legend: '货物破损情况'});
+    $('#fieldset_pslx').dataFieldset({legend: '破损类型'});
+    $('#fieldset_bqbz').dataFieldset({legend: '标签/标注'});
+    $('#fieldset_fxps').dataFieldset({legend: '发现破损'});
+    $('#fieldset_cwyy').dataFieldset({legend: '错误原因'});
+    $('#fieldset_mbcsclcs').dataFieldset({legend: '弥补措施/处理措施'});
 </script>
 </body>
 </html>

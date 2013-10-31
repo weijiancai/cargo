@@ -41,7 +41,7 @@
             height: 550px;
         }
         #tabs_preview_form .tab, #tabs_preview_form textarea {
-            height: 450px;
+            height: 330px;
         }
         #tabs_preview_table .tab, #tabs_preview_table textarea {
             height: 450px;
@@ -55,6 +55,9 @@
             position: absolute;
             padding: 10px;
             overflow: auto;
+        }
+        #form_window {
+            min-height: 300px;
         }
     </style>
 </head>
@@ -116,7 +119,8 @@
             <div id="form_table"></div>
 
             <div class="right action_buttons">
-                <button id="btn_table_add_header" type="button" class="btn_preview width_90 margin_right_20">添加表头</button>
+                <!--<button id="btn_table_add_header" type="button" class="btn_preview width_90 margin_right_20">添加表头</button>-->
+                <button id="btn_table_select_header" type="button" class="btn_preview width_90 margin_right_20">选择表头</button>
                 <button id="btn_table_add_data" type="button" class="btn_preview width_90 margin_right_20">添加数据</button>
                 <button id="btn_table_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
             </div>
@@ -181,8 +185,8 @@
                 {id: 'labelGap', displayName: 'labelGap', defaultValue: '5',width: 50},
                 {id: 'fieldGap', displayName: 'fieldGap', defaultValue: '15',width: 50},
                 {id: 'legend', displayName: 'legend', defaultValue: '表单头信息',width: 150},
-                {id: 'fields', displayName: '表单字段', isSingleLine: true, height: 60, displayStyle: DS_TEXT_AREA},
-                {id: 'rows', displayName: '表单行', isSingleLine: true, height: 60, displayStyle: DS_TEXT_AREA}
+                {id: 'fields', displayName: '表单字段', isSingleLine: true, height: 120, displayStyle: DS_TEXT_AREA},
+                {id: 'rows', displayName: '表单行', isSingleLine: true, height: 120, displayStyle: DS_TEXT_AREA}
             ]
         });
         $('#form_table').dataForm({
@@ -228,10 +232,16 @@
             });
             $('#show_window').show();
         });
+        // table 选择表头
+        $('#btn_table_select_header').click(function() {
+            $('#form_type').val('select_table_header');
+            initTableWin();
+            $('#show_window').show();
+        });
         // table 添加数据
         $('#btn_table_add_data').click(function() {
             $('#form_type').val('add_table_data');
-            var headers = eval('[' + $('#headers').val() + ']');
+            var headers = eval($('#headers').val());
             var str = '{';
             for(var i = 0; i < headers.length; i++) {
                 str += headers[i].name + ":'" + headers[i].displayName + "'";
@@ -276,6 +286,8 @@
         });
 
         function initFormWin() {
+            // 添加过滤
+            var filterDiv = '<div><label>名称过滤</label><input id="filter_name" type="text"/><button id="look_selected" type="button" class="width_90">查看选中</button></div>'
             var datas = [];
             for(var i = 0; i < FORM_FIELD.length; i++) {
                 var data = $.extend({}, FORM_FIELD[i]);
@@ -284,25 +296,89 @@
                 datas.push(data);
             }
 
-            $('#form_window').html('').dgtable({
+            $('#form_window').html('').append(filterDiv).dgtable({
                 selectable: true,
                 headers: [
+                    {name: 'sortNum', displayName: '排序号'},
                     {name: 'id', displayName: 'ID'},
                     {name: 'name', displayName: '名称'},
                     {name: 'displayName', displayName: '显示名'},
                     {name: 'isSingleLine', displayName: '独行'},
                     {name: 'width', displayName: '宽'},
                     {name: 'displayStyle', displayName: '显示风格'},
-                    {name: 'dictList', displayName: '数据字典', width: 70},
+                    /*{name: 'dictList', displayName: '数据字典', width: 70},*/
                     {name: 'readonly', displayName: '只读'},
                     {name: 'defaultValue', displayName: '默认值'},
-                    {name: 'sortNum', displayName: '排序号'},
                     {name: 'preview', displayName: '预览'}
                 ],
                 data: datas
             });
 
             $('#form_window').find('table').css('width', '1500px');
+            // 名称过滤事件
+            $('#filter_name').keyup(function() {
+                var name = $(this).val();
+                if(name == '') {
+                    $('#form_window').find('tbody tr').show();
+                    return;
+                }
+                $('#form_window').find('tbody tr').find('td:eq(3)').each(function() {
+                    if($.startWith($(this).html(), name)) {
+                        $(this).parent().show();
+                    } else {
+                        $(this).parent().hide();
+                    }
+                });
+            });
+            // 查看选中事件
+            $('#look_selected').click(function() {
+                $('#form_window').find('tr').hide();
+                $('#form_window').find('input:checked').parent().parent().show();
+            });
+        }
+
+        function initTableWin() {
+            // 添加过滤
+            var filterDiv = '<div><label>名称过滤</label><input id="filter_name" type="text"/><button id="look_selected" type="button" class="width_90">查看选中</button></div>'
+            var datas = [];
+            for(var i = 0; i < TABLE_HEADER.length; i++) {
+                var data = $.extend({}, TABLE_HEADER[i]);
+                data.sortNum = '<input id="' + data.name + '_sortNum" type="text" style="width: 40px;"/>';
+                datas.push(data);
+            }
+
+            $('#form_window').html('').append(filterDiv).dgtable({
+                selectable: true,
+                headers: [
+                    {name: 'sortNum', displayName: '排序号'},
+                    {name: 'name', displayName: '名称'},
+                    {name: 'displayName', displayName: '显示名'},
+                    {name: 'width', displayName: '宽'}
+                ],
+                data: datas
+            });
+
+            $('#form_window').find('table').css('width', '500px');
+            // 名称过滤事件
+            $('#filter_name').keyup(function() {
+                var name = $(this).val();
+                if(name == '') {
+                    $('#form_window').find('tbody tr').show();
+                    return;
+                }
+                $('#form_window').find('tbody tr').find('td:eq(3)').each(function() {
+                    if($.startWith($(this).html(), name)) {
+                        $(this).parent().show();
+                    } else {
+                        $(this).parent().hide();
+                    }
+                });
+            });
+            // 查看选中事件
+            $('#look_selected').click(function() {
+                $('#form_window').find('tr').hide();
+                $('#form_window').find('input:checked').parent().parent().show();
+            });
         }
 
         // 显示窗口，确定按钮
@@ -332,21 +408,23 @@
                 fields += addAttr('defaultValue', $('#defaultValue').val(), true) + ',';
                 $('#fields').val(fields);
             } else if('select_form_field' == formType) {
-                $('#fields').val($.toJsonStr(getSelectedFormFields()));
+                $('#fields').val($.toJsonStr(getSelected(FORM_FIELD)));
             } else if('select_form_rows' == formType) {
                 var rows = $('#rows').val();
                 if(rows.length > 0) {
                     rows += ',';
                 }
-                $('#rows').val(rows + $.toJsonStr(getSelectedFormFields()));
+                $('#rows').val(rows + $.toJsonStr(getSelected(FORM_FIELD)));
+            } else if('select_table_header' == formType) {
+                $('#headers').val($.toJsonStr(getSelected(TABLE_HEADER)));
             }
         });
 
-        function getSelectedFormFields() {
+        function getSelected(aArray) {
             var array = [];
             $('#form_window').find('.tr_checkbox').each(function(i) {
                 if($(this).get(0).checked) {
-                    var data = FORM_FIELD[i];
+                    var data = aArray[i];
                     data.sortNum = $('#' + data.name + "_sortNum").val();
                     array.push(data);
                 }

@@ -48,41 +48,7 @@
     // tabs
     $('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});
     // 表单
-    $('#form_ydcx').dataForm({
-        colCount: 1,
-        legend: '查询区',
-        fields: [
-            {
-                name: ['gngj','jgcgzh','hgjg','sfzmdz','yyd'],
-                displayName: ['国内/国际','进港/出港/中转','海关监管','始发站/目的站','营业点'],
-                width: [80,80,80,100,120],
-                displayStyle: [DS_COMBO_BOX, DS_COMBO_BOX, DS_COMBO_BOX, DS_SFZ_MDT, DS_TEXT],
-                styleClass: ['','','','import_input','import_input'],
-                dictList: [DICT_GN_GJ, DICT_JG_CG_ZZ, DICT_HGJG, [], []]
-            },
-            {
-                name: ['fhdlr','shdlr','ydh','thdm'],
-                displayName: ['发货代理人','收货代理人', '运单号','特货代码'],
-                width: [80,80,210,180],
-                displayStyle: [DS_TEXT, DS_TEXT, DS_YDH, DS_THDM],
-                styleClass: ['import_input','import_input','','import_input'],
-                dictList: [[], [], [], []]
-            },
-            {
-                name: ['hzm','fhr','shr','cyr','pmdm'],
-                displayName: ['货主名：','发货人','收货人','承运人','品名代码'],
-                width: [0,100,100,120,150],
-                displayStyle: [DS_LABEL, DS_RADIO, DS_RADIO, DS_TEXT, DS_TEXT],
-                styleClass: ['','','','import_input','import_input']
-            },
-            {
-                name: ['yd_date_range',''],
-                displayName: ['时间段查询','查询（Q）'],
-                width: [650,100],
-                displayStyle: [DS_YD_DATE_RANGE, DS_BUTTON]
-            }
-        ]
-    });
+    // 表格
 </script>
 </body>
 </html>

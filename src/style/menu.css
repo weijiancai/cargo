@@ -1,6 +1,6 @@
 /* 主导航 */
 #main_nav_bar {
-    width: 100%;
+    /*width: 100%;*/
     clear: both;
     padding: 5px 0 0;
     height: 32px;
@@ -8,20 +8,25 @@
     /*background: #2b824e url(../images/main_nav.jpg) repeat;*/
     background: #2b824e;
     color: #ffffff;
+    border-left: 2px solid #2b824e;
+    border-right: 2px solid #2b824e;
 }
 #main_nav_bar ul {
     line-height: 20px;
+    margin-left: 15px;
 }
 
 #main_nav_bar li {
     float: left;
-    margin-left: 35px;
+    /*margin-left: 10px;*/
+    padding: 2px 15px 10px 15px;
 }
 
 #main_nav_bar a {
-    font-size: 13px;
+    font-size: 14px;
     color: #ffffff;
     text-decoration: none;
+    padding-top: 2px;
 }
 
 /* 子导航 */
@@ -54,7 +59,7 @@
 }
 
 #sub_nav_bar ol ul li {
-    margin: 3px 6px;
+    margin: 3px 5px;
 }
 
 #sub_nav_bar ol ul li span {
@@ -83,4 +88,16 @@
 #sub_nav_bar a {
     color: #000000;
     text-decoration: none;
+}
+
+.sub_nav_selected {
+    background-color: #cfebc3;
+    color: #000000;
+    /*border: 1px solid green;*/
+    -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    /*border-radius:5px;*/            /* W3C syntax */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
 }

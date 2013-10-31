@@ -23,6 +23,16 @@ var DS_SELECT_OPERATOR = 16; // 选择操作下拉框
 var DS_QSZ = 17; // 起始站
 var DS_LSH = 18; //流水号
 var DS_ZL = 19; // 重量
+var DS_DATE_RANGE_NO_CB = 20; // 日期范围（没有checkbox）
+var DS_TBH = 21; // 托板号
+var DS_HBH = 22; // 航班号
+
+// 显示风格数组
+var DISPLAY_STYLE_ARRAY = [
+    'DS_TEXT','DS_TEXT_AREA','DS_PASSWORD','DS_COMBO_BOX','DS_BUTTON','DS_YDH','DS_DATE_RANGE','DS_SFZ_MDT','DS_THDM','DS_LABEL','DS_FIELD',
+    'DS_RADIO','DS_CHECK_BOX','DS_YD_DATE_RANGE','DS_HBH_QUERY','DS_IMG','DS_SELECT_OPERATOR','DS_QSZ','DS_LSH','DS_ZL','DS_DATE_RANGE_NO_CB',
+    'DS_TBH','DS_HBH','','','','','','',''
+];
 
 // 数据类型
 var DT_STRING = 0;
@@ -75,7 +85,8 @@ var DICT_DISPLAY_STYLE = [
     {name: 'DS_BUTTON', value: '4'}, {name: 'DS_YDH', value: '5'}, {name: 'DS_DATE_RANGE', value: '6'}, {name: 'DS_SFZ_MDT', value: '7'},
     {name: 'DS_THDM', value: '8'}, {name: 'DS_LABEL', value: '9'}, {name: 'DS_FIELD', value: '10'}, {name: 'DS_RADIO', value: '11'},
     {name: 'DS_CHECK_BOX', value: '12'}, {name: 'DS_YD_DATE_RANGE', value: '13'}, {name: 'DS_HBH_QUERY', value: '14'}, {name: 'DS_IMG', value: '15'},
-    {name: 'DS_SELECT_OPERATOR', value: '16'}, {name: 'DS_QSZ', value: '17'}, {name: 'DS_LSH', value: '18'}, {name: 'DS_ZL', value: '19'}
+    {name: 'DS_SELECT_OPERATOR', value: '16'}, {name: 'DS_QSZ', value: '17'}, {name: 'DS_LSH', value: '18'}, {name: 'DS_ZL', value: '19'},
+    {name: 'DS_DATE_RANGE_NO_CB', value: '20'}, {name: 'DS_TBH', value: '21'}, {name: 'DS_HBH', value: '22'}
 ];
 // 数据字典
 var DICT_DICT = [
@@ -84,7 +95,7 @@ var DICT_DICT = [
 ];
 // 是/否
 var DICT_BOOLEAN = [
-    {name: '是', value: 'T'}, {name: '否', value: 'F'}
+    {name: '全部', value: ''}, {name: '是', value: 'T'}, {name: '否', value: 'F'}
 ];
 // 归档方式
 var DICT_GDFS = [

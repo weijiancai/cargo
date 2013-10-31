@@ -11,8 +11,8 @@ html {
 }
 
 body {
-    width: 1000px;
-	height: 766px;
+    /*width: 1000px;
+	height: 766px;*/
     margin: 0 auto;
     /*border: 1px solid #ff0000;*/
 }
@@ -74,24 +74,33 @@ button {
 }
 
 #main {
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 964px;
     clear: both;
     background-color: #f2fbf0;
 }
 #main_left {
+    float: left;
     width: 45px;
     height: 600px;
-    display: inline-block;
+    overflow: hidden;
     background-image: url("../images/sjlbq.jpg");
 }
 #main_right {
-    width: 930px;
+    padding: 0 3px 0 1px;
+    width: 913px;
     float: right;
     height: 600px;
-    padding-right: 5px;
     background-color: #f2fbf0;
     border-right: 2px solid green;
     border-bottom: 2px solid green;
+}
+
+.container_24 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
 }
 
 .round {
@@ -152,6 +161,9 @@ button {
 .width_230 {
     width: 230px;
 }
+.width_290 {
+    width: 290px;
+}
 .width_400 {
     width: 400px;
 }
@@ -160,6 +172,10 @@ button {
 }
 .width_550 {
     width: 550px;
+}
+
+.width_30, .width_50, .width_60, .width_90, .width_100, .width_120, .width_150, .width_150, .width_230, .width_290, .width_400, .width_550 {
+    display: inline-block;
 }
 
 .pad_left_15 {
@@ -172,6 +188,9 @@ button {
 .margin_tb_10 {
     margin-bottom: 5px;
     margin-top: 5px;
+}
+.margin_left_100 {
+    margin-left: 100px;
 }
 .margin_bottom_10 {
     margin-bottom: 10px;
