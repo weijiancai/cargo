@@ -20,7 +20,14 @@
     color: #aaaaaa;
     background-color: #efefef;
 }
-
+.pltdydh .first {
+	margin-left:-5px;
+    width: 40px;
+}
+.pltdydh .second {
+    width: 100px;
+    margin-left: -5px;
+}
 /* 航班号*/
 .hbh input {
     height: 17px;
@@ -33,9 +40,26 @@
     width: 175px;
     margin-left: -5px;
 }
+.pltdhbh .first {
+    width: 50px;
+}
+.pltdhbh .second {
+    width: 100px;
+    margin-left: -5px;
+}
+
 .hbh .readonly {
     color: #aaaaaa;
     background-color: #efefef;
+}
+/*批量结算*/
+.pljslsh .first {
+	margin-left:-5px;
+    width: 150px;
+}
+.pljslsh .second {
+    width: 50px;
+    margin-left: -5px;
 }
 
 /* 起点站, 目的站 */
@@ -45,4 +69,92 @@
 .qdz .readonly, .mdz .readonly {
     color: #aaaaaa;
     background-color: #efefef;
+}
+
+/*收费岗 结算客户*/
+.jskh .first {
+    width: 30px;
+    margin-left: -5px;
+}
+.jskh .second {
+    width: 80px;
+    margin-left: -5px;
+}
+.jskh .select {
+    margin-left: -5px;
+}
+.field{
+	margin:0 1px;
+}
+.lsh .first {
+    width: 130px;
+    margin-left: -5px;
+}
+.lsh .second {
+    width: 40px;
+    margin-left: -5px;
+}
+/*收费岗 运单号*/
+.lsh{
+	padding-top:8px;
+}
+/*收费岗 航班批量处理*/
+.lsh{
+	padding-top:8px;
+}
+
+.cl_table {
+    margin-left: 20px;
+}
+
+.cl_table table {
+    width: 100%;
+    border-bottom: 1px solid #e3e9e5;
+}
+
+.cl_table th {
+    border-right: 2px groove #2e563e;
+    background-color: #2c834f;
+    padding-right: 5px;
+    /*background: #2c834f url("../images/th_border_right.jpg") no-repeat right;*/
+    text-align: center;
+}
+.cl_table th img {
+    float: right;
+    /*vertical-align: middle;*/
+    padding-top: 4px;
+}
+
+.cl_table td {
+    background-color: white;
+    border: 1px dashed  #cccccc;
+    padding-left: 3px;
+}
+
+.sfg3_table {
+    margin-left: 20px;
+}
+
+.sfg3_table table {
+    width: 100%;
+    border-bottom: 1px solid #e3e9e5;
+}
+
+.sfg3_table th {
+    border-right: 2px groove #2e563e;
+    background-color: #2c834f;
+    padding-right: 5px;
+    /*background: #2c834f url("../images/th_border_right.jpg") no-repeat right;*/
+    text-align: center;
+}
+.sfg3_table th img {
+    float: right;
+    /*vertical-align: middle;*/
+    padding-top: 4px;
+}
+
+.sfg3_table td {
+    background-color: #e8e8e8;
+    border: 1px dashed  #cccccc;
+    padding-left: 3px;
 }

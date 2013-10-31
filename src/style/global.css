@@ -143,11 +143,20 @@ button {
 .width_150 {
     width: 150px;
 }
+.width_200 {
+    width: 200px;
+}
+.width_300 {
+    width: 300px;
+}
 .width_230 {
     width: 230px;
 }
 .width_400 {
     width: 400px;
+}
+.margin_left_40{
+	margin-left:40px;
 }
 .width_550 {
     width: 550px;
@@ -159,6 +168,10 @@ button {
 
 .margin_right_20 {
     margin-right: 20px;
+}
+.margin_tb_10 {
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 .margin_bottom_10 {
     margin-bottom: 10px;
