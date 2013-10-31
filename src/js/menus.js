@@ -179,8 +179,9 @@ var MENU_IN_SFG = [
         groups: [
             {
                 name: '出入仓处理',
+                width: 170,
                 items: [
-                    {id: '', name: '收费处理', icon: 'images/sfcl.jpg', isSingle: true, href: ''},
+                    {id: '', name: '收费处理', icon: 'images/sfcl.jpg', isSingle: true, href: 'in_sfg_sfcl.html'},
                     [
                         {id: '', name: '退仓处理', icon: 'images/zzzg.jpg', isSingle: false, href: ''},
                         {id: '', name: '运收入仓', icon: 'images/lcdj.jpg', isSingle: false, href: ''},
@@ -190,6 +191,7 @@ var MENU_IN_SFG = [
             },
             {
                 name: '文件操作',
+                width: 315,
                 items: [
                     [
                         {id: '', name: '简易制单', icon: 'images/jyzd.jpg', isSingle: false, href: ''},
@@ -210,6 +212,7 @@ var MENU_IN_SFG = [
             },
             {
                 name: '货物操作',
+                width: 260,
                 items: [
                     {id: '', name: '板箱复磅', icon: 'images/bxfb.jpg', isSingle: true, href: ''},
                     {id: '', name: '地勤交接取消', icon: 'images/dqjjqx.jpg', isSingle: true, href: ''},
@@ -222,8 +225,9 @@ var MENU_IN_SFG = [
             },
             {
                 name: '相关操作',
+                width: 165,
                 items: [
-                    {id: '', name: '不正常', icon: 'images/bzc.jpg', isSingle: true, href: ''},
+                    {id: '', name: '不正常', icon: 'images/bzc_32.jpg', isSingle: true, href: ''},
                     [
                         {id: '', name: '运单状态', icon: 'images/ydzt_16.jpg', isSingle: false, href: ''},
                         {id: '', name: '运单日志', icon: 'images/ydrz_16.jpg', isSingle: false, href: ''},
@@ -248,7 +252,59 @@ var MENU_IN_SFG = [
     },
     {
         id: 'sub_nav_sfyzd',
-        name: '收费与账单'
+        name: '收费与账单',
+        groups: [
+            {
+                name: '仓库计费',
+                /*width: 120,*/
+                items: [
+                    {id: '', name: '计费业务数据维护', icon: 'images/jfywsjwh.jpg', isSingle: true, href: '#'}
+                ]
+            },
+            {
+                name: '结算',
+                /*width: 140,*/
+                items: [
+                    {id: '', name: '发票查询', icon: 'images/fpcx.jpg', isSingle: true, href: 'in_gtg_fpcx.html'}
+                ]
+            },
+            {
+                name: '授权计费',
+                /*width: 115,*/
+                items: [
+                    {id: '', name: '国内出港授权计费', icon: 'images/gncgsqjf.jpg', isSingle: true, href: '#'}
+                ]
+            },
+            {
+                name: '费用定义',
+                /*width: 115,*/
+                items: [
+                    {id: '', name: '国内出港费用定义', icon: 'images/gncgfy.jpg', isSingle: true, href: '#'}
+                ]
+            },
+            {
+                name: '邮航包机收费',
+                /*width: 140,*/
+                items: [
+                    {id: '', name: '国内出港邮航包机收费', icon: 'images/jfywsjwh.jpg', isSingle: true, href: 'in_gtg_gnjgybjsf.html'}
+                ]
+            },
+            {
+                name: '临时收费',
+                /*width: 115,*/
+                items: [
+                    {id: '', name: '国内出港临时收费', icon: 'images/gncglssf.jpg', isSingle: true, href: '#'}
+                ]
+            },
+            {
+                name: '结算',
+                /*width: 140,*/
+                items: [
+                    {id: '', name: '批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'in_gtg_pljs.html'},
+                    {id: '', name: '包机批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'in_gtg_bjpljs.html'}
+                ]
+            }
+        ]
     },
     {
         id: 'sub_nav_kpigl',

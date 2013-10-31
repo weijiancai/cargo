@@ -23,7 +23,7 @@
 
     <!-- Tabs -->
     <div id="main_right">
-        <div></div>
+        <div id="div_form_hbpz"></div>
     </div>
 </div>
 
@@ -31,8 +31,22 @@
     // 菜单
     $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gncg'});
     // tabs
-    $('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});
+    /*$('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});*/
     // 表单
+    $('#div_form_hbpz').dataForm({id: "form_hbpz", legend: "", colCount: "3", colWidth: "180", labelGap: "5", fieldGap: "15", rows: [
+        [
+            {name: "hbh_query", displayName: "航班号查询", displayStyle: 14, sortNum: "1", defaultValue: "", id: "hbh_query"},
+            {name: "img_btn_kpi", displayName: "images/btn_kpi.jpg", displayStyle: 15, sortNum: "2", defaultValue: "", id: "img_btn_kpi"},
+            {name: "img_737", displayName: "images/737.jpg", displayStyle: 15, sortNum: "3", defaultValue: "", id: "img_737"},
+            {name: "hbcz", displayName: "航班操作", displayStyle: 16, dictList: [
+                {name: "航班操作", value: "0"},
+                {name: "航班到达", value: "1"},
+                {name: "理单结束", value: "2"},
+                {name: "理货结束", value: "3"},
+                {name: "航班结束", value: "4"}
+            ], sortNum: "4", defaultValue: "", id: "hbcz"}
+        ]
+    ]});
     // 表格
 </script>
 </body>

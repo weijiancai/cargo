@@ -64,7 +64,7 @@
             $table.css('height', option.height + 'px');
         }
         if(option.width) {
-            $table.css('width', option.width + 'px');
+            /*$table.css('width', option.width + 'px');*/
             $table.find('table').css('width', option.width + 'px');
         }
         if(option.expandRow != -1) {
