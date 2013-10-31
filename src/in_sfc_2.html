@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title></title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+
+<div id="main">
+
+    <!-- Tabs -->
+    <div id="main_right" class="tabs">
+        <ul>
+            <li><a href="#">批量挑单</a></li>
+            <li><a href="#">航班批量挑单</a></li>
+        </ul>
+
+        <div class="tab" title="批量挑单">
+            
+        </div>
+
+        <!-- 不正常货物登记 -->
+        <div class="tab" title="航班批量挑单">
+               <form>
+                <fieldset style="margin:4px">
+                    <legend>查询区</legend>
+						 <table>
+                        <tr>
+						   <td class="form_label"><label>航班号</label></td>
+                            <td class="form_field  pltdhbh">
+                                <input type="text" class="first import_input">
+                                <input type="text" class="second"/>
+								<label>登记日期</label>
+								 <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                    <input type="checkbox" checked="checked" style="border: none;"/>
+                                    <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                                    <img src="images/select.jpg">
+                                </div>
+                                &nbsp;-&nbsp;
+                                <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                    <input type="checkbox" checked="checked" style="border: none;"/>
+                                    <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                                    <img src="images/select.jpg">
+                                </div>
+                            </td>
+							<td></td><td></td><td></td>
+                        </tr>
+
+                        <tr>
+                            <td class="form_label"><label>运单号</label></td>
+                            <td class="form_field pltdydh">
+                                <select>
+                                    <option>AWBA</option>
+                                    <option>AWBA</option>
+                                </select>
+                                <input type="text" class="first" />
+                                <input type="text" class="second"/>
+								<label>代理人</label>
+								<input type="text" class="width_100 pad_left_15 import_input"/>
+								<label>&nbsp;&nbsp;&nbsp;&nbsp;结算状态</label>
+                                <select>
+                                    <option>未结算</option>
+                                    <option>已结算</option>
+                                </select>
+                            </td>
+							<td><a href=""><img src="images/btn_query.jpg"/></a>
+								<a href=""><img src="images/btn_confirm.jpg"/></a>
+								</td>
+							<td class="lsh">&nbsp;<input type="checkbox"></input></td>
+							<td class="lsh">&nbsp;全选</td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+		<div class="round">
+			 <div class="tab" title="航班批量处理">
+                    <div style="border: 1px solid green;height:360px;margin-bottom: 15px;">
+                        <div class="cl_table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20px;background: none;border: none;"></th>
+                                        <th>选择<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+                                        <th>航班<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+                                        <th>运单号<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+                                        <th>件数<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+                                        <th>重量<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+                                        <th>品名<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+                                        <th>代理人<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+                                        <th>结算状态<img src="images/th_fix.jpg"/><img src="images/sort.jpg"/></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 20px;background: none;border: none;"><img src="images/check.jpg"/></td>
+                                        <td style="text-align:center"><input type="checkbox"></input></td>
+                                        <td>GDAM</td>
+                                        <td>CZ3403/2012-05-22</td>
+                                        <td>10</td>
+                                        <td>100</td>
+                                        <td>10</td>
+                                        <td>100</td>
+                                        <td>0</td>
+                                    <tr>
+                                        <td style="width: 20px;background: none;border: none;"><img src="images/check.jpg"/></td>
+                                        <td style="text-align:center"><input type="checkbox" checked></input></td>
+                                        <td>GDAM</td>
+                                        <td>CZ3403/2012-05-22</td>
+                                        <td>10</td>
+                                        <td>100</td>
+                                        <td>10</td>
+                                        <td>100</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 20px;background: none;border: none;"><img src="images/notcheck.jpg"/></td>
+                                        <td style="text-align:center"><input type="checkbox"></input></td>
+                                        <td>GDAM</td>
+                                        <td>CZ3403/2012-05-22</td>
+                                        <td>10</td>
+                                        <td>100</td>
+                                        <td>10</td>
+                                        <td>100</td>
+                                        <td>0</td>
+                                    </tr>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+					<fieldset style="margin:4px">
+						 <legend>操作区</legend>
+							<div style="padding-left:600px"><a href=""><img src="images/out.jpg"/></a></div>
+					</fieldset>
+
+                </div>
+		</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#main_right').tabs(1);
+    $('#query_tabs').tabs();
+</script>
+</body>
+</html>
