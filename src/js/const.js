@@ -125,3 +125,17 @@ var DICT_BZC = [
 var DICT_PRINT = [
     {name: '打印', value: '0'}
 ];
+
+// 数据字典Array
+var DICT_ARRAY = ['DICT_BOOLEAN','DICT_GDFS','DICT_GN_GJ','DICT_JG_CG_ZZ','DICT_HGJG','DICT_HBCZ','DICT_BZC','DICT_PRINT','','','','','','','','',''];
+// 数据字典List
+var DICT_MAP = {
+    'DICT_BOOLEAN' : 'DICT_BOOLEAN',
+    'DICT_GDFS' : 'DICT_GDFS',
+    'DICT_GN_GJ' : 'DICT_GN_GJ',
+    'DICT_JG_CG_ZZ' : 'DICT_JG_CG_ZZ',
+    'DICT_HGJG' : 'DICT_HGJG',
+    'DICT_HBCZ' : 'DICT_HBCZ',
+    'DICT_BZC' : 'DICT_BZC',
+    'DICT_PRINT' : 'DICT_PRINT'
+};

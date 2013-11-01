@@ -21,7 +21,7 @@ function previewTabs(tabId, tabNames) {
     var jsStr = "$('#" + tabId + "').tabs({tabNames: [" + namesStr + "]});";
     $('#tab_tabs_js').html(jsStr);
     // 添加到html界面
-    $('#tab_tabs_html').html(str);
+    $('#tab_tabs_html').html(str + '</div>');
 }
 
 function previewTable() {
@@ -48,9 +48,9 @@ function previewTable() {
 function addAttr(attrName, attrValue, isStr) {
     if(attrValue == '') return '';
     if(isStr) {
-        return attrName + ":'" + attrValue + "'";
+        return attrName + ":'" + attrValue + "'," ;
     } else {
-        return attrName + ":" + attrValue;
+        return attrName + ":" + attrValue + ',';
     }
 
 }

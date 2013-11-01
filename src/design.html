@@ -96,8 +96,8 @@
             <div class="right action_buttons">
                 <button id="btn_form_select_field" type="button" class="btn_preview width_100 margin_right_20">选择表单字段</button>
                 <button id="btn_form_select_rows" type="button" class="btn_preview width_100 margin_right_20">选择表单行</button>
-                <!--<button id="btn_form_add_field" type="button" class="btn_preview width_100 margin_right_20">添加表单字段</button>
-                <button id="btn_form_add_rows" type="button" class="btn_preview width_90 margin_right_20">添加表单行</button>-->
+                <button id="btn_form_add_field" type="button" class="btn_preview width_100 margin_right_20">添加表单字段</button>
+                <!--<button id="btn_form_add_rows" type="button" class="btn_preview width_90 margin_right_20">添加表单行</button>-->
                 <button id="btn_form_preview" type="button" class="btn_preview width_90 margin_right_20">预览</button>
             </div>
 
@@ -264,11 +264,31 @@
                     {id: 'fieldDisplayName', displayName: '显示名', width: 100},
                     {id: 'isSingleLine', displayName: '独行', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
                     {id: 'fieldWidth', displayName: '宽', width: 100},
+                    {id: 'fieldHeight', displayName: '高', width: 100},
                     {id: 'displayStyle', displayName: '显示风格', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_DISPLAY_STYLE},
                     {id: 'dictList', displayName: '数据字典', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_DICT},
                     {id: 'readonly', displayName: '只读', width: 100, displayStyle: DS_COMBO_BOX, dictList: DICT_BOOLEAN},
                     {id: 'defaultValue', displayName: '默认值', width: 100}
                 ]
+            });
+            $('#form_window').append('<div class="action_buttons" style="text-align: right;"><button id="btn_form_field_preview" type="button">预览</button></div>' +
+                    '<fieldset><legend>显示效果</legend><div id="preview_form_field"></div></fieldset><fieldset><legend>代码</legend><textarea id="code_form_field" style="width: 100%;height: 100%;"></textarea></fieldset>');
+
+            $('#btn_form_field_preview').click(function() {
+                var option = {};
+                option.id = $('#fieldId').val();
+                option.name = $('#fieldName').val();
+                option.displayName = $('#fieldDisplayName').val();
+                option.isSingleLine = $('#isSingleLine').val() == 'T';
+                option.width = $('#fieldWidth').val();
+                option.height = $('#fieldHeight').val();
+                option.displayStyle = $('#displayStyle').val();
+                option.dictList = $('#dictList').val();
+                option.readonly = $('#readonly').val() == 'T';
+                option.defaultValue = $('#defaultValue').val();
+
+                $('#preview_form_field').html(getInputNode(option));
+                $('#code_form_field').html($.toJsonStr(option));
             });
             $('#show_window').show();
         });
@@ -393,20 +413,8 @@
                 headers += '{name:"' + $('#headerName').val() + '",displayName:"' + $('#headerDisplayName').val() + '"}';
                 $('#headers').val(headers);
             } else if('add_form_field' == formType) {
-                var fields = $('#fields').val();
-                if(fields.length > 0) {
-                    fields += ',';
-                }
-                fields += addAttr('id', $('#fieldId').val(), true) + ',';
-                fields += addAttr('name', $('#fieldName').val(), true) + ',';
-                fields += addAttr('displayName', $('#fieldDisplayName').val(), true) + ',';
-                fields += addAttr('isSingleLine', $('#isSingleLine').val(), false) + ',';
-                fields += addAttr('width', $('#fieldWidth').val(), false) + ',';
-                fields += addAttr('displayStyle', $('#displayStyle').val(), true) + ',';
-                fields += addAttr('dictList', $('#dictList').val(), false) + ',';
-                fields += addAttr('readonly', $('#readonly').val(), false) + ',';
-                fields += addAttr('defaultValue', $('#defaultValue').val(), true) + ',';
-                $('#fields').val(fields);
+
+
             } else if('select_form_field' == formType) {
                 $('#fields').val($.toJsonStr(getSelected(FORM_FIELD)));
             } else if('select_form_rows' == formType) {

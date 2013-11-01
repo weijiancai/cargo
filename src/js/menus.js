@@ -183,7 +183,7 @@ var MENU_IN_SFG = [
                 items: [
                     {id: '', name: '收费处理', icon: 'images/sfcl.jpg', isSingle: true, href: 'in_sfg_sfcl.html'},
                     [
-                        {id: '', name: '退仓处理', icon: 'images/zzzg.jpg', isSingle: false, href: ''},
+                        {id: '', name: '退仓处理', icon: 'images/zzzg.jpg', isSingle: false, href: 'in_sfg_tccl.html'},
                         {id: '', name: '运收入仓', icon: 'images/lcdj.jpg', isSingle: false, href: ''},
                         {id: '', name: '运单收运入仓', icon: 'images/lchwtj.jpg', isSingle: false, href: ''}
                     ]
@@ -286,7 +286,7 @@ var MENU_IN_SFG = [
                 name: '邮航包机收费',
                 /*width: 140,*/
                 items: [
-                    {id: '', name: '国内出港邮航包机收费', icon: 'images/jfywsjwh.jpg', isSingle: true, href: 'in_gtg_gnjgybjsf.html'}
+                    {id: '', name: '国内出港邮航包机收费', icon: 'images/jfywsjwh.jpg', isSingle: true, href: 'in_sfg_gncgybjsf.html'}
                 ]
             },
             {
@@ -300,7 +300,7 @@ var MENU_IN_SFG = [
                 name: '结算',
                 /*width: 140,*/
                 items: [
-                    {id: '', name: '批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'in_gtg_pljs.html'},
+                    {id: '', name: '批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'in_sfg_pljsl.html'},
                     {id: '', name: '包机批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'in_gtg_bjpljs.html'}
                 ]
             }

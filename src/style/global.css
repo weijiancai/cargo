@@ -174,7 +174,7 @@ button {
     width: 550px;
 }
 
-.width_30, .width_50, .width_60, .width_90, .width_100, .width_120, .width_150, .width_150, .width_230, .width_290, .width_400, .width_550 {
+.width_30, .width_50, .width_60, .width_90, .width_100, .width_120, .width_150, .width_150, .width_200, .width_230, .width_290, .width_400, .width_550 {
     display: inline-block;
 }
 
@@ -198,4 +198,8 @@ button {
 
 .green_border {
     border: 1px solid green;
+}
+
+.align_center {
+    text-align: center;
 }

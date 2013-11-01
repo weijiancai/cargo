@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国内 -- 收费岗 -- 收费与账单 -- 批量结算</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div class="round" style="padding:10px;">
+            <form>
+                <table>
+                    <tr>
+                        <!-- 结算客户 -->
+                        <td class="form_field jskh">
+                            <label>结算客户</label>
+                            <input type="text" class="first import_input width_30">
+                            <input type="text" class="second"/>
+                        </td>
+                        <td class="form_field">
+                            <label>结算方式</label>
+                            <select style="width: 60px">
+                                <option>所有</option>
+                                <option>部分</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+        </div>
+        <div class="tabs" id="second_right">
+            <ul>
+                <li><a href="#">未结算</a></li>
+                <li><a href="#">已结算</a></li>
+                <li><a href="#">预付</a></li>
+            </ul>
+
+            <!-- 未结算 -->
+            <div class="tab" title="未结算">
+                <div class="round" style="padding:10px;">
+                    <form>
+                        <table>
+                            <tr>
+                                <td class="form_field pltdhbh">
+                                    <label>计费时间</label>
+                                    <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                        <input type="checkbox" checked="checked" style="border: none;"/>
+                                        <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日 00:00:00</span>
+                                        <img src="images/select.jpg">
+                                    </div>
+                                    &nbsp;-&nbsp;
+                                    <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                        <input type="checkbox" checked="checked" style="border: none;"/>
+                                        <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日 13:14:15</span>
+                                        <img src="images/select.jpg">
+                                    </div>&nbsp;
+                                    <label>计费人</label>
+                                    <input type="text" class="second import_input">
+                                    &nbsp;<label>登记营业点</label>
+                                    <input type="text" class="second import_input" value="DOM1">
+                            </tr>
+                            <tr>
+                                <td class="pljslsh"><label>流水号</label>
+                                    <select>
+                                        <option selected>20120614</option>
+                                        <option>20120614</option>
+                                    </select>
+                                    <input type="text" class="first" value="DOM1"/>
+                                    <input type="text" class="second"/>&nbsp;<label>运单号</label>
+                                    <select>
+                                        <option selected>AWBA</option>
+                                        <option>AWBA</option>
+                                    </select>
+                                    <input type="text" class="second" value="DOM1"/>
+                                    <input type="text" class="first"/>
+                                    <a href=""><img src="images/btn_query.jpg"/></a>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="round" style="height:300px">
+                    <div id="table_wjs"></div>
+                </div>
+                <!--总计-->
+                <div class="round">
+                    <div class="round" style="margin-bottom:20px">
+                        <table>
+                            <tr>
+                                <td class="width_200"><label>文件重量合计</label></td>
+                                <td class="width_200">计费重量合计</td>
+                                <td class="width_200">件数合计</td>
+                                <td class="width_150">费用合计</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <button type="button" class="width_90 margin_bottom_10" accesskey="A">全选(A)</button>
+                    <button type="button" class="width_90 margin_bottom_10" accesskey="N">全不选(N)</button>
+                    <button type="button" class="width_90 margin_bottom_10" accesskey="J">结算(J)</button>
+                    <button type="button" class="width_100 margin_bottom_10" accesskey="C">结算取消(C)</button>
+                    <button type="button" class="width_100 margin_bottom_10" style="margin-left: 35px;" accesskey="P" disabled="disabled">打印发票(P)</button>
+                    <button type="button" class="width_120 margin_bottom_10 margin_right_20" accesskey="S" disabled="disabled">设置起始号(S)</button>
+                    <button type="button" class="width_90 margin_bottom_10" style="margin-left: 35px;" accesskey="F">计费单(F)</button>
+                    <button type="button" class="width_90 margin_bottom_10" accesskey="E">导出(E)</button>
+                </div>
+            </div>
+
+            <!-- 已结算 -->
+            <div class="tab" title="已结算">
+                <div class="round" style="padding:10px;">
+                    <form>
+                        <table>
+                            <tr>
+                                <td class="form_field pltdhbh">
+                                    <label>结算时间</label>
+                                    <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                        <input type="checkbox" checked="checked" style="border: none;"/>
+                                        <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日 00:00:00</span>
+                                        <img src="images/select.jpg">
+                                    </div>
+                                    &nbsp;-&nbsp;
+                                    <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                        <input type="checkbox" checked="checked" style="border: none;"/>
+                                        <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日 13:14:15</span>
+                                        <img src="images/select.jpg">
+                                    </div>
+                                    <label>结算人</label>
+                                    <input type="text" class="second import_input form_field">
+                                    <label>登记营业点</label>
+                                    <input type="text" class="second import_input" value="DOM1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pljslsh">
+                                    <label>结算时间</label>
+                                    <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                        <input type="checkbox" checked="checked" style="border: none;"/>
+                                        <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日 00:00:00</span>
+                                        <img src="images/select.jpg">
+                                    </div>
+                                    &nbsp;-&nbsp;
+                                    <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                        <input type="checkbox" checked="checked" style="border: none;"/>
+                                        <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日 13:14:15</span>
+                                        <img src="images/select.jpg">
+                                    </div>
+                                    <label>运单号</label>
+                                    <span class="ydh">
+                                        <select>
+                                            <option selected>AWBA</option>
+                                            <option>AWBA</option>
+                                        </select>
+                                        <input type="text" class="first"/>
+                                        <input type="text" class="second" value=""/>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label>流水号</label>
+                                    <span class="lsh">
+                                        <select>
+                                            <option selected>20120614</option>
+                                            <option>20120614</option>
+                                        </select>
+                                        <input type="text" class="first" value="DOM1"/>
+                                        <input type="text" class="second"/>
+                                    </span>
+
+                                    <button type="button" class="width_90" style="margin-left: 250px;">查询（Q）</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+                <div class="round" style="height:300px">
+                    <div id="table_yjs"></div>
+                </div>
+
+                <!--总计-->
+                <div class="round">
+                    <div class="round" style="margin-bottom:20px">
+                        <table>
+                            <tr>
+                                <td class=""><label>文件重量合计</label><span class="width_150 align_center">10480</span></td>
+                                <td class="">计费重量合计<span class="width_150 align_center">10500</span></td>
+                                <td class="">件数合计：<span class="width_150 align_center">60</span></td>
+                                <td class="">费用合计：<span class="width_150 align_center">48175</span></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <button type="button" class="width_90 margin_bottom_10" accesskey="A">全选(A)</button>
+                    <button type="button" class="width_90 margin_bottom_10" accesskey="N">全不选(N)</button>
+                    <button type="button" class="width_100 margin_bottom_10" accesskey="C">结算取消(C)</button>
+                    <button type="button" class="width_100 margin_bottom_10" style="margin-left: 300px;" accesskey="P">打印发票(P)</button>
+                    <button type="button" class="width_120 margin_bottom_10 margin_right_20" accesskey="S">设置起始号(S)</button>
+                </div>
+            </div>
+
+            <!-- 预付 -->
+            <div class="tab" title="预付"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN_SFG, showItemId: 'sub_nav_gncg'});
+    // tabs
+    $('#second_right').tabs({selected: 1});
+    // 表单
+    // 表格
+    $('#table_wjs').dgtable({
+        sortable: true,
+        selectable: true,
+        height: 300,
+        headers: [
+            {name: 'sflsh', displayName: '收费流水号'},
+            {name: 'fphm', displayName: '发票号码'},
+            {name: 'jskh', displayName: '结算客户'},
+            {name: 'zfy', displayName: '总费用'},
+            {name: 'zjs', displayName: '总件数'},
+            {name: 'zzl', displayName: '总重量'},
+            {name: 'zjfzl', displayName: '总计费重量'}
+        ],
+        data: [
+            {sflsh:'20120611DOM1000001',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000002',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000003',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000004',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000005',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000006',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000007',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000008',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM1000009',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM10000010',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'},
+            {sflsh:'20120611DOM10000011',fphm:'',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'}
+        ]
+    });
+    $('#table_yjs').dgtable({
+        sortable: true,
+        selectable: true,
+        height: 300,
+        headers: [
+            {name: 'sflsh', displayName: '收费流水号'},
+            {name: 'jskh', displayName: '结算客户'},
+            {name: 'zfy', displayName: '总费用'},
+            {name: 'zjs', displayName: '总件数'},
+            {name: 'zzl', displayName: '总重量'},
+            {name: 'zjfzl', displayName: '总计费重量'},
+            {name: 'jsfs', displayName: '结算方式'},
+        ],
+        data: [
+            {sflsh:'20120611DOM1000001',jsfs:'现金',jskh:'中外运',zfy:'6',zjs:'10',zzl:'100',zjfzl:'100'}
+        ]
+    });
+
+</script>
+</body>
+</html>
