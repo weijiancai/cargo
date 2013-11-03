@@ -54,7 +54,7 @@ var MENU_IN = [
                 name: '提货出库',
                 width: 80,
                 items: [
-                    {id: '', name: '提货出库', icon: 'images/thck.jpg', isSingle: true, href: '#'}
+                    {id: '', name: '提货出库', icon: 'images/thck.jpg', isSingle: true, href: 'in_thg_thck.html'}
                 ]
             },
             {
@@ -513,7 +513,7 @@ var MENU_IN_SYG = [
 
 
 // 国际菜单 -- 收费岗
-var MENU_EN_SFG = [
+var MENU_OUT_SFG = [
     {
         id: 'sub_nav_aqgl',
         name: '安全管理'
@@ -795,8 +795,8 @@ var MENU_EN_GTD = [
                 name: '结算',
                 /*width: 140,*/
                 items: [
-                    {id: '', name: '发票查询', icon: 'images/fpcx.jpg', isSingle: true, href: 'in_gtg_fpcx.html'},
-                    {id: '', name: '手工填开发票', icon: 'images/sgtkfp.jpg', isSingle: true, href: 'in_gtg_sgtkfp.html'}
+                    {id: '', name: '发票查询', icon: 'images/fpcx.jpg', isSingle: true, href: 'out_sfg_fpcx.html'},
+                    {id: '', name: '手工填开发票', icon: 'images/sgtkfp.jpg', isSingle: true, href: '#'}
                 ]
             },
             {
@@ -817,7 +817,7 @@ var MENU_EN_GTD = [
                 name: '邮航包机收费',
                 /*width: 140,*/
                 items: [
-                    {id: '', name: '国际出港邮航包机收费', icon: 'images/jfywsjwh.jpg', isSingle: true, href: 'in_gtg_gnjgybjsf.html'}
+                    {id: '', name: '国际出港邮航包机收费', icon: 'images/jfywsjwh.jpg', isSingle: true, href: 'out_sfg_gjcgybjsf.html'}
                 ]
             },
             {
@@ -831,8 +831,8 @@ var MENU_EN_GTD = [
                 name: '结算',
                 /*width: 140,*/
                 items: [
-                    {id: '', name: '批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'in_gtg_pljs.html'},
-                    {id: '', name: '包机批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'in_gtg_bjpljs.html'}
+                    {id: '', name: '批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'out_sfg_pljs.html'},
+                    {id: '', name: '包机批量结算', icon: 'images/pljs.jpg', isSingle: true, href: 'out_sfg_bjpljs.html'}
                 ]
             }
         ]

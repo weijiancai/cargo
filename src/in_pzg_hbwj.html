@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国内 -- 配载岗 -- 国内出港 -- 航班文件</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div id="form_hbcx" style="margin: 0;padding: 0;"></div>
+        <div id="tabs_cd" style="height: 340px;">
+            <div class="tab" title="舱单">
+                <div id="div_table_cd"></div>
+            </div>
+            <div class="tab" title="机长通知单"></div>
+        </div>
+
+        <div id="div_form_cdbjq"></div>
+
+        <fieldset>
+            <legend>操作区</legend>
+            <div class="row" style="padding-left: 90px;">
+                <button type="button" class="width_90">导入舱单</button>
+                <button type="button" class="width_90">舱单保存</button>
+                <button type="button" class="width_90">发送FFM</button>
+                <button type="button" class="width_150">发送H2000舱单报</button>
+                <button type="button" class="width_100">不正常检查</button>
+                <button type="button" class="width_60">打印</button>
+                <button type="button" class="width_90">打印标签</button>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // tabs
+    $('#tabs_cd').tabs({tabNames: ['舱单', '机长通知单'], selected: 0});
+    // 表单
+    $('#form_hbcx').dataForm({
+        colCount: 1,
+        fieldGap: 0,
+        labelGap: 0,
+        rows: [
+            [
+                {name: 'hbh', displayName: '航班号', displayStyle: DS_HBH_QUERY},
+                {displayName: 'images/btn_kpi.jpg', displayStyle: DS_IMG},
+                {displayName: 'images/737.jpg', displayStyle: DS_IMG},
+                {displayName: '航班操作', displayStyle: DS_SELECT_OPERATOR, dictList: DICT_HBCZ}
+            ]
+        ]
+    });
+    $('#div_form_cdbjq').dataForm({id:"form_cdbjq",legend:"舱单编辑区",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"10",rows:[[{name:"uldlb",displayName:"ULD类别",width:80,displayStyle:3,dictList:[{name:"ULD",value:"uld"}],sortNum:"1",defaultValue:"",id:"uldlb"},
+        {name:"uldh",displayName:"ULD号",width:60,styleClass:"",displayStyle:21,sortNum:"2",defaultValue:"",id:"uldh"},
+        {name:"btn_tjuld",displayName:"添加ULD",width:90,displayStyle:4,sortNum:"3",defaultValue:"",id:"btn_tjuld"},
+        {name:"btn_qkuld",displayName:"清空ULD",width:90,displayStyle:4,sortNum:"4",defaultValue:"",id:"btn_qkuld"}],
+        [{name:"ydh",displayName:"运单号",width:230,displayStyle:5,sortNum:"1",defaultValue:"",id:"ydh"},
+            {name:"js",displayName:"件数",width:55,styleClass:"readonly",sortNum:"2",defaultValue:"",id:"js"},
+            {name:"zl",displayName:"重量",width:55,styleClass:"readonly",sortNum:"3",defaultValue:"",id:"zl"},
+            {name:"pzjs",displayName:"配载件数",width:55,displayStyle:0,styleClass:"readonly",sortNum:"4",defaultValue:"",id:"pzjs"},
+            {name:"pzzl",displayName:"配载重量",width:55,styleClass:"readonly",sortNum:"5",defaultValue:"",id:"pzzl"},
+            {name:"pztj",displayName:"配载体积",width:55,styleClass:"readonly",sortNum:"6",defaultValue:"",id:"pztj"}],
+        [{name:"thdm",displayName:"特货代码",displayStyle:0,width:50,sortNum:"1",defaultValue:"",id:"thdm"},
+            {name:"pm",displayName:"品名",width:120,displayStyle:0,styleClass:"readonly",sortNum:"2",defaultValue:"",id:"pm"},
+            {name:"sfz",displayName:"始发站",width:60,displayStyle:0,styleClass:"readonly",sortNum:"3",defaultValue:"",id:"sfz"},
+            {name:"mdz",displayName:"目的站",width:60,displayStyle:0,styleClass:"readonly",sortNum:"4",defaultValue:"",id:"mdz"},
+            {name:"yxj",displayName:"优先级",width:60,displayStyle:3,dictList:[{name:"",value:""}],sortNum:"5",defaultValue:"",id:"yxj"},
+            {name:"bz",displayName:"备注",width:150,styleClass:"readonly",sortNum:"5",defaultValue:"",id:"bz"}],
+        [{name:"empty_field",displayName:"空白字段",displayStyle:10,width:250,sortNum:"0",defaultValue:""},
+            {name:"btn_tjyd",displayName:"添加运单",width:90,displayStyle:4,sortNum:"1",defaultValue:"",id:"btn_tjyd"},
+            {name:"btn_sc",displayName:"删除",width:80,displayStyle:4,sortNum:"2",defaultValue:"",id:"btn_sc"},
+            {name:"btn_qkyd",displayName:"清空运单",width:90,displayStyle:4,sortNum:"3",defaultValue:"",id:"btn_qkyd"}]]});
+    // 表格
+    $('#div_table_cd').dgtable({id:"table_cd",sortable:false,selectable:false,expandRow:-1,selectRow:-1,height:340,headers:[{name:"bxh",displayName:"板箱号",width:70,sortNum:""},
+        {name:"pzjs",displayName:"配载件数",width:80,sortNum:""},
+        {name:"pzzl",displayName:"配载重量",width:80,sortNum:""},
+        {name:"pztj",displayName:"配载体积",width:80,sortNum:""},
+        {name:"tscldm",displayName:"特殊处理代码",width:120,sortNum:""},
+        {name:"pm",displayName:"品名",width:70,sortNum:""},
+        {name:"sfz",displayName:"始发站",width:80,sortNum:""},
+        {name:"mdz",displayName:"目的站",width:80,sortNum:""},
+        {name:"yxj",displayName:"优先级",width:80,sortNum:""},
+        {name:"bz",displayName:"备注",width:210,sortNum:""}],data:[]});
+
+</script>
+</body>
+</html>

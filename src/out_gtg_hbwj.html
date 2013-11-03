@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>国内 -- 柜台岗 -- 国内进港 -- 航班文件</title>
+    <title>国际 -- 柜台岗 -- 国际进港 -- 航班文件</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -24,6 +24,10 @@
     <!-- Tabs -->
     <div id="main_right">
         <div id="form_hbcx" style="margin: 0;padding: 0;"></div>
+        <div class="row">
+            <label>航班报关号</label>
+            <input type="text" class="width_100 readonly" disabled>
+        </div>
         <div id="tabs_yd">
             <div class="tab" title="运单">
                 <div id="table_yd"></div>
@@ -256,7 +260,7 @@
 
 <script type="text/javascript">
     // 菜单
-    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    $('body').dataMenu({menus: MENU_EN_GTD, showItemId: 'sub_nav_gjjg'});
     // tabs
     $('#tabs_yd').tabs({tabNames: ['运单', '舱单', 'FFM报', '理货'], selected: 3});
     $('#tabs_lh').tabs({tabNames: ['散货理货','板箱理货']});

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国际 -- 柜台岗 -- 国际出港 -- 简易制单</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <!-- 简易制单 -->
+        <div class="tab" title="简易制单">
+            <fieldset>
+                <legend>简易制单</legend>
+
+                <table>
+                    <tr>
+                        <td colspan="9" class="form_label" style="vertical-align: middle;">
+                            <span class="ydh">
+                                <label>运单号</label>
+                                <select>
+                                    <option>AWBA</option>
+                                    <option>AWBA</option>
+                                </select>
+                                <input type="text" class="first" value="784"/>
+                                <input type="text" class="second" value="62362366"/>
+                            </span>
+
+                            <input type="checkbox" class="" value=""/><label>监管货换单</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>件数*</label>
+                            <input type="text" class="width_30 readonly" value="10"/>
+
+                            <label>重量*</label>
+                            <input type="text" class="width_50" value="100"/>
+                            <select class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                <option>KG</option>
+                            </select>
+
+                            <label>计费重量*</label>
+                            <input type="text" class="width_50" value="0"/>
+                            <select class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                <option>KG</option>
+                            </select>
+
+                            <label>体积</label>
+                            <input type="text" class="width_50" value=""/>
+                            <select class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                <option>M3</option>
+                            </select>
+
+                            <label>产品代码</label>
+                            <input type="text" class="width_50 import_input" value=""/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>品名</label>
+                            <select class="width_50" style="border: 1px dotted green;">
+                                <option>00</option>
+                            </select>
+                            <select class="width_50" style="border: 1px dotted green;">
+                                <option>00</option>
+                            </select>
+                            <input class="import_input" style="width: 90px;margin-left: -5px;" type="text">
+
+                            <span style="width:10px;display:inline-block;"></span>
+                            <label>特货代码</label>
+                            <input class="import_input" style="width: 60px" type="text">
+                            <input class="import_input" style="margin-left:-5px;width: 60px" type="text">
+
+                            <label>库存件数</label>
+                            <input type="text" class="width_50 readonly" disabled>
+
+                            <label>库存重量</label>
+                            <input type="text" class="width_50" value="0" disabled/>
+                            <select class="width_60" style="border: 1px dotted green;margin-left: -4px" disabled>
+                                <option>KG</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="form_field">
+                            <label>起始站*</label>
+                            <input type="text" class="width_30 import_input"/>
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                            <label>目的站*</label>
+                            <input type="text" class="width_30 readonly" disabled/>
+                        </td>
+                        <td style="width: 250px;"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>托运人</label>
+                            <input type="text" class="width_60 import_input" value="1"/>
+                            <select class="width_150">
+                                <option>UPS</option>
+                            </select>
+
+                            <label style="margin-left: 50px;">电话</label>
+                            <input type="text" class="width_120" value="13901119999"/>
+
+                            <label>发货代理人*</label>
+                            <input type="text" class="width_120 import_input" value="0"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>地址</label>
+                            <input type="text" class="width_550">
+                        </td>
+                    </tr>
+                </table>
+
+                <hr style="width: 100%;border: 1px solid green;margin: 30px 0;">
+
+                <table>
+                    <tr>
+                        <td colspan="9">
+                            <label>控制营业点</label>
+                            <input type="text" class="width_90 readonly" value="" disabled/>
+
+                            <label>预配航班一</label>
+                            <span class="ydh">
+                                <input type="text" class="first import_input" value=""/>
+                                <input type="text" class="second" value=""/>
+                                <select class="90">
+                                    <option></option>
+                                </select>
+                            </span>
+
+                            <label>预配航班二</label>
+                            <span class="ydh">
+                                <input type="text" class="first import_input" value=""/>
+                                <input type="text" class="second" value=""/>
+                                <select class="90">
+                                    <option></option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>收货人</label>
+                            <select class="width_150">
+                                <option>UPS</option>
+                            </select>
+
+                            <label>电话</label>
+                            <input type="text" class="width_120" value="13901119999">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>地址</label>
+                            <input type="text" class="width_550">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>包装</label>
+                            <input type="text" class="width_200 import_input">
+
+                            <label>尺寸</label>
+                            <input type="text" class="width_200 import_input">
+
+                            <label>随附运输文件</label>
+                            <input type="text" class="width_200 import_input">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>冷藏</label>
+                            <select class="width_90">
+                                <option>不冷藏</option>
+                            </select>
+
+                            <input type="checkbox" class=""><label>海关监管</label>
+                            <input type="checkbox" class=""><label>压仓</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>制单日期</label>
+                            <input type="text" class="width_150" value="2012-6-25 16:28:30" disabled>
+
+                            <input type="checkbox" class=""><label>转关</label>
+                        </td>
+                    </tr>
+                </table>
+
+                <fieldset style="margin-top: 50px;">
+                    <legend>操作区域</legend>
+
+                    <div class="action_buttons">
+                        <button type="button">新增（N）</button>
+                        <button type="button">保存（S）</button>
+                        <button type="button">撤销（C）</button>
+                        <button type="button">作废</button>
+                        <button type="button">作废取消</button>
+                        <button type="button">删除（D）</button>
+                        <button type="button">超重记录</button>
+                        <button type="button">拼单/取消拼单</button>
+                    </div>
+
+                    <div class="action_buttons">
+                        <button type="button">打印运抵</button>
+                        <button type="button">打印标签</button>
+                        <label>份数*</label>
+                        <input type="text" class="width_50 margin_right_20">
+                        <button type="button" class="margin_right_20">打印组标签</button>
+                        <button type="button">打印托运书</button>
+                        <button type="button">补打托运书</button>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </div>
+        <div class="tab" title="入仓单"></div>
+        <div class="tab" title="整车复磅"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_EN_GTD, showItemId: 'sub_nav_gjjg'});
+    // tabs
+    $('#main_right').tabs({tabNames: ['简易制单','入仓单','整车复磅']});
+    // 表单
+    // 表格
+</script>
+</body>
+</html>

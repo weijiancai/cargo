@@ -91,6 +91,8 @@ function getInputNodeTd(field, colCount) {
         return getFormInputTd(field, 'tbh');
     } else if(DS_HBH == field.displayStyle) {
         return getFormInputTd(field, 'hbh');
+    } else if(DS_CKJBR == field.displayStyle) {
+        return getFormInputTd(field, 'ckjbr');
     }
     else {
         if(DT_DATE == field.dataType) {
@@ -134,7 +136,7 @@ function getLabelTd(field) {
 }
 
 function getFormInputTd(field, type, colspan, rowspan) {
-    if(field.displayName == '空白') {
+    if(field.displayName == '空白字段') {
         if(field.width) {
             return '<td><span style="display:inline-block;width: ' + field.width + 'px"></span></td>'
         } else {
@@ -166,7 +168,7 @@ function getFormInputTd(field, type, colspan, rowspan) {
 
 function getLabel(field) {
     if(DS_BUTTON == field.displayStyle || DS_FIELD == field.displayStyle || DS_RADIO == field.displayStyle || DS_CHECK_BOX == field.displayStyle
-        || DS_YD_DATE_RANGE == field.displayStyle || DS_IMG == field.displayStyle || DS_SELECT_OPERATOR == field.displayStyle) return '';
+        || DS_YD_DATE_RANGE == field.displayStyle || DS_IMG == field.displayStyle || DS_SELECT_OPERATOR == field.displayStyle || field.displayName == '空Select') return '';
     return '<label for="' + field.name+ '">' + field.displayName+ '</label>';
 }
 
@@ -253,6 +255,8 @@ function getFormInput(field, type) {
         return getTbh(field)
     } else if('hbh' == type) {
         return getHbh(field, false);
+    } else if('ckjbr' == type) {
+        return getCkjbr(field);
     }
     else if('date' == type || 'email' == type || 'ip' == type || 'url' == type || 'int' == type || 'double' == type || 'number' == type) {
         if('date' == type) {
@@ -381,6 +385,9 @@ function getTbh(field) {
     return '<span><input id="' + field.id +'" type="text" value="" class="width_30 import_input"><input type="text" value="" class="width_60" style="margin-left: -5px;"><input type="text" value="" class="width_30 import_input" style="margin-left: -5px;"></div>'
 }
 
+function getCkjbr(field) {
+    return '<input id="' + field.id + '" type="text" value="' + field.defaultValue + '" class="import_input width_60"/><select class="width_150"><option></option></select>';
+}
 
 function getMenus(menus) {
     // 生成主菜单

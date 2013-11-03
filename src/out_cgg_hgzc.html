@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国际 -- 仓管岗 -- 国际进港 -- 海关账册</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <!-- 直航监管货 -->
+        <div class="tab" title="直航监管货">
+            <fieldset>
+                <legend>货物查询</legend>
+
+                <div class="row">
+                    <label>承运人</label>
+                    <input type="text" class="width_60 import_input form_field" value="TG">
+
+                    <label>航班号</label>
+                    <input type="text" class="width_60 import_input form_field" value="613">
+
+                    <label>到达日期</label>
+                    <span class="form_field">
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                        &nbsp;-&nbsp;
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                    </span>
+
+                    <button type="button">查询（Q）</button>
+                    <button type="button">直航打印</button>
+
+                    <input type="checkbox"><label>全选</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>查询结果</legend>
+
+                <div id="div_table_zhjgh_cxjg"></div>
+            </fieldset>
+        </div>
+        <div class="tab" title="转关监管货">
+            <fieldset>
+                <legend>货物查询</legend>
+
+                <div class="row">
+                    <label>承运人</label>
+                    <input type="text" class="width_60 import_input form_field" value="TG">
+
+                    <label>航班号</label>
+                    <input type="text" class="width_60 import_input form_field" value="613">
+
+                    <label>航班日期</label>
+                    <span class="form_field">
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                        &nbsp;-&nbsp;
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                    </span>
+                </div>
+
+                <div class="row">
+                    <label>运单到达日期</label>
+                    <span class="form_field" style="margin-right: 50px;">
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <input type="checkbox" checked="checked" style="border: none;"/>
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                        &nbsp;-&nbsp;
+                        <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                            <input type="checkbox" checked="checked" style="border: none;"/>
+                            <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                            <img src="images/select.jpg">
+                        </div>
+                    </span>
+                    <button type="button">查询（Q）</button>
+                    <button type="button">转关打印</button>
+
+                    <input type="checkbox"><label>全选</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>查询结果</legend>
+
+                <div id="div_table_zgjgh_cxjg"></div>
+            </fieldset>
+        </div>
+        <div class="tab" title="卡车航班"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_EN_GTD, showItemId: 'sub_nav_gjjg'});
+    // tabs
+    $('#main_right').tabs({tabNames: ['直航监管货','转关监管货','卡车航班']});
+    // 表单
+    // 表格
+    $('#div_table_zhjgh_cxjg').dgtable({id: "table_zhjgh_cxjg", sortable: true, selectable: true, expandRow: -1, selectRow: "0", width: 850, height: 420, headers: [
+        {name: "cyr", displayName: "承运人", sortNum: ""},
+        {name: "hbh", displayName: "航班号", sortNum: ""},
+        {name: "bgh", displayName: "报关号", sortNum: ""},
+        {name: "ydh", displayName: "运单号", sortNum: ""},
+        {name: "shr", displayName: "收货人", sortNum: ""},
+        {name: "js", displayName: "件数", sortNum: ""},
+        {name: "zl", displayName: "重量", sortNum: ""},
+        {name: "bz", displayName: "备注", sortNum: ""}
+    ]});
+
+    $('#div_table_zgjgh_cxjg').dgtable({id: "table_zgjgh_cxjg", sortable: true, selectable: true, expandRow: -1, selectRow: "0", width: 850, height: 420, headers: [
+        {name: "bg", displayName: "报关", sortNum: ""},
+        {name: "ydh", displayName: "运单号", sortNum: ""},
+        {name: "shr", displayName: "收货人", sortNum: ""},
+        {name: "js", displayName: "件数", sortNum: ""},
+        {name: "zl", displayName: "重量", sortNum: ""},
+        {name: "sfz", displayName: "始发站", sortNum: ""},
+        {name: "mdz", displayName: "目的站", sortNum: ""},
+        {name: "zzz", displayName: "中转站", sortNum: ""},
+        {name: "pm", displayName: "品名", sortNum: ""},
+        {name: "bz", displayName: "备注", sortNum: ""}
+    ]});
+</script>
+</body>
+</html>

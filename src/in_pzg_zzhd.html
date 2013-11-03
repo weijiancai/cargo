@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国内 -- 配载岗 -- 国内出港 -- 中转换单</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div id="tabs_zzhd">
+            <div class="tab" title="换单列表">
+                <div id="div_form_cxtj"></div>
+
+                <fieldset style="height: 340px;">
+                    <legend>换单列表</legend>
+
+                    <div id="div_table_hdlb"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>操作区</legend>
+                    <div class="row" style="padding-left: 200px;">
+                        <button type="button" class="width_90">新增（N）</button>
+                        <button type="button" class="width_90">查看（V）</button>
+                        <button type="button" class="">撤销换单（C）</button>
+                        <button type="button" class="">导出Excel（E）</button>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="tab" title="换单操作">
+                <div id="div_form_hdxx"></div>
+
+                <div style="border: 1px solid #cccccc;height: 200px;padding: 3px;">
+                    <ul>
+                        <li class="left" style="width: 500px;">
+                            <div id="div_form_ydxx">
+                                <form id="form_ydxx" class="">
+                                    <fieldset>
+                                        <legend>原单信息</legend>
+                                        <table class="gridPane">
+                                            <tbody>
+                                            <tr>
+                                                <td><label for="pm">品名</label></td>
+                                                <td><span style="width:5px;display:block;"></span></td>
+                                                <td><input id="pm" name="pm" style="width:105px;" class=" readonly" value=""
+                                                           type="text"></td>
+                                                <td><span style="width:10px;display:block;"></span></td>
+                                                <td><label for="wjjs">文件件数</label></td>
+                                                <td><span style="width:5px;display:block;"></span></td>
+                                                <td><input id="wjjs" name="wjjs" style="width:30px;" class=" readonly" value=""
+                                                           type="text"></td>
+                                                <td><span style="width:10px;display:block;"></span></td>
+                                                <td><label for="wjzl">文件重量</label></td>
+                                                <td><span style="width:5px;display:block;"></span></td>
+                                                <td><input id="wjzl" class="width_50" value="10" type="text"><select
+                                                        class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                                    <option>KG</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label for="jfzl">计费重量</label></td>
+                                                <td><span style="width:5px;display:block;"></span></td>
+                                                <td><input id="jfzl" class="width_50" value="10" type="text"><select
+                                                        class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                                    <option>KG</option>
+                                                </select></td>
+                                                <td><span style="width:10px;display:block;"></span></td>
+                                                <td><label for="kcjs">库存件数</label></td>
+                                                <td><span style="width:5px;display:block;"></span></td>
+                                                <td><input id="kcjs" name="kcjs" style="width:30px;" class=" readonly" value=""
+                                                           type="text"></td>
+                                                <td><span style="width:10px;display:block;"></span></td>
+                                                <td><label for="kczl">库存重量</label></td>
+                                                <td><span style="width:5px;display:block;"></span></td>
+                                                <td><input id="kczl" class="width_50" value="10" type="text"><select
+                                                        class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                                    <option>KG</option>
+                                                </select></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="12">
+                                                    <div id="div_table_ydxx"></div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="actionBar" style="text-align: center;"></div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="left" style="margin-left: 5px;">
+                            <fieldset style="width: 370px;height: 150px;">
+                                <legend>新单库存</legend>
+
+                                <div id="div_table_xdxx"></div>
+                            </fieldset>
+                        </li>
+                    </ul>
+
+                    <div class="clear">
+                        <form id="form_xdxx" class="">
+                            <fieldset>
+                                <legend>新单信息</legend>
+                                <table class="gridPane">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width: 100%;" colspan="9">
+                                            <label for="ydh">运单号</label><span
+                                                style="width:5px;display:inline-block;"></span><span class="ydh"><select
+                                                id="ydh" style="width: 65px;">
+                                            <option>AWBA</option>
+                                            <option>AWBA</option>
+                                        </select><input style="width: 40px;" class="first" value="784"
+                                                        type="text"><input class="second" value="62362366"
+                                                                           style="width: 160px" type="text"></span><span
+                                                style="width:10px;display:inline-block;"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;" colspan="9">
+                                            <label for="js">件数*</label><span
+                                                style="width:5px;display:inline-block;"></span><input id="js" name="js"
+                                                                                                      style="width:60px;"
+                                                                                                      class=" readonly"
+                                                                                                      value=""
+                                                                                                      type="text"><span
+                                                style="width:10px;display:inline-block;"></span><label
+                                                for="zl">重量*</label><span
+                                                style="width:5px;display:inline-block;"></span><input id="zl"
+                                                                                                      class="width_50"
+                                                                                                      value="10"
+                                                                                                      type="text"><select
+                                                class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                            <option>KG</option>
+                                        </select><span style="width:10px;display:inline-block;"></span><label
+                                                for="jfzl">计费重量*</label><span
+                                                style="width:5px;display:inline-block;"></span><input id=""
+                                                                                                      class="width_50"
+                                                                                                      value="10"
+                                                                                                      type="text"><select
+                                                class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                            <option>KG</option>
+                                        </select><span style="width:10px;display:inline-block;"></span><label for="tj">体积</label><span
+                                                style="width:5px;display:inline-block;"></span><input id="tj"
+                                                                                                      class="width_50"
+                                                                                                      value="10"
+                                                                                                      type="text"><select
+                                                class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                            <option>M3</option>
+                                        </select><span style="width:10px;display:inline-block;"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;" colspan="9">
+                                            <label for="pm">品名</label>
+                                            <select class="width_50" style="border: 1px dotted green;">
+                                                <option>00</option>
+                                            </select>
+                                            <select class="width_50" style="border: 1px dotted green;">
+                                                <option>00</option>
+                                            </select>
+                                            <input class="import_input" style="margin-left:5px;width: 160px" type="text">
+
+                                            <span style="width:10px;display:inline-block;"></span><label
+                                                for="">特货代码</label><span
+                                                style="width:5px;display:inline-block;"></span>
+                                            <input class="import_input" style="margin-left:5px;width: 60px" type="text">
+                                            <input class="import_input" style="margin-left:5px;width: 60px" type="text">
+                                            <span style="width:10px;display:inline-block;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form_label" style="vertical-align: middle;">
+                                            <label>起始站*</label>
+                                            <input type="text" class="width_30 import_input" value="PEK"/>
+                                        </td>
+
+                                        <td class="form_field">
+                                            <ul class="air_line">
+                                                <li><input type="text" class="width_30 import_input" value="CZ"/></li>
+                                                <li class="line">-------></li>
+                                            </ul>
+                                        </td>
+                                        <td class="form_label" style="vertical-align: middle">
+                                            <input type="text" class="width_30 import_input" value="CTU"/>
+                                        </td>
+                                        <td class="form_field">
+                                            <ul class="air_line">
+                                                <li><input type="text" class="width_30 import_input"/></li>
+                                                <li class="line">-------></li>
+                                            </ul>
+                                        </td>
+
+                                        <td class="form_label" style="vertical-align: middle">
+                                            <input type="text" class="width_30 import_input"/>
+                                        </td>
+                                        <td class="form_field">
+                                            <ul class="air_line">
+                                                <li><input type="text" class="width_30 import_input"/></li>
+                                                <li class="line">-------></li>
+                                            </ul>
+                                        </td>
+
+                                        <td class="form_label" style="vertical-align: middle">
+                                            <input type="text" class="width_30 import_input"/>
+                                        </td>
+                                        <td class="form_field">
+                                            <ul class="air_line">
+                                                <li><input type="text" class="width_30 import_input"/></li>
+                                                <li class="line">-------></li>
+                                            </ul>
+                                        </td>
+
+                                        <td class="form_label" style="vertical-align: middle">
+                                            <input type="text" class="width_30 import_input"/>
+                                            <label>目的站*</label>
+                                            <input type="text" class="width_30 readonly" value="CTU" disabled/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;" colspan="9">
+                                            <label for="tyr">托运人</label>
+                                            <span style="width:5px;display:inline-block;"></span>
+                                            <input id="tyr" class="import_input" style="width: 45px" type="text">
+                                            <input class="" style="width: 145px;margin-left: -5px;" type="text">
+                                            <span style="width:10px;display:inline-block;"></span>
+                                            <label for="dh">电话</label>
+                                            <span style="width:5px;display:inline-block;"></span>
+                                            <input id="dh"
+                                                                                                          name="dh"
+                                                                                                          style="width:100px;"
+                                                                                                          class=""
+                                                                                                          value=""
+                                                                                                          type="text"><span
+                                                    style="width:10px;display:inline-block;"></span><label for="fhdlr">发货代理人*</label><span
+                                                    style="width:5px;display:inline-block;"></span><input id="fhdlr"
+                                                                                                          name="fhdlr"
+                                                                                                          style="width:80px;"
+                                                                                                          class=" import_input"
+                                                                                                          value=""
+                                                                                                          type="text"><span
+                                                    style="width:10px;display:inline-block;"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;" colspan="9">
+                                            <label for="dz">地址</label><span
+                                                style="width:5px;display:inline-block;"></span><input id="dz" name="dz"
+                                                                                                      style="width:600px;"
+                                                                                                      class="" value=""
+                                                                                                      type="text"><span
+                                                style="width:10px;display:inline-block;"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;" colspan="9">
+                                            <label for="">预配航班一</label>
+                                            <span style="width:5px;display:inline-block;"></span>
+                                            <input style="width: 40px;" class="import_input" value="784" type="text">
+                                            <input class="second" value="62362366" style="width: 180px;" type="text">
+
+                                            <span style="width:10px;display:inline-block;"></span>
+                                            <label for="">预配航班二</label>
+                                            <span style="width:5px;display:inline-block;"></span>
+                                            <input style="width: 40px;" class="import_input" value="784" type="text">
+                                            <input class="second" value="62362366" style="width: 180px;" type="text">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="actionBar" style="text-align: center;"></div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <fieldset>
+                        <legend>操作区</legend>
+                        <div class="row" style="padding-left: 200px;">
+                            <button type="button" class="width_90">新增（N）</button>
+                            <button type="button" class="width_120">保存运单（S）</button>
+                            <button type="button" class="">换单（C）</button>
+                            <button type="button" class="">货物交接（T）</button>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="tab" title="撤销换单"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // tabs
+    $('#tabs_zzhd').tabs({tabNames: ['换单列表', '换单操作', '撤销换单'], selected: 1});
+    // 表单
+    $('#div_form_cxtj').dataForm({id:"form_cxtj",legend:"查询条件",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"10",rows:[[{name:"hdrq",displayName:"换单日期",width:200,displayStyle:6,sortNum:"1",defaultValue:"",id:"hdrq"},
+        {name:"dlr",displayName:"代理人",displayStyle:0,styleClass:"import_input",width:90,sortNum:"2",defaultValue:"",id:"dlr"},
+        {name:"xdyyd",displayName:"新单营业点",width:90,displayStyle:0,styleClass:"import_input",sortNum:"3",defaultValue:"",id:"xdyyd"},
+        {name:"lx",displayName:"类型",width:80,displayStyle:3,dictList:[{name:"全部",value:"1"}],sortNum:"4",defaultValue:"",id:"lx"}],
+        [{name:"xdh",displayName:"新单号",width:290,displayStyle:5,sortNum:"1",defaultValue:"",id:"xdh"},
+            {name:"ydh",displayName:"原单号",width:285,displayStyle:5,sortNum:"2",defaultValue:"",id:"ydh"},
+            {name:"btn_cx",displayName:"查询",width:90,displayStyle:4,sortNum:"3",defaultValue:"",id:"btn_cx"}]]});
+    $('#div_form_cdbjq').dataForm({id:"form_cdbjq",legend:"舱单编辑区",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"10",rows:[[{name:"uldlb",displayName:"ULD类别",width:80,displayStyle:3,dictList:[{name:"ULD",value:"uld"}],sortNum:"1",defaultValue:"",id:"uldlb"},
+        {name:"uldh",displayName:"ULD号",width:60,styleClass:"",displayStyle:21,sortNum:"2",defaultValue:"",id:"uldh"},
+        {name:"btn_tjuld",displayName:"添加ULD",width:90,displayStyle:4,sortNum:"3",defaultValue:"",id:"btn_tjuld"},
+        {name:"btn_qkuld",displayName:"清空ULD",width:90,displayStyle:4,sortNum:"4",defaultValue:"",id:"btn_qkuld"}],
+        [{name:"ydh",displayName:"运单号",width:230,displayStyle:5,sortNum:"1",defaultValue:"",id:"ydh"},
+            {name:"js",displayName:"件数",width:55,styleClass:"readonly",sortNum:"2",defaultValue:"",id:"js"},
+            {name:"zl",displayName:"重量",width:55,styleClass:"readonly",sortNum:"3",defaultValue:"",id:"zl"},
+            {name:"pzjs",displayName:"配载件数",width:55,displayStyle:0,styleClass:"readonly",sortNum:"4",defaultValue:"",id:"pzjs"},
+            {name:"pzzl",displayName:"配载重量",width:55,styleClass:"readonly",sortNum:"5",defaultValue:"",id:"pzzl"},
+            {name:"pztj",displayName:"配载体积",width:55,styleClass:"readonly",sortNum:"6",defaultValue:"",id:"pztj"}],
+        [{name:"thdm",displayName:"特货代码",displayStyle:0,width:50,sortNum:"1",defaultValue:"",id:"thdm"},
+            {name:"pm",displayName:"品名",width:120,displayStyle:0,styleClass:"readonly",sortNum:"2",defaultValue:"",id:"pm"},
+            {name:"sfz",displayName:"始发站",width:60,displayStyle:0,styleClass:"readonly",sortNum:"3",defaultValue:"",id:"sfz"},
+            {name:"mdz",displayName:"目的站",width:60,displayStyle:0,styleClass:"readonly",sortNum:"4",defaultValue:"",id:"mdz"},
+            {name:"yxj",displayName:"优先级",width:60,displayStyle:3,dictList:[{name:"",value:""}],sortNum:"5",defaultValue:"",id:"yxj"},
+            {name:"bz",displayName:"备注",width:150,styleClass:"readonly",sortNum:"5",defaultValue:"",id:"bz"}],
+        [{name:"empty_field",displayName:"空白字段",displayStyle:10,width:250,sortNum:"0",defaultValue:""},
+            {name:"btn_tjyd",displayName:"添加运单",width:90,displayStyle:4,sortNum:"1",defaultValue:"",id:"btn_tjyd"},
+            {name:"btn_sc",displayName:"删除",width:80,displayStyle:4,sortNum:"2",defaultValue:"",id:"btn_sc"},
+            {name:"btn_qkyd",displayName:"清空运单",width:90,displayStyle:4,sortNum:"3",defaultValue:"",id:"btn_qkyd"}]]});
+
+    $('#div_form_hdxx').dataForm({id:"form_hdxx",legend:"换单信息",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"10",rows:[[{name:"xdh",displayName:"新单号",width:265,displayStyle:5,sortNum:"1",defaultValue:"",id:"xdh"},
+        {name:"xdh_input",displayName:"新单号input",width:50,styleClass:"readonly",displayStyle:10,sortNum:"2",defaultValue:"",id:"xdh_input"},
+        {name:"ydh",displayName:"原单号",width:265,displayStyle:5,sortNum:"1",defaultValue:"",id:"ydh"},
+        {name:"ydh_input",displayName:"原单号input",width:50,styleClass:"import_input",displayStyle:10,sortNum:"2",defaultValue:"",id:"ydh_input"}],
+        [{name:"hddlr",displayName:"换单代理人",displayStyle:0,styleClass:"import_input",width:120,sortNum:"1",defaultValue:"",id:"hddlr"},
+            {name:"hdlx",displayName:"换单类型",width:110,displayStyle:3,dictList:[{name:"库区外中转换单",value:"1"}],sortNum:"2",defaultValue:"",id:"hdlx"},
+            {name:"tqzz",displayName:"同机中转",width:60,styleClass:"",displayStyle:12,sortNum:"3",defaultValue:"",id:"tqzz"},
+            {name:"hdjs",displayName:"换单件数",width:60,styleClass:"import_input",sortNum:"4",defaultValue:"",id:"hdjs"},
+            {name:"hdzl",displayName:"换单重量",width:60,displayStyle:19,sortNum:"5",defaultValue:"",id:"hdzl"}],
+        [{name:"ck",displayName:"仓库",width:120,styleClass:"import_input",sortNum:"1",defaultValue:"",id:"ck"},
+            {name:"kw",displayName:"库位",width:100,styleClass:"import_input",sortNum:"2",defaultValue:"",id:"kw"},
+            {name:"empty_field",displayName:"空白字段",displayStyle:10,width:60,sortNum:"",defaultValue:""},
+            {name:"rkjs",displayName:"入库件数",width:60,styleClass:"readonly",sortNum:"3",defaultValue:"",id:"rkjs"},
+            {name:"rkzl",displayName:"入库重量",width:90,styleClass:"readonly",displayStyle:19,sortNum:"4",defaultValue:"",id:"rkzl"}]]});
+    // 表格
+    $('#div_table_cd').dgtable({id: "table_cd", sortable: false, selectable: false, expandRow: -1, selectRow: -1, height: 340, headers: [
+        {name: "bxh", displayName: "板箱号", width: 70, sortNum: ""},
+        {name: "pzjs", displayName: "配载件数", width: 80, sortNum: ""},
+        {name: "pzzl", displayName: "配载重量", width: 80, sortNum: ""},
+        {name: "pztj", displayName: "配载体积", width: 80, sortNum: ""},
+        {name: "tscldm", displayName: "特殊处理代码", width: 120, sortNum: ""},
+        {name: "pm", displayName: "品名", width: 70, sortNum: ""},
+        {name: "sfz", displayName: "始发站", width: 80, sortNum: ""},
+        {name: "mdz", displayName: "目的站", width: 80, sortNum: ""},
+        {name: "yxj", displayName: "优先级", width: 80, sortNum: ""},
+        {name: "bz", displayName: "备注", width: 210, sortNum: ""}
+    ], data: []});
+    $('#div_table_ydxx').dgtable({id: "table_ydxx", sortable: false, selectable: true, expandRow: -1, selectRow: -1, height: 83, headers: [
+        {name: "ydh", displayName: "运单号", width: 70, sortNum: ""},
+        {name: "ck", displayName: "仓库", width: 80, sortNum: ""},
+        {name: "kw", displayName: "库位", width: 80, sortNum: ""}
+    ], data: []});
+    $('#div_table_xdxx').dgtable({id: "table_xdxx", sortable: false, selectable: true, expandRow: -1, selectRow: -1, height: 83, headers: [
+        {name: "xydh", displayName: "新运单号", width: 70, sortNum: ""},
+        {name: "ck", displayName: "仓库", width: 80, sortNum: ""},
+        {name: "kw", displayName: "库位", width: 80, sortNum: ""}
+    ], data: []});
+
+</script>
+</body>
+</html>

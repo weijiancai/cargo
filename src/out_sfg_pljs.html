@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国际 -- 收费岗 -- 收费与账单 -- 批量结算</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div class="round">
+            <div class="row">
+                <label>计算客户</label>
+                <input type="text" class="width_60 import_input" value="CS"/>
+                <input type="text" class="width_120 form_field" value="测试" style="margin-left: -5px;"/>
+
+                <label>计算方式</label>
+                <select class="width_90">
+                    <option>月结</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="tabs_pljs" class="round" style="height: 545px;padding: 5px;">
+            <div class="tab" title="未结算">
+                <div id="form_wjs" class="round"></div>
+                <div id="table_wjs"></div>
+
+                <div class="round">
+                    <label>文件重量合计</label>
+                    <span style="display: inline-block" class="width_150"></span>
+
+                    <label>计费重量合计</label>
+                    <span style="display: inline-block" class="width_150"></span>
+
+                    <label>件数合计：</label>
+                    <span style="display: inline-block" class="width_150"></span>
+
+                    <label>费用合计：</label>
+                    <span style="display: inline-block" class="width_150"></span>
+                </div>
+
+                <div class="action_buttons">
+                    <button type="button">全选（A）</button>
+                    <button type="button">全不选（N）</button>
+                    <button type="button">结算（J）</button>
+                    <button type="button" style="margin-right: 80px;">结算取消（C）</button>
+                    <button type="button">打印发票（P）</button>
+                    <button type="button" style="margin-right: 30px;">设置起始号（S）</button>
+                    <button type="button">计费单（F）</button>
+                    <button type="button">导出（E）</button>
+                </div>
+            </div>
+            <div class="tab" title="已结算">
+                <div id="form_yjs" class="round"></div>
+                <div id="table_yjs"></div>
+
+                <div class="round">
+                    <label>文件重量合计</label>
+                    <span style="display: inline-block" class="width_150"></span>
+
+                    <label>计费重量合计</label>
+                    <span style="display: inline-block" class="width_150"></span>
+
+                    <label>件数合计：</label>
+                    <span style="display: inline-block" class="width_150"></span>
+
+                    <label>费用合计：</label>
+                    <span style="display: inline-block" class="width_150"></span>
+                </div>
+
+                <div class="action_buttons">
+                    <button type="button">全选（A）</button>
+                    <button type="button">全不选（N）</button>
+                    <button type="button" style="margin-right: 180px;">结算取消（C）</button>
+                    <button type="button">打印发票（P）</button>
+                    <button type="button" style="">设置起始号（S）</button>
+                </div>
+            </div>
+            <div class="tab" title="预付"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_OUT_SFG, showItemId: 'sub_nav_sfyzd'});
+    // tabs
+    $('#tabs_pljs').tabs({tabNames: ['未结算','已结算','预付']});
+    // 表单
+    $('#form_wjs').dataForm({
+        rows: [
+            [
+                {name: 'jfsj', displayName: '计费时间', displayStyle: DS_DATE_RANGE},
+                {name: 'jfr', displayName: '计费人', displayStyle: DS_TEXT, width: 100, styleClass: 'import_input'},
+                {name: 'djyyd', displayName: '登记营业点', displayStyle: DS_TEXT, width: 100, styleClass: 'import_input'}
+            ],
+            [
+                {name: 'lsh', displayName: '流水号', displayStyle: DS_YDH, width: 290},
+                {name: 'ydh', displayName: '运单号', displayStyle: DS_YDH, width: 290, styleClass: ''},
+                {displayName: '查询（Q）', displayStyle: DS_BUTTON, width: 100}
+            ]
+        ]
+    });
+    $('#form_yjs').dataForm({
+        rows: [
+            [
+                {name: 'jssj', displayName: '结算时间', displayStyle: DS_DATE_RANGE},
+                {name: 'jsr', displayName: '结算人', displayStyle: DS_TEXT, width: 100, styleClass: 'import_input'},
+                {name: 'djyyd', displayName: '登记营业点', displayStyle: DS_TEXT, width: 100, styleClass: 'import_input'}
+            ],
+            [
+                {name: 'jfsj', displayName: '计费时间', displayStyle: DS_DATE_RANGE},
+                {name: 'ydh', displayName: '运单号', displayStyle: DS_YDH, width: 290, styleClass: ''}
+            ],
+            [
+                {name: 'lsh', displayName: '流水号', displayStyle: DS_YDH, width: 290, styleClass: 'margin_right_20'},
+                {name: 'empty_field', displayName: '空白字段', width: 150, displayStyle: DS_FIELD},
+                {displayName: '查询（Q）', displayStyle: DS_BUTTON, width: 100}
+            ]
+        ]
+    });
+    // 表格
+    $('#table_wjs').dgtable({
+        sortable: true,
+        selectable: true,
+        height: 330,
+        headers: [
+            {name: 'sflsh', displayName: '收费流水号'},
+            {name: 'fphm', displayName: '发票号码'},
+            {name: 'jskh', displayName: '结算客户'},
+            {name: 'zfy', displayName: '总费用'},
+            {name: 'zjs', displayName: '总件数'},
+            {name: 'zzl', displayName: '总重量'}
+        ]
+    });
+
+    $('#table_yjs').dgtable({
+        sortable: true,
+        selectable: true,
+        height: 320,
+        headers: [
+            {name: 'sflsh', displayName: '收费流水号'},
+            {name: 'jskh', displayName: '结算客户'},
+            {name: 'zfy', displayName: '总费用'},
+            {name: 'zjs', displayName: '总件数'},
+            {name: 'zzl', displayName: '总重量'},
+            {name: 'zjfzl', displayName: '总计费重量'},
+            {name: 'jsfs', displayName: '结算方式'}
+        ]
+    });
+</script>
+</body>
+</html>

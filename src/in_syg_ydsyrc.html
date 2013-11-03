@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国内 -- 收运岗 -- 国内出港 -- 运单收运入仓</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <!-- 运单查询 -->
+        <div class="tab" title="运单收运">
+            <fieldset>
+                <legend>运单信息</legend>
+
+                <table>
+                    <tr>
+                        <td colspan="9" class="form_label" style="vertical-align: middle;">
+                            <span class="ydh">
+                                <label>运单号</label>
+                                <select>
+                                    <option>AWBA</option>
+                                    <option>AWBA</option>
+                                </select>
+                                <input type="text" class="first" value="784"/>
+                                <input type="text" class="second" value="62362366"/>
+                            </span>
+
+                            <button type="button" class="width_100">分单导入</button>
+                            <span class="width_150"></span>
+
+                            <label>通道</label>
+                            <input type="text" class="width_50" value=""/>
+                            <button type="button" class="width_30">&gt;</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>件数*</label>
+                            <input type="text" class="width_30 readonly" value="0"/>
+
+                            <label>重量*</label>
+                            <input type="text" class="width_50" value="0"/>
+                            <select class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                <option>KG</option>
+                            </select>
+
+                            <label>尺寸</label>
+                            <input type="text" class="width_100 import_input" value="0"/>
+
+                            <label>体积</label>
+                            <input type="text" class="width_50" value=""/>
+                            <select class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                <option>M3</option>
+                            </select>
+
+                            <label>计费重量*</label>
+                            <input type="text" class="width_50" value="0"/>
+                            <select class="width_60" style="border: 1px dotted green;margin-left: -4px">
+                                <option>KG</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="form_field">
+                            <label>起始站*</label>
+                            <input type="text" class="width_30 import_input"/>
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                        </td>
+                        <td class="form_field">
+                            <ul class="air_line">
+                                <li><input type="text" class="width_30 import_input"/></li>
+                                <li class="line">-------></li>
+                            </ul>
+                        </td>
+
+                        <td class="form_label" style="vertical-align: middle">
+                            <input type="text" class="width_30 import_input"/>
+                            <label>目的站*</label>
+                            <input type="text" class="width_30 readonly" disabled/>
+                        </td>
+                        <td class="width_120"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>航班号</label>
+                            <span class="ydh">
+                                <input type="text" class="first import_input" value=""/>
+                                <input type="text" class="second" value=""/>
+                            </span>
+
+                            <label>品名</label>
+                            <select class="width_50" style="border: 1px dotted green;">
+                                <option>00</option>
+                            </select>
+                            <select class="width_50" style="border: 1px dotted green;">
+                                <option>00</option>
+                            </select>
+                            <input class="import_input" style="width: 90px" type="text">
+
+                            <span style="width:10px;display:inline-block;"></span>
+                            <label>特货代码</label>
+                            <span style="width:5px;display:inline-block;"></span>
+                            <input class="import_input" style="margin-left:5px;width: 60px" type="text">
+                            <input class="import_input" style="margin-left:-5px;width: 60px" type="text">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9">
+                            <label>包裝</label>
+                            <input type="text" class="width_150 import_input"/>
+
+                            <label>发货人</label>
+                            <input type="text" class="width_60 import_input"/>
+
+                            <label>叉车数</label>
+                            <input type="text" class="width_60" value="0"/>
+
+                            <input type="checkbox"/>
+                            <label class="">压仓</label>
+
+                            <label>冷藏</label>
+                            <select class="width_60">
+                                <option>不冷藏</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="9" style="text-align: center;">
+                            <button type="button">尺寸（B）</button>
+                            <button type="button">保存（F）</button>
+                            <button type="button">清空（Q）</button>
+                            <button type="button">收运（A）</button>
+                            <button type="button">收运取消（D）</button>
+                            <button type="button">收运调整（U）</button>
+                            <button type="button">超重记录</button>
+                            <button type="button">过重单</button>
+                            <button type="button">拒收</button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <div class="round" style="height: 150px;">
+                <ul>
+                    <li class="left">
+                        <fieldset>
+                            <legend>收运历史记录</legend>
+
+                            <div id="div_table_sylsjl"></div>
+                        </fieldset>
+                    </li>
+                    <li class="left">
+                        <fieldset>
+                            <legend>库存信息</legend>
+
+                            <div id="div_table_kcxx"></div>
+                        </fieldset>
+                    </li>
+                </ul>
+            </div>
+
+            <fieldset>
+                <legend>详细过磅记录</legend>
+
+                <ul>
+                    <li class="left">
+                        <form>
+                            <div class="row">
+                                <label>仓库</label>
+                                <input type="text" class="width_120 import_input" value="国内出港测试">
+
+                                <label>库位</label>
+                                <input type="text" class="width_120 import_input" value="CZ">
+                            </div>
+
+                            <div class="row">
+                                <label>ULD号</label>
+                                <input type="text" value="" class="width_30 import_input">
+                                <input type="text" value="" class="width_60" style="margin-left: -5px;">
+                                <input type="text" value="" class="width_30 import_input" style="margin-left: -5px;">
+
+                                <label>组标签号</label>
+                                <input type="text" value="" class="width_100 readonly" disabled>
+                            </div>
+
+                            <div class="row">
+                                <label>过磅件数*</label>
+                                <input type="text" value="" class="width_120 readonly" disabled>
+
+                                <label>网箱号</label>
+                                <input type="text" value="" class="width_120 readonly" disabled>
+                            </div>
+
+                            <div class="row">
+                                <label>板箱总重</label>
+                                <input type="text" value="" class="width_120 readonly" disabled>
+
+                                <label>ULD自重</label>
+                                <input type="text" class="width_50" value="0"/>
+                                <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                                    <option>KG</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <label>垫板重量</label>
+                                <input type="text" class="width_50" value="0"/>
+                                <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                                    <option>KG</option>
+                                </select>
+
+                                <label>过磅重量</label>
+                                <input type="text" class="width_50" value="0"/>
+                                <select class="width_60 form_field" style="border: 1px dotted green;margin-left: -4px">
+                                    <option>KG</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        <div class="action_buttons">
+                            <button type="button" class="width_90">添加（E）</button>
+                            <button type="button" class="width_90">删除</button>
+                        </div>
+                    </li>
+                    <li class="left">
+                        <div id="div_table_xxgbjl"></div>
+
+                        <div class="row">
+                            <input type="checkbox"><label>全部</label>
+                            <span class="width_90"></span>
+                            <label>件数合计</label>
+                            <input type="text" class="width_50" value="0" disabled>
+                            <label>重量合计</label>
+                            <input type="text" class="width_50" value="0" disabled>
+                            <label>叉车合计</label>
+                            <input type="text" class="width_50" value="0">
+                        </div>
+
+                        <div class="action_buttons">
+                            <button type="button" class="width_90">保存（S）</button>
+                            <button type="button" class="width_90">清空（C）</button>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN_SYG, showItemId: 'sub_nav_gncg'});
+    // tabs
+    $('#main_right').tabs({tabNames: ['运单收运']});
+    // 表单
+    // 表格
+    $('#div_table_sylsjl').dgtable({id: "table_sylsjl", sortable: false, selectable: false, expandRow: -1, selectRow: -1, height: 120, headers: [
+        {name: "syjs", displayName: "收运件数", sortNum: ""},
+        {name: "syzl", displayName: "收运重量", sortNum: ""},
+        {name: "bxh", displayName: "板箱号", sortNum: ""},
+        {name: "czr", displayName: "操作人", sortNum: ""},
+        {name: "gbrq", displayName: "过磅日期", sortNum: ""}
+    ], data: []});
+    $('#div_table_kcxx').dgtable({id: "table_kcxx", sortable: false, selectable: false, expandRow: -1, selectRow: -1, height: 120, headers: [
+        {name: "ckm", displayName: "仓库名", sortNum: ""},
+        {name: "kwh", displayName: "库位号", sortNum: ""},
+        {name: "bxh", displayName: "板箱号", sortNum: ""},
+        {name: "tmbqhm", displayName: "条码扁鹊号码", sortNum: ""},
+        {name: "js", displayName: "件数", sortNum: ""},
+        {name: "zl", displayName: "重量", sortNum: ""}
+    ], data: []});
+    $('#div_table_xxgbjl').dgtable({id: "table_xxgbjl", sortable: false, selectable: false, expandRow: -1, selectRow: -1, height: 100, headers: [
+        {name: "js", displayName: "件数", sortNum: ""},
+        {name: "zl", displayName: "重量", sortNum: ""},
+        {name: "js", displayName: "仓库名", sortNum: ""},
+        {name: "kwh", displayName: "库位号", sortNum: ""},
+        {name: "uld", displayName: "ULD", sortNum: ""},
+        {name: "mz", displayName: "毛重", sortNum: ""},
+        {name: "dbzl", displayName: "垫板重量", sortNum: ""},
+        {name: "pz", displayName: "皮重", sortNum: ""}
+
+    ], data: []});
+</script>
+</body>
+</html>
