@@ -28,6 +28,7 @@
             width: 95%;
             /*height: 590px;*/
             border: 1px solid green;
+            overflow: auto;
         }
         .tab {
             text-align: center;
@@ -41,7 +42,7 @@
             height: 550px;
         }
         #tabs_preview_form .tab, #tabs_preview_form textarea {
-            height: 330px;
+            height: 400px;
         }
         #tabs_preview_table .tab, #tabs_preview_table textarea {
             height: 450px;
@@ -319,16 +320,16 @@
             $('#form_window').html('').append(filterDiv).dgtable({
                 selectable: true,
                 headers: [
-                    {name: 'sortNum', displayName: '排序号'},
-                    {name: 'id', displayName: 'ID'},
-                    {name: 'name', displayName: '名称'},
-                    {name: 'displayName', displayName: '显示名'},
-                    {name: 'isSingleLine', displayName: '独行'},
-                    {name: 'width', displayName: '宽'},
-                    {name: 'displayStyle', displayName: '显示风格'},
+                    {name: 'sortNum', displayName: '排序号', width:70},
+                    /*{name: 'id', displayName: 'ID', width: 60},*/
+                    {name: 'name', displayName: '名称', width: 70},
+                    {name: 'displayName', displayName: '显示名', width:100},
+                    {name: 'isSingleLine', displayName: '独行', width: 50},
+                    {name: 'width', displayName: '宽', width: 40},
+                    {name: 'displayStyle', displayName: '显示风格', width:60},
                     /*{name: 'dictList', displayName: '数据字典', width: 70},*/
-                    {name: 'readonly', displayName: '只读'},
-                    {name: 'defaultValue', displayName: '默认值'},
+                    {name: 'readonly', displayName: '只读', width:50},
+                    {name: 'defaultValue', displayName: '默认值', width:70},
                     {name: 'preview', displayName: '预览'}
                 ],
                 data: datas

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>国内 -- 柜台岗 -- 国内进港 -- 提货办单</title>
+    <title>国际 -- 收费岗 -- 国际进港 -- 提货办单</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
     <link href="style/global.css" rel="stylesheet" type="text/css"/>
     <link href="style/menu.css" rel="stylesheet" type="text/css"/>
@@ -121,13 +121,11 @@
                         <button type="button" class="width_90" style="margin-right: 5px;">清除</button>
                         <button type="button" class="width_90" style="margin-right: 5px;">保存（S）</button>
                         <button type="button" class="width_90 margin_right_20">撤销（C）</button>
-                        <button type="button" class="width_120 margin_right_20">确认取消（R）</button>
-                        <button type="button" class="width_150 margin_right_20">打印计费单（库位）</button>
-                        <button type="button" class="width_120 margin_right_20">打印提货凭证</button>
+                        <button type="button" class="width_120" style="margin-right: 80px;">确认取消（R）</button>
+                        <button type="button" class="width_150">打印计费单（库位）</button>
                     </div>
 
-                    <div class="row">
-                        <button type="button" class="" style="margin-right: 5px;">补重单计费</button>
+                    <div class="row" style="padding-left: 80px;">
                         <button type="button" class="" style="margin-right: 5px;">代单打印</button>
                         <button type="button" class="" style="margin-right: 5px;">结算（J）</button>
                         <button type="button" class=" margin_right_20">结算取消（D）</button>
@@ -146,7 +144,7 @@
 
 <script type="text/javascript">
     // 菜单
-    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    $('body').dataMenu({menus: MENU_EN_GTD, showItemId: 'sub_nav_gjjg'});
     // tabs
     $('#main_right').tabs({tabNames: ['提货办单操作', '已提货办单查询', '未提货办单查询']});
     // table

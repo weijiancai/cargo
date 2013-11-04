@@ -24,12 +24,61 @@
     <!-- Tabs -->
     <div id="main_right">
         <div id="div_form_hbpz"></div>
+
+        <ul>
+            <li class="left" style="width: 400px;">
+                <div id="div_table_pz_left"></div>
+            </li>
+            <li class="left" style="width: 110px;padding-top: 120px">
+                <button type="button" class="width_100" style="margin-bottom: 3px;">装箱</button>
+                <button type="button" class="width_100" style="margin-bottom: 3px;">部分装箱</button>
+                <button type="button" class="width_100" style="margin-bottom: 3px;">放散舱</button>
+                <button type="button" class="width_100" style="margin-bottom: 3px;">部分放散舱</button>
+                <button type="button" class="width_100">待运导入</button>
+            </li>
+            <li class="left" style="width: 370px;">
+                <div id="div_table_pz_right"></div>
+            </li>
+        </ul>
+
+        <div class="row">
+            <button type="button" class="width_100" style="">卸下</button>
+            <label>小计：</label>
+            <span class="width_60">货物</span>
+            <span class="width_60">0票</span>
+            <span class="width_60">0件</span>
+            <span class="width_60">0公斤</span>
+
+            <button type="button" class="width_100" style="margin-left: 100px;">卸下</button>
+            <label>小计：</label>
+            <span class="width_60">货物</span>
+            <span class="width_60">0票</span>
+            <span class="width_60">0件</span>
+            <span class="width_60">0公斤</span>
+        </div>
+
+        <div id="div_form_hb" class="row"></div>
+
+        <fieldset>
+            <legend>操作区</legend>
+
+            <ul>
+                <li class="left" style="width: 750px;">
+                    <div id="div_form_czq"></div>
+                </li>
+                <li class="left width_100">
+                    <button type="button" class="width_100" style="margin-bottom: 3px;">地勤交接</button>
+                    <button type="button" class="width_100" style="margin-bottom: 3px;">航班文件</button>
+                    <button type="button" class="width_100" style="margin-bottom: 3px;">拉货查询</button>
+                </li>
+            </ul>
+        </fieldset>
     </div>
 </div>
 
 <script type="text/javascript">
     // 菜单
-    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gncg'});
+    $('body').dataMenu({menus: MENU_IN_SFG, showItemId: 'sub_nav_gncg'});
     // tabs
     /*$('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});*/
     // 表单
@@ -47,7 +96,34 @@
             ], sortNum: "4", defaultValue: "", id: "hbcz"}
         ]
     ]});
+    $('#div_form_hb').dataForm({id:"form_hb",legend:"",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"5",rows:[[{name:"hbh",displayName:"航班号",displayStyle:22,sortNum:"1",defaultValue:"",id:"hbh"},
+        {name:"btn_cx",displayName:"查询（Q）",width:80,displayStyle:4,sortNum:"2",defaultValue:"",id:"btn_cx"},
+        {name:"btn_zp",displayName:"转配",width:50,displayStyle:4,sortNum:"3",defaultValue:"",id:"btn_zp"},
+        {name:"ck",displayName:"仓库",width:90,styleClass:"import_input",sortNum:"4",defaultValue:"",id:"ck"},
+        {name:"kw",displayName:"库位",width:90,styleClass:"import_input",sortNum:"5",defaultValue:"",id:"kw"},
+        {name:"btn_cx",displayName:"全部拉下",width:80,displayStyle:4,sortNum:"6",defaultValue:"",id:"btn_cx"}]]});
+    $('#div_form_czq').dataForm({id:"form_czq",legend:"",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"15",rows:[[{name:"uldh",displayName:"ULD号",width:60,styleClass:"",displayStyle:21,sortNum:"1",defaultValue:"",id:"uldh"},
+        {name:"ck",displayName:"仓库",width:90,styleClass:"import_input",sortNum:"2",defaultValue:"",id:"ck"},
+        {name:"kw",displayName:"库位",width:90,styleClass:"import_input",sortNum:"3",defaultValue:"",id:"kw"}],
+        [{name:"ydh",displayName:"运单号",width:265,displayStyle:5,sortNum:"1",defaultValue:"",id:"ydh"},
+            {name:"empty_select",displayName:"空Select",width:200,displayStyle:3,dictList:[{name:"",value:""}],sortNum:"2",defaultValue:"",id:"empty_select"}],
+        [{name:"js",displayName:"件数",width:60,styleClass:"readonly",sortNum:"1",defaultValue:"",id:"js"},
+            {name:"zl_unit",displayName:"重量",width:60,displayStyle:19,sortNum:"2",defaultValue:"",id:"zl_unit"},
+            {name:"btn_ps",displayName:"配上",width:90,displayStyle:4,sortNum:"3",defaultValue:"",id:"btn_ps"}]]});
     // 表格
+    $('#div_table_pz_left').dgtable({id: "table_pz_left", sortable: true, selectable: false, expandRow: -1, selectRow: -1, height: 350, width: 500,
+        headers: [
+        {name: "uld", displayName: "ULD", width: 80, sortNum: "1"},
+        {name: "zpjs", displayName: "装配件数", width: 100, sortNum: "2"},
+        {name: "pzzl", displayName: "配载重量", width: 100, sortNum: "3"},
+        {name: "sfdqj", displayName: "是否地勤交", width: 100, sortNum: "4"}
+    ], data: []});
+    $('#div_table_pz_right').dgtable({id: "table_pz_right", sortable: false, selectable: true, expandRow: -1, selectRow: -1, height: 350,  width: 500,
+        headers: [
+        {name: "bxh", displayName: "板箱号", width: 100, sortNum: "1"},
+        {name: "zpjs", displayName: "装配件数", width: 100, sortNum: "2"},
+        {name: "pzzl", displayName: "配载重量", width: 100, sortNum: "3"}
+    ], data: []});
 </script>
 </body>
 </html>

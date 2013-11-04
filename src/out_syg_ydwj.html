@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国际 -- 收运岗 -- 国际出港 -- 运单文件</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <!-- 文件交接 -->
+        <div class="tab" title="文件交接">
+            <fieldset>
+                <legend>查询区</legend>
+
+                <table>
+                    <tr>
+                        <td class="form_label"><label>运单号</label></td>
+                        <td class="ydh form_field">
+                            <select>
+                                <option>AWBA</option>
+                                <option>AWBA</option>
+                            </select>
+                            <input type="text" class="first" />
+                            <input type="text" class="second"/>
+                        </td>
+
+                        <td class="form_label"><label>代理人</label></td>
+                        <td class="form_field">
+                            <input type="text" class="width_90 import_input"/>
+                        </td>
+
+                        <td class="form_label"><label>航班号</label></td>
+                        <td class="form_field hbh">
+                            <input type="text" class="first import_input">
+                            <input type="text" class="second"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="form_label"><label>始发站/目的站</label></td>
+                        <td class="form_field">
+                            <input type="text" class="width_50 import_input"/>
+                            <input type="text" class="width_50 import_input"/>
+                        </td>
+
+                        <td class="form_label"><label>制单日期</label></td>
+                        <td class="form_field form_date" colspan="3">
+                            <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                <input type="checkbox" checked="checked" style="border: none;"/>
+                                <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                                <img src="images/select.jpg">
+                            </div>
+                            &nbsp;-&nbsp;
+                            <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                <input type="checkbox" checked="checked" style="border: none;"/>
+                                <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                                <img src="images/select.jpg">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="form_label"><label>交单状态</label></td>
+                        <td class="form_field">
+                            <select class="width_120">
+                                <option>全部</option>
+                                <option></option>
+                            </select>
+                        </td>
+
+                        <td class="form_label"><label>交单日期</label></td>
+                        <td class="form_field form_date" colspan="3">
+                            <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                <input type="checkbox" checked="checked" style="border: none;"/>
+                                <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                                <img src="images/select.jpg">
+                            </div>
+                            &nbsp;-&nbsp;
+                            <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;">
+                                <input type="checkbox" checked="checked" style="border: none;"/>
+                                <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                                <img src="images/select.jpg">
+                            </div>
+
+                            <span class="width_50"></span>
+                           <button type="button" class="width_90">查询（Q）</button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>查询结果区</legend>
+
+                <div id="div_table_cxjg" style="width: 850px;"></div>
+            </fieldset>
+
+            <div class="round" style="height: 140px;">
+                <ul>
+                    <li class="left" style="width: 330px;">
+                        <fieldset>
+                            <legend>海关放行</legend>
+
+                            <div class="row">
+                                <label class="margin_left_40 form_field">运单号</label>
+                                <input type="text" class="readonly width_120" disabled>
+                            </div>
+
+                            <div class="row">
+                                <input type="checkbox" disabled><label class="readonly form_field">是否电子放行</label>
+                                <input type="checkbox" disabled><label class="readonly">是否人工放行</label>
+                            </div>
+
+                            <div class="row">
+                                <input type="checkbox"><label class="form_field">转关</label>
+                                <label>销单号</label>
+                                <input type="text" class="width_120">
+                            </div>
+
+                            <div class="row" style="padding-left: 20px;">
+                                <button type="button" class="form_field">海关核销</button>
+                                <button type="button">取消放行</button>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li class="left" style="margin-left: 10px;">
+                        <fieldset>
+                            <legend>商检放行</legend>
+
+                            <div class="row" style="padding: 50px 40px 23px 40px;">
+                                <button type="button" class="form_field">海关核销</button>
+                                <button type="button">取消放行</button>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li class="left" style="padding: 30px 10px 0 150px;">
+                        <ol>
+                            <li><button type="button" class="width_120" style="margin-bottom: 5px;">交单并核销（S）</button></li>
+                            <li><button type="button" class="width_120" style="margin-bottom: 5px;">批量交单（B）</button></li>
+                            <li><button type="button" class="width_120">交单取消</button></li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab" title="计费"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_OUT_SFG, showItemId: 'sub_nav_gjcg'});
+    // tabs
+    $('#main_right').tabs({tabNames: ['文件交接','计费']});
+    // 表单
+    // 表格
+    $('#div_table_cxjg').dgtable({
+        sortable: true,
+        selectable: true,
+        width: 900,
+        height: 270,
+        headers: [
+            {name: 'ydh', displayName: '运单号'},
+            {name: 'js', displayName: '件数'},
+            {name: 'zl', displayName: '重量'},
+            {name: 'jfzl', displayName: '计费重量'},
+            {name: 'ckjs', displayName: '仓库件数'},
+            {name: 'ckzl', displayName: '仓库重量'},
+            {name: 'sfjd', displayName: '是否交单'},
+            {name: 'fhdl', displayName: '发货代理'},
+            {name: 'hb', displayName: '航班'}
+        ],
+        data: [
+            {ydh: '784-626662622', js: 9, zl: 900, jfzl: '900', ckjs: '9', ckzl: '90', sfjd: 'N'}
+        ]
+    });
+</script>
+</body>
+</html>

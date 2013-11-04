@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国内 -- 收运岗 -- 国内出港 -- 始发站换单</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <!-- 换单查询 -->
+        <div class="tab" title="换单查询">
+
+        </div>
+        <div class="tab" title="换单处理">
+            <div id="div_form_hdcl"></div>
+            <div id="div_form_kcxx"></div>
+
+            <div class="round">
+                <div class="row">
+                    <label>换单件数</label>
+                    <input type="text" class="width_120 readonly form_field">
+
+                    <label>换单重量</label>
+                    <input type="text" class="width_120 readonly form_field">
+
+                    <label>换单计费重量</label>
+                    <input type="text" class="width_120 readonly form_field">
+                </div>
+
+                <div class="row" style="padding-left: 24px;">
+                    <label>备注</label>
+                    <input type="text" class="width_400 readonly">
+                </div>
+
+                <div class="row">
+                    <label>换单时间</label>
+                    <div style="display: inline-block;border: 1px solid #b6cae1;padding-left: 3px;background-color: #ffffff;" class="form_field">
+                        <span style="font-size: 12px;line-height: 16px;vertical-align: top">2012年 6月14日</span>
+                        <img src="images/select.jpg">
+                    </div>
+
+                    <label>营业点</label>
+                    <input type="text" class="width_120 readonly form_field">
+
+                    <label>操作点</label>
+                    <input type="text" class="width_120 readonly form_field">
+                </div>
+
+                <div class="row" style="padding-left: 150px;">
+                    <button type="button" class="width_100">新增（N）</button>
+                    <button type="button" class="width_100">保存（S）</button>
+                    <button type="button" class="width_100">撤销（C）</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_EN_GTD, showItemId: 'sub_nav_gjjg'});
+    // tabs
+    $('#main_right').tabs({tabNames: ['换单查询','换单处理'], selected: 1});
+    // 表单
+    $('#div_form_hdcl').dataForm({id:"form_hdcl",legend:"换单处理",colCount:"4",colWidth:"180",labelGap:"5",fieldGap:"15",rows:[[{name:"yydh",displayName:"原运单号",width:265,displayStyle:5,sortNum:"1",defaultValue:"",id:"yydh"},
+        {name:"xydh",displayName:"新运单号",width:265,displayStyle:5,sortNum:"1",defaultValue:"",id:"xydh"}],
+        [{name:"empty_field",displayName:"空白字段",displayStyle:10,width:70,sortNum:"1",defaultValue:""},
+            {name:"zphd",displayName:"整票换单",width:60,styleClass:"",displayStyle:12,sortNum:"2",defaultValue:"",id:"zphd"},
+            {name:"empty_field",displayName:"空白字段",displayStyle:10,width:40,sortNum:"1",defaultValue:""},
+            {name:"xtcyr",displayName:"相同承运人",width:60,styleClass:"",displayStyle:12,sortNum:"2",defaultValue:"",id:"xtcyr"}],
+        [{name:"empty_field",displayName:"空白字段",displayStyle:10,width:40,sortNum:"1",defaultValue:""},
+            {name:"pm",displayName:"品名",width:90,displayStyle:0,styleClass:"readonly",sortNum:"1",defaultValue:"",id:"pm"},
+            {name:"dlr",displayName:"代理人",displayStyle:0,styleClass:"import_input",width:150,sortNum:"2",defaultValue:"",id:"dlr"},
+            {name:"tsdm",displayName:"特殊代码",displayStyle:0,width:150,sortNum:"3",defaultValue:"",id:"tsdm"}]]});
+
+    $('#div_form_kcxx').dataForm({id: "form_kcxx", legend: "库存信息", colCount: "3", colWidth: "180", labelGap: "5", fieldGap: "15", fields: [
+        {name: "wjjs", displayName: "文件件数", width: 100, styleClass: "readonly", sortNum: "1"},
+        {name: "wjzl", displayName: "文件重量", width: 100, styleClass: "readonly", sortNum: "2"},
+        {name: "jfzl", displayName: "计费重量", width: 100, displayStyle: 0, styleClass: "readonly", sortNum: "3"},
+        {name: "kcjs", displayName: "库存件数", width: 100, styleClass: "readonly", sortNum: "4"},
+        {name: "kczl", displayName: "库存重量", width: 100, styleClass: "readonly", sortNum: "5"}
+    ]});
+    // 表格
+
+</script>
+</body>
+</html>

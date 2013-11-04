@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国际 -- 收费岗 -- 收费与账单 -- 国际出港邮航包机收费</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <form>
+            <fieldset>
+                <legend>查询区</legend>
+
+                <div class="row">
+                    <input type="radio"/>
+                    <label>航班号</label>
+                    <span class="ydh" style="margin-right: 200px;">
+                        <input type="text" class="first import_input">
+                        <input type="text" class="second"/>
+                    </span>
+
+                    <label>包机单位</label>
+                    <input type="text" class="width_120 import_input">
+                </div>
+
+                <div class="row">
+                    <input type="radio"/>
+                    <span class="ydh" style="margin-right: 180px;">
+                        <label>流水号</label>
+                        <select>
+                            <option>20120626</option>
+                        </select>
+                        <input type="text" class="first" value=""/>
+                        <input type="text" class="second" value=""/>
+                    </span>
+
+                    <button type="button" class="width_120">查詢</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <fieldset style="border: 1px solid #cccccc;">
+            <legend>收費</legend>
+
+            <div id="table_sf"></div>
+        </fieldset>
+
+        <div class="row" style="padding-top: 10px;">
+            <label>费用总计：</label>
+            <span style="display: inline-block;" class="width_120"></span>
+
+            <label>结算方式</label>
+            <select class="width_90">
+                <option>所有</option>
+                <option>月结</option>
+            </select>
+
+            <label class="margin_left_10">*总件数</label>
+            <input type="text" class="width_100"><label class="form_field">件</label>
+
+            <label>*总重量</label>
+            <input type="text" class="width_100"><label>KG</label>
+        </div>
+
+        <div class="action_buttons">
+            <button type="button" class="width_100" style="margin-right: 80px;">费用确认</button>
+            <button type="button" class="width_100" style="margin-right: 80px;">费用取消</button>
+            <button type="button" class="width_100" style="margin-right: 80px;">打印计费单</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_OUT_SFG, showItemId: 'sub_nav_sfyzd'});
+    // tabs
+    /*$('#main_right').tabs({tabNames: ['运单查询','运单明细查询','运单日志查询']});*/
+    // 表单
+    $('#form_cxq').dataForm({
+        colCount: 2,
+        legend: '查询区',
+        fields: [
+            {name: '', displayName: ' ', displayStyle: DS_HBH_QUERY}
+        ]
+    });
+    // 表格
+    $('#table_sf').dgtable({
+        sortable: true,
+        height: 350,
+        headers: [
+            {name: 'sfxm', displayName: '收费项目'},
+            {name: 'glyw', displayName: '关联业务'},
+            {name: 'ywsj', displayName: '业务数据'},
+            {name: 'fl', displayName: '费率'},
+            {name: 'fy', displayName: '费用'}
+        ],
+        data: [
+            {sfxm: '国内进港邮航包机处置费', glyw: 'ALL', ywsj: '120000', fl: '0.20', fy: '240000'}
+        ]
+    })
+</script>
+</body>
+</html>

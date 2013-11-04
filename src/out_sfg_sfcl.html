@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国际 -- 收费岗 -- 国内出港 -- 收费处理</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div class="round">
+            <div class="round" style="padding:15px">
+                <form>
+                    <table>
+                        <tr>
+                            <!-- 结算客户 -->
+                            <td class="form_field jskh">
+                                <label>结算客户</label>
+                                <input type="text" class="first import_input width_30">
+                                <input type="text" class="second"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form_field jskh">
+                                <label>计费方式</label>
+                                <select style="width: 120px" class="select">
+                                    <option></option>
+                                    <option></option>
+                                    <option></option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div style="padding:5px">
+                <form>
+                    <div class="row"></div>
+                    <table >
+                        <tr >
+                            <!-- 流水号 -->
+                            <td class="lsh"><input type="radio" style="border:0px"/></td>
+                            <td class="lsh"><label>流水号</label></td>
+                            <td class="lsh  width_300" >
+                                <select disabled class="width_100">
+                                    <option>20120614</option>
+                                    <option>AWBA</option>
+                                </select>
+                                <input type="text" class="first readonly" value="" disabled style="background-color: #efefef;"/>
+                                <input type="text" class="second readonly" value="" disabled style="background-color: #efefef;"/>
+                            </td>
+                            <td>  <button type="button" class="width_90 " accesskey="Q">查询(Q)</button></td>
+                        </tr>
+
+                        <tr>
+                            <!-- 运单号 -->
+                            <td class="lsh"><input type="radio" style="border:0px" checked/></td>
+                            <td class="lsh"><label>运单号</label></td>
+                            <td class="lsh form_field">
+                                <select>
+                                    <option>AWBA</option>
+                                    <option>AWBA</option>
+                                </select>
+                                <input type="text" class="second readonly" value="" />
+                                <input type="text" class="first readonly" value="" />
+                            </td>
+                            <td class="width_120"><button type="button" class="width_90 " accesskey="T">挑单(T)</button></td>
+                            <td class="width_150"><button type="button" class="width_120 " accesskey="B">批量挑单(B)</button></td>
+                            <td><button type="button" class="width_120 " accesskey="A">自动自费(A)</button></td>
+
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <!-- 费用基础信息 -->
+            <fieldset class="field">
+                <legend>费用基础信息</legend>
+                <form>
+                    <table>
+                        <tr>
+                            <!-- 标题 -->
+                            <th >计费人</th>
+                            <th >计费时间</th>
+                            <th >结算客户</th>
+                            <th >结算方式</th>
+                            <th >结算人</th>
+                            <th >结算时间</th>
+                            <th >费用总计</th>
+                        </tr>
+                        <tr>
+                            <td ><input type="text" disabled style="background-color: #efefef;" size="10"/></td>
+                            <td ><input type="text" disabled style="background-color: #efefef;"/> </td>
+                            <td ><input type="text" disabled style="background-color: #efefef;" size="10"/> </td>
+                            <td ><input type="text" disabled style="background-color: #efefef;" size="8"/> </td>
+                            <td ><input type="text" disabled style="background-color: #efefef;" size="10"/> </td>
+                            <td ><input type="text" disabled style="background-color: #efefef;"/> </td>
+                            <td ><input type="text" disabled style="background-color: #efefef;" size="10"/> </td>
+                        </tr>
+                    </table>
+                </form>
+            </fieldset>
+        </div>
+        <!--显示信息-->
+        <div class="round" id="table_ydxx">
+
+        </div>
+        <!--总计-->
+        <div class="round">
+            <table>
+                <tr>
+                    <td class="width_50"></td>
+                    <td class="width_200"><label>流水号:</label></td>
+                    <td class="width_100">总票数:</td>
+                    <td class="width_100">总件数:</td>
+                    <td class="width_150">总计费重量:</td>
+                    <td >总费用:</td>
+                </tr>
+            </table>
+        </div>
+        <!--查询区-->
+        <div class="round">
+            <input type="checkbox" value="全选" checked/>
+            <label>全选</label>
+            <button type="button" class="width_60 " >清除</button>
+            <button type="button" class="width_60 " >全清</button>
+            <button type="button" class="width_90 " accesskey="O">确认(O)</button>
+            <button type="button" class="width_100 " accesskey="C">确认取消(C)</button>
+            <button type="button" class="width_90 " accesskey="J">结算(J)</button>
+            <button type="button" class="width_100 " accesskey="C">结算取消(C)</button>
+            <button type="button" class="width_100 " accesskey="P">打印发票(P)</button>
+            <button type="button" class="width_120" accesskey="S">设置起始号(S)</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_OUT_SFG, showItemId: 'sub_nav_gjcg'});
+    // tabs
+
+    // 表单
+    // 表格
+    $('#table_ydxx').dgtable({
+        sortable: false,
+        selectable: true,
+        selectRow: 0,
+        height: 250,
+        width: 1000,
+        headers: [
+            {name: 'lsjl', displayName: '历史记录'},
+            {name: 'ydhm', displayName: '运单号码'},
+            {name: 'fhrdl', displayName: '发货人代理'},
+            {name: 'fhr', displayName: '发货人'},
+            {name: 'pm', displayName: '品名'},
+            {name: 'js', displayName: '件数'},
+            {name: 'wjz', displayName: '文件重'},
+            {name: 'jfz', displayName: '计费重'},
+            {name: 'hjfy', displayName: '合计费用'},
+            {name: 'czf', displayName: '处置费'},
+            {name: 'lcf', displayName: '冷藏费'},
+            {name: 'chzf', displayName: '超重费'},
+            {name: 'ccf', displayName: '仓储费'}
+        ],
+        data: [
+            {lsjl: '784-62622366', ydhm: 'Y', fhrdl: '提货（1）', fhr: '1', pm: '10', js: '1', wjz: 10, jfz: 1, hjfy: 10, czf: '中外运', ccf: '中外运', chzf: '中外运', czf: '中外运'}
+        ]
+    });
+</script>
+</body>
+</html>

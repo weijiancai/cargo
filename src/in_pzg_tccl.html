@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国内 -- 配载岗 -- 国内出港 -- 退仓处理</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div id="tabs_tccl">
+            <!-- 退仓登记 -->
+            <div class="tab" title="退仓登记">
+                <div id="div_form_cxtj"></div>
+
+                <fieldset style="height: 300px;">
+                    <legend>查询结果</legend>
+
+                    <div id="div_table_jjhw" style="width: 850px;"></div>
+                </fieldset>
+
+                <div id="div_form_czq"></div>
+            </div>
+
+            <!-- 退仓处理 -->
+            <div class="tab" title="退仓处理">
+                <div id="div_form_ydxx"></div>
+
+                <fieldset style="height: 400px;">
+                    <legend>退仓信息确认</legend>
+
+                    <div id="div_form_tcxxqr"></div>
+                </fieldset>
+
+            </div>
+            <div class="tab" title="退仓出库">
+                <div id="div_form_tcck_cxtj"></div>
+
+                <div id="div_form_tcck_ydxx"></div>
+
+                <fieldset>
+                    <legend>货物结果</legend>
+
+                    <div id="div_table_hwjg"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>退仓操作</legend>
+
+                    <div class="action_buttons">
+                        <button type="button" class="width_90">清空（N）</button>
+                        <button type="button" class="width_90">保存（S）</button>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="tab" title="计费"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN_SFG, showItemId: 'sub_nav_gncg'});
+    // tabs
+    $('#tabs_tccl').tabs({tabNames: ['退仓登记','退仓处理','退仓出库','计费']});
+    // 表单
+    $('#div_form_cxtj').dataForm({id:"form_cxtj",legend:"查询条件",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"10",rows:[[{name:"dlr",displayName:"代理人",width:130,styleClass:"import_input",sortNum:"1",defaultValue:"",id:"dlr"},
+        {name:"ydh",displayName:"运单号",width:265,displayStyle:5,sortNum:"2",defaultValue:"",id:"ydh"},
+        {name:"yyd",displayName:"营业点",width:60,displayStyle:0,styleClass:"import_input",sortNum:"3",defaultValue:"",id:"yyd"},
+        {name:"sfjs",displayName:"是否结算",width:60,styleClass:"",displayStyle:12,sortNum:"4",defaultValue:"",id:"sfjs"}],
+        [{name:"tclx",displayName:"退仓类型",width:120,displayStyle:3,dictList:[{name:"所有类型",value:"1"}],sortNum:"1",defaultValue:"",id:"tclx"},
+            {name:"tcyy",displayName:"退仓原因",width:150,styleClass:"import_input",sortNum:"2",defaultValue:"",id:"tcyy"},
+            {name:"tcsj",displayName:"退仓时间",width:200,displayStyle:6,sortNum:"3",defaultValue:"",id:"tcsj"},
+            {name:"btn_cx",displayName:"查询（Q）",width:100,displayStyle:4,sortNum:"4",defaultValue:"",id:"btn_cx"}]]});
+
+    $('#div_form_czq').dataForm({id: "form_czq", legend: "操作区", colCount: "3", colWidth: "180", labelGap: "5", fieldGap: "10",
+        rows: [
+            [
+                {name: "ydh", displayName: "运单号", width: 265, displayStyle: 5, sortNum: "1", defaultValue: "", id: "ydh"},
+                {name: "pm", displayName: "品名", width: 120, displayStyle: 0, styleClass: "readonly", sortNum: "2", defaultValue: "", id: "pm"},
+                {name: "dlr", displayName: "代理人", displayStyle: 0, styleClass: "readonly", width: 100, sortNum: "3", defaultValue: "", id: "dlr"},
+                {name: "tsfm", displayName: "特殊代码", displayStyle: 0, width: 100, sortNum: "4", defaultValue: "", id: "tsfm"}
+            ],
+            [
+                {name: "wjjs", displayName: "文件件数", width: 90, displayStyle: 0, styleClass: "readonly", sortNum: "2", defaultValue: "", id: "wjjs"},
+                {name: "wjzl", displayName: "文件重量", width: 90, displayStyle: 0, styleClass: "readonly", sortNum: "2", defaultValue: "", id: "wjzl"},
+                {name: "kcjs", displayName: "库存件数", displayStyle: 0, styleClass: "readonly", width: 90, sortNum: "3", defaultValue: "", id: "kcjs"},
+                {name: "kczl", displayName: "库存重量", displayStyle: 0, width: 90, sortNum: "4", defaultValue: "", id: "kczl"},
+                {name: "tclx", displayName: "退仓类型", width: 110, displayStyle: 3, dictList: [
+                    {name: "", value: ""}
+                ], sortNum: "5", defaultValue: "", id: "tclx"}
+            ],
+            [
+                {name: "tcjs", displayName: "退仓件数", width: 90, displayStyle: 0, styleClass: "readonly", sortNum: "2", defaultValue: "", id: "tcjs"},
+                {name: "tczl", displayName: "退仓重量", width: 90, displayStyle: 0, styleClass: "readonly", sortNum: "2", defaultValue: "", id: "tczl"},
+                {name: "tcjfzl", displayName: "退仓计费重量", displayStyle: 0, styleClass: "readonly", width: 90, sortNum: "3", defaultValue: "", id: "tcjfzl"},
+                {name: "tcyy", displayName: "退仓原因", displayStyle: 0, styleClass: "import_input", width: 90, sortNum: "4", defaultValue: "", id: "tcyy"},
+                {name: "bz", displayName: "备注", width: 110, displayStyle: 0, sortNum: "5", defaultValue: "", id: "bz"}
+            ],
+            [
+                {name: "btn_xz", displayName: "新增", width: 100, displayStyle: 4, sortNum: "1", defaultValue: "", id: "btn_xz"},
+                {name: "btn_bc", displayName: "保存", width: 100, displayStyle: 4, sortNum: "2", defaultValue: "", id: "btn_bc"},
+                {name: "btn_sc", displayName: "删除", width: 100, displayStyle: 4, sortNum: "3", defaultValue: "", id: "btn_sc"},
+                {name: "btn_cx", displayName: "撤销", width: 100, displayStyle: 4, sortNum: "4", defaultValue: "", id: "btn_cx"},
+                {name: "btn_dy", displayName: "打印", displayStyle: 4, width: 100, sortNum: "5", defaultValue: "", id: "btn_dy"},
+                {name: "btn_ksjf", displayName: "开始计费", width: 100, displayStyle: 4, sortNum: "6", defaultValue: "", id: "btn_ksjf"}
+            ]
+        ]});
+
+    $('#div_form_ydxx').dataForm({id: "form_ydxx", legend: "运单信息", colCount: "3", colWidth: "180", labelGap: "5", fieldGap: "10", rows: [
+        [
+            {name: "ydh", displayName: "运单号", width: 265, displayStyle: 5, sortNum: "1", defaultValue: "", id: "ydh"}
+        ],
+        [
+            {name: "pm", displayName: "品名", width: 125, displayStyle: 0, styleClass: "import_input", sortNum: "2", defaultValue: "", id: "pm"},
+            {name: "dlr", displayName: "代理人", displayStyle: 0, styleClass: "import_input", width: 100, sortNum: "2", defaultValue: "", id: "dlr"},
+            {name: "tsdm", displayName: "特殊代码", displayStyle: 0, width: 120, sortNum: "3", defaultValue: "", id: "tsdm"}
+        ],
+        [
+            {name: "wjjs", displayName: "文件件数", width: 90, styleClass: "import_input", sortNum: "1", defaultValue: "", id: "wjjs"},
+            {name: "wjzl", displayName: "文件重量", width: 90, styleClass: "import_input", sortNum: "2", defaultValue: "", id: "wjzl"}
+        ],
+        [
+            {name: "kcjs", displayName: "库存件数", width: 90, styleClass: "import_input", sortNum: "1", defaultValue: "", id: "kcjs"},
+            {name: "kczl", displayName: "库存重量", width: 90, styleClass: "import_input", sortNum: "2", defaultValue: "", id: "kczl"}
+        ]
+    ]});
+
+    $('#div_form_tcxxqr').dataForm({id: "form_tcxxqr", legend: "", colCount: "3", colWidth: "180", labelGap: "5", fieldGap: "10", rows: [
+        [
+            {name: "tclx", displayName: "退仓类型", width: 90, displayStyle: 3, dictList: [
+                {name: "退运", value: ""}
+            ], sortNum: "1", defaultValue: "", id: "tclx"},
+            {name: "tcjs", displayName: "退仓件数", width: 90, styleClass: "import_input", sortNum: "2", defaultValue: "", id: "tcjs"},
+            {name: "tczl", displayName: "退仓重量", width: 90, styleClass: "import_input", sortNum: "3", defaultValue: "", id: "tczl"},
+            {name: "bz", displayName: "备注", width: 90, sortNum: "4", defaultValue: "", id: "bz"}
+        ],
+        [
+            {name: "sjjs", displayName: "是否结算", width: 60, styleClass: "", displayStyle: 12, sortNum: "1", defaultValue: "", id: "sjjs"},
+            {name: "sfxsyd", displayName: "是否销售运单", width: 60, styleClass: "", displayStyle: 12, sortNum: "1", defaultValue: "", id: "sfxsyd"}
+        ],
+        [
+            {name: "btn_dy", displayName: "打印（Q）", width: 80, displayStyle: 4, sortNum: "2", defaultValue: "", id: "btn_dy"},
+            {name: "btn_cx", displayName: "确认（Q）", width: 100, displayStyle: 4, sortNum: "1", defaultValue: "", id: "btn_cx"}
+        ]
+    ]});
+
+    $('#div_form_tcck_cxtj').dataForm({id:"form_tcck_cxtj",legend:"查询条件",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"15",rows:[[{name:"tcdh",displayName:"退仓单号",displayStyle:0,width:120,sortNum:"1",defaultValue:"20120614002",id:"tcdh"},
+        {name:"ydh",displayName:"运单号",width:265,displayStyle:5,sortNum:"2",defaultValue:"",id:"ydh"},
+        {name:"empty_field",displayName:"空白字段",displayStyle:10,width:150,sortNum:"3",defaultValue:""},
+        {name:"btn_cx",displayName:"查询（Q）",width:100,displayStyle:4,sortNum:"4",defaultValue:"",id:"btn_cx"}]]});
+
+    $('#div_form_tcck_ydxx').dataForm({id: "form_tcck_ydxx", legend: "运单信息", colCount: "4", colWidth: "180", labelGap: "5", fieldGap: "15", fields: [
+        {name: "pm", displayName: "品名", width: 100, displayStyle: 0, styleClass: "readonly", sortNum: "1"},
+        {name: "wjjs", displayName: "文件件数", width: 100, styleClass: "readonly", sortNum: "2"},
+        {name: "wjzl", displayName: "文件重量", width: 100, styleClass: "readonly", sortNum: "3"},
+        {name: "empty_field", displayName: "空白字段", displayStyle: 10, width: 100, sortNum: "4"},
+        {name: "kcjs", displayName: "库存件数", width: 100, styleClass: "readonly", sortNum: "5"},
+        {name: "kczl", displayName: "库存重量", width: 100, styleClass: "readonly", sortNum: "6"},
+        {name: "tcjs", displayName: "退仓件数", displayStyle: 0, width: 100, sortNum: "7"},
+        {name: "tczl", displayName: "退仓重量", width: 100, sortNum: "8"}
+    ]});
+    // 表格
+    $('#div_table_jjhw').dgtable({id:"table_jjhw",sortable:true,selectable:false,expandRow:-1,selectRow:-1,width:1000,height:280,headers:[
+        {name:"thx",displayName:"退货序",sortNum:""},
+        {name:"yd",displayName:"运单",sortNum:""},
+        {name:"fhdlrd",displayName:"发货代理人代",sortNum:""},
+        {name:"tcl",displayName:"退仓类",sortNum:""},
+        {name:"tcj",displayName:"退仓件",sortNum:""},
+        {name:"tcz",displayName:"退仓重",sortNum:""},
+        {name:"tcjfz",displayName:"退仓计费重",sortNum:""},
+        {name:"dj",displayName:"登记",sortNum:""},
+        {name:"djs",displayName:"登记时",sortNum:""},
+        {name:"qr",displayName:"确认",sortNum:""},
+        {name:"qrs",displayName:"确认时",sortNum:""},
+        {name:"th",displayName:"退货",sortNum:""},
+        {name:"ths",displayName:"退货时",sortNum:""}],data:[]});
+
+    $('#div_table_hwjg').dgtable({id:"table_hwjg",sortable:true,selectable:false,expandRow:-1,selectRow:-1,width:550,height:280,headers:[
+        {name:"tcjs",displayName:"退仓件数",sortNum:""},
+        {name:"tczl",displayName:"退仓重量",sortNum:""},
+        {name:"ck",displayName:"仓库",sortNum:""},
+        {name:"uld",displayName:"ULD",sortNum:""},
+        {name:"js",displayName:"件数",sortNum:""}],data:[]});
+
+</script>
+</body>
+</html>

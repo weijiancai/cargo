@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国际 -- 柜台岗 -- 国际进港 -- 提单</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <!-- 提单 -->
+        <div class="tab" title="提单">
+            <fieldset>
+                <legend>提单查询区</legend>
+
+                <div class="row">
+                    <label>运单号</label>
+                    <span class="ydh form_field">
+                        <select>
+                            <option>AWBA</option>
+                            <option>AWBA</option>
+                        </select>
+                        <input type="text" class="first" />
+                        <input type="text" class="second"/>
+                    </span>
+
+                    <button type="button" class="width_100">挑单</button>
+                    <button type="button" class="width_100">批量挑单</button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>待提单运单</legend>
+
+                <div id="div_table_dtdyd" style="width: 850px;"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>提单操作区</legend>
+
+                <div class="row">
+                    <label>提单代理人</label>
+                    <input type="text" class="width_120 import_input">
+
+                    <label>提单经办人</label>
+                    <input type="text" class="width_120 import_input">
+
+                    <label>证件号码</label>
+                    <input type="text" class="width_120">
+
+                    <label>电话</label>
+                    <input type="text" class="width_120">
+                </div>
+
+                <div class="row" style="padding-left: 35px">
+                    <label>备注</label>
+                    <textarea style="width: 500px;height: 40px;"></textarea>
+                </div>
+
+                <div class="row" style="padding-left: 200px;">
+                    <button type="button" class="width_100">清除</button>
+                    <button type="button" class="width_100">保存(S)</button>
+                    <button type="button" class="width_100" style="margin-left: 200px;">计费</button>
+                </div>
+            </fieldset>
+        </div>
+        <div class="tab" title="已提单查询"></div>
+        <div class="tab" title="未提单查询"></div>
+        <div class="tab" title="计费"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_EN_GTD, showItemId: 'sub_nav_gjjg'});
+    // tabs
+    $('#main_right').tabs({tabNames: ['提单','已提单查询','未提单查询', '计费']});
+    // 表单
+    // 表格
+    $('#div_table_dtdyd').dgtable({
+        sortable: true,
+        selectable: false,
+        width: 900,
+        height: 320,
+        headers: [
+            {name: 'ydh', displayName: '运单号'},
+            {name: 'js', displayName: '件数'},
+            {name: 'zl', displayName: '重量'},
+            {name: 'shr', displayName: '收货人'},
+            {name: 'shrdh', displayName: '收货人电话'},
+            {name: 'shdlr', displayName: '收货代理人'},
+            {name: 'qshz', displayName: '起始航站'},
+            {name: 'ddhz', displayName: '到达航站'}
+        ],
+        data: [
+            {ydh: '217-62562522', js: 15, zl: 150, shr: '中外运', shrdh: '13901119999', hsdlr: '1', qshz: 'AKL', ddhz: 'CTU'}
+        ]
+    });
+</script>
+</body>
+</html>

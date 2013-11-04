@@ -73,6 +73,10 @@ button {
     font-weight: bold;
 }
 
+input[type='checkbox'] {
+    margin-right: 4px;
+}
+
 #main {
     margin-left: auto;
     margin-right: auto;

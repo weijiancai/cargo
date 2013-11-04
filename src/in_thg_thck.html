@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>国内 -- 提货岗 -- 国内进港 -- 提货出库</title>
+    <link href="style/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="style/common.css" rel="stylesheet" type="text/css"/>
+    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/const.js"></script>
+    <script type="text/javascript" src="js/menus.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/dataObject.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="main">
+    <div id="main_left"></div>
+
+    <!-- Tabs -->
+    <div id="main_right">
+        <div id="tabs_thck">
+            <div class="tab" title="提货出库">
+                <div id="div_form_yd"></div>
+                <fieldset style="height: 310px;">
+                    <legend>待出库货物</legend>
+                    <div id="div_table_dckhw"></div>
+                </fieldset>
+
+                <div id="div_form_thck">
+                    <form id="form_thck" class="">
+                        <fieldset>
+                            <legend>提货出库操作区</legend>
+                            <table class="gridPane">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 100%;"><label for="ydh" style="margin-right: 29px;">运单号</label><span
+                                            style="width:5px;display:inline-block;"></span><span class="ydh"><select
+                                            id="ydh" style="width: 65px;">
+                                        <option>AWBA</option>
+                                        <option>AWBA</option>
+                                    </select><input style="width: 40px;" class="first" value="784" type="text"><input
+                                            class="second" value="62362366" style="width: 160px"
+                                            type="text"></span><span style="width:15px;display:inline-block;"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%;"><label for="ckjbr">出库经办人</label><span
+                                            style="width:5px;display:inline-block;"></span><input id="ckjbr" value=""
+                                                                                                  class="import_input width_60"
+                                                                                                  type="text"><select
+                                            class="width_150">
+                                        <option></option>
+                                    </select><span style="width:15px;display:inline-block;"></span><label
+                                            for="dh">电话</label><span
+                                            style="width:5px;display:inline-block;"></span><input id="dh" name="dh"
+                                                                                                  style="width:100px;"
+                                                                                                  class="" value=""
+                                                                                                  type="text"><span
+                                            style="width:15px;display:inline-block;"></span><label for="sfz">身份证</label><span
+                                            style="width:5px;display:inline-block;"></span><input id="sfz" name="sfz"
+                                                                                                  style="width:120px;"
+                                                                                                  class="" value=""
+                                                                                                  type="text"><span
+                                            style="width:15px;display:inline-block;"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100%; vertical-align: top;"><label for="hghxh">海关核销号</label><span
+                                            style="width:5px;display:inline-block;"></span><textarea id="hghxh"
+                                                                                                     type="textarea"
+                                                                                                     name="hghxh"
+                                                                                                     style="width:370px;height:40px;"
+                                                                                                     class=""></textarea><span
+                                            style="width:15px;display:inline-block;"></span><label for="tdh">通道号</label><span
+                                            style="width:5px;display:inline-block;"></span><input id="tdh" name="tdh"
+                                                                                                  style="width:120px;"
+                                                                                                  class="" value=""
+                                                                                                  type="text"><span
+                                            style="width:15px;display:inline-block;"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="action_buttons" style="text-align: center;">
+                                <button type="button" class="width_100">重置</button>
+                                <button type="button" class="width_100">海关核销</button>
+                                <button type="button" class="width_100">提货出库</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="tab" title="备出库查询"></div>
+            <div class="tab" title="已提货出库查询"></div>
+            <div class="tab" title=""></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 菜单
+    $('body').dataMenu({menus: MENU_IN, showItemId: 'sub_nav_gnjg'});
+    // tabs
+    $('#tabs_thck').tabs({tabNames: ['提货出库','备出库查询','已提货出库查询','']});
+    // 表单
+    // 表格
+    $('#div_form_yd').dataForm({id:"form_yd",legend:"提货出库查询区",colCount:"3",colWidth:"180",labelGap:"5",fieldGap:"15",rows:[[{name:"alsck",displayName:"按流水出库",displayStyle:11,width:100,sortNum:"1",defaultValue:"",id:"alsck"},
+        {name:"aydhck",displayName:"按运单号出库",displayStyle:11,width:100,sortNum:"2",defaultValue:"",id:"aydhck"},
+        {name:"lsh",displayName:"流水号",displayStyle:18,sortNum:"3",defaultValue:"",id:"lsh"},
+        {name:"btn_cx",displayName:"查询（Q）",width:100,displayStyle:4,sortNum:"4",defaultValue:"",id:"btn_cx"},
+        {name:"btn_cz",displayName:"重置",displayStyle:4,width:100,sortNum:"5",defaultValue:"",id:"btn_cz"}]]});
+    $('#div_table_dckhw').dgtable({id:"table_dckhw",sortable:true,selectable:true,expandRow:-1,selectRow:"0",height:290,headers:[{name:"bz",displayName:"包装",width:150,sortNum:""},
+        {name:"ydh",displayName:"运单号",width:150,sortNum:"1"},
+        {name:"kcjs",displayName:"库存件数",width:150,sortNum:"2"},
+        {name:"kczl",displayName:"库存重量",width:150,sortNum:"3"},
+        {name:"th",displayName:"提货",width:150,sortNum:"4"},
+        {name:"hg",displayName:"海关",width:150,sortNum:"5"},
+        {name:"bxxx",displayName:"板箱信息",width:150,sortNum:"6"},
+        {name:"bqh",displayName:"标签号",width:150,sortNum:"7"}],data:[{bz:"",ydh:"880-92792700",kcjs:"10",kczl:"100",th:"10",hg:"",bxxx:"",bqh:""}]});
+
+</script>
+</body>
+</html>
