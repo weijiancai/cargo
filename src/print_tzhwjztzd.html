@@ -4,85 +4,51 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title>打印 - 特种货物机长通知单</title>
     <link href="style/reset.css" rel="stylesheet" type="text/css"/>
-    <link href="style/global.css" rel="stylesheet" type="text/css"/>
-    <link href="style/menu.css" rel="stylesheet" type="text/css"/>
-    <link href="style/common.css" rel="stylesheet" type="text/css"/>
-    <link href="style/business.css" rel="stylesheet" type="text/css"/>
+    <link href="style/print.css" rel="stylesheet" type="text/css"/>
 
     <style type="text/css">
         table {
             width: 100%;
         }
-        table, td {
+        .table_border td {
             border: 1px solid #000000;
+            text-align: center;
+            vertical-align: top;
+            height: 25px;
+        }
+        .table_border th {
+            border-left: 1px solid #000000;
+            border-right: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+            text-align: center;
+            vertical-align: top;
+            font-weight: normal;
+        }
+        .r_float {
+            position: absolute;
+            right: 0;
+            top: 200px;
+            width: 15px;
         }
     </style>
 </head>
 <body>
-<!-- 内容 -->
-<div id="main">
-    <h5>特种货物机场通知单</h5>
-    编号Ref No<span></span>
+<div class="A4_page_h">
+    <div class="A4_h" style="text-align: center;">
+        <span style="font-size: 15pt;font-weight: 600;line-height: 50px">特 种 货 物 机 场 通 知 单</span>
+    </div>
+    <div class="A4_h">编号Ref No<span class="span_underline" style="width: 100px;"></span></div>
 
-    <table>
+    <table class="A4_h table_border">
         <tr>
-            <td colspan="5">SPECIAL LOAD-NOTIFICATION TO CAPTAIN 特种货物机长通知单</td>
+            <td colspan="5" style="text-align: center;"><span class="normal_en">SPECIAL LOAD-NOTIFICATION TO CAPTAIN</span> <span class="normal_zh">特种货物机长通知单</span></td>
         </tr>
         <tr>
-            <td>Station of Loading 装机站</td>
-            <td>Flight Number 航班号</td>
-            <td>Date 日期</td>
-            <td>Aircraft Registration 飞机号</td>
-            <td>Prepared by 填制人签字</td>
-        </tr>
-
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-
-        <tr>
-            <td colspan="5">DANGEROUS GOODS 危险品</td>
-        </tr>
-    </table>
-
-    <table>
-        <tr>
-            <td>卸机站</td>
-            <td>货运单号码</td>
-            <td>货物品名</td>
-            <td>类别或项别</td>
-            <td>UN或ID<br/>编号</td>
-            <td>次要危险性</td>
-            <td>货物件数</td>
-            <td>净重及运输指数</td>
-            <td>货物包装</td>
-            <td>代号</td>
-            <td>仅限货<br/>机承运</td>
-            <td>装载情况<br/>Loaded</td>
-        </tr>
-
-        <tr>
-            <td rowspan="2">Station of unloading</td>
-            <td rowspan="2">AWB Number</td>
-            <td rowspan="2">Proper Shipping Name</td>
-            <td rowspan="2">Class or Division For Class 1 compat grp</td>
-            <td rowspan="2">UN or ID Number</td>
-            <td rowspan="2">Sub Risk</td>
-            <td rowspan="2">Net/quantity or Transp ind per Package</td>
-            <td rowspan="2">Packing Group</td>
-            <td rowspan="2">Code (See reverse)</td>
-            <td rowspan="2">CAO (x)</td>
-            <td>集装设备识别编号</td>
-            <td>装机位置</td>
-        </tr>
-
-        <tr>
-            <td>ULD ID</td>
-            <td>POSITION</td>
+            <td style="width: 225px;"><span class="little_en mr_60">Station of Loading</span> <span class="little_zh">装机站</span></td>
+            <td style="width: 195px;"><span class="little_en mr_60">Flight Number</span> <span class="little_zh">航班号</span></td>
+            <td style="width: 115px;"><span class="little_en mr_50">Date</span> <span class="little_zh">日期</span></td>
+            <td style="width: 185px;"><span class="little_en mr_20">Aircraft Registration</span> <span class="little_zh">飞机号</span></td>
+            <td style="width: 330px;"><span class="little_en mr_160">Prepared by</span> <span class="little_zh">填制人签字</span></td>
         </tr>
 
         <tr>
@@ -91,80 +57,134 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
 
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-
-        <tr>
-            <td colspan="12">OTHER SPECIAL LOAD 其它特种货物</td>
+            <td colspan="5" style="text-align: left;"><span class="normal_en mr_30"><span class="mr_10">DANGEROUS</span> GOODS</span> <span class="normal_zh"></span>危险品</td>
         </tr>
     </table>
 
-    <table>
+    <table class="A4_h table_border no_top_border">
         <tr>
-            <td rowspan="2">Stat of Unload</td>
-            <td rowspan="2">AWB Number</td>
-            <td rowspan="2">货物品名 Contents and Description</td>
-            <td rowspan="2">件数Number of Packages</td>
-            <td rowspan="2">重量 Quantity</td>
-            <td rowspan="2">附加说明 Supplementary Information</td>
-            <td rowspan="2">代号 Code （see reverse）</td>
-            <td colspan="2">装载情况Loaded</td>
+            <th class="no_top_border w_75 little_zh">卸机站</th>
+            <th class="no_top_border w_75 little_zh">货运单号码</th>
+            <th class="no_top_border w_155 little_zh">货物品名</th>
+            <th class="no_top_border w_90 little_zh">类别或项别</th>
+            <th class="no_top_border w_65 little_zh"><span class="little_en">UN</span>或<span class="little_en">ID</span><br/>编号</th>
+            <th class="no_top_border w_70 little_zh">次要危险性</th>
+            <th class="no_top_border w_70 little_zh">货物件数</th>
+            <th class="no_top_border w_110 little_zh">净重及运输指数</th>
+            <th class="no_top_border w_65 little_zh">货物包装</th>
+            <th class="no_top_border w_65 little_zh">代号</th>
+            <th class="no_top_border w_50 little_zh">仅限货<br/>机承运</th>
+            <th colspan="2" class="no_top_border w_145 little_zh">装载情况<br/><span class="little_en">Loaded</span></th>
         </tr>
 
         <tr>
-            <td>ULD ID</td>
-            <td>POSITION</td>
+            <td rowspan="2" class="little_en">Station of unloading</td>
+            <td rowspan="2" class="little_en">AWB<br/> Number</td>
+            <td rowspan="2" class="little_en">Proper Shipping Name</td>
+            <td rowspan="2" class="little_en">Class or<br/> Division<br/> For Class 1<br/> compat grp</td>
+            <td rowspan="2" class="little_en">UN or ID Number</td>
+            <td rowspan="2" class="little_en">Sub<br/> Risk</td>
+            <td rowspan="2" class="little_en">Number<br/> or<br/> Packages</td>
+            <td rowspan="2" class="little_en">Net/quantity<br/> or Transp ind<br/> per Package</td>
+            <td rowspan="2" class="little_en">Packing<br/> Group</td>
+            <td rowspan="2" class="little_en">Code<br/> (See<br/> reverse)</td>
+            <td rowspan="2" class="little_en">CAO<br/> (x)</td>
+            <td class="little_zh w_65">集装设备<br/>识别编号</td>
+            <td class="little_zh w_85">装机位置</td>
+        </tr>
+
+        <tr>
+            <td class="little_en">ULD ID</td>
+            <td class="little_en">POSITION</td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td colspan="13" style="text-align: left;"><span class="normal_en mr_30">OTHER SPECIAL LOAD</span> <span class="normal_zh">其它特种货物</span></td>
+        </tr>
+    </table>
+
+    <table class="A4_h table_border no_top_border">
+        <tr>
+            <th rowspan="2" class="no_top_border little_en w_75">Stat of<br/> Unload</th>
+            <th rowspan="2" class="no_top_border little_en w_70">AWB<br/> Number</th>
+            <th rowspan="2" class="no_top_border w_155"><span class="little_zh">货物品名</span> <span class="little_en">Contents and<br/> Description</span></th>
+            <th rowspan="2" class="no_top_border w_110"><span class="little_zh">件数</span> <span class="little_en">Number of<br/> Packages</span></th>
+            <th rowspan="2" class="no_top_border w_135"><span class="little_zh">重量</span> <span class="little_en"> Quantity</span></th>
+            <th rowspan="2" class="no_top_border w_230"><span class="little_zh">附加说明</span><br/> <span class="little_en"> Supplementary Information</span></th>
+            <th rowspan="2" class="no_top_border w_115"><span class="little_zh">代号</span> <span class="little_en"> Code<br/> （see reverse）</span></th>
+            <th colspan="2" class="no_top_border w_150"><span class="little_zh">装载情况</span> <span class="little_en">Loaded</span></th>
+        </tr>
+
+        <tr>
+            <td class="little_en">ULD ID</td>
+            <td class="little_en">POSITION</td>
         </tr>
 
         <tr>
@@ -204,22 +224,23 @@
         </tr>
 
         <tr>
-            <td colspan="2" rowspan="2">监装人签字 Loading Supervisor's Signature</td>
-            <td colspan="2" rowspan="2">机长签字 Captain's Signature</td>
-            <td colspan="5">Other Information 备注</td>
+            <td colspan="2" rowspan="2" style="text-align: left;"><span class="little_zh">监装人签字</span> <span class="little_en">Loading<br/> Supervisor's Signature</span></td>
+            <td rowspan="2" style="text-align: left;"><span class="little_zh">机长签字</span><br/> <span class="little_en"> Captain's Signature</span></td>
+            <td colspan="6" style="text-align: left;"><span class="normal_en">Other Information</span> <span class="normal_zh">备注</span></td>
         </tr>
 
         <tr>
-            <td colspan="5">
+            <td colspan="6" style="text-align: left" class="little_zh">
                 请在相应的“<input type="checkbox"/>”内打“√”<br/>
-                1、在始发站，确认货物完好并已装机 <input type="checkbox"/><br/>
-                2、在经停站，备降站，下机监督，防止错卸，如有活体动物，打开装有活体动物的额货舱门，防止动物窒息 <input type="checkbox"/><br/>
-                3、在货物目的站，下机监卸，与监卸人进行交接并签字，确认货物的安全和包装的完整性 <input type="checkbox"/><br/>
-                4、未尽事项详见备注栏信息 <input type="checkbox"/>
+                1、在始发站，确认货物完好并已装机 <input type="checkbox" class="ml_20"/><br/>
+                2、在经停站，备降站，下机监督，防止错卸，如有活体动物，打开装有活体动物的额货舱门，防止动物窒息 <input type="checkbox" class="ml_20"/><br/>
+                3、在货物目的站，下机监卸，与监卸人进行交接并签字，确认货物的安全和包装的完整性 <input type="checkbox" class="ml_20"/><br/>
+                4、未尽事项详见备注栏信息 <input type="checkbox" class="ml_20"/>
             </td>
         </tr>
     </table>
-    <table>
+
+    <table class="A4_h">
         <tr>
             <td>说明（Remark）：</td>
             <td>1、此单一式三联，一联为机长联，一联为始发站联一联为目的站联。</td>
@@ -230,8 +251,8 @@
         </tr>
     </table>
 
-    <div>
-        第一联 机长联
+    <div class="r_float">
+        第一联 <br/><br/><br/>机长联
     </div>
 </div>
 
