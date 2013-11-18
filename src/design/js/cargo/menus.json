@@ -1,0 +1,33 @@
+{
+    "in_cxg": [
+        {"name": "nav1_aqgl", "display_name": "安全管理"},
+        {"name": "nav1_jcsj", "display_name": "基础数据"},
+        {"name": "nav1_xtgl", "display_name": "系统管理"},
+        {"name": "nav1_gnjg", "display_name": "国内进港", "children": [
+            {"name": "nav2_wjcz", "display_name": "文件操作", "children": [
+                {"name": "nav3_hbwj", "display_name": "航班文件", "icon": "images/hbwj.jpg"},
+                {"name": "nav3_group1", "children": [
+                    {"name": "nav4_zzzg", "display_name": "中转转港", "icon": "images/zzzg.jpg"},
+                    {"name": "nav4_lcdj", "display_name": "冷藏登记", "icon": "images/lcdj.jpg"},
+                    {"name": "nav4_lchwtj", "display_name": "联程货物统计", "icon": "images/lchwtj.jpg"}
+                ]},
+                {"name": "nav3_group2","children": [
+                    {"name": "nav4_jgydgjgl", "display_name": "进港运单高级管理", "icon": "images/jgydgjgl.jpg"},
+                    {"name": "nav4_zzhd", "display_name": "中转换单", "icon": "images/zzhd.jpg"},
+                    {"name": "nav4_hgzc", "display_name": "海关账册", "icon": "images/hgzc.jpg"}
+                ]}
+            ]},
+            {"name": "nav2_hwcz", "display_name": "货物操作"},
+            {"name": "nav2_tdbd", "display_name": "提单办单"},
+            {"name": "nav2_thck", "display_name": "提货出库"},
+            {"name": "nav2_xgcz", "display_name": "相关操作"}
+        ]},
+        {"name": "nav1_hbj", "display_name": "货包机"},
+        {"name": "nav1_jkqc", "display_name": "集控器材"},
+        {"name": "nav1_sfyzd", "display_name": "收费与账单"},
+        {"name": "nav1_kpigl", "display_name": "KPI管理"},
+        {"name": "nav1_bwjh", "display_name": "报文交换"},
+        {"name": "nav1_sstj", "display_name": "实时统计"},
+        {"name": "nav1_gygj", "display_name": "公用工具"}
+    ]
+}
