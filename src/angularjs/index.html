@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="app">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 </head>
 <body>
 <div>
@@ -9,6 +9,75 @@
     <input type="text" ng-model="yourName" placeholder="Enter a name here">
     <hr>
     <h1>Hello {{yourName}}!</h1>
+    <hello></hello>
+    <div ng-controller="FormCtrl">
+        <div mu-form></div>
+    </div>
 </div>
 </body>
+
+<script type="text/javascript" src="lib/angular.js"></script>
+<script type="text/javascript" src="../design/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/namespace.js"></script>
+<script type="text/javascript" src="js/classes/TableLayout.js"></script>
+<script type="text/javascript" src="js/directives/mu-formField.js"></script>
+<script type="text/javascript" src="js/directives/mu-form.js"></script>
+<script type="text/javascript">
+    var appModule = angular.module('app', ['metaui']);
+    appModule.controller('FormCtrl', function($scope) {
+        $scope.muFormOptions = {
+            colCount: 5,
+            fields: [[
+                {name: 'ck', displayName: '仓库', width: 90, styleClass: 'import_input'},
+                {name: 'kw', displayName: '库位', width: 90, styleClass: 'import_input'},
+                {name: '', displayName: '全选', width: 60},
+                {name: '', displayName: '货物接收（R）', width: 100, displayStyle: 4},
+                {name: '', displayName: '打印（Q）', width: 80, displayStyle: 4}
+            ],
+            [
+                {name: "pm", displayName: "品名", width: 100, displayStyle: 0, styleClass: "readonly", sortNum: "1"},
+                {name: "wjjs", displayName: "文件件数", width: 100, displayStyle: 1, styleClass: "readonly", sortNum: "2"},
+                {name: "wjzl", displayName: "文件重量", width: 100, displayStyle: 2, styleClass: "readonly", sortNum: "3"},
+                {name: "empty_field", displayName: "空白字段", displayStyle: 1, width: 100, sortNum: "4"},
+                {name: "kcjs", displayName: "库存件数", width: 100, displayStyle: 3, styleClass: "readonly", sortNum: "5"}
+            ]]
+        };
+        $scope.age = 28;
+        $scope.getMaxLabelCountArray = function() {
+            var fields = $scope.muFormOptions.fields;
+            for(var i = 0; i < fields.length; i++) {
+                var rows = fields[i];
+                for(var j = 0; j < rows.length; j++) {
+
+                }
+            }
+        };
+
+        var options = {
+            fields: [
+                {name: "pm", displayName: "品名", width: 100, displayStyle: "10", styleClass: "readonly", sortNum: "1"},
+                {name: "wjjs", displayName: "文件件数", width: 100, displayStyle: 1, styleClass: "readonly", sortNum: "2"},
+                {name: "wjzl", displayName: "文件重量", width: 100, displayStyle: 2, styleClass: "readonly", sortNum: "3"},
+                {name: '', displayName: '货物接收（R）', width: 100, displayStyle: 4},
+                {name: 'kw', displayName: '库位', width: 90, displayStyle: "10", styleClass: 'import_input'},
+                {name: "empty_field", displayName: "空白字段", displayStyle: 1, width: 100, sortNum: "4", isSingleLine: true},
+                {name: "kcjs", displayName: "库存件数", width: 100, displayStyle: 3, styleClass: "readonly", sortNum: "5"},
+                {name: '', displayName: '打印（Q）', width: 80, displayStyle: 4}
+            ]
+        };
+        $scope.trs = new TableLayout(options).getTrs();
+    });
+
+    // Declare app level module which depends on filters, and services
+    /*var metauiDirectives = angular.module('mdForm', []);
+
+    metauiDirectives.directive('mdForm', function () {
+        return {
+            restrict: 'A',
+            replace: true,
+            template: '<span>sfwefwfw</span>'
+        };
+    });*/
+
+</script>
 </html>

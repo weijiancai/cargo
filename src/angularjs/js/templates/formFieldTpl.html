@@ -1,0 +1,13 @@
+<div>
+<td><label>{{field.displayName}}</label></td>
+<td></td>
+<td>
+    <div ng-switch on="field.displayStyle">
+        <input type="text" ng-switch-when="0"/>
+        <textarea ng-switch-when="1"></textarea>
+        <input type="password" ng-switch-when="2">
+        <select ng-switch-when="3"></select>
+        <button type="button" ng-switch-when="4">{{field.displayName}}</button>
+    </div>
+</td>
+</div>

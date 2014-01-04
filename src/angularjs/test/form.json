@@ -1,0 +1,13 @@
+{
+    "id": "",
+    "name": "",
+    "colCount": 3,
+    "colWidth": 180,
+    "labelGap": 5,
+    "fieldGap": 15,
+    "fields": [
+        [
+            {"name": "", "colName": "", "displayName": "", "isSingleLine": false, "isDisplay": true, "width": 0, "height": 0, "isValid": true, "isReadonly": false, "defaultValue": "", "dataType": "STRING", "dictId": "", "sortNum": 10}
+        ]
+    ]
+}

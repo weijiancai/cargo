@@ -1,0 +1,44 @@
+<form>
+    <div ng-repeat="row in muFormOptions.fields">
+
+        <div ng-repeat="field in row">
+            <label>{{field.displayName}}</label>
+            <input type="text"/>
+        </div>
+    </div>
+    <table style="border: 1px solid #000000">
+        <tr ng-repeat="row in muFormOptions.fields">
+            <td ng-repeat="field in row" style="vertical-align: top">
+                <div style="float: left;margin-right: 5px;" ng-show="field.displayStyle != '4'">
+                    <label>{{field.displayName}}</label>
+                </div>
+                <div style="float: right" ng-switch on="field.displayStyle">
+                    <input type="text" ng-switch-when="0" ng-style="{width: '{{field.width}}'}"/>
+                    <textarea ng-switch-when="1"  ng-style="{width: '{{field.width}}'}"></textarea>
+                    <input type="password" ng-switch-when="2"  ng-style="{width: '{{field.width}}'}">
+                    <select ng-switch-when="3"  ng-style="{width: '{{field.width}}px'}"></select>
+                    <button type="button" ng-switch-when="4">{{field.displayName}}</button>
+                    <input type="text" ng-switch-default ng-style="{width: '{{field.width}}'}"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    {{trs}}
+    <table style="border: 1px solid #000000">
+        <tr ng-repeat="tr in trs">
+            <td ng-repeat="td in tr" colspan="{{td.colspan}}">
+                <div ng-if="td.label">{{td.label}}</div>
+                <div ng-if="td.gap" style="{{td.gap}}"></div>
+                <div ng-if="td.displayStyle" ng-switch on="td.displayStyle">
+                    <input type="text" ng-switch-when="10" style="{{td.style}}"/>
+                    <textarea ng-switch-when="1" style="{{td.style}}"></textarea>
+                    <input type="password" ng-switch-when="2" style="{{td.style}}">
+                    <select ng-switch-when="3" style="{{td.style}}"></select>
+                    <button type="button" ng-switch-when="4">{{td.displayName}}</button>
+                    <input type="text" ng-switch-default style="{{td.style}}"/>
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
