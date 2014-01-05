@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="cargoApp">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="js/angular/angular.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
+</head>
+<body ng-controller="NavMenuListCtrl">
+<ul>
+    <li ng-repeat="nav1 in menus">
+        {{nav1.name}}
+        <p>{{nav1.display_name}}</p>
+    </li>
+</ul>
+</body>
+</html>
