@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link href="lib/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="lib/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+    <link href="lib/animations.css" rel="stylesheet" type="text/css">
+    <link href="lib/ng-grid.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<mu-tabs>
+    <mu-tab title="表单配置">
+        <div ng-controller="FormCtrl" mu-form></div>
+    </mu-tab>
+    <mu-tab title="表单字段配置">
+        BBB
+    </mu-tab>
+</mu-tabs>
+
+<div>
+
+</div>
+</body>
+
+<script type="text/javascript" src="../design/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="lib/angular.js"></script>
+<script type="text/javascript" src="lib/ng-grid-2.0.7.debug.js"></script>
+<script type="text/javascript" src="js/const.js"></script>
+<script type="text/javascript" src="js/namespace.js"></script>
+<script type="text/javascript" src="js/classes/TableLayout.js"></script>
+<script type="text/javascript" src="js/directives/mu-formField.js"></script>
+<script type="text/javascript" src="js/directives/mu-tab.js"></script>
+<script type="text/javascript" src="js/directives/mu-form.js"></script>
+<script type="text/javascript">
+    var appModule = angular.module('app', ['metaui']);
+    appModule.controller('FormCtrl', function($scope) {
+        $scope.muFormOptions = formOption;
+    });
+
+</script>
+</html>

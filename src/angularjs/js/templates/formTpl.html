@@ -1,5 +1,5 @@
 <form>
-    <div ng-repeat="row in muFormOptions.fields">
+   <!-- <div ng-repeat="row in muFormOptions.fields">
 
         <div ng-repeat="field in row">
             <label>{{field.displayName}}</label>
@@ -23,22 +23,52 @@
             </td>
         </tr>
     </table>
+-->
+    {{trs}}<br/><br/>
 
-    {{trs}}
-    <table style="border: 1px solid #000000">
-        <tr ng-repeat="tr in trs">
-            <td ng-repeat="td in tr" colspan="{{td.colspan}}">
-                <div ng-if="td.label">{{td.label}}</div>
-                <div ng-if="td.gap" style="{{td.gap}}"></div>
-                <div ng-if="td.displayStyle" ng-switch on="td.displayStyle">
-                    <input type="text" ng-switch-when="10" style="{{td.style}}"/>
-                    <textarea ng-switch-when="1" style="{{td.style}}"></textarea>
-                    <input type="password" ng-switch-when="2" style="{{td.style}}">
-                    <select ng-switch-when="3" style="{{td.style}}"></select>
-                    <button type="button" ng-switch-when="4">{{td.displayName}}</button>
-                    <input type="text" ng-switch-default style="{{td.style}}"/>
-                </div>
-            </td>
-        </tr>
-    </table>
+    {{muFormOptions.formLayout}}<br/>
+    <div ng-switch on="muFormOptions.layoutType">
+        <div ng-switch-when="F">
+            <table>
+                <tr ng-repeat="tr in trs">
+                    <td>
+                        <span ng-repeat="td in tr" colspan="{{td.colspan}}">
+                            <span ng-if="td.label">{{td.label}}</span>
+                            <span ng-if="td.gap" style="{{td.gap}}"></span>
+                            <span ng-if="td.displayStyle" ng-switch on="td.displayStyle">
+                                <input ng-model="{{td.name}}" type="text" ng-switch-when="10" style="{{td.style}}" value="{{td.defaultValue}}"/>
+                                <textarea ng-switch-when="1" style="{{td.style}}"></textarea>
+                                <input type="password" ng-switch-when="2" style="{{td.style}}">
+                                <select ng-switch-when="3" style="{{td.style}}"></select>
+                                <button type="button" ng-switch-when="4">{{td.displayName}}</button>
+                                <input type="text" ng-switch-default style="{{td.style}}" value="{{td.defaultValue}}"/>
+                            </span>
+                        </span>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div ng-switch-when="T">
+            <table>
+                <tr ng-repeat="tr in trs">
+                    <td ng-repeat="td in tr" colspan="{{td.colspan}}" style="vertical-align: top">
+                        <div ng-if="td.label" style="margin-top: 5px;">{{td.label}}</div>
+                        <div ng-if="td.gap" style="{{td.gap}}"></div>
+                        <div ng-if="td.displayStyle" ng-switch on="td.displayStyle">
+                            <input type="text" ng-switch-when="10" style="{{td.style}}"/>
+                            <textarea ng-switch-when="1" style="{{td.style}}"></textarea>
+                            <input type="password" ng-switch-when="2" style="{{td.style}}">
+                            <select ng-switch-when="3" style="{{td.style}}">
+                                <option ng-repeat="op in td.dict" value="{{op.value}}">{{op.name}}</option>
+                            </select>
+                            <button type="button" ng-switch-when="4">{{td.displayName}}</button>
+                            <input type="text" ng-switch-default style="{{td.style}}"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
 </form>

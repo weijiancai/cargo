@@ -54,18 +54,20 @@
         };
 
         var options = {
+            layoutType: "F",
             fields: [
-                {name: "pm", displayName: "品名", width: 100, displayStyle: "10", styleClass: "readonly", sortNum: "1"},
-                {name: "wjjs", displayName: "文件件数", width: 100, displayStyle: 1, styleClass: "readonly", sortNum: "2"},
-                {name: "wjzl", displayName: "文件重量", width: 100, displayStyle: 2, styleClass: "readonly", sortNum: "3"},
-                {name: '', displayName: '货物接收（R）', width: 100, displayStyle: 4},
-                {name: 'kw', displayName: '库位', width: 90, displayStyle: "10", styleClass: 'import_input'},
-                {name: "empty_field", displayName: "空白字段", displayStyle: 1, width: 100, sortNum: "4", isSingleLine: true},
-                {name: "kcjs", displayName: "库存件数", width: 100, displayStyle: 3, styleClass: "readonly", sortNum: "5"},
-                {name: '', displayName: '打印（Q）', width: 80, displayStyle: 4}
+                {name: "pm", displayName: "品名", width: 100, displayStyle: "10", styleClass: "readonly", sortNum: "1", isLineEnd: false},
+                {name: "wjjs", displayName: "文件件数", width: 100, displayStyle: 1, styleClass: "readonly", sortNum: "2", isLineEnd: true},
+                {name: "wjzl", displayName: "文件重量", width: 100, displayStyle: 2, styleClass: "readonly", sortNum: "3", isLineEnd: true},
+                {name: '', displayName: '货物接收（R）', width: 100, displayStyle: 4, isLineEnd: false},
+                {name: 'kw', displayName: '库位', width: 90, displayStyle: "10", styleClass: 'import_input', isLineEnd: true},
+                {name: "empty_field", displayName: "空白字段", displayStyle: 1, width: 100, sortNum: "4", isSingleLine: true, isLineEnd: false},
+                {name: "kcjs", displayName: "库存件数", width: 100, displayStyle: 3, styleClass: "readonly", sortNum: "5", isLineEnd: false},
+                {name: '', displayName: '打印（Q）', width: 80, displayStyle: 4, isLineEnd: false}
             ]
         };
         $scope.trs = new TableLayout(options).getTrs();
+        $scope.options = options;
     });
 
     // Declare app level module which depends on filters, and services

@@ -1,15 +1,4 @@
 var TableLayout = function tableLayout(option) {
-    var defaults = {
-        colCount: 3,
-        labelGap: 5,
-        fieldGap: 15,
-        fields: []
-    };
-
-    option = $.extend(defaults, option);
-
-
-
     this.getTrs = function() {
         var trs = [];
         // 如果fields的第一个元素数组
@@ -41,7 +30,16 @@ var TableLayout = function tableLayout(option) {
                     fieldStyle += 'margin-right:' + (field.fieldGap ? field.fieldGap : 15) + 'px;';
                 }
                 /*tds.push({style: fieldStyle});*/
-                var fieldTd = {displayStyle: field.displayStyle};
+
+                var fieldTd = {};
+                // 显示风格
+                fieldTd.displayStyle = field.displayStyle || 10;
+                // 默认值
+                fieldTd.defaultValue = field.defaultValue;
+                // 数据字典
+                if(field.displayStyle == DS_COMBO_BOX) {
+                    fieldTd.dict = dictList[field.dictId];
+                }
                 if(field.displayStyle == 4) {
                     fieldTd.displayName = field.displayName;
                 }
@@ -56,12 +54,12 @@ var TableLayout = function tableLayout(option) {
                     }
 
                 } else {
-                    fieldStyle += 'width:' + field.width + 'px;';
+                    fieldStyle += 'width:' + (field.width || 180) + 'px;';
                 }
                 fieldTd.style = fieldStyle;
                 tds.push(fieldTd);
 
-                if(option.colCount == 1 || (i + 1) % option.colCount == 0 || field.isSingleLine) {
+                if(option.colCount == 1 || (i + 1) % option.colCount == 0 || field.isSingleLine || field.isLineEnd) {
                     trs.push(tds);
                     tds = [];
                 }

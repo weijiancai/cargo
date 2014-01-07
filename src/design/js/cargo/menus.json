@@ -5,7 +5,7 @@
         {"name": "nav1_xtgl", "display_name": "系统管理"},
         {"name": "nav1_gnjg", "display_name": "国内进港", "children": [
             {"name": "nav2_wjcz", "display_name": "文件操作", "children": [
-                {"name": "nav3_hbwj", "display_name": "航班文件", "icon": "images/hbwj.jpg"},
+                {"name": "nav3_hbwj", "display_name": "航班文件", "icon": "../images/hbwj.jpg"},
                 {"name": "nav3_group1", "children": [
                     {"name": "nav4_zzzg", "display_name": "中转转港", "icon": "images/zzzg.jpg"},
                     {"name": "nav4_lcdj", "display_name": "冷藏登记", "icon": "images/lcdj.jpg"},

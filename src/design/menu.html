@@ -3,15 +3,64 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
+    <link href="../style/global.css" rel="stylesheet" type="text/css"/>
+    <link href="../style/menu.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="js/angular/angular.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
 </head>
 <body ng-controller="NavMenuListCtrl">
-<ul>
+<!--<ul>
     <li ng-repeat="nav1 in menus">
         {{nav1.name}}
         <p>{{nav1.display_name}}</p>
     </li>
-</ul>
+</ul>-->
+<div id="main_nav_bar" class="container_24">
+    <ul>
+        <li ng-repeat="nav1 in menus"><a href="#" name="{{nav1.name}}">{{nav1.display_name}}</a></li>
+    </ul>
+</div>
+<div id="sub_nav_bar" class="container_24">
+    <div id="{{nav1.name}}" ng-repeat="nav1 in menus" class="div_sub_nav">
+        <ol class="left" ng-repeat="nav2 in nav1.children">
+            <li>
+                <ul ng-repeat="nav3 in nav2.children" class="left {{nav3.children ? '' : 'single'}}">
+                    <li><a href="#"><img ng-src="{{nav3.icon}}"><br><span>{{nav3.display_name}}</span></a></li>
+                </ul>
+                <!--<ul class="left single">
+                    <li><a href="in_sfg_sfcl.html"><img src="images/sfcl.jpg"><br><span>收费处理</span></a></li>
+                </ul>
+                <ul class="left">
+                    <li><a href="in_sfg_tccl.html"><img src="images/zzzg.jpg"><span>退仓处理</span></a></li>
+                    <li><a href=""><img src="images/lcdj.jpg"><span>运收入仓</span></a></li>
+                    <li><a href=""><img src="images/lchwtj.jpg"><span>运单收运入仓</span></a></li>
+                </ul>-->
+            </li>
+            <li><h5>{{nav2.display_name}}</h5></li>
+        </ol>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $('#nav1_gnjg').show();
+        var $a = $('#main_nav_bar').find('a[name="nav1_gnjg"]');
+        $a.css('color', '#000000').parent().addClass('sub_nav_selected');
+        $('#main_nav_bar').find('a').click(function() {
+            var $lis = $('#main_nav_bar').find('li').removeClass('sub_nav_selected');
+            $lis.find('a').css('color', '#ffffff');
+            // 所有子菜单不显示
+            $('#sub_nav_bar').find('> .div_sub_nav').hide();
+            $(this).each(function() {
+                $(this).css('color', '#000000');
+                $(this).parent().addClass('sub_nav_selected');
+                // 显示当前子菜单
+                $('#' + this.name).show();
+            });
+        });
+    });
+</script>
 </body>
 </html>
