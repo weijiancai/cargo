@@ -56,7 +56,7 @@
                         <div ng-if="td.label" style="margin-top: 5px;">{{td.label}}</div>
                         <div ng-if="td.gap" style="{{td.gap}}"></div>
                         <div ng-if="td.displayStyle" ng-switch on="td.displayStyle">
-                            <input type="text" ng-switch-when="10" style="{{td.style}}"/>
+                            <input type="text" ng-switch-when="10" style="{{td.style}}" ng-model="td.defaultValue"/>
                             <textarea ng-switch-when="1" style="{{td.style}}"></textarea>
                             <input type="password" ng-switch-when="2" style="{{td.style}}">
                             <select ng-switch-when="3" style="{{td.style}}">

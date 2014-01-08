@@ -1,5 +1,6 @@
 metauiDirectives.directive('muForm', function () {
     return {
+        transclude: true,
         templateUrl: 'js/templates/formTpl.html',
         controller: function($scope, $element, $attrs, $transclude) {
             var defaults = {
@@ -12,6 +13,12 @@ metauiDirectives.directive('muForm', function () {
 
             $scope.muFormOptions = $.extend(defaults, $scope.muFormOptions);
             $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
+            $scope.muForm = {};
+
+            var fields = $scope.muFormOptions;
+            for(var i = 0; i < fields.length; i++) {
+                muForm[fields[i].name] = fields[i].defaultValue || '';
+            }
         }
     };
 });
