@@ -13,7 +13,10 @@
         <div ng-controller="FormCtrl" mu-form></div>
     </mu-tab>
     <mu-tab title="表单字段配置">
-        BBB
+        <div ng-controller="TableCtrl">
+            <button ng-click="addRow()">增加</button>
+            <div mu-table></div>
+        </div>
     </mu-tab>
 </mu-tabs>
 
@@ -27,14 +30,19 @@
 <script type="text/javascript" src="lib/ng-grid-2.0.7.debug.js"></script>
 <script type="text/javascript" src="js/const.js"></script>
 <script type="text/javascript" src="js/namespace.js"></script>
+<script type="text/javascript" src="js/services/muconfig.js"></script>
 <script type="text/javascript" src="js/classes/TableLayout.js"></script>
 <script type="text/javascript" src="js/directives/mu-formField.js"></script>
 <script type="text/javascript" src="js/directives/mu-tab.js"></script>
+<script type="text/javascript" src="js/directives/mu-table.js"></script>
 <script type="text/javascript" src="js/directives/mu-form.js"></script>
 <script type="text/javascript">
     var appModule = angular.module('app', ['metaui']);
-    appModule.controller('FormCtrl', function($scope) {
-        $scope.muFormOptions = formOption;
+    appModule.controller('FormCtrl', function($scope, MUConfig) {
+        $scope.muFormOptions = MUConfig.get('formConfig');
+    });
+    appModule.controller('TableCtrl', function($scope, MUConfig) {
+        $scope.muTableOptions = MUConfig.get('formConfig');
     });
 
 </script>

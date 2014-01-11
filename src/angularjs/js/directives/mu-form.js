@@ -12,12 +12,21 @@ metauiDirectives.directive('muForm', function () {
             };
 
             $scope.muFormOptions = $.extend(defaults, $scope.muFormOptions);
-            $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
+
             $scope.muForm = {};
 
-            var fields = $scope.muFormOptions;
+            var fields = $scope.muFormOptions.fields;
             for(var i = 0; i < fields.length; i++) {
-                muForm[fields[i].name] = fields[i].defaultValue || '';
+                $scope.muForm[fields[i].name] = fields[i].defaultValue || '';
+                $scope.muForm.width = fields[i].width || 180;
+                $scope.muForm.labalGap = fields[i].labelGap || 5;
+                $scope.muForm.fieldGap = fields[i].fieldGap || 15;
+            }
+
+            $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
+
+            this.layout = function() {
+                $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
             }
         }
     };

@@ -40,6 +40,14 @@ var TableLayout = function tableLayout(option) {
                 if(field.displayStyle == DS_COMBO_BOX) {
                     fieldTd.dict = dictList[field.dictId];
                 }
+                // 宽度
+                fieldTd.width = field.width || 180;
+                // Label Gap
+                fieldTd.labelGap = field.labalGap || 5;
+                // Field Gap
+                fieldTd.fieldGap = field.fieldGap || 15;
+                // 名称
+                fieldTd.name = field.name;
                 if(field.displayStyle == 4) {
                     fieldTd.displayName = field.displayName;
                 }

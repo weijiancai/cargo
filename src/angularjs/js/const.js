@@ -24,3 +24,6 @@ var formOption = {
         {name: 'fieldGap', displayName: '字段间隔', defaultValue: 15}
     ]
 };
+
+// metauiconfig
+var muConfig = {'formConfig': formOption}
