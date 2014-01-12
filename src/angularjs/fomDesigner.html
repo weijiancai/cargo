@@ -8,20 +8,22 @@
     <link href="lib/ng-grid.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<mu-tabs>
-    <mu-tab title="表单配置">
-        <div ng-controller="FormCtrl" mu-form></div>
-    </mu-tab>
-    <mu-tab title="表单字段配置">
-        <div ng-controller="TableCtrl">
-            <button ng-click="addRow()">增加</button>
-            <div mu-table></div>
-        </div>
-    </mu-tab>
-</mu-tabs>
+<div ng-controller="FormDesignCtrl">
+    <mu-tabs>
+        <mu-tab title="表单配置">
+            <div mu-form="FormConfig"></div>
+        </mu-tab>
+        <mu-tab title="表单字段配置">
+            <div>
+                <button ng-click="addRow()">增加</button>
+                <div mu-table="FormFieldConfig"></div>
+            </div>
+        </mu-tab>
+    </mu-tabs>
 
-<div>
-
+    <hr style="border: 1px solid #0000ff"/>
+    <div mu-form="PreviewForm"></div>
+    {{gridOptions}}
 </div>
 </body>
 
@@ -31,6 +33,7 @@
 <script type="text/javascript" src="js/const.js"></script>
 <script type="text/javascript" src="js/namespace.js"></script>
 <script type="text/javascript" src="js/services/muconfig.js"></script>
+<script type="text/javascript" src="js/services/mudict.js"></script>
 <script type="text/javascript" src="js/classes/TableLayout.js"></script>
 <script type="text/javascript" src="js/directives/mu-formField.js"></script>
 <script type="text/javascript" src="js/directives/mu-tab.js"></script>
@@ -42,8 +45,12 @@
         $scope.muFormOptions = MUConfig.get('formConfig');
     });
     appModule.controller('TableCtrl', function($scope, MUConfig) {
-        $scope.muTableOptions = MUConfig.get('formConfig');
+        $scope.muTableOptions = MUConfig.get('formFieldConfig');
     });
-
+    appModule.controller('FormDesignCtrl', function($scope, MUConfig) {
+//        $scope.muFormOptions = MUConfig.get('formConfig');
+//        $scope.muTableOptions = MUConfig.get('formFieldConfig');
+        alert($scope);
+    });
 </script>
 </html>

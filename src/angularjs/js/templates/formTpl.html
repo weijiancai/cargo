@@ -26,8 +26,8 @@
 -->
     {{trs}}<br/><br/>
 
-    {{muForm}}<br/>
-    <div ng-switch on="muFormOptions.layoutType">
+    {{muForm}}<br/><br/>
+    <div ng-switch on="getFormConfig().layoutType">
         <div ng-switch-when="F">
             <table>
                 <tr ng-repeat="tr in trs">

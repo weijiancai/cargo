@@ -1,4 +1,4 @@
-metauiDirectives.directive('muForm', function () {
+metauiDirectives.directive('muForm', ['MUConfig', function (MUConfig) {
     return {
         transclude: true,
         templateUrl: 'js/templates/formTpl.html',
@@ -11,11 +11,20 @@ metauiDirectives.directive('muForm', function () {
                 fields: []
             };
 
-            $scope.muFormOptions = $.extend(defaults, $scope.muFormOptions);
+//            alert($element.attr('mu-Form'));
+//            $scope.muFormOptions = $.extend(defaults, MUConfig.get($element.attr('mu-Form')));
+            var formConfig = MUConfig.get($element.attr('mu-Form'));
+            if(!formConfig) { // 没有Config时，创建一个
+                formConfig = {};
+            }
+
+            $scope[$element.attr('mu-Form') + 'FormOption'] = $.extend(defaults, formConfig);
+
+            var muFormOptions = $scope[$element.attr('mu-Form') + 'FormOption'];
 
             $scope.muForm = {};
 
-            var fields = $scope.muFormOptions.fields;
+            var fields = muFormOptions.fields;
             for(var i = 0; i < fields.length; i++) {
                 $scope.muForm[fields[i].name] = fields[i].defaultValue || '';
                 $scope.muForm.width = fields[i].width || 180;
@@ -23,11 +32,15 @@ metauiDirectives.directive('muForm', function () {
                 $scope.muForm.fieldGap = fields[i].fieldGap || 15;
             }
 
-            $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
+            $scope.trs = new TableLayout(muFormOptions).getTrs();
 
             this.layout = function() {
                 $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
             }
+
+            $scope.getFormConfig = function() {
+                return muFormOptions;
+            }
         }
     };
-});
+}]);
