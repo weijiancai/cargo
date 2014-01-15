@@ -22,8 +22,16 @@
     </mu-tabs>
 
     <hr style="border: 1px solid #0000ff"/>
-    <div mu-form="PreviewForm"></div>
-    {{gridOptions}}
+    <div mu-form="PreviewForm">
+    </div>
+    <hr/>
+    {{preview}}
+    <hr/>
+    {{formConfig}}
+    <hr/>
+    {{formConfig | formLayout}}
+
+
 </div>
 </body>
 
@@ -33,7 +41,8 @@
 <script type="text/javascript" src="js/const.js"></script>
 <script type="text/javascript" src="js/namespace.js"></script>
 <script type="text/javascript" src="js/services/muconfig.js"></script>
-<script type="text/javascript" src="js/services/mudict.js"></script>
+<script type="text/javascript" src="js/services/MUDict.js"></script>
+<script type="text/javascript" src="js/filters/formFilter.js"></script>
 <script type="text/javascript" src="js/classes/TableLayout.js"></script>
 <script type="text/javascript" src="js/directives/mu-formField.js"></script>
 <script type="text/javascript" src="js/directives/mu-tab.js"></script>
@@ -50,7 +59,11 @@
     appModule.controller('FormDesignCtrl', function($scope, MUConfig) {
 //        $scope.muFormOptions = MUConfig.get('formConfig');
 //        $scope.muTableOptions = MUConfig.get('formFieldConfig');
-        alert($scope);
+        /*MUConfig.get('PreviewForm').fields = [
+            {name: 'name', displayName: '名称'}
+        ];*/
+        $scope.preview = MUConfig.get('PreviewForm');
+        $scope.formConfig = MUConfig.get('FormConfig');
     });
 </script>
 </html>

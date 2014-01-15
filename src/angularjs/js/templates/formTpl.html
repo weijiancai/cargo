@@ -24,10 +24,10 @@
         </tr>
     </table>
 -->
-    {{trs}}<br/><br/>
+    {{muFormOptions}}<br/><br/>
 
     {{muForm}}<br/><br/>
-    <div ng-switch on="getFormConfig().layoutType">
+    <div ng-switch on="muFormOptions.layoutType">
         <div ng-switch-when="F">
             <table>
                 <tr ng-repeat="tr in trs">

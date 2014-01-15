@@ -2,7 +2,7 @@ metauiDirectives.directive('muTable', ['MUDict', 'MUConfig', function(MUDict, MU
     return {
         transclude: true,
         /*scope: {muTableOptions: '@'},*/
-        template: '{{MUDict.getDisplayName("formLayoutType", "T")}}<div class="gridStyle" ng-grid="gridOptions" style="height: 500px;"></div>',
+        template: '{{MUDict.getDisplayName("formLayoutType", "T")}}<div class="gridStyle" ng-grid="gridOptions" style="height: 300px;"></div>',
         controller: function($scope, $element, $attrs, $transclude) {
             var options = MUConfig.get($element.attr('mu-table'));
             $scope.mydata = [];
@@ -43,6 +43,8 @@ metauiDirectives.directive('muTable', ['MUDict', 'MUConfig', function(MUDict, MU
                 /*obj.colCount = '5';
                 obj.labelGap = '5';*/
                 $scope.mydata.push(aobj);
+
+                MUConfig.get('PreviewForm').fields.push(aobj);
             }
         }
     }

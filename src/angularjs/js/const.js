@@ -27,7 +27,7 @@ var dictList = {
     ]
 };
 var formOption = {
-    formLayout: 'T',
+    layoutType: 'T',
     fields: [
         {name: 'colCount', displayName: '列数', defaultValue: '3'},
         {name: 'layoutType', displayName: '布局类型', displayStyle: DS_COMBO_BOX, dictId: 'formLayoutType', defaultValue: 'T'},
@@ -36,7 +36,7 @@ var formOption = {
     ]
 };
 var formFieldOption = {
-    formLayout: 'T',
+    layoutType: 'T',
     fields: [
         {name: 'name', displayName: '名称'},
         {name: 'displayName', displayName: '显示名'},
