@@ -31,9 +31,10 @@ metauiDirectives.directive('muForm', ['MUConfig', function (MUConfig) {
 //                $scope.muForm.fieldGap = fields[i].fieldGap || 15;
             }
 
-//            $scope.trs = new TableLayout(muFormOptions).getTrs();
+            $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
+//            alert($scope.trs.length);
 //            $scope.trs = muFormOptions.getTrs();
-            $scope.trs = [];
+//            $scope.trs = [];
 
             $scope.layout = function(option) {
                 var trs = [];
@@ -113,15 +114,23 @@ metauiDirectives.directive('muForm', ['MUConfig', function (MUConfig) {
                     }
                 }
 
-                $scope.trs = trs;
+                return trs;
             }
 
             $scope.layout($scope.muFormOptions);
             $scope.formField = $scope.muFormOptions.fields;
             $scope.$watch('muFormOptions.fields', function() {
-                alert("change......")
+//                alert("change......")
                 $scope.layout($scope.muFormOptions);
             });
+
+            $scope.updateForm = function() {
+
+                $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
+                alert($scope.trs.length);
+//                $scope.$apply($scope.trs);
+                $scope.trs.push({"displayStyle":"10"});
+            };
 
             /*$scope.getFormConfig = function() {
                 return muFormOptions;

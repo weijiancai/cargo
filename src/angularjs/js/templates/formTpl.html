@@ -26,7 +26,7 @@
 -->
     {{muFormOptions}}<br/><br/>
 
-    {{muForm}}<br/><br/>
+    {{trs}}<br/><br/>
     <div ng-switch on="muFormOptions.layoutType">
         <div ng-switch-when="F">
             <table>
@@ -70,4 +70,21 @@
         </div>
     </div>
 
+    <table style="border: 1px solid #004444">
+        <tr ng-repeat="tr in trs">
+            <td ng-repeat="td in tr" colspan="{{td.colspan}}" style="vertical-align: top">
+                <div ng-if="td.label" style="margin-top: 5px;">{{td.label}}</div>
+                <div ng-if="td.displayStyle" ng-switch on="td.displayStyle">
+                    <input type="text" ng-switch-when="10" ng-style="{'margin-left': td.labelGap,'margin-right': td.fieldGap}" ng-model="muForm[td.name]"/>
+                    <textarea ng-switch-when="1" style="{{td.style}}"></textarea>
+                    <input type="password" ng-switch-when="2" style="{{td.style}}">
+                    <select ng-switch-when="3" ng-style="{'margin-left': td.labelGap,'margin-right': td.fieldGap}">
+                        <option ng-repeat="op in td.dict" value="{{op.value}}">{{op.name}}</option>
+                    </select>
+                    <button type="button" ng-switch-when="4">{{td.displayName}}</button>
+                    <input type="text" ng-switch-default style="{{td.style}}"/>
+                </div>
+            </td>
+        </tr>
+    </table>
 </form>
