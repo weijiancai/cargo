@@ -13,7 +13,7 @@ metauiDirectives.directive('muForm', ['MUConfig', function (MUConfig) {
 
 //            alert($element.attr('mu-Form'));
 //            $scope.muFormOptions = $.extend(defaults, MUConfig.get($element.attr('mu-Form')));
-            var formName = $element.attr('mu-Form');
+            var formName = $attrs['muForm'];
 //            alert(formName);
             var formConfig = MUConfig.get(formName);
             MUConfig.addFormConfig(formName, formConfig);
@@ -125,7 +125,7 @@ metauiDirectives.directive('muForm', ['MUConfig', function (MUConfig) {
             });
 
             $scope.updateForm = function() {
-
+                $scope.muFormOptions.layoutType = 'T';
                 $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
                 alert($scope.trs.length);
 //                $scope.$apply($scope.trs);

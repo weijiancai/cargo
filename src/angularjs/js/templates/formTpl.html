@@ -71,6 +71,9 @@
     </div>
 
     <table style="border: 1px solid #004444">
+        <tr>
+            <td>muFormOptions.layoutType</td>
+        </tr>
         <tr ng-repeat="tr in trs">
             <td ng-repeat="td in tr" colspan="{{td.colspan}}" style="vertical-align: top">
                 <div ng-if="td.label" style="margin-top: 5px;">{{td.label}}</div>
