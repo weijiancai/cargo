@@ -15,12 +15,12 @@ metauiDirectives.directive('muForm', ['MUConfig', function (MUConfig) {
 //            $scope.muFormOptions = $.extend(defaults, MUConfig.get($element.attr('mu-Form')));
             var formName = $attrs['muForm'];
 //            alert(formName);
-            var formConfig = MUConfig.get(formName);
-            MUConfig.addFormConfig(formName, formConfig);
+//            var formConfig = MUConfig.get(formName);
+//            MUConfig.addFormConfig(formName, formConfig);
 //            $scope[$element.attr('mu-Form') + 'FormOption'] = $.extend(defaults, formConfig);
 
 //            var muFormOptions = $scope[$element.attr('mu-Form') + 'FormOption'];
-            $scope.muFormOptions = MUConfig.getFormConfig(formName);
+            $scope.muFormOptions = MUConfig.get(formName);
             $scope.muForm = {};
 
             var fields = $scope.muFormOptions.fields;
