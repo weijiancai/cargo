@@ -28,6 +28,9 @@ metauiServices.factory('MUConfig', ['$http', function($http) {
             }*/
 
             return _getMeta(name);
+        },
+        getView: function(viewId) {
+            return viewList
         }
     };
 
