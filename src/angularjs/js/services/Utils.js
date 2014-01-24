@@ -51,3 +51,27 @@ function ObjMap() {
         return list;
     };
 }
+
+
+var Utils = {
+    getValue : function(array, key, value) {
+        for(var i = 0; i < array.length; i++) {
+            if(array[i][key] == value) {
+                return array[i];
+            }
+        }
+        return null;
+    },
+    getTreeValue : function(tree, key, value) {
+        for(var i = 0; i < tree.length; i++) {
+            if(tree[i][key] == value) {
+                return tree[i];
+            } else if(tree[i]['children']) {
+                this.getTreeValue(tree[i]['children'], key, value);
+            }
+        }
+
+        return null;
+    }
+
+}

@@ -1,6 +1,7 @@
 metauiServices.factory('MUConfig', ['$http', function($http) {
     var formConfigCache = {};
     var metaCache = metaList;
+    var viewCache = viewList;
 
     return {
         get: function(name) {
@@ -30,7 +31,10 @@ metauiServices.factory('MUConfig', ['$http', function($http) {
             return _getMeta(name);
         },
         getView: function(viewId) {
-            return viewList
+            return Utils.getValue(viewCache, 'id', viewId);
+        },
+        getLayout: function(layoutId) {
+            return Utils.getTreeValue(layoutList, 'id', layoutId);
         }
     };
 
