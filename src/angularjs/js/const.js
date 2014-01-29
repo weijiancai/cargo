@@ -48,6 +48,7 @@ var formFieldOption = {
 
 // metauiconfig
 var muConfig = {'FormConfig': formOption, 'FormFieldConfig': formFieldOption};
+var layoutMapping = {'FORM': FormLayout};
 
 var metaList =
 [

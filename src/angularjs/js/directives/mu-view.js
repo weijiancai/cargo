@@ -5,6 +5,7 @@ metauiDirectives.directive('muView', ['MUConfig', function(MUConfig) {
             $scope.viewOption = MUConfig.getView(viewId);
             alert($scope.viewOption['layoutId']);
             $scope.layoutOption = MUConfig.getLayout($scope.viewOption['layoutId']);
+
         },
         template: '<div>{{layoutOption}}</div>'
     }
