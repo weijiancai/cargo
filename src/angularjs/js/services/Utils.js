@@ -4,8 +4,8 @@
  * @constructor
  */
 function ObjMap() {
-    var obj = {};
-    var keys = [];
+    this._obj = {};
+    this._keys = [];
 
     /**
      * 将key，value放入对象Map中
@@ -14,8 +14,8 @@ function ObjMap() {
      * @param value
      */
     this.push = function(key, value) {
-        keys.push(key);
-        obj[key] = value;
+        this._keys.push(key);
+        this._obj[key] = value;
     };
 
     /**
@@ -25,7 +25,7 @@ function ObjMap() {
      * @returns {*}
      */
     this.get = function(key) {
-        return obj[key];
+        return this._obj[key];
     };
 
     /**
@@ -34,7 +34,7 @@ function ObjMap() {
      * @returns {Array}
      */
     this.keys = function() {
-        return keys;
+        return this._keys;
     };
 
     /**
@@ -44,8 +44,8 @@ function ObjMap() {
      */
     this.values = function() {
         var list = [];
-        for(var i = 0; i < keys.length; i++) {
-            list.push(obj[keys[i]]);
+        for(var i = 0; i < this._keys.length; i++) {
+            list.push(this._obj[this._keys[i]]);
         }
 
         return list;
@@ -72,6 +72,10 @@ var Utils = {
         }
 
         return null;
-    }
+    },
+    treeToArray : function(tree, array, nodeChild) {
+        for(var i = 0; i < tree.length; i++) {
 
+        }
+    }
 }

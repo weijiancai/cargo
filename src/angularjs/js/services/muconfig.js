@@ -3,6 +3,14 @@ metauiServices.factory('MUConfig', ['$http', function($http) {
     var metaCache = metaList;
     var viewCache = viewList;
     var propMap = new ObjMap();
+    for(var i = 0; i < layoutList.length; i++) {
+        var props = layoutList[i].props;
+        if(props) {
+            for(var j = 0; j < props.length; j++) {
+                propMap.push(props[j].id, props[j]);
+            }
+        }
+    }
 
 
     return {
@@ -51,14 +59,7 @@ metauiServices.factory('MUConfig', ['$http', function($http) {
             return Utils.getTreeValue(layoutList, 'id', layoutId);
         },
         getLayoutPropery: function(propId) {
-            for(var i = 0; i < metaCache.length; i++) {
-                var fields = metaCache[i]['fields'];
-                for(var j = 0; j < fields.length; j++) {
-                    if(fields[j]['id'] == id) {
-                        return fields[j];
-                    }
-                }
-            }
+            return propMap.get(propId);
         }
     };
 
