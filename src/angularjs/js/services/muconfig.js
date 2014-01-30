@@ -2,6 +2,8 @@ metauiServices.factory('MUConfig', ['$http', function($http) {
     var formConfigCache = {};
     var metaCache = metaList;
     var viewCache = viewList;
+    var propMap = new ObjMap();
+
 
     return {
         get: function(name) {
@@ -30,11 +32,33 @@ metauiServices.factory('MUConfig', ['$http', function($http) {
 
             return _getMeta(name);
         },
+        getMetaField: function(id) {
+            for(var i = 0; i < metaCache.length; i++) {
+                var fields = metaCache[i]['fields'];
+                for(var j = 0; j < fields.length; j++) {
+                    if(fields[j]['id'] == id) {
+                        return fields[j];
+                    }
+                }
+            }
+
+            return null;
+        },
         getView: function(viewId) {
             return Utils.getValue(viewCache, 'id', viewId);
         },
         getLayout: function(layoutId) {
             return Utils.getTreeValue(layoutList, 'id', layoutId);
+        },
+        getLayoutPropery: function(propId) {
+            for(var i = 0; i < metaCache.length; i++) {
+                var fields = metaCache[i]['fields'];
+                for(var j = 0; j < fields.length; j++) {
+                    if(fields[j]['id'] == id) {
+                        return fields[j];
+                    }
+                }
+            }
         }
     };
 

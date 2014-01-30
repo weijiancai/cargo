@@ -67,7 +67,7 @@ var Utils = {
             if(tree[i][key] == value) {
                 return tree[i];
             } else if(tree[i]['children']) {
-                this.getTreeValue(tree[i]['children'], key, value);
+                return this.getTreeValue(tree[i]['children'], key, value);
             }
         }
 
