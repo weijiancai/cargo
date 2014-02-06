@@ -11,6 +11,10 @@
 <body>
 <div ng-controller="FormDesignCtrl">
     <mu-tabs>
+        <mu-tab title="测试">
+            Date Format: <input ng-model="format"><hr/>
+            Current time is: <span mu-current-time="format"></span>
+        </mu-tab>
         <mu-tab title="表单配置">
             <div mu-form="FormConfig"></div>
         </mu-tab>
@@ -69,6 +73,7 @@
 <script type="text/javascript" src="js/directives/mu-form.js"></script>
 <script type="text/javascript" src="js/directives/mu-tree.js"></script>
 <script type="text/javascript" src="js/directives/mu-view.js"></script>
+<script type="text/javascript" src="js/directives/mu-dict.js"></script>
 <script type="text/javascript">
     var appModule = angular.module('app', ['metaui']);
     appModule.controller('FormCtrl', function($scope, MUConfig) {

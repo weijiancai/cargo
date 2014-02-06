@@ -73,3 +73,15 @@ metauiServices.factory('MUConfig', ['$http', function($http) {
         return null;
     }
 }]);
+
+metauiServices.factory('Meta', ['$http', function($http) {
+    var doRequest = function(name) {
+        return $http({url: "/meta", params: {name: name}, method: "POST"});
+    };
+
+    return {
+        events: function(name) {
+            return doRequest(name);
+        }
+    }
+}]);
