@@ -127,7 +127,7 @@ metauiDirectives.directive('muForm', ['MUConfig', function (MUConfig) {
             $scope.updateForm = function() {
                 $scope.muFormOptions.layoutType = 'T';
                 $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
-                alert($scope.trs.length);
+//                alert($scope.trs.length);
 //                $scope.$apply($scope.trs);
                 $scope.trs.push({"displayStyle":"10"});
             };

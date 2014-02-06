@@ -8,10 +8,10 @@ metauiDirectives.directive('muView', ['MUConfig', '$compile', function(MUConfig,
 
             for(var i = 0; i < $scope.viewOption['configs'].length; i++) {
                 var config = $scope.viewOption['configs'][i];
-                alert(config['propId']);
+//                alert(config['propId']);
                 config.metaField = MUConfig.getMetaField(config['metaFieldId']);
                 config.propId = MUConfig.getLayoutPropery(config['propId']);
-                alert(config.propId);
+//                alert(config.propId);
                 break;
             }
 

@@ -15,7 +15,7 @@ var FormLayout = {
         $scope.updateForm = function() {
             $scope.muFormOptions.layoutType = 'T';
             $scope.trs = new TableLayout($scope.muFormOptions).getTrs();
-            alert($scope.trs.length);
+//            alert($scope.trs.length);
             $scope.trs.push({"displayStyle":"10"});
         };
     }

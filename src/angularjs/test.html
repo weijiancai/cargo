@@ -1,0 +1,247 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link href="lib/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="lib/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+    <link href="lib/animations.css" rel="stylesheet" type="text/css">
+    <link href="lib/ng-grid.css" rel="stylesheet" type="text/css">
+    <link href="lib/angular.treeview.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div ng-controller="FormDesignCtrl">
+    <mu-tabs>
+        <mu-tab title="测试">
+            Date Format: <input ng-model="format"><hr/>
+            Current time is: <span mu-current-time="format"></span>
+            <hr/>
+            <div class="container">
+                <ququ size="20"></ququ>
+                <ququ size="100"></ququ>
+                <select>
+                    <option value="a">select tesx</option>
+                </select>
+            </div>
+
+            <hr/>
+            <div class="container">
+                <div><input type="text" ng-init="name=true" ng-model="name"></div>
+                <div>hello, <span ng-bind="name"></span></div>
+
+                <div ng-if="name === 'Kitty'">
+                    <img width="200" ng-src="http://119.57.36.242:8001/pubfile/p/0P10/2010-06-01/images/2010060116358516.jpg">
+                </div>
+                <br/>
+                <div>
+                    <input type="number" ng-model="int" required>
+                </div>
+                <div>{{int | number}}</div>
+            </div>
+        </mu-tab>
+        <mu-tab title="Filter">
+            <div class="container">
+                <div ng-init="friends = [{name: 'John', phone: '555-1276'},
+                                         {name: 'Mary', phone: '800-BIG-MAN'},
+                                         {name: 'Mike', phone: '555-4321'},
+                                         {name: 'Adam', phone: '555-5678'},
+                                         {name: 'Julie', phone: '555-8765'}]">
+                    Search: <input ng-model="searchText">
+                    <table id="searchTextResults">
+                        <tr><th>Name</th><th>Phone</th></tr>
+                        <tr ng-repeat="friend in friends | filter:searchText">
+                            <td>{{friend.name}}</td>
+                            <td>{{friend.phone}}</td>
+                        </tr>
+                    </table>
+                    <br/><br/>
+
+                    Any: <input ng-model="search.$"><br/>
+                    Name only: <input ng-model="search.name"><br/>
+                    Phone only: <input ng-model="search.phone"><br/>
+                    <table id="searchObjResults">
+                        <tr><th>Name</th><th>Phone</th></tr>
+                        <tr ng-repeat="friend in friends | filter:search">
+                            <td>{{friend.name}}</td>
+                            <td>{{friend.phone}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </mu-tab>
+        <mu-tab title="Controller">
+            <div class="container" ng-controller="Ctrl1">
+                hello, {{name}}!
+                <button ng-click="change()">click me</button>
+            </div>
+        </mu-tab>
+        <mu-tab title="作用域">
+            <div ng-init="name='ququ'">
+                <div class="container">
+                    <div>
+                        <select ng-model="name">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="ququ">ququ</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+
+                    <div ng-controller="Ctrl1">hello, {{name}}!</div>
+
+                    <div ng-controller="Ctrl2">
+                        <ul>
+                            <li ng-repeat="money in moneys">{{money | number:2}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </mu-tab>
+
+        <mu-tab title="图片">
+            <div class="container" ng-controller="photoController">
+                <div>
+                    <input ng-model="keyword">
+                    <button type="button" class="btn-primary" ng-click="fetch()">搜索</button>
+                </div>
+
+                <div>
+                    <a ng-repeat="photo in photos" href="{{photo.link}}" target="_blank"><img ng-src="{{photo.img}}" width="200" height="200"></a>
+                </div>
+            </div>
+        </mu-tab>
+    </mu-tabs>
+</div>
+</body>
+
+<script type="text/javascript" src="../design/js/jquery-1.10.2.js"></script>
+<!--<script type="text/javascript" src="lib/angular.js"></script>-->
+<script type="text/javascript" src="lib/angular1.1.5.js"></script>
+<script type="text/javascript" src="lib/ng-grid-2.0.7.debug.js"></script>
+<script type="text/javascript" src="js/classes/layout.js"></script>
+<script type="text/javascript" src="js/const.js"></script>
+<script type="text/javascript" src="js/services/Utils.js"></script>
+<script type="text/javascript" src="js/namespace.js"></script>
+<script type="text/javascript" src="js/services/muconfig.js"></script>
+<script type="text/javascript" src="js/services/MUDict.js"></script>
+<script type="text/javascript" src="js/filters/formFilter.js"></script>
+<script type="text/javascript" src="js/classes/TableLayout.js"></script>
+<script type="text/javascript" src="js/directives/mu-formField.js"></script>
+<script type="text/javascript" src="js/directives/mu-tab.js"></script>
+<script type="text/javascript" src="js/directives/mu-table.js"></script>
+<script type="text/javascript" src="js/directives/mu-form.js"></script>
+<script type="text/javascript" src="js/directives/mu-tree.js"></script>
+<script type="text/javascript" src="js/directives/mu-view.js"></script>
+<script type="text/javascript" src="js/directives/mu-dict.js"></script>
+<script type="text/javascript">
+    var api = 'http://baike.so.com/resource/other/bkeditor/server/getImgJson.php';
+    var appModule = angular.module('app', ['metaui']);
+    appModule.controller('Ctrl1', function($scope, $timeout) {
+        $scope.name = 'world';
+
+        $scope.change = function() {
+//            $scope.name = 'kitty';
+            // 异步调用，更新数据用$apply
+            /*setTimeout(function() {
+                $scope.name = 'kitty';
+                $scope.$apply();
+            }, 1000);*/
+            // 使用$timeout不需要调用$apply方法
+            $timeout(function() {
+                $scope.name = 'kitty';
+            }, 1000);
+        };
+
+        $scope.$watch('name', function() {
+            console.log($scope.name);
+        });
+    });
+
+    appModule.controller('Ctrl2', function($scope, $timeout) {
+        $scope.moneys = [1000, 2000, 3000.121212, 10000];
+    });
+
+    appModule.service('Photo', function($http) {
+        this.fetchFromLocal = function(keyword) {
+            return [{"id":"25adf7b0eec28ad926efa841533789ca","grpmd5":false,"type":0,"index":0,"title":"<em>\u7f8e\u5973<\/em>\u7684\u751c\u7f8e\u8bf1\u60d1--\u770b\u5ead\u524d\u82b1\u5f00\u82b1\u843d,\u8363\u8fb1\u4e0d\u60ca,","litetitle":"","width":"621","height":"900","imgsize":"66KB","imgtype":"JPEG","key":"36d04332b3","dspurl":"blog.eastmoney.com","link":"http:\/\/blog.eastmoney.com\/yezitiandi\/blog_170126201.html","img":"http:\/\/img7.blog.eastmoney.com\/ye\/yezitiandi\/200906\/20090613074957406.jpg","thumb":"http:\/\/p0.so.qhimg.com\/t01e89cc28bd785df70.jpg","_thumb":"http:\/\/p0.so.qhimg.com\/sdr\/_240_\/t01e89cc28bd785df70.jpg","thumbWidth":166,"thumbHeight":240,"grpcnt":"8"},{"id":"e2d336b55bcc21434166443ed11ac1f4","grpmd5":false,"type":0,"index":1,"title":"<em>\u7f8e\u5973<\/em>\u7c98\u6ed1\u5a07\u5ae9\u7f8e\u81c0\u8bf1\u60d1 \u7b2c17\u9875--\u597d\u7f51\u65b0\u95fb--\u597d","litetitle":"","width":"682","height":"903","imgsize":"74KB","imgtype":"JPEG","key":"21df1fcba6","dspurl":"news.xdnice.com","link":"http:\/\/news.xdnice.com\/JinBaoYanQiu\/2012-02\/94590p17.html","img":"http:\/\/news.xdnice.com\/upload\/2012-02\/12021010153074.jpg","thumb":"http:\/\/p1.so.qhimg.com\/t010365ffadda421001.jpg","_thumb":"http:\/\/p1.so.qhimg.com\/sdr\/_240_\/t010365ffadda421001.jpg","thumbWidth":181,"thumbHeight":240,"grpcnt":"1"},{"id":"7697671c2932936c55a39fd2e4d30ceb","grpmd5":false,"type":0,"index":2,"title":"<em>\u7f8e\u5973<\/em>\u8bf1\u60d1_peaceful_\u65b0\u6d6a\u535a\u5ba2","litetitle":"","width":"1000","height":"1504","imgsize":"225KB","imgtype":"JPEG","key":"7913541bc5","dspurl":"blog.sina.com.cn","link":"http:\/\/blog.sina.com.cn\/s\/blog_a5bc8202010109ta.html","img":"http:\/\/img165.poco.cn\/mypoco\/myphoto\/20111030\/05\/54704062201110300502223689419360167_010.jpg","thumb":"http:\/\/p0.so.qhimg.com\/t01da6596eb67097425.jpg","_thumb":"http:\/\/p0.so.qhimg.com\/sdr\/_240_\/t01da6596eb67097425.jpg","thumbWidth":160,"thumbHeight":240,"grpcnt":"8"},{"id":"fd7b3d1c873830ae9a6a0d5a9e88964d","grpmd5":false,"type":0,"index":3,"title":"\u9152\u5427<em>\u7f8e\u5973<\/em>\u8bf1\u60d1_\u7cbe\u5f69\u8d34\u56fe_\u7334\u5c9b\u6e38\u620f\u8bba\u575b","litetitle":"","width":"644","height":"933","imgsize":"241KB","imgtype":"JPEG","key":"2fb9cd052d","dspurl":"bbs.houdao.com","link":"http:\/\/bbs.houdao.com\/read.php?tid=3510817","img":"http:\/\/s1.images.houdao.com\/11884\/10\/03\/13\/373_10097737_0ed5974db73e853.jpg","thumb":"http:\/\/p3.so.qhimg.com\/t01bb81724b89d7200d.jpg","_thumb":"http:\/\/p3.so.qhimg.com\/sdr\/_240_\/t01bb81724b89d7200d.jpg","thumbWidth":166,"thumbHeight":240,"grpcnt":"3"}];
+        };
+
+        this.fetchFromRemote = function(keyword) {
+            return $http.jsonp(api + '?q=' + keyword + '&callback=JSON_CALLBACK')
+                    .then(function (response) {
+                        return response.data.list.slice(0, 100);
+                    });
+            /*return $http.jsonp(api + '?q=' + keyword + '&callback=JSON_CALLBACK').success(function(data) {
+                return data.list.slice(0, 100);
+            });*/
+        }
+    });
+
+    appModule.factory('Photos', function($q, $http) {
+        return {
+            fetchFromRemote: function(keyword) {
+                var deferred = $q.defer();
+
+                $http.jsonp(api + '?q=' + keyword + '&callback=JSON_CALLBACK')
+                        .success(function (data) {
+                            deferred.resolve(data.list.slice(0, 100));
+                        });
+
+                return deferred.promise;
+            },
+            fetchRemote: function(keyword) {
+                return $http.jsonp(api + '?q=' + keyword + '&callback=JSON_CALLBACK');
+            }
+        }
+    });
+
+    appModule.controller('photoController', function($scope, $http, Photo) {
+//        $scope.photos = [];
+        $scope.keyword = "美女";
+
+        $scope.fetch = function() {
+            /*$http.jsonp(api + '?q=' + $scope.keyword + '&callback=JSON_CALLBACK').success(function(data) {
+                $scope.photos = data.list.slice(0, 100);
+            });*/
+            // 从本地加载数据
+//            $scope.photos = Photo.fetchFromLocal($scope.keyword);
+            // 从远端异步加载数据
+//            alert($scope.photos.length);
+            $scope.photos = Photo.fetchFromRemote($scope.keyword);
+            /*Photos.fetchRemote($scope.keyword).success(function(data) {
+                $scope.photos = data.list;
+            });
+            $scope.$watch('photos', function(value) {
+                alert($scope.photos.length);
+            })*/
+        }
+    });
+    appModule.controller('FormDesignCtrl', function($scope, MUConfig) {
+//        $scope.muFormOptions = MUConfig.get('formConfig');
+//        $scope.muTableOptions = MUConfig.get('formFieldConfig');
+        /*MUConfig.get('PreviewForm').fields = [
+            {name: 'name', displayName: '名称'}
+        ];*/
+        $scope.preview = MUConfig.get('PreviewForm');
+        $scope.formConfig = MUConfig.get('FormConfig');
+        $scope.meta = MUConfig.getMeta("meta");
+
+        $scope.roleList = [
+            { label : "User", id : "role1", children : [
+                { label : "subUser1", id : "role11", children : [] },
+                { label : "subUser2", id : "role12", children : [
+                    { label : "subUser2-1", id : "role121", children : [
+                        { label : "subUser2-1-1", id : "role1211", children : [] },
+                        { label : "subUser2-1-2", id : "role1212", children : [] }
+                    ]}
+                ]}
+            ]},
+
+            { label : "Admin", id : "role2", children : [] },
+
+            { label : "Guest", id : "role3", children : [] }
+        ];
+
+        $scope.layoutTree = layoutList;
+    });
+</script>
+</html>
