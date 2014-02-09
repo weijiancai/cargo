@@ -115,7 +115,8 @@
 
 <script type="text/javascript" src="../design/js/jquery-1.10.2.js"></script>
 <!--<script type="text/javascript" src="lib/angular.js"></script>-->
-<script type="text/javascript" src="lib/angular1.1.5.js"></script>
+<script type="text/javascript" src="lib/angular1.2.11.js"></script>
+<script type="text/javascript" src="lib/angular-resource.js"></script>
 <script type="text/javascript" src="lib/ng-grid-2.0.7.debug.js"></script>
 <script type="text/javascript" src="js/classes/layout.js"></script>
 <script type="text/javascript" src="js/const.js"></script>
@@ -134,7 +135,7 @@
 <script type="text/javascript" src="js/directives/mu-dict.js"></script>
 <script type="text/javascript">
     var api = 'http://baike.so.com/resource/other/bkeditor/server/getImgJson.php';
-    var appModule = angular.module('app', ['metaui']);
+    var appModule = angular.module('app', ['metaui', 'ngResource']);
     appModule.controller('Ctrl1', function($scope, $timeout) {
         $scope.name = 'world';
 
@@ -160,7 +161,7 @@
         $scope.moneys = [1000, 2000, 3000.121212, 10000];
     });
 
-    appModule.service('Photo', function($http) {
+    appModule.service('Photo', function($http, $resource) {
         this.fetchFromLocal = function(keyword) {
             return [{"id":"25adf7b0eec28ad926efa841533789ca","grpmd5":false,"type":0,"index":0,"title":"<em>\u7f8e\u5973<\/em>\u7684\u751c\u7f8e\u8bf1\u60d1--\u770b\u5ead\u524d\u82b1\u5f00\u82b1\u843d,\u8363\u8fb1\u4e0d\u60ca,","litetitle":"","width":"621","height":"900","imgsize":"66KB","imgtype":"JPEG","key":"36d04332b3","dspurl":"blog.eastmoney.com","link":"http:\/\/blog.eastmoney.com\/yezitiandi\/blog_170126201.html","img":"http:\/\/img7.blog.eastmoney.com\/ye\/yezitiandi\/200906\/20090613074957406.jpg","thumb":"http:\/\/p0.so.qhimg.com\/t01e89cc28bd785df70.jpg","_thumb":"http:\/\/p0.so.qhimg.com\/sdr\/_240_\/t01e89cc28bd785df70.jpg","thumbWidth":166,"thumbHeight":240,"grpcnt":"8"},{"id":"e2d336b55bcc21434166443ed11ac1f4","grpmd5":false,"type":0,"index":1,"title":"<em>\u7f8e\u5973<\/em>\u7c98\u6ed1\u5a07\u5ae9\u7f8e\u81c0\u8bf1\u60d1 \u7b2c17\u9875--\u597d\u7f51\u65b0\u95fb--\u597d","litetitle":"","width":"682","height":"903","imgsize":"74KB","imgtype":"JPEG","key":"21df1fcba6","dspurl":"news.xdnice.com","link":"http:\/\/news.xdnice.com\/JinBaoYanQiu\/2012-02\/94590p17.html","img":"http:\/\/news.xdnice.com\/upload\/2012-02\/12021010153074.jpg","thumb":"http:\/\/p1.so.qhimg.com\/t010365ffadda421001.jpg","_thumb":"http:\/\/p1.so.qhimg.com\/sdr\/_240_\/t010365ffadda421001.jpg","thumbWidth":181,"thumbHeight":240,"grpcnt":"1"},{"id":"7697671c2932936c55a39fd2e4d30ceb","grpmd5":false,"type":0,"index":2,"title":"<em>\u7f8e\u5973<\/em>\u8bf1\u60d1_peaceful_\u65b0\u6d6a\u535a\u5ba2","litetitle":"","width":"1000","height":"1504","imgsize":"225KB","imgtype":"JPEG","key":"7913541bc5","dspurl":"blog.sina.com.cn","link":"http:\/\/blog.sina.com.cn\/s\/blog_a5bc8202010109ta.html","img":"http:\/\/img165.poco.cn\/mypoco\/myphoto\/20111030\/05\/54704062201110300502223689419360167_010.jpg","thumb":"http:\/\/p0.so.qhimg.com\/t01da6596eb67097425.jpg","_thumb":"http:\/\/p0.so.qhimg.com\/sdr\/_240_\/t01da6596eb67097425.jpg","thumbWidth":160,"thumbHeight":240,"grpcnt":"8"},{"id":"fd7b3d1c873830ae9a6a0d5a9e88964d","grpmd5":false,"type":0,"index":3,"title":"\u9152\u5427<em>\u7f8e\u5973<\/em>\u8bf1\u60d1_\u7cbe\u5f69\u8d34\u56fe_\u7334\u5c9b\u6e38\u620f\u8bba\u575b","litetitle":"","width":"644","height":"933","imgsize":"241KB","imgtype":"JPEG","key":"2fb9cd052d","dspurl":"bbs.houdao.com","link":"http:\/\/bbs.houdao.com\/read.php?tid=3510817","img":"http:\/\/s1.images.houdao.com\/11884\/10\/03\/13\/373_10097737_0ed5974db73e853.jpg","thumb":"http:\/\/p3.so.qhimg.com\/t01bb81724b89d7200d.jpg","_thumb":"http:\/\/p3.so.qhimg.com\/sdr\/_240_\/t01bb81724b89d7200d.jpg","thumbWidth":166,"thumbHeight":240,"grpcnt":"3"}];
         };
@@ -173,7 +174,17 @@
             /*return $http.jsonp(api + '?q=' + keyword + '&callback=JSON_CALLBACK').success(function(data) {
                 return data.list.slice(0, 100);
             });*/
-        }
+        };
+
+        this.fetchResource = function(keyword) {
+            return $resource(api + '?q=' + keyword, null, function() {}).then(function (response) {
+                return response.data.list.slice(0, 100);
+            });
+        };
+
+        this.fetchRemote = function(keyword) {
+            return $http.jsonp(api + '?q=' + keyword + '&callback=JSON_CALLBACK');
+        };
     });
 
     appModule.factory('Photos', function($q, $http) {
@@ -195,8 +206,9 @@
     });
 
     appModule.controller('photoController', function($scope, $http, Photo) {
-//        $scope.photos = [];
+        $scope.photos = [];
         $scope.keyword = "美女";
+        $scope.res = {};
 
         $scope.fetch = function() {
             /*$http.jsonp(api + '?q=' + $scope.keyword + '&callback=JSON_CALLBACK').success(function(data) {
@@ -206,13 +218,18 @@
 //            $scope.photos = Photo.fetchFromLocal($scope.keyword);
             // 从远端异步加载数据
 //            alert($scope.photos.length);
-            $scope.photos = Photo.fetchFromRemote($scope.keyword);
+//            $scope.photos = Photo.fetchFromRemote($scope.keyword);
+            $scope.res = Photo.fetchRemote($scope.keyword);
+//            $scope.photos = Photo.fetchResource($scope.keyword);
             /*Photos.fetchRemote($scope.keyword).success(function(data) {
                 $scope.photos = data.list;
-            });
-            $scope.$watch('photos', function(value) {
-                alert($scope.photos.length);
-            })*/
+            });*/
+            $scope.$watch('res', function(value) {
+//                alert($scope.res);
+                $scope.res.then(function(data) {
+                    $scope.photos = data.data.list
+                });
+            })
         }
     });
     appModule.controller('FormDesignCtrl', function($scope, MUConfig) {
